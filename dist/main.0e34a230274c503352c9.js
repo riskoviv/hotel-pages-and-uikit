@@ -81,32 +81,32 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./index.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/datePicker.js":
-/*!***************************!*\
-  !*** ./src/datePicker.js ***!
-  \***************************/
+/***/ "./datePicker.js":
+/*!***********************!*\
+  !*** ./datePicker.js ***!
+  \***********************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return getCurrentDate; });\nfunction getCurrentDate() {\r\n  const date = new Date();\r\n  return date.toLocaleDateString();\r\n}\r\n\n\n//# sourceURL=webpack:///./src/datePicker.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return getCurrentDate; });\nfunction getCurrentDate() {\r\n  const date = new Date();\r\n  return date.toLocaleDateString();\r\n}\r\n\n\n//# sourceURL=webpack:///./datePicker.js?");
 
 /***/ }),
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
+/***/ "./index.js":
+/*!******************!*\
+  !*** ./index.js ***!
+  \******************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _datePicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./datePicker */ \"./src/datePicker.js\");\n\r\n\r\nconst title = document.querySelector(\".main-title\");\r\ntitle.textContent = title.textContent.toUpperCase();\r\n\r\nconst title2 = document.createElement(\"h2\");\r\ntitle2.classList.add(\"date-title\");\r\ntitle2.textContent = \"Today's date: \" + Object(_datePicker__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\r\ntitle.after(title2);\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _datePicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./datePicker */ \"./datePicker.js\");\n\r\n\r\nconst title = document.querySelector(\".main-title\");\r\ntitle.textContent = title.textContent.toUpperCase();\r\n\r\nconst title2 = document.createElement(\"h2\");\r\ntitle2.classList.add(\"date-title\");\r\ntitle2.textContent = \"Today's date: \" + Object(_datePicker__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\r\ntitle.after(title2);\r\n\n\n//# sourceURL=webpack:///./index.js?");
 
 /***/ })
 
