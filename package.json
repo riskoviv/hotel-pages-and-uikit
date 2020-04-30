@@ -1,0 +1,28 @@
+{
+  "name": "toxin",
+  "version": "1.0.0",
+  "description": "FSD 2nd task",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Virss1/Toxin.git"
+  },
+  "keywords": [
+    "layout",
+    "jquery",
+    "webpack"
+  ],
+  "author": "Ivan Riskov <riskovivan94@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Virss1/Toxin/issues"
+  },
+  "homepage": "https://github.com/Virss1/Toxin#readme",
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
