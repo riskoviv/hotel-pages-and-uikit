@@ -1,0 +1,20 @@
+@import "~normalize.css";
+@import "roboto.css";
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  max-width: 1000px;
+}
+
+.main-title {
+  color: #006;
+  text-align: center;
+}
+
+.webpack-image {
+  width: 200px;
+  margin: 0 auto;
+}
