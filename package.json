@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "watch": "webpack --mode development --watch"
+    "watch": "webpack --mode development --watch",
+    "start": "webpack-dev-server --mode development --open"
   },
   "repository": {
     "type": "git",
@@ -25,15 +26,18 @@
   "homepage": "https://github.com/Virss1/Toxin#readme",
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.0.1",
     "css-loader": "^3.5.3",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.2.1",
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0",
     "xml-loader": "^1.2.1"
   },
   "dependencies": {
+    "jquery": "^3.5.1",
     "normalize.css": "^8.0.1"
   }
 }

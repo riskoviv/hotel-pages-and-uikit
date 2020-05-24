@@ -7,6 +7,12 @@ body {
 
 .container {
   max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container > * {
+  border-bottom: 1px solid black;
 }
 
 .main-title {
@@ -16,5 +22,9 @@ body {
 
 .webpack-image {
   width: 200px;
-  margin: 0 auto;
+  
+}
+
+.code {
+  color: crimson;
 }
