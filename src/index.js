@@ -1,9 +1,11 @@
-import * as $ from 'jquery';
-import getCurrentDate from '@models/datePicker';
-// import json from './assets/json.json';
+import * as $ from 'jquery'
+import getCurrentDate from '@models/datePicker'
+// import json from './assets/json.json'
 // import xml from './assets/data.xml'
-import WebpackLogo from '@/assets/icon.png';
-import './styles/styles.css';
+import WebpackLogo from '@/assets/icon.png'
+import './styles/styles.css'
+import './styles/less.less'
+import './styles/scss.scss'
 
 const title = document.querySelector('.main-title');
 title.textContent = title.textContent.toUpperCase();
