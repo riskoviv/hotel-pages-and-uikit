@@ -7,12 +7,14 @@
     "dev": "cross-env NODE_ENV=development webpack --mode development",
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "watch": "cross-env NODE_ENV=development webpack --mode development --watch",
-    "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --open"
+    "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --open",
+    "stats": "webpack --json > stats.json && webpack-bundle-analyzer stats.json"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Virss1/Toxin.git"
   },
+  "browserslist": "> 0.25%, not dead",
   "keywords": [
     "layout",
     "jquery",
@@ -31,7 +33,6 @@
     "css-loader": "^3.5.3",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
-    "less-loader": "^6.1.0",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.14.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
@@ -39,9 +40,9 @@
     "style-loader": "^1.2.1",
     "terser-webpack-plugin": "^3.0.1",
     "webpack": "^4.43.0",
+    "webpack-bundle-analyzer": "^3.8.0",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.11.0",
-    "xml-loader": "^1.2.1"
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
     "jquery": "^3.5.1",
