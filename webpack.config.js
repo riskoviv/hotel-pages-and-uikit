@@ -1,4 +1,5 @@
 const path = require('path')
+const fs = require('fs')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -8,6 +9,14 @@ const TerserPlugin = require('terser-webpack-plugin')
 
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
+
+const PATHS = {
+  src: path.join(__dirname, 'src'),
+  dist: path.join(__dirname, 'dist')
+}
+
+const PAGES_DIR = `${PATHS.src}/pug/pages/`
+const PAGES = fs.readdirSync(PAGES_DIR).filter(filename => filename.endsWith('.pug'))
 
 const optimization = () => {
   const config = {
@@ -50,21 +59,23 @@ const cssLoaders = extra => {
 
 const plugins = () => {
   const base = [
-    new HTMLWebpackPlugin({
-      template: './index.html'
-    }),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, 'src/favicon.ico'),
-          to: path.resolve(__dirname, 'dist')
+          from: `${PATHS.src}/favicon.ico`,
+          to: PATHS.dist
         }
       ]
     }),
     new MiniCssExtractPlugin({
       filename: filename('css')
-    })
+    }),
+
+    ...PAGES.map(page => new HTMLWebpackPlugin({
+      template: `${PAGES_DIR}/${page}`, // .pug
+      filename: `./${page.replace(/\.pug/,'.html')}` // .html
+    }))
   ]
 
   return base
@@ -99,6 +110,10 @@ module.exports = {
   plugins: plugins(),
   module: {
     rules: [
+      {
+        test: /\.pug$/,
+        loader: 'pug-loader'
+      },
       {
         test: /\.css$/,
         use: cssLoaders()
