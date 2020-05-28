@@ -5,7 +5,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
-const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
 
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
@@ -48,37 +47,6 @@ const cssLoaders = extra => {
   return loaders
 }
 
-const babelOptions = preset => {
-  const opts = {
-    presets: [
-      '@babel/preset-env'
-    ],
-    plugins: [
-      '@babel/plugin-proposal-class-properties'
-    ]
-  }
-
-  if (preset) {
-    opts.presets.push(preset)
-  }
-
-  return opts
-}
-
-const jsLoaders = () => {
-  const loaders = [
-    {
-      loader: 'babel-loader',
-      options: babelOptions()
-    }
-  ]
-
-  if (isDev) {
-    loaders.push('eslint-loader')
-  }
-
-  return loaders
-}
 
 const plugins = () => {
   const base = [
@@ -99,10 +67,6 @@ const plugins = () => {
     })
   ]
 
-  if (isProd) {
-    base.push(new BundleAnalyzerPlugin())
-  }
-
   return base
 }
 
@@ -112,8 +76,8 @@ module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
   entry: {
-    main: ['@babel/polyfill', './index.jsx'],
-    analytics: './analytics.ts'
+    main: "./index.js",
+    analytics: './analytics.js'
   },
   output: {
     filename: filename('js'),
@@ -150,11 +114,6 @@ module.exports = {
       {
         test: /\.(ttf|woff|woff2|eot)$/,
         use: ['file-loader']
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: jsLoaders()
       }
     ]
   }
