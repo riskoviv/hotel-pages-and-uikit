@@ -15,8 +15,12 @@ const PATHS = {
   dist: path.join(__dirname, 'dist')
 }
 
-const PAGES_DIR = `${PATHS.src}/pug/pages/`
-const PAGES = fs.readdirSync(PAGES_DIR).filter(filename => filename.endsWith('.pug'))
+const PAGES_DIR_1 = `${PATHS.src}/pages/ui-kit/`
+const PAGES_DIR_2 = `${PATHS.src}/pages/website-pages/`
+const PAGES_1 = fs.readdirSync(PAGES_DIR_1)
+  .filter(filename => filename.endsWith('.pug'))
+const PAGES_2 = fs.readdirSync(PAGES_DIR_2)
+  .filter(filename => filename.endsWith('.pug'))
 
 const optimization = () => {
   const config = {
@@ -72,10 +76,19 @@ const plugins = () => {
       filename: filename('css')
     }),
 
-    ...PAGES.map(page => new HTMLWebpackPlugin({
-      template: `${PAGES_DIR}/${page}`, // .pug
-      filename: `./${page.replace(/\.pug/,'.html')}` // .html
-    }))
+    ...PAGES_1.map(page => new HTMLWebpackPlugin(
+      {
+        template: `${PAGES_DIR_1}/${page}`, // .pug
+        filename: `./${page.replace(/\.pug/,'.html')}` // .html
+      }
+    )),
+
+    ...PAGES_2.map(page => new HTMLWebpackPlugin(
+      {
+        template: `${PAGES_DIR_2}/${page}`, // .pug
+        filename: `./${page.replace(/\.pug/,'.html')}` // .html
+      }
+    ))
   ]
 
   return base
