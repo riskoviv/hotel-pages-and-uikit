@@ -1,0 +1,10 @@
+//- include __color-square/color-example__color-square.pug
+include __color-title/color-example__color-title.pug
+include __color-code/color-example__color-code.pug
+
+
+mixin color-example(options)
+  li.color-example
+    //- +color-square(options.class)
+    +color-title(options.title)
+    +color-code(options.code)

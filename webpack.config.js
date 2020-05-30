@@ -16,11 +16,11 @@ const PATHS = {
 }
 
 const PAGES_DIR_1 = `${PATHS.src}/pages/ui-kit/`
-const PAGES_DIR_2 = `${PATHS.src}/pages/website-pages/`
+// const PAGES_DIR_2 = `${PATHS.src}/pages/website-pages/`
 const PAGES_1 = fs.readdirSync(PAGES_DIR_1)
   .filter(filename => filename.endsWith('.pug'))
-const PAGES_2 = fs.readdirSync(PAGES_DIR_2)
-  .filter(filename => filename.endsWith('.pug'))
+// const PAGES_2 = fs.readdirSync(PAGES_DIR_2)
+//   .filter(filename => filename.endsWith('.pug'))
 
 const optimization = () => {
   const config = {
@@ -67,8 +67,8 @@ const plugins = () => {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: `${PATHS.src}/favicon.ico`,
-          to: PATHS.dist
+          from: `${PATHS.src}/res/img/`,
+          to: './img/'
         }
       ]
     }),
@@ -81,14 +81,14 @@ const plugins = () => {
         template: `${PAGES_DIR_1}/${page}`, // .pug
         filename: `./${page.replace(/\.pug/,'.html')}` // .html
       }
-    )),
-
-    ...PAGES_2.map(page => new HTMLWebpackPlugin(
-      {
-        template: `${PAGES_DIR_2}/${page}`, // .pug
-        filename: `./${page.replace(/\.pug/,'.html')}` // .html
-      }
     ))
+
+    // ...PAGES_2.map(page => new HTMLWebpackPlugin(
+    //   {
+    //     template: `${PAGES_DIR_2}/${page}`, // .pug
+    //     filename: `./${page.replace(/\.pug/,'.html')}` // .html
+    //   }
+    // ))
   ]
 
   return base

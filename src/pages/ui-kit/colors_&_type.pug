@@ -1,8 +1,13 @@
-extends ../../layout/ui-kit-main
+extends ../../layout/ui-kit-main.pug
+include ../../components/color-examples-list/color-examples-list.pug
 
 block variables
-  - var title = 'Colors & type';
-  - var pageClass = 'colors-and-type';
+  - var title = 'Colors & type'
+  - var pageClass = 'colors-and-type'
 
 block content
-  h1 Hello world!
+  .color-examples-list-wrapper
+    +color-examples-list
+    h2= title
+
+  .headers-list

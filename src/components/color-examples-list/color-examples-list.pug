@@ -1,0 +1,11 @@
+include color-example/color-example.pug
+
+mixin color-examples-list
+  ul.color-examples-list
+    +color-example({class: 'ds-100', title: 'Dark Shade 100%', code: '#1F2041'})
+    +color-example({class: 'ds-75', title: 'Dark Shade 75%', code: '#1F2041'})
+    +color-example({class: 'ds-50', title: 'Dark Shade 50%', code: '#1F2041'})
+    +color-example({class: 'ds-25', title: 'Dark Shade 25%', code: '#1F2041'})
+    +color-example({class: 'ds-5', title: 'Dark Shade 5%', code: '#1F2041'})
+    +color-example({class: 'purple', title: 'Purple', code: '#BC9CFF'})
+    +color-example({class: 'green', title: 'Green', code: '#6FCF97'})
