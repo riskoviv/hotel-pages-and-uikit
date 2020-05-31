@@ -1,10 +1,8 @@
-//- include __color-square/color-example__color-square.pug
-include __color-title/color-example__color-title.pug
-include __color-code/color-example__color-code.pug
-
-
 mixin color-example(options)
   li.color-example
-    //- +color-square(options.class)
-    +color-title(options.title)
-    +color-code(options.code)
+    div(
+      class='color-example__color-square_' + options.color
+      style='display: inline-block; width: 50px; height: 50px; background-color: black;'
+    )
+    h2.color-example__color-title(style='display: inline;')= options.title
+    span.color-example__color-code= options.code

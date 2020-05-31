@@ -1,6 +1,6 @@
 import * as $ from 'jquery'
 import './styles/styles.sass'
 
-$("h1").click(function () {
+$("h2").click(function () {
   $(this).text('Clicked!');
 });
