@@ -1,8 +1,8 @@
 mixin color-example(options)
   li.color-example
-    div(
+    div.color-example__color-square(
       class='color-example__color-square_' + options.color
-      style='display: inline-block; width: 50px; height: 50px; background-color: black;'
     )
-    h2.color-example__color-title(style='display: inline;')= options.title
-    span.color-example__color-code= options.code
+    div.color-example__text-block
+      h2.color-example__color-title= options.title
+      span.color-example__color-code= options.code
