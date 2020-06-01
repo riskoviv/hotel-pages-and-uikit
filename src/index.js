@@ -1,5 +1,5 @@
 import * as $ from 'jquery'
-import './styles/styles.sass'
+import './styles/styles.scss'
 
 $("h2").click(function () {
   $(this).text('Clicked!');
