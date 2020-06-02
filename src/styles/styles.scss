@@ -1,19 +1,21 @@
 @import "~normalize.css", "fonts.scss";
+@import "variables.scss";
 @import "../layout/ui-kit-main", "../components/ui-kit/colors-&-type/colors-&-type";
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 24px;
-  color: rgba(31, 32, 65, 0.75);
+  font-family: $mainFont;
+  font-style: $mainFontStyle;
+  font-weight: $mainFontWeight;
+  font-size: $mainFontSize;
+  line-height: $mainLineHeight;
+  color: $mainFontColor;
 }
+// Common header styles
 %header {
   font-family: 'Quicksand', 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: bold;
-  color: #1F2041;
+  color: $headerColor;
   margin: 0;
 }
 h1 {

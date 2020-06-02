@@ -6,26 +6,26 @@
   &__color-square {
     width: 70px;
     height: 70px;
-    background-color: #1F2041;
+    background-color: $darkShade100;
     border-radius: 6px;
     margin-right: 40px;
     &_ds-75 {
-      background-color: rgba(31, 32, 65, 0.75);
+      background-color: $darkShade75;
     }
     &_ds-50 {
-      background-color: rgba(31, 32, 65, 0.5);
+      background-color: $darkShade50;
     }
     &_ds-25 {
-      background-color: rgba(31, 32, 65, 0.25);
+      background-color: $darkShade25;
     }
     &_ds-5 {
-      background-color: rgba(31, 32, 65, 0.05);
+      background-color: $darkShade5;
     }
     &_purple {
-      background-color: #BC9CFF;
+      background-color: $purple;
     }
     &_green {
-      background-color: #6FCF97;
+      background-color: $green;
     }
   }
 
@@ -33,7 +33,7 @@
     font-size: 19px;
     line-height: 29px;
   }
-  
+
   &__color-title {
     @extend %color-example-text;
     margin: 0;
@@ -41,7 +41,7 @@
   }
   &__color-code {
     @extend %color-example-text;
-    font-family: 'Quicksand', 'Open Sans', sans-serif;
-    color: #1F2041;
+    font-family: $headerFont;
+    color: $darkShade100;
   }
 }

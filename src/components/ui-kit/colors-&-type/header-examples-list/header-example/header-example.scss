@@ -4,9 +4,9 @@
   align-items: flex-start;
 
   &__type {
-    color: rgba(31, 32, 65, 0.25);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: normal;
+    color: $darkShade25;
+    font-family: $mainFont;
+    font-weight: $mainFontWeight;
     margin-right: 30px;
     min-width: 37px;
     text-align: right;
