@@ -28,15 +28,20 @@
       background-color: #6FCF97;
     }
   }
-  &_text-block {
+
+  %color-example-text {
     font-size: 19px;
     line-height: 29px;
   }
+  
   &__color-title {
-    margin: 0 0 15px 0;
-    font-style: bold;
+    @extend %color-example-text;
+    margin: 0;
+    font-weight: bold;
   }
   &__color-code {
-    font-style: regular;
+    @extend %color-example-text;
+    font-family: 'Quicksand', 'Open Sans', sans-serif;
+    color: #1F2041;
   }
 }

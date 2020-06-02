@@ -12,6 +12,7 @@ const isProd = !isDev
 
 const PATHS = {
   src: path.join(__dirname, 'src'),
+  res: path.join(__dirname, 'src/res'),
   dist: path.join(__dirname, 'dist')
 }
 
@@ -63,11 +64,13 @@ const cssLoaders = extra => {
 
 const plugins = () => {
   const base = [
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin({
+      cleanStaleWebpackAssets: false
+    }),
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: `${PATHS.src}/res/img/`,
+          from: `${PATHS.res}/img/`,
           to: './img/'
         }
       ]
@@ -116,6 +119,7 @@ module.exports = {
   },
   optimization: optimization(),
   devServer: {
+    contentBase: './dist',
     port: 4200,
     hot: isDev
   },
@@ -141,7 +145,10 @@ module.exports = {
       },
       {
         test: /\.(ttf|woff|woff2|eot)$/,
-        use: ['file-loader']
+        loader: 'file-loader',
+        options: {
+          outputPath: 'fonts'
+        }
       }
     ]
   }

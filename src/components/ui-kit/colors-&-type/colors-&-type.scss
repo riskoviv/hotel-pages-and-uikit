@@ -1,9 +1,7 @@
-@import "/color-examples-list/color-examples-list";
-body {
-  color: #1F2041;
-}
+@import "./color-examples-list/color-examples-list.scss", "./header-examples-list/header-examples-list.scss";
+
 .examples-list {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 0 50px 0;
 }

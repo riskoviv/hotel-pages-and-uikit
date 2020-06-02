@@ -1,3 +1,20 @@
-.header-example__type {
-  color: rgba(31, 32, 65, 0.25);
+.header-example {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  &__type {
+    color: rgba(31, 32, 65, 0.25);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
+    margin-right: 30px;
+    min-width: 37px;
+    text-align: right;
+  }
+  &__text-example {
+    max-width: 336px;
+  }
+}
+.header-example:last-child .header-example__text-example {
+  max-width: 301px;
 }

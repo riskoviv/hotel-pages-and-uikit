@@ -1,8 +1,8 @@
-@import "~normalize.css", "roboto.css";
+@import "~normalize.css", "fonts.scss";
 @import "../layout/ui-kit-main", "../components/ui-kit/colors-&-type/colors-&-type";
 
 body {
-  font-family: 'Quicksand', 'OpenSans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -10,10 +10,11 @@ body {
   color: rgba(31, 32, 65, 0.75);
 }
 %header {
-  font-family: 'Quicksand', 'OpenSans', sans-serif;
+  font-family: 'Quicksand', 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: bold;
   color: #1F2041;
+  margin: 0;
 }
 h1 {
   @extend %header;
@@ -31,4 +32,7 @@ h3 {
   font-size: 12px;
   line-height: 15px;
   text-transform: uppercase;
+}
+p {
+  margin: 0;
 }
