@@ -1,6 +1,6 @@
 @import "~normalize.css", "fonts.scss";
 @import "variables.scss";
-@import "../layout/ui-kit-main", "../components/ui-kit/colors-&-type/colors-&-type";
+@import "../layouts/ui-kit-main/ui-kit-main", "../components/ui-kit/colors-&-type/colors-&-type";
 
 body {
   font-family: $mainFont;
@@ -10,31 +10,31 @@ body {
   line-height: $mainLineHeight;
   color: $mainFontColor;
 }
-// Common header styles
-%header {
-  font-family: 'Quicksand', 'Open Sans', sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  color: $headerColor;
-  margin: 0;
-}
-h1 {
-  @extend %header;
-  font-size: 24px;
-  line-height: 30px;
-}
-h2 {
-  @extend %header;
-  font-size: 19px;
-  line-height: 24px;
-}
-h3 {
-  @extend %header;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
-  line-height: 15px;
-  text-transform: uppercase;
-}
-p {
-  margin: 0;
-}
+// Common heading styles
+// %heading {
+//   font-family: 'Quicksand', 'Open Sans', sans-serif;
+//   font-style: normal;
+//   font-weight: bold;
+//   color: $headingColor;
+//   margin: 0;
+// }
+// h1 {
+//   @extend %heading;
+//   font-size: 24px;
+//   line-height: 30px;
+// }
+// h2 {
+//   @extend %heading;
+//   font-size: 19px;
+//   line-height: 24px;
+// }
+// h3 {
+//   @extend %heading;
+//   font-family: 'Montserrat', sans-serif;
+//   font-size: 12px;
+//   line-height: 15px;
+//   text-transform: uppercase;
+// }
+// p {
+//   margin: 0;
+// }

@@ -29,19 +29,17 @@
     }
   }
 
-  %color-example-text {
+  &__text-block {
     font-size: 19px;
     line-height: 29px;
+    font-family: $headingFont;
+    color: $headingColor;
   }
 
   &__color-title {
-    @extend %color-example-text;
     margin: 0;
+    font-size: inherit;
     font-weight: bold;
-  }
-  &__color-code {
-    @extend %color-example-text;
-    font-family: $headerFont;
-    color: $darkShade100;
+    color: $headingColor;
   }
 }

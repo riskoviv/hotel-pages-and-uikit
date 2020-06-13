@@ -2,38 +2,5 @@ include color-example/color-example
 
 mixin color-examples-list
   ul.examples-list.color-examples-list
-    +color-example({
-      color: 'ds-100',
-      title: 'Dark Shade 100%',
-      code: '#1F2041'
-    })
-    +color-example({
-      color: 'ds-75',
-      title: 'Dark Shade 75%',
-      code: '#1F2041'
-    })
-    +color-example({
-      color: 'ds-50',
-      title: 'Dark Shade 50%',
-      code: '#1F2041'
-    })
-    +color-example({
-      color: 'ds-25',
-      title: 'Dark Shade 25%',
-      code: '#1F2041'
-    })
-    +color-example({
-      color: 'ds-5',
-      title: 'Dark Shade 5%',
-      code: '#1F2041'
-    })
-    +color-example({
-      color: 'purple',
-      title: 'Purple',
-      code: '#BC9CFF'
-    })
-    +color-example({
-      color: 'green',
-      title: 'Green',
-      code: '#6FCF97'
-    })
+    each color in colorsList
+      +color-example(color)

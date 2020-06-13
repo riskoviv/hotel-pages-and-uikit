@@ -1,0 +1,6 @@
+include heading-example/heading-example
+
+mixin heading-examples-list
+  ul.examples-list.heading-examples-list
+    each heading in headingsList
+      +heading-example(heading)

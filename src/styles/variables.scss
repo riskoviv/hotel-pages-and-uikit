@@ -1,14 +1,15 @@
-/* Vars:
+/* Constants:
   ==========================================*/
 
 // Fonts
 $mainFont:    'Montserrat', 'Arial', sans-serif;
-$headerFont:  'Quicksand', 'Open Sans', 'Arial', sans-serif;
+$headingFont:  'Quicksand', 'Open Sans', 'Arial', sans-serif;
 
 // Parameters
 $mainFontColor: rgba(31, 32, 65, 0.75);
 $mainFontStyle:   normal;
-$mainFontWeight:  normal;
+$mainFontWeight:  400;
+$headingFontWeight: 700;
 $mainFontSize:    14px;
 $mainFontWeight:  400;
 $mainLineHeight:  24px;
@@ -16,11 +17,11 @@ $mainLineHeight:  24px;
 
 // Colors
 $darkShade100:  #1F2041;
-$darkShade75:   rgba(31, 32, 65, 0.75);
-$darkShade50:   rgba(31, 32, 65, 0.5);
-$darkShade25:   rgba(31, 32, 65, 0.25);
-$darkShade5:    rgba(31, 32, 65, 0.05);
+$darkShade75:   rgba($darkShade100, 0.75);
+$darkShade50:   rgba($darkShade100, 0.5);
+$darkShade25:   rgba($darkShade100, 0.25);
+$darkShade5:    rgba($darkShade100, 0.05);
 $purple:        #BC9CFF;
 $green:         #6FCF97;
 
-$headerColor: $darkShade100;
+$headingColor: $darkShade100;
