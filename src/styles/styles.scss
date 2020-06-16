@@ -1,6 +1,6 @@
-@import "~normalize.css", "fonts.scss";
 @import "variables.scss";
-@import "../layouts/ui-kit-main/ui-kit-main", "../components/ui-kit/colors-&-type/colors-&-type";
+@import "~normalize.css", "fonts.scss";
+@import "../layouts/ui-kit-main/ui-kit-main", "../pages/colors-&-type/colors-&-type";
 
 body {
   font-family: $mainFont;

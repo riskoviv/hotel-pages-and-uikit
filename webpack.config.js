@@ -13,11 +13,14 @@ const isProd = !isDev
 const PATHS = {
   src: path.join(__dirname, 'src'),
   res: path.join(__dirname, 'src/res'),
-  dist: path.join(__dirname, 'dist')
+  dist: path.join(__dirname, 'dist'),
+  assets: 'assets/'
 }
 
-const PAGES_DIR = `${PATHS.src}/pages/`
+const PAGES_DIR = `${PATHS.src}/pages`
 const PAGES = fs.readdirSync(PAGES_DIR)
+  .map(dir => fs.readdirSync(`${PAGES_DIR}/${dir}`))
+  .reduce((acc, item) => [...acc, ...item], [])
   .filter(filename => filename.endsWith('.pug'))
 
 const optimization = () => {
@@ -45,7 +48,8 @@ const cssLoaders = extra => {
       loader: MiniCssExtractPlugin.loader,
       options: {
         hmr: isDev,
-        reloadAll: true
+        reloadAll: true,
+
       },
     },
     'css-loader'
@@ -64,24 +68,27 @@ const plugins = () => {
     new CleanWebpackPlugin({
       cleanStaleWebpackAssets: false
     }),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: `${PATHS.res}/img/`,
-          to: './img/'
-        }
-      ]
-    }),
+    // new CopyWebpackPlugin({
+    //   patterns: [
+    //     // {
+    //     //   from: `${PATHS.res}/img`,
+    //     //   to: `${PATHS.assets}img`
+    //     // }//,
+    //     // {
+    //     //   from: `${PATHS.res}/fonts`,
+    //     //   to: `${PATHS.assets}fonts`
+    //     // }
+    //   ]
+    // }),
     new MiniCssExtractPlugin({
       filename: filename('css')
     }),
 
-    ...PAGES.map(page => new HTMLWebpackPlugin(
-      {
-        template: `${PAGES_DIR}/${page}`, // .pug
-        filename: `./${page.replace(/\.pug/,'.html')}` // .html
-      }
-    ))
+    ...PAGES.map(page => new HTMLWebpackPlugin({
+        template: `${PAGES_DIR}/${page.replace(/\.pug/, '')}/${page}`, // .pug
+        filename: `./${page.replace(/\.pug/, '.html')}`, // .html
+        favicon: `${PATHS.res}/favicon/favicon.ico`
+    }))
   ]
 
   return base
@@ -131,13 +138,21 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|svg|gif)$/,
-        use: ['file-loader']
-      },
-      {
-        test: /\.(ttf|woff|woff2|eot)$/,
         loader: 'file-loader',
         options: {
-          outputPath: 'fonts'
+          outputPath: `${PATHS.assets}img`,
+          name: '[name].[ext]'
+        }
+      },
+      {
+        test: /\.(ttf|woff(2)?)$/,
+        loader: 'file-loader',
+        options: {
+          outputPath: `${PATHS.assets}fonts`,
+          publicPath: isProd
+            ? '../fonts'
+            : `${PATHS.assets}fonts`,
+          name: '[name].[ext]'
         }
       }
     ]

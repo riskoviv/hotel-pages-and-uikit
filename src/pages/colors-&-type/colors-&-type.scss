@@ -1,0 +1,113 @@
+.examples-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 50px 0;
+}
+
+.color-examples-list {
+  min-width: 295px;
+}
+.color-example:not(:last-child) {
+  margin-bottom: 20px;
+}
+.color-example {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &__color-square {
+    width: 70px;
+    height: 70px;
+    background-color: $darkShade100;
+    border-radius: 6px;
+    margin-right: 40px;
+    &_color_ds-75 {
+      background-color: $darkShade75;
+    }
+    &_color_ds-50 {
+      background-color: $darkShade50;
+    }
+    &_color_ds-25 {
+      background-color: $darkShade25;
+    }
+    &_color_ds-5 {
+      background-color: $darkShade5;
+    }
+    &_color_purple {
+      background-color: $purple;
+    }
+    &_color_green {
+      background-color: $green;
+    }
+  }
+
+  &__text-block {
+    font-size: 19px;
+    line-height: 29px;
+    font-family: $headingFont;
+    color: $headingColor;
+  }
+
+  &__color-title {
+    margin: 0;
+    font-size: inherit;
+    font-weight: bold;
+    color: $headingColor;
+  }
+}
+
+.heading-examples-list {
+  min-width: 403px;
+}
+.heading-example:not(:last-child) {
+  margin-bottom: 50px;
+}
+.heading-example {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-family: $headingFont;
+  font-weight: $headingFontWeight;
+  color: $headingColor;
+
+  &_type_h1 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+  &_type_h2 {
+    font-size: 19px;
+    line-height: 24px;
+  }
+  &_type_h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+  }
+  &_type_body {
+    font-family: $mainFont;
+    font-style: $mainFontStyle;
+    font-weight: $mainFontWeight;
+    font-size: $mainFontSize;
+    line-height: $mainLineHeight;
+    color: $mainFontColor;
+  }
+
+  &__type {
+    color: $darkShade25;
+    font-family: $mainFont;
+    font-weight: $mainFontWeight;
+    text-transform: capitalize;
+    margin-right: 30px;
+    min-width: 37px;
+    text-align: right;
+  }
+
+  &__text-example {
+    margin: 0;
+    max-width: 336px;
+  }
+}
+.heading-example:last-child .heading-example__text-example {
+  max-width: 301px;
+}

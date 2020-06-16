@@ -1,8 +1,8 @@
 @mixin font-face(
   $font-family,
   $file-path,
-  $weight: normal,
-  $style: normal,
+  $weight: $mainFontWeight,
+  $style: $mainFontStyle,
   $asset-pipeline: false
 ) {
   @font-face {
@@ -10,22 +10,22 @@
     font-weight: $weight;
     font-style: $style;
 
-    src: url("#{$file-path}.woff") format("woff"),
-      url("#{$file-path}.woff2") format("woff2"),
-      url("#{$file-path}.svg") format("svg"),
-      url("#{$file-path}.ttf") format("truetype");
+    src: url('#{$file-path}.woff') format('woff'),
+      url('#{$file-path}.woff2') format('woff2'),
+      // url('#{$file-path}.svg') format('svg'),
+      url('#{$file-path}.ttf') format('truetype');
   }
 }
 
 /* quicksand-regular - latin */
-@include font-face('Quicksand', '../res/fonts/quicksand-v20-latin-regular');
+@include font-face('Quicksand', '../res/fonts/quicksand/quicksand-v20-latin-regular');
 /* quicksand-700 - latin */
-@include font-face('Quicksand', '../res/fonts/quicksand-v20-latin-700', 700);
+@include font-face('Quicksand', '../res/fonts/quicksand/quicksand-v20-latin-700', 700);
 /* open-sans-regular - latin_cyrillic */
-@include font-face('Open Sans', '../res/fonts/open-sans-v17-latin_cyrillic-regular');
+@include font-face('Open Sans', '../res/fonts/opensans/open-sans-v17-latin_cyrillic-regular');
 /* open-sans-700 - latin_cyrillic */
-@include font-face('Open Sans', '../res/fonts/open-sans-v17-latin_cyrillic-700', 700);
+@include font-face('Open Sans', '../res/fonts/opensans/open-sans-v17-latin_cyrillic-700', 700);
 /* montserrat-regular - latin_cyrillic */
-@include font-face('Montserrat', '../res/fonts/montserrat-v14-latin_cyrillic-regular');
+@include font-face('Montserrat', '../res/fonts/montserrat/montserrat-v14-latin_cyrillic-regular');
 /* montserrat-700 - latin_cyrillic */
-@include font-face('Montserrat', '../res/fonts/montserrat-v14-latin_cyrillic-700', 700);
+@include font-face('Montserrat', '../res/fonts/montserrat/montserrat-v14-latin_cyrillic-700', 700);
