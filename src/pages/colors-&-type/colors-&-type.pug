@@ -29,17 +29,17 @@ block content
     each heading in headingsList
       +heading-example(heading)
 
-
+//- MIXINS
 mixin color-example(options)
-  li.color-example
-    div.color-example__color-square(
-      class='color-example__color-square_color_' + options.color
+  li.color-examples-list__color-example
+    div.color-examples-list__color-square(
+      class='color-examples-list__color-square_color_' + options.color
     )
-    div.color-example__text-block
-      h2.color-example__color-title= options.title
-      span.color-example__color-code= options.code
+    div.color-examples-list__text-block
+      h2.color-examples-list__color-title= options.title
+      span.color-examples-list__color-code= options.code
 
 mixin heading-example(options)
-  li.heading-example(class='heading-example_type_' + options.type)
-    span.heading-example__type= options.type
-    p.heading-example__text-example= options.textExample
+  li.heading-examples-list__heading-example(class='heading-examples-list__heading-example_type_' + options.type)
+    span.heading-examples-list__type= options.type
+    p.heading-examples-list__text-example= options.textExample

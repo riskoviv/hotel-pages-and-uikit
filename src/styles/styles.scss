@@ -1,6 +1,16 @@
-@import "variables.scss";
-@import "~normalize.css", "fonts.scss";
-@import "../layouts/ui-kit-main/ui-kit-main", "../pages/colors-&-type/colors-&-type";
+@import './variables.scss';
+@import './fonts.scss';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
 
 body {
   font-family: $mainFont;
@@ -11,30 +21,26 @@ body {
   color: $mainFontColor;
 }
 // Common heading styles
-// %heading {
-//   font-family: 'Quicksand', 'Open Sans', sans-serif;
-//   font-style: normal;
-//   font-weight: bold;
-//   color: $headingColor;
-//   margin: 0;
-// }
-// h1 {
-//   @extend %heading;
-//   font-size: 24px;
-//   line-height: 30px;
-// }
-// h2 {
-//   @extend %heading;
-//   font-size: 19px;
-//   line-height: 24px;
-// }
-// h3 {
-//   @extend %heading;
-//   font-family: 'Montserrat', sans-serif;
-//   font-size: 12px;
-//   line-height: 15px;
-//   text-transform: uppercase;
-// }
-// p {
-//   margin: 0;
-// }
+%heading {
+  font-family: 'Quicksand', 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  color: $headingColor;
+}
+h1 {
+  @extend %heading;
+  font-size: 24px;
+  line-height: 30px;
+}
+h2 {
+  @extend %heading;
+  font-size: 19px;
+  line-height: 24px;
+}
+h3 {
+  @extend %heading;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+}

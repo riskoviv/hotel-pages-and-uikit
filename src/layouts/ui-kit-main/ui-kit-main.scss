@@ -1,10 +1,14 @@
-body {
-  padding: 145px 0 95px 0;
-  background: url('../res/img/logo/logo_small.svg') no-repeat 30px 30px;
+@import '../../styles/variables.scss';
+
+.ui-kit-main__header {
+  min-height: 145px;
+  background: url('../../res/img/logo/logo_small.svg') no-repeat 30px 30px;
 }
-.ui-kit-main-wrapper {
+.ui-kit-main__wrapper {
   display: flex;
   justify-content: space-between;
+  align-content: center;
   flex-wrap: wrap;
-  margin: 0 175px 0 150px;
+  margin: 0 150px;
+  max-width: 1100px;
 }

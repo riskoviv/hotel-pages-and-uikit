@@ -2,7 +2,7 @@ const path = require('path')
 const fs = require('fs')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+// const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
@@ -40,7 +40,7 @@ const optimization = () => {
   return config
 }
 
-const filename = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`
+const filename = ext => isDev ? `[name].${ext}` : `[name].[hash:7].${ext}`
 
 const cssLoaders = extra => {
   const loaders = [
@@ -48,8 +48,7 @@ const cssLoaders = extra => {
       loader: MiniCssExtractPlugin.loader,
       options: {
         hmr: isDev,
-        reloadAll: true,
-
+        reloadAll: true
       },
     },
     'css-loader'
@@ -86,8 +85,8 @@ const plugins = () => {
 
     ...PAGES.map(page => new HTMLWebpackPlugin({
         template: `${PAGES_DIR}/${page.replace(/\.pug/, '')}/${page}`, // .pug
-        filename: `./${page.replace(/\.pug/, '.html')}`, // .html
-        favicon: `${PATHS.res}/favicon/favicon.ico`
+        filename: `./pages/${page.replace(/\.pug/, '.html')}`, // .html
+        favicon: `${PATHS.res}/favicon/favicon.svg`
     }))
   ]
 
@@ -100,19 +99,18 @@ module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
   entry: {
-    main: "./index.js",
-    analytics: './analytics.js'
+    main: "./index.js"
   },
   output: {
     filename: filename('js'),
-    path: path.resolve(__dirname, 'dist'),
+    path: PATHS.dist,
   },
   resolve: {
     extensions: ['.js', '.json'],
-    alias: {
-      '@models': path.resolve(__dirname, 'src/models'),
-      '@': path.resolve(__dirname, 'src')
-    }
+    // alias: {
+    //   '@models': path.resolve(__dirname, 'src/models'),
+    //   '@': path.resolve(__dirname, 'src')
+    // }
   },
   optimization: optimization(),
   devServer: {
@@ -137,24 +135,26 @@ module.exports = {
         use: cssLoaders('sass-loader')
       },
       {
-        test: /\.(png|jpg|svg|gif)$/,
-        loader: 'file-loader',
-        options: {
-          outputPath: `${PATHS.assets}img`,
-          name: '[name].[ext]'
-        }
-      },
-      {
-        test: /\.(ttf|woff(2)?)$/,
-        loader: 'file-loader',
-        options: {
-          outputPath: `${PATHS.assets}fonts`,
-          publicPath: isProd
-            ? '../fonts'
-            : `${PATHS.assets}fonts`,
-          name: '[name].[ext]'
-        }
+        test: /\.((pn|jp(e)?|sv)g|ttf|eot|woff(2)?)$/,
+        loader: 'file-loader?name=[path]' + filename('[ext]')
       }
+      // {
+      //   test: /\.(png|jpg|svg|gif)$/,
+      //   loader: 'file-loader',
+      //   options: {
+      //     outputPath: `${PATHS.assets}img`,
+      //     name: filename('[ext]')
+      //   }
+      // },
+      // {
+      //   test: /\.(ttf|woff(2)?)$/,
+      //   loader: 'file-loader',
+      //   options: {
+      //     outputPath: `${PATHS.assets}fonts`,
+      //     publicPath: `${PATHS.assets}fonts`,
+      //     name: filename('[ext]')
+      //   }
+      // }
     ]
   }
 };
