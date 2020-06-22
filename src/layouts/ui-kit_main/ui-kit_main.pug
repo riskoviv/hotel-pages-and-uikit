@@ -7,6 +7,6 @@ html(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title= title
   body(class=pageClass)
-    header.ui-kit-main__header
-    main.ui-kit-main__wrapper
+    header.page-header
+    main.page-wrapper(class=pageClass + '__page-wrapper')
       block content

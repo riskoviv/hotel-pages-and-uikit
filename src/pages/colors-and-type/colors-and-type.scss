@@ -1,5 +1,10 @@
 @import '../../styles/variables.scss';
 
+.colors-and-type__page-wrapper {
+  margin: 0 150px;
+  max-width: 1100px;
+}
+
 .examples-list {
   list-style: none;
   margin-bottom: 50px;
