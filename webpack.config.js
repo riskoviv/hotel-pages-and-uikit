@@ -135,7 +135,7 @@ module.exports = {
         use: cssLoaders('sass-loader')
       },
       {
-        test: /\.((pn|jp(e)?|sv)g|ttf|eot|woff(2)?)$/,
+        test: /\.((pn|jp(e)?|sv)g|ttf|woff(2)?)$/,
         loader: 'file-loader?name=[path]' + filename('[ext]')
       }
       // {

@@ -1,6 +1,6 @@
 import * as $ from 'jquery'
 import 'normalize.css'
-import './styles/styles.scss'
+import './styles/global.scss'
 
 function requireAll(requireContext) {
     return requireContext.keys().map(requireContext);

@@ -1,18 +1,6 @@
 /* Constants:
   ==========================================*/
 
-// Fonts
-$mainFont:    'Montserrat', 'Arial', sans-serif;
-$headingFont:  'Quicksand', 'Open Sans', 'Arial', sans-serif;
-
-// Parameters
-$mainFontColor: rgba(31, 32, 65, 0.75);
-$mainFontStyle:   normal;
-$mainFontWeight:  400;
-$mainFontSize:    14px;
-$mainLineHeight:  24px;
-$headingFontWeight: 700;
-
 // Colors
 $darkShade100:  #1F2041;
 $darkShade75:   rgba($darkShade100, 0.75);
@@ -22,4 +10,15 @@ $darkShade5:    rgba($darkShade100, 0.05);
 $purple:        #BC9CFF;
 $green:         #6FCF97;
 
+// Main font
+$mainFont:    'Montserrat', 'Arial', sans-serif;
+$mainFontColor: rgba(31, 32, 65, 0.75);
+$mainFontStyle:   normal;
+$mainFontWeight:  400;
+$mainFontSize:    14px;
+$mainLineHeight:  24px;
+
+// Headings font
+$headingFont:  'Quicksand', 'Open Sans', 'Arial', sans-serif;
+$headingFontWeight: 700;
 $headingColor: $darkShade100;
