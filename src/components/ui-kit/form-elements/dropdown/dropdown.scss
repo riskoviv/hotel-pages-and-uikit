@@ -1,5 +1,11 @@
 @import '../../../../styles/variables.scss';
 
 .dropdown {
-  
+  @extend %input-basic;
+  color: $darkShade75;
+
+  &:focus,
+  &:hover {
+    border: 1px solid $darkShade50;
+  }
 }

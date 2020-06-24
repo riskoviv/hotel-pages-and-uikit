@@ -1,1 +1,4 @@
-input(type='select').dropdown
+mixin dropdown(classname, ...options)
+  select.dropdown(class=classname ? classname : '')
+    each option in options.length ? options : ['No options']
+      option= option

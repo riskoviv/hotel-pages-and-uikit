@@ -22,3 +22,27 @@ $mainLineHeight:  24px;
 $headingFont:  'Quicksand', 'Open Sans', 'Arial', sans-serif;
 $headingFontWeight: 700;
 $headingColor: $darkShade100;
+
+// Common elements styles
+%input-basic {
+  padding: 13px 15px;
+  border-radius: 4px;
+  border: 1px solid $darkShade25;
+  color: $darkShade25;
+  min-width: 320px;
+  max-width: 320px;
+}
+
+%text-field-basic {
+  @extend %input-basic;
+  
+  &::placeholder {
+    color: $darkShade25;
+  }
+
+  &:focus,
+  &:hover {
+    border: 1px solid $darkShade50;
+    color: $darkShade75;
+  }
+}

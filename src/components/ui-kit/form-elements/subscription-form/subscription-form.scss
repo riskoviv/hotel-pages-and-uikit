@@ -1,0 +1,17 @@
+@import '../../../../styles/variables.scss';
+
+.subscription-form {
+  &__text-field.text-field {
+    min-width: 266px;
+  }
+
+  &__button {
+    position: relative;
+    right: 45px;
+    vertical-align: middle;
+    width: 44px;
+    height: 44px;
+    border: none;
+    background-color: $purple;
+  }
+}

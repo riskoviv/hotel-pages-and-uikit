@@ -12,4 +12,14 @@
   &__title {
     margin-bottom: 5px;
   }
+
+  &_row {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0;
+
+    > .control-container {
+      margin-bottom: 0;
+    }
+  }
 }
