@@ -1,0 +1,7 @@
+mixin checkbox(id, title, isChecked)
+  .checkbox
+    if isChecked
+      input(id=id, type='checkbox', checked).checkbox__switch
+    else
+      input(id=id, type='checkbox').checkbox__switch
+    label(for=id).checkbox__label= title

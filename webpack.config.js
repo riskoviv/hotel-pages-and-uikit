@@ -85,7 +85,7 @@ const plugins = () => {
 
     ...PAGES.map(page => new HTMLWebpackPlugin({
         template: `${PAGES_DIR}/${page.replace(/\.pug/, '')}/${page}`, // .pug
-        filename: `./pages/${page.replace(/\.pug/, '.html')}`, // .html
+        filename: `./${page.replace(/\.pug/, '.html')}`, // .html
         favicon: `${PATHS.res}/favicon/favicon.svg`
     }))
   ]

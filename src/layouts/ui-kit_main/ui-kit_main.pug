@@ -8,5 +8,6 @@ html(lang='en')
     title= title
   body(class=pageClass)
     header.page-header
+      img(alt='toxin logo', src=require('../../res/img/logo/logo_small.svg').default).page-header__image
     main.page-wrapper(class='page-wrapper_' + pageClass)
       block content
