@@ -1,0 +1,35 @@
+@import '../../../styles/variables.scss';
+
+.input-button {
+  display: flex;
+  
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  &__label {
+    line-height: 20px;
+    color: $darkShade50;
+  }
+}
+
+.switch {
+  visibility: hidden;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+
+  &:before {
+    box-sizing: border-box;
+    visibility: visible;
+    display: block;
+    content: "";
+    border: 1px solid $darkShade25;
+    width: 20px;
+    height: 20px;
+  }
+
+  &:checked:before {
+    border: 1px solid $purple;
+  }
+}

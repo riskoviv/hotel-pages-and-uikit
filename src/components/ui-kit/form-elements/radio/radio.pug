@@ -1,7 +1,7 @@
 mixin radio(name, id, label, isChecked)
-  .radio
+  .input-button.radio
     if isChecked
-      input(type='radio', name=name, id=id, checked).radio__switch
+      input(type='radio', name=name, id=id, checked).switch.radio__switch
     else
-      input(type='radio', name=name, id=id).radio__switch
-    label(for=id).radio__label= label
+      input(type='radio', name=name, id=id).switch.radio__switch
+    label(for=id).input-button__label.radio__label= label

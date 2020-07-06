@@ -9,6 +9,7 @@ $darkShade25:   rgba($darkShade100, 0.25);
 $darkShade5:    rgba($darkShade100, 0.05);
 $purple:        #BC9CFF;
 $green:         #6FCF97;
+$primaryGradient: linear-gradient(180deg, $purple 0%, #8BA4F9 100%);
 
 // Main font
 $mainFont:    'Montserrat', 'Arial', sans-serif;
@@ -45,4 +46,11 @@ $headingColor: $darkShade100;
     border: 1px solid $darkShade50;
     color: $darkShade75;
   }
+}
+
+%text-gradient {
+  background: -webkit-linear-gradient(180deg, $purple 0%, #8BA4F9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

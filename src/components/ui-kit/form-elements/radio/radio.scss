@@ -1,0 +1,24 @@
+@import '../../../../styles/variables.scss';
+
+//extends default styles from ../form-elements-common.scss
+
+.radio {
+  margin-bottom: 0;
+
+  &__switch:before {
+    border-radius: 50%;
+    padding: 3px;
+  }
+
+  &__switch:checked {
+
+    &:before {
+      background: $primaryGradient;
+      background-clip: content-box;
+    }
+
+    & + .input-button__label {
+      color: $darkShade75;
+    }
+  }
+}

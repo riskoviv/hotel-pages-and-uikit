@@ -1,34 +1,18 @@
 @import '../../../../styles/variables.scss';
 
+//extends default styles from ../form-elements-common.scss
+
 .checkbox {
-  margin-bottom: 10px;
   max-width: 222px;
-  display: flex;
 
   &__switch {
-    visibility: hidden;
-    width: 20px;
-    height: 20px;
-
+    
     &:before {
-      box-sizing: border-box;
-      visibility: visible;
-      display: block;
-      content: "";
-      border: 1px solid $darkShade25;
-      width: 20px;
-      height: 20px;
       border-radius: 4px;
     }
 
     &:checked:before {
-      border: 1px solid $purple;
       background: no-repeat center 40% url('../../../../res/img/controls/checkbox_toggle.svg');
     }
-  }
-  
-  &__label {
-    margin-left: 10px;
-    line-height: 20px;
   }
 }

@@ -1,7 +1,7 @@
 mixin checkbox(id, label, isChecked)
-  .checkbox
+  .input-button.checkbox
     if isChecked
-      input(id=id, type='checkbox', checked).checkbox__switch
+      input(id=id, type='checkbox', checked).switch.checkbox__switch
     else
-      input(id=id, type='checkbox').checkbox__switch
-    label(for=id).checkbox__label= label
+      input(id=id, type='checkbox').switch.checkbox__switch
+    label(for=id).input-button__label.checkbox__label= label
