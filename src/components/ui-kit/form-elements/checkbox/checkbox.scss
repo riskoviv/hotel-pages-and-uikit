@@ -1,29 +1,34 @@
+@import '../../../../styles/variables.scss';
+
 .checkbox {
   margin-bottom: 10px;
+  max-width: 222px;
+  display: flex;
 
   &__switch {
-    vertical-align: middle;
     visibility: hidden;
     width: 20px;
     height: 20px;
-    position: relative;
+
     &:before {
+      box-sizing: border-box;
       visibility: visible;
       display: block;
-      position: absolute;
-      top: -3px;
       content: "";
-      border: 1px solid rgba(31, 32, 65, 0.25);
+      border: 1px solid $darkShade25;
       width: 20px;
       height: 20px;
       border-radius: 4px;
     }
+
     &:checked:before {
-      border: 1px solid #BC9CFF;
+      border: 1px solid $purple;
       background: no-repeat center 40% url('../../../../res/img/controls/checkbox_toggle.svg');
     }
   }
+  
   &__label {
     margin-left: 10px;
+    line-height: 20px;
   }
 }

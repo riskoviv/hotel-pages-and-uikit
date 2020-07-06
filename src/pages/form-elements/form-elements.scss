@@ -6,20 +6,6 @@
   flex-direction: column;
 }
 
-.control-container {
-  margin-bottom: 20px;
-
-  &__title {
-    margin-bottom: 5px;
-  }
-
-  &_row {
-    display: flex;
-    justify-content: space-between;
-    margin: 40px 0;
-
-    > .control-container {
-      margin-bottom: 0;
-    }
-  }
+.section-row {
+  min-width: 800px;
 }

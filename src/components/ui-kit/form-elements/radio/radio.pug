@@ -1,0 +1,7 @@
+mixin radio(name, id, label, isChecked)
+  .radio
+    if isChecked
+      input(type='radio', name=name, id=id, checked).radio__switch
+    else
+      input(type='radio', name=name, id=id).radio__switch
+    label(for=id).radio__label= label

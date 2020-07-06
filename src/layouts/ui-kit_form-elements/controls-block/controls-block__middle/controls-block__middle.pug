@@ -1,7 +1,14 @@
 section.controls-block__middle
-  .control-container
-    h3.control-container__title checkbox buttons
-    include ../../../../components/ui-kit/form-elements/checkbox/checkbox
-    +checkbox('cb1', 'Можно курить')
-    +checkbox('cb2', 'Можно с питомцами', true)
-    +checkbox('cb3', 'Можно пригласить гостей (до 10 человек)', true)
+  .control-container_group
+    h3.control-container_group__title checkbox buttons
+    .controls-group
+      include ../../../../components/ui-kit/form-elements/checkbox/checkbox
+      +checkbox('cb1', 'Можно курить')
+      +checkbox('cb2', 'Можно с питомцами', true)
+      +checkbox('cb3', 'Можно пригласить гостей (до 10 человек)', true)
+  .control-container_group
+    h3.control-container_group__title radio buttons
+    .controls-group.controls-group_row
+      include ../../../../components/ui-kit/form-elements/radio/radio
+      +radio('sex', 'sex1', 'Мужчина', true)
+      +radio('sex', 'sex2', 'Женщина')
