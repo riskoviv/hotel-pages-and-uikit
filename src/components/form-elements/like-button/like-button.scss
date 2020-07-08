@@ -1,0 +1,47 @@
+@import '../../../styles/variables.scss';
+
+//extends common styles from ../form-elements-common.scss
+
+.like-button {
+  background-color: $darkShade25;
+  width: 40px;
+  height: 20px;
+  border-radius: 10px;
+  padding: 1px;
+
+  &__body {
+    border-radius: 10px;
+    background-color: #fff;
+    width: 38px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+  }
+
+  &__heart,
+  &__count {
+    font-size: 10px;
+    color: $darkShade25;
+    user-select: none;
+  }
+
+  &__heart {
+    line-height: 9px;
+  }
+
+  &__count {
+    line-height: 12px;
+    margin: 0 auto;
+  }
+
+  &_clicked {
+    background: $primaryGradient;
+
+    & .like-button__heart,
+    & .like-button__count {
+      color: $purple;
+    }
+  }
+}
+

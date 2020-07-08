@@ -1,7 +1,5 @@
 mixin toggle(id, label, isChecked)
   .input-button.toggle
-    if isChecked
-      input(id=id, type='checkbox', checked).switch.toggle__switch
-    else
-      input(id=id, type='checkbox').switch.toggle__switch
+    include ../switch-common/switch-common
+    +switch('toggle', isChecked)
     label(for=id).input-button__label.toggle__label= label
