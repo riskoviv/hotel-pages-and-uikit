@@ -2,31 +2,27 @@
 
 .input-button {
   display: flex;
+  position: relative;
   
-  &:not(:last-child) {
-    margin-bottom: 10px;
-  }
-
   &__label {
     line-height: 20px;
     color: $darkShade50;
+    margin-left: 30px;
+
+    &::before {
+      @extend %pseudo-element-basic;
+      border: 1px solid $darkShade25;
+      width: 20px;
+      height: 20px;
+      left: 0;
+    }
   }
 }
 
 .switch {
-  visibility: hidden;
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
+  display: none;
 
-  &::before {
-    @extend %pseudo-element-basic;
-    border: 1px solid $darkShade25;
-    width: 20px;
-    height: 20px;
-  }
-
-  &:checked::before {
+  &:checked + .input-button__label::before {
     border: 1px solid $purple;
   }
 }

@@ -3,40 +3,37 @@
 //extends common styles from ../form-elements-common.scss
 
 .toggle {
+  position: relative;
+
   &:not(:last-child) {
     margin-bottom: 14px;
   }
 
-  &__switch {
-    width: 40px;
-    position: relative;
+  &__switch:checked + .toggle__label::after {
+    background: $primaryGradient;
+    left: 24px;
+  }
+
+  &__label {
+    color: $darkShade75;
+    margin-left: 50px;
 
     &::before {
+      @extend %pseudo-element-basic;
       width: 40px;
       border-radius: 10px;
+      left: 0;
     }
 
     &::after {
       @extend %pseudo-element-basic;
       width: 12px;
       height: 12px;
-      position: absolute;
       border-radius: 50%;
       top: 4px;
       left: 4px;
       background-color: $darkShade25;
       transition: left 0.15s ease-out;
     }    
-
-    &:checked {
-      &::after {
-        background: $primaryGradient;
-        left: 24px;
-      }
-    }
-  }
-
-  &__label {
-    color: $darkShade75;
   }
 }
