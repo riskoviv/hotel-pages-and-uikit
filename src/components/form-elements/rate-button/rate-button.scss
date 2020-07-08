@@ -1,0 +1,11 @@
+@import '../../../styles/variables.scss';
+
+.rate-button {
+
+  
+  &__star {
+    @extend %text-gradient;
+    user-select: none;
+  }
+
+}

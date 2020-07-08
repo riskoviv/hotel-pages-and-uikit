@@ -8,6 +8,7 @@
     line-height: 20px;
     color: $darkShade50;
     margin-left: 30px;
+    user-select: none;
 
     &::before {
       @extend %pseudo-element-basic;

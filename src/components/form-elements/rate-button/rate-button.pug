@@ -1,0 +1,6 @@
+mixin rateButton(id)
+  .rate-button(id=id)
+    - var n = 1;
+    while n <= 5
+      span.material-icons.rate-button__star(id=id + '_' + n++) star_border
+    

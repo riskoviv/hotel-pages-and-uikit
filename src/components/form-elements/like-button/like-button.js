@@ -4,15 +4,13 @@ const likeButtonCount = likeButton.querySelector('.like-button__count')
 
 likeButton.addEventListener('click', function () {
   likeButton.classList.toggle('like-button_clicked')
-  let count = parseInt(likeButtonCount.textContent)
+  let likesCount = parseInt(likeButtonCount.textContent)
   if (likeButtonHeart.textContent === 'favorite') {
     likeButtonHeart.textContent = 'favorite_border'
-    count--
-    likeButtonCount.textContent = count.toString()
+    likeButtonCount.textContent = (--likesCount).toString()
   } else {
     likeButtonHeart.textContent = 'favorite'
-    count++
-    likeButtonCount.textContent = count.toString()
+    likeButtonCount.textContent = (++likesCount).toString()
   }
   
 })

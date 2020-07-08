@@ -23,9 +23,11 @@
   }
 
   &_group {
-    margin-bottom: 40px;
     &__title {
       margin-bottom: 16px;
+    }
+    &:not(:last-child) {
+      margin-bottom: 40px;
     }
   }
 }
@@ -35,13 +37,10 @@
   flex-direction: column;
 
   &_row {
+    display: flex;
     flex-direction: row;
-    & > * {
+    & > *:not(:last-child) {
       margin-right: 20px;
     }
   }
-}
-
-.star {
-  @extend %text-gradient;
 }

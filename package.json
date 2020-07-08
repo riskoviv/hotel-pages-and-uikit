@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/Virss1/Toxin.git"
   },
-  "browserslist": "chrome and ff",
+  "browserslist": "last 2 Chrome versions and last 2 ff versions",
   "keywords": [
     "layout",
     "jquery",
