@@ -1,0 +1,42 @@
+@import '../../../styles/variables.scss';
+
+//extends common styles from ../form-elements-common.scss
+
+.toggle {
+  &:not(:last-child) {
+    margin-bottom: 14px;
+  }
+
+  &__switch {
+    width: 40px;
+    position: relative;
+
+    &::before {
+      width: 40px;
+      border-radius: 10px;
+    }
+
+    &::after {
+      @extend %pseudo-element-basic;
+      width: 12px;
+      height: 12px;
+      position: absolute;
+      border-radius: 50%;
+      top: 4px;
+      left: 4px;
+      background-color: $darkShade25;
+      transition: left 0.15s ease-out;
+    }    
+
+    &:checked {
+      &::after {
+        background: $primaryGradient;
+        left: 24px;
+      }
+    }
+  }
+
+  &__label {
+    color: $darkShade75;
+  }
+}

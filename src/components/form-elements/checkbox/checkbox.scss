@@ -1,17 +1,17 @@
 @import '../../../styles/variables.scss';
 
-//extends default styles from ../form-elements-common.scss
+//extends common styles from ../form-elements-common.scss
 
 .checkbox {
   max-width: 222px;
 
   &__switch {
     
-    &:before {
+    &::before {
       border-radius: 4px;
     }
 
-    &:checked:before {
+    &:checked::before {
       background: no-repeat center 40% url('../../../res/img/controls/checkbox_toggle.svg');
     }
   }

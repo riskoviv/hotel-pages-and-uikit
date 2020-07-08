@@ -54,3 +54,10 @@ $headingColor: $darkShade100;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+%pseudo-element-basic {
+  box-sizing: border-box;
+  display: block;
+  content: '';
+  visibility: visible;
+}
