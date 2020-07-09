@@ -8,6 +8,15 @@
 .control-container {
   margin-bottom: 20px;
 
+  &_group {
+    &__title {
+      margin-bottom: 16px;
+    }
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
+  }
+
   &__title {
     margin-bottom: 5px;
   }
@@ -21,15 +30,6 @@
       margin-bottom: 0;
     }
   }
-
-  &_group {
-    &__title {
-      margin-bottom: 16px;
-    }
-    &:not(:last-child) {
-      margin-bottom: 40px;
-    }
-  }
 }
 
 .controls-group {
@@ -39,8 +39,13 @@
   &_row {
     display: flex;
     flex-direction: row;
-    & > *:not(:last-child) {
+
+    > *:not(:last-child) {
       margin-right: 20px;
+    }
+
+    > .like-button {
+      margin-right: 10px;
     }
   }
 }

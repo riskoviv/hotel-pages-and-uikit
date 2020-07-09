@@ -38,9 +38,13 @@
   &_clicked {
     background: $primaryGradient;
 
-    & .like-button__heart,
-    & .like-button__count {
+    .like-button__heart,
+    .like-button__count {
       color: $purple;
+    }
+
+    .like-button__heart {
+      content: 'favorite';
     }
   }
 }

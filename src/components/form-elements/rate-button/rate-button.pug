@@ -1,6 +1,10 @@
-mixin rateButton(id)
+mixin rateButton(id, rating)
   .rate-button(id=id)
     - var n = 1;
     while n <= 5
-      span.material-icons.rate-button__star(id=id + '_' + n++) star_border
+      if n <= rating
+        span.material-icons.rate-button__star(id=id + '_' + n++) star
+      else
+        span.material-icons.rate-button__star(id=id + '_' + n++) star_border
+      
     
