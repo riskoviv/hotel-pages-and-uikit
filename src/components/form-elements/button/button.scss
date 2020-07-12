@@ -1,0 +1,18 @@
+@import '../../../styles/variables.scss';
+
+// common button styles
+
+.button {
+  display: inline-block;
+  width: 99px;
+  height: 44px;
+  border: none;
+  border-radius: 22px;
+  font-family: $mainFont;
+  font-style: $mainFontStyle;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+  user-select: none;
+}

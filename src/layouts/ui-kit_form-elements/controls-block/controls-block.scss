@@ -3,6 +3,20 @@
 .controls-block {
   display: flex;
   justify-content: space-between;
+  width: 100%;
+
+  > *:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  &__left,
+  &__right {
+    min-width: 320px;
+  }
+
+  &__middle {
+    min-width: 260px;
+  }
 }
 
 .control-container {
@@ -36,12 +50,17 @@
   display: flex;
   flex-direction: column;
 
+  > *:not(:last-child) {
+    margin-bottom: 30px;
+  }
+
   &_row {
-    display: flex;
     flex-direction: row;
+    margin-bottom: 20px;
 
     > *:not(:last-child) {
       margin-right: 20px;
+      margin-bottom: 0;
     }
 
     > .like-button {

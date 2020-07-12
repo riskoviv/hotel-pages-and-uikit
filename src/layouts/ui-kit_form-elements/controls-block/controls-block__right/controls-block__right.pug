@@ -3,5 +3,16 @@ section.controls-block__right
     h3.control-container_group__title range slider
   .control-container_group
     h3.control-container_group__title buttons
+    .controls-group
+      include ../../../../components/form-elements/button/button_gradient/button_gradient
+      +button_gradient('click me')
+      include ../../../../components/form-elements/button/button_white/button_white
+      +button_white('click me')
+      .controls-group.controls-group_row
+        include ../../../../components/form-elements/button/button_link/button_link
+        +button_link('click me')
+        +button_link('click me', true)
+      include ../../../../components/form-elements/button/button_submit/button_submit
+      +button_submit('Перейти к оплате')
   .control-container_group
     h3.control-container_group__title pagination

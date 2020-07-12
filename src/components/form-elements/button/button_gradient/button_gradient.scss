@@ -1,0 +1,12 @@
+@import '../../../../styles/variables.scss';
+
+// extends common button styles at ../button.scss
+
+.button_gradient {
+  background: $primaryGradient;
+  color: #fff;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
