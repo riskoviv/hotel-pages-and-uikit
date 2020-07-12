@@ -6,15 +6,15 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const webpack = require('webpack')
 
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
 
 const PATHS = {
-  src: path.join(__dirname, 'src'),
-  res: path.join(__dirname, 'src/res'),
-  dist: path.join(__dirname, 'dist'),
-  assets: 'assets/'
+  src: path.resolve(__dirname, 'src'),
+  res: path.resolve(__dirname, 'src/res'),
+  dist: path.resolve(__dirname, 'dist')
 }
 
 const PAGES_DIR = `${PATHS.src}/pages`
@@ -67,6 +67,11 @@ const plugins = () => {
     new CleanWebpackPlugin({
       cleanStaleWebpackAssets: false
     }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      "window.jQuery": 'jquery'
+    }),
     // new CopyWebpackPlugin({
     //   patterns: [
     //     // {
@@ -96,7 +101,7 @@ const plugins = () => {
 
 
 module.exports = {
-  context: path.resolve(__dirname, 'src'),
+  context: PATHS.src,
   mode: 'development',
   entry: {
     main: "./index.js"

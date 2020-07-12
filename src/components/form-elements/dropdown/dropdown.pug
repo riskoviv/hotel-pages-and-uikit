@@ -1,4 +1,20 @@
-mixin dropdown(classname, ...options)
-  select.dropdown(class=classname ? classname : '')
-    each option in options.length ? options : ['No options']
-      option= option
+//- mixin dropdown(classname, ...options)
+//-   select.dropdown(class=classname ? classname : '')
+//-     each option in options.length ? options : ['No options']
+//-       option= option
+
+.iqdropdown
+  p.iqdropdown-selection
+  .iqdropdown-menu
+    .iqdropdown-menu-option(data-id='item1')
+      div
+        p.iqdropdown-item Item 1
+        p.iqdropdown-description A short description
+    .iqdropdown-menu-option(data-id='item2')
+      div
+        p.iqdropdown-item Item 2
+        p.iqdropdown-description A short description
+    .iqdropdown-menu-option(data-id='item3')
+      div
+        p.iqdropdown-item Item 3
+        p.iqdropdown-description A short description
