@@ -25,8 +25,13 @@ $headingFontWeight: 700;
 $headingColor: $darkShade100;
 
 // Common elements styles
+
+$activeBorder: 1px solid $darkShade50;
+$dropdownShadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+
 %input-basic {
-  padding: 13px 15px;
+  padding: 0 15px;
+  height: 44px;
   border-radius: 4px;
   border: 1px solid $darkShade25;
   color: $darkShade25;
