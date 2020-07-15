@@ -24,6 +24,8 @@
   .iqdropdown-selection {
     position: static;
     color: $darkShade75;
+    height: 100%;
+    padding: 10px 0;
 
     &::after {
       color: $darkShade50;
@@ -79,7 +81,7 @@
         padding: 0;
         transition: none;
 
-        &[disabled] {
+        &_disabled {
           opacity: 0.35;
           cursor: default;
         }
@@ -111,6 +113,18 @@
         width: 32px;
         text-align: center;
       }
+    }
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 7px 13px 14px;
+  }
+
+  .iqdropdown__button.button_link_clear {
+    &_hidden {
+      visibility: hidden;
     }
   }
 }
