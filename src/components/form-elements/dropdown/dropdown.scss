@@ -79,8 +79,9 @@
         padding: 0;
         transition: none;
 
-        &_disabled {
+        &[disabled] {
           opacity: 0.35;
+          cursor: default;
         }
 
         &:hover {
