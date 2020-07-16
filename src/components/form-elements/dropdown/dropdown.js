@@ -1,59 +1,53 @@
 import '../../../../node_modules/item-quantity-dropdown/lib/item-quantity-dropdown.min';
 import '../../../../node_modules/item-quantity-dropdown/lib/item-quantity-dropdown.min.css';
 
-const iqdInitialHTML = 
+const idqMenuHTML = 
   `
-  <p class="iqdropdown-selection" data-selection-text="гость" data-text-plural="гостей"></p>
-  <div class="iqdropdown-menu">
-    <div class="iqdropdown-menu-option" data-id="item1" data-maxcount="5">
-      <div>
-        <p class="iqdropdown-item">Взрослые</p>
-      </div>
+  <div class="iqdropdown-menu-option" data-id="item1" data-maxcount="5">
+    <div>
+      <p class="iqdropdown-item">Взрослые</p>
     </div>
-    <div class="iqdropdown-menu-option" data-id="item2" data-maxcount="5">
-      <div>
-        <p class="iqdropdown-item">Дети</p>
-      </div>
+  </div>
+  <div class="iqdropdown-menu-option" data-id="item2" data-maxcount="5">
+    <div>
+      <p class="iqdropdown-item">Дети</p>
     </div>
-    <div class="iqdropdown-menu-option" data-id="item3" data-maxcount="3">
-      <div>
-        <p class="iqdropdown-item">Младенцы</p>
-      </div>
+  </div>
+  <div class="iqdropdown-menu-option" data-id="item3" data-maxcount="3">
+    <div>
+      <p class="iqdropdown-item">Младенцы</p>
     </div>
-    <div class="iqdropdown__controls">
-      <button class="iqdropdown__button button button_link button_link_clear button_link_clear_hidden">Очистить</button>
-      <button class="iqdropdown__button button button_link">Применить</button>
-    </div>
+  </div>
+  <div class="iqdropdown__controls">
+    <button class="iqdropdown__button button button_link button_link_clear button_link_clear_hidden">Очистить</button>
+    <button class="iqdropdown__button button button_link">Применить</button>
   </div>
   `
 
-// Функция очистки iqDropdown
-const clearFn = () => {
-  $('.iqdropdown#guestsSelect').html(iqdInitialHTML)
-  iqDropdownInit()
-}
-
+// Функция закрытия/открытия дропдауна
 const closeDropDown = (event) => {
   const target = event.target;
-  const dropdown = target.closest('.iqdropdown#guestsSelect .iqdropdown-selection')
-  const iqdropdownMenu = target.closest('.iqdropdown#guestsSelect .iqdropdown-menu')
-  const applyButton = target.closest('.iqdropdown#guestsSelect .button_link:not(.button_link_clear)')
-  const clearButton = target.closest('.iqdropdown#guestsSelect .button_link_clear')
-  console.log('dropdown: ', dropdown);
-  console.log('iqdropdownMenu: ', iqdropdownMenu);
-  console.log('applyButton: ', applyButton);
-  console.log('clearButton: ', clearButton);
-  
-  if (dropdown) {
-    $('.iqdropdown#guestsSelect').toggleClass('menu-open')
-  }  
-  if (!dropdown && !iqdropdownMenu && !clearButton || applyButton) {
-    $('.iqdropdown#guestsSelect').removeClass('menu-open')
+  const dropdown = $('.iqdropdown#guestsSelect')
+  const dropdownSelection = target.closest('.iqdropdown-selection')
+  const applyButton = target.closest('.button_link:not(.button_link_clear)')
+  const clearButton = target.closest('.button_link.button_link_clear')
+
+  if ((dropdownSelection || applyButton) && !clearButton) {
+    dropdown.toggleClass('menu-open')
+  } else if (!clearButton) {
+    dropdown.removeClass('menu-open')
   }
+}
+
+// Функция очистки iqDropdown
+const clearFn = () => {
+  $('.iqdropdown#guestsSelect .iqdropdown-menu').html(idqMenuHTML)
+  iqDropdownInit()
 }
 
 /*
   *********************************************
+  =============================================
   *********************************************
 */
 
@@ -115,6 +109,7 @@ const iqDropdownInit = () => {
         buttonDecrement.removeClass('button-decrement_disabled')
       }
 
+      // Отображение/скрытие кнопки очистить
       totalItems ?
         $('.iqdropdown__button.button_link_clear').removeClass('button_link_clear_hidden')
         :
@@ -128,17 +123,15 @@ const iqDropdownInit = () => {
   $('.icon-decrement').text('-');
   $('.icon-increment').text('+');
 
-  const dropdown = $('.iqdropdown#guestsSelect')
-  dropdown.off('click')
+  // удаление события клика по дропдауну
+  $('.iqdropdown#guestsSelect').off('click')
 
   // Кнопка "очистить"
   $('.iqdropdown#guestsSelect .button_link_clear').click(clearFn)
-    
 }
 
+// Инициализация дропдауна после загрузки страницы
 $(document).ready(iqDropdownInit);
 
-// Кнопка "очистить"
-$('.iqdropdown#guestsSelect .button_link_clear').click(clearFn)
 // Проверка на нажатие вне дропдауна
 $(document).click(closeDropDown)

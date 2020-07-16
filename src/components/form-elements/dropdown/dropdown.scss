@@ -2,6 +2,7 @@
 
 .iqdropdown {
   @extend %input-basic;
+  padding: 0;
   color: $darkShade75;
 
   &:focus,
@@ -25,7 +26,7 @@
     position: static;
     color: $darkShade75;
     height: 100%;
-    padding: 10px 0;
+    padding: 10px 15px;
 
     &::after {
       color: $darkShade50;
