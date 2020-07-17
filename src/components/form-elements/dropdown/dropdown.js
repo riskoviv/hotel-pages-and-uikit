@@ -27,7 +27,7 @@ const idqMenuHTML =
 // Функция закрытия/открытия дропдауна
 const closeDropDown = (event) => {
   const target = event.target;
-  const dropdown = $('.iqdropdown#guestsSelect')
+  const dropdown = $('.iqdropdown.dropdown_guests')
   const dropdownSelection = target.closest('.iqdropdown-selection')
   const applyButton = target.closest('.button_link:not(.button_link_clear)')
   const clearButton = target.closest('.button_link.button_link_clear')
@@ -41,7 +41,7 @@ const closeDropDown = (event) => {
 
 // Функция очистки iqDropdown
 const clearFn = () => {
-  $('.iqdropdown#guestsSelect .iqdropdown-menu').html(idqMenuHTML)
+  $('.iqdropdown.dropdown_guests .iqdropdown-menu').html(idqMenuHTML)
   iqDropdownInit()
 }
 
@@ -52,8 +52,9 @@ const clearFn = () => {
 */
 
 const iqDropdownInit = () => {
-  $('.iqdropdown#guestsSelect').iqDropdown({
+  $('.iqdropdown.dropdown_guests').iqDropdown({
     setSelectionText(guestsCount, totalGuests) {
+      console.log(this)
 
       if (!totalGuests) {
         return 'Сколько гостей';
@@ -68,9 +69,9 @@ const iqDropdownInit = () => {
 
         let text = usePlural ? this.textPlural : this.selectionText;
         if ([2, 3, 4].indexOf(totalItemsEnd) != -1 && (totalItems < 12 || totalItems > 21)) {
-          text = 'гостя'
+          text = $('.iqdropdown-selection').data('selection-second-text')
         } else if (totalItems === 1 || totalItemsEnd === 1 && totalItems > 20) {
-          text = 'гость'
+          text = this.selectionText
         }
         
         let textInfants = 'младенцев'
@@ -124,10 +125,10 @@ const iqDropdownInit = () => {
   $('.icon-increment').text('+');
 
   // удаление события клика по дропдауну
-  $('.iqdropdown#guestsSelect').off('click')
+  $('.iqdropdown.dropdown_guests').off('click')
 
   // Кнопка "очистить"
-  $('.iqdropdown#guestsSelect .button_link_clear').click(clearFn)
+  $('.iqdropdown.dropdown_guests .button_link_clear').click(clearFn)
 }
 
 // Инициализация дропдауна после загрузки страницы
