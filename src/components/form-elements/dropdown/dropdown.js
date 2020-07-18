@@ -2,16 +2,17 @@ import '../../../../node_modules/item-quantity-dropdown/lib/item-quantity-dropdo
 import '../../../../node_modules/item-quantity-dropdown/lib/item-quantity-dropdown.min.css';
 
 // Функция закрытия/открытия дропдауна
-const closeDropDown = (event) => {
+const toggleDropDown = (event) => {
   const target = event.target;
-  const dropdown = $('.iqdropdown.dropdown_guests')
+  const dropdown = $('.iqdropdown')
   const dropdownSelection = target.closest('.iqdropdown-selection')
+  const dropdownControls = target.closest('.iqdropdown__controls')
   const applyButton = target.closest('.button_link:not(.button_link_clear)')
   const clearButton = target.closest('.button_link.button_link_clear')
-
-  if ((dropdownSelection || applyButton) && !clearButton) {
-    dropdown.toggleClass('menu-open')
-  } else if (!clearButton) {
+  const id = event.target.parentNode.id
+  if ((dropdownSelection || event.target.id === $('.iqdropdown.menu-open').id || applyButton) && !clearButton) {
+    $(`.iqdropdown#${id}`).toggleClass('menu-open')
+  } else if (!clearButton && !dropdownControls) {
     dropdown.removeClass('menu-open')
   }
 }
@@ -24,7 +25,7 @@ const closeDropDown = (event) => {
 */
 
 const iqDropdownInit = () => {
-  $('.iqdropdown.dropdown_guests').iqDropdown({
+  $('.iqdropdown').iqDropdown({
     setSelectionText(itemsCount, totalItems) {
       if (!totalItems) {
         return $('.iqdropdown').data('title');
@@ -84,11 +85,11 @@ const iqDropdownInit = () => {
   $('.icon-increment').text('+');
 
   // удаление события клика по дропдауну
-  $('.iqdropdown.dropdown_guests').off('click')
+  $('.iqdropdown').off('click')
 
   // Кнопка "очистить"
   if ($('.iqdropdown__controls').length) {
-    $('.iqdropdown.dropdown_guests .button_link_clear').click(clearFn)
+    $('.iqdropdown .button_link_clear').click(clearFn)
   }
 }
 
@@ -107,4 +108,4 @@ const clearFn = () => {
 }
 
 // Проверка на нажатие вне дропдауна и закрытие его
-$(document).click(closeDropDown)
+$(document).click(toggleDropDown)

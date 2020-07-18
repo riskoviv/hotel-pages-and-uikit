@@ -2,12 +2,12 @@
 //-   select.dropdown(class=classname ? classname : '')
 //-     each option in options.length ? options : ['No options']
 //-       option= option
-mixin dropdown(type, title, hasButtons, options)
-  .iqdropdown(class='dropdown_' + type, data-title=title)
-    p.iqdropdown-selection
+mixin dropdown(id, type, title, hasButtons, options)
+  .iqdropdown(id=id, class='dropdown_' + type, data-title=title)
+    p.iqdropdown-selection(id=id)
     .iqdropdown-menu
       each item, index in options
-        .iqdropdown-menu-option(data-id='item'+(index+1) data-maxcount=item.maxcount data-declensions=item.declensions ? item.declensions : '')
+        .iqdropdown-menu-option(data-id='item'+(index+1) data-maxcount=item.maxcount data-declensions=item.declensions)
           div
             p.iqdropdown-item= item.name
       if hasButtons
