@@ -1,29 +1,6 @@
 import '../../../../node_modules/item-quantity-dropdown/lib/item-quantity-dropdown.min';
 import '../../../../node_modules/item-quantity-dropdown/lib/item-quantity-dropdown.min.css';
 
-const idqMenuHTML = 
-  `
-  <div class="iqdropdown-menu-option" data-id="item1" data-maxcount="5">
-    <div>
-      <p class="iqdropdown-item">Взрослые</p>
-    </div>
-  </div>
-  <div class="iqdropdown-menu-option" data-id="item2" data-maxcount="5">
-    <div>
-      <p class="iqdropdown-item">Дети</p>
-    </div>
-  </div>
-  <div class="iqdropdown-menu-option" data-id="item3" data-maxcount="3">
-    <div>
-      <p class="iqdropdown-item">Младенцы</p>
-    </div>
-  </div>
-  <div class="iqdropdown__controls">
-    <button class="iqdropdown__button button button_link button_link_clear button_link_clear_hidden">Очистить</button>
-    <button class="iqdropdown__button button button_link">Применить</button>
-  </div>
-  `
-
 // Функция закрытия/открытия дропдауна
 const closeDropDown = (event) => {
   const target = event.target;
@@ -39,11 +16,6 @@ const closeDropDown = (event) => {
   }
 }
 
-// Функция очистки iqDropdown
-const clearFn = () => {
-  $('.iqdropdown.dropdown_guests .iqdropdown-menu').html(idqMenuHTML)
-  iqDropdownInit()
-}
 
 /*
   *********************************************
@@ -53,43 +25,30 @@ const clearFn = () => {
 
 const iqDropdownInit = () => {
   $('.iqdropdown.dropdown_guests').iqDropdown({
-    setSelectionText(guestsCount, totalGuests) {
-      console.log(this)
-
-      if (!totalGuests) {
-        return 'Сколько гостей';
+    setSelectionText(itemsCount, totalItems) {
+      if (!totalItems) {
+        return $('.iqdropdown').data('title');
       }
 
-      const infantsCount = guestsCount.item3
+      function checkDeclension(optionId, itemsCount) {
+        const totalItemsEnd = parseInt(itemsCount.toString().split('').pop())
 
-      const checkGuests = (totalItems) => {
-        const totalItemsEnd = parseInt(totalItems.toString().split('').pop())
-        const infantsCountEnd = parseInt(infantsCount.toString().split('').pop())
-        const usePlural = totalItems !== 1 && this.textPlural.length > 0;
-
-        let text = usePlural ? this.textPlural : this.selectionText;
-        if ([2, 3, 4].indexOf(totalItemsEnd) != -1 && (totalItems < 12 || totalItems > 21)) {
-          text = $('.iqdropdown-selection').data('selection-second-text')
-        } else if (totalItems === 1 || totalItemsEnd === 1 && totalItems > 20) {
-          text = this.selectionText
+        const option = $(`.iqdropdown-menu-option[data-id="${optionId}"`)
+        let declensionText = option.data('declensions')[2] //'младенцев'
+        if ([2, 3, 4].indexOf(totalItemsEnd) != -1 && (itemsCount < 12 || itemsCount > 21)) {
+          declensionText = option.data('declensions')[1] //'младенца'
+        } else if (itemsCount === 1 || totalItemsEnd === 1 && itemsCount > 20) {
+          declensionText = option.data('declensions')[0] //'младенец'
         }
-        
-        let textInfants = 'младенцев'
-        if ([2, 3, 4].indexOf(infantsCountEnd) != -1 && (infantsCount < 12 || infantsCount > 21)) {
-          textInfants = 'младенца'
-        } else if (infantsCount === 1 || infantsCountEnd === 1 && infantsCount > 20) {
-          textInfants = 'младенец'
-        }
-
-        return [text, textInfants]
+        return declensionText
       }
       
-      if (infantsCount > 0) {
-        const text = checkGuests(totalGuests - infantsCount)[0]
-        const textInfants = checkGuests(totalGuests - infantsCount)[1]
-        return `${totalGuests - infantsCount} ${text}, ${infantsCount} ${textInfants}`
+      if (itemsCount.item3 > 0) {
+        const text = checkDeclension('item1', totalItems - itemsCount.item3)
+        const textInfants = checkDeclension('item3', itemsCount.item3)
+        return `${totalItems - itemsCount.item3} ${text}, ${itemsCount.item3} ${textInfants}`
       } else {
-        return `${totalGuests} ${checkGuests(totalGuests)[0]}`;
+        return `${totalItems} ${checkDeclension('item1', totalItems)}`;
       }
     },
     onChange: (id, count, totalItems) => {
@@ -128,11 +87,24 @@ const iqDropdownInit = () => {
   $('.iqdropdown.dropdown_guests').off('click')
 
   // Кнопка "очистить"
-  $('.iqdropdown.dropdown_guests .button_link_clear').click(clearFn)
+  if ($('.iqdropdown__controls').length) {
+    $('.iqdropdown.dropdown_guests .button_link_clear').click(clearFn)
+  }
 }
 
-// Инициализация дропдауна после загрузки страницы
-$(document).ready(iqDropdownInit);
 
-// Проверка на нажатие вне дропдауна
+// Инициализация дропдауна после загрузки страницы
+$(document).ready(function () {
+  iqDropdownInit()
+});
+
+const idqMenuHTML = $('.iqdropdown-menu').html()
+
+// Функция очистки iqDropdown
+const clearFn = () => {
+  $('.iqdropdown.dropdown_guests .iqdropdown-menu').html(idqMenuHTML)
+  iqDropdownInit()
+}
+
+// Проверка на нажатие вне дропдауна и закрытие его
 $(document).click(closeDropDown)
