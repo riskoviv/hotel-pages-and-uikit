@@ -90,29 +90,36 @@ const iqDropdownInit = (dropdown) => {
   $('.iqdropdown').off('click')
 
   // Кнопка "очистить"
-  if ($('.iqdropdown__controls').length) {
-    $('.iqdropdown .button_link_clear').click(clearFn)
+  if ($(`#${dropdown.id} .iqdropdown__controls`).length) {
+    $(`#${dropdown.id} .button_link_clear`).click(clearFn)
   }
 }
 
 
 // Инициализация дропдауна после загрузки страницы
 $(document).ready(function () {
-  const iqdropdowns = document.querySelectorAll('.iqdropdown')
+  const iqdropdowns = $('.iqdropdown')
   for (let iqdropdown of iqdropdowns) {
     iqDropdownInit(iqdropdown)
   }
 });
 
-const idqMenuHTML = $('.iqdropdown-menu').html()
+const iqdMenus = $('.iqdropdown-menu')
+const iqdMenusHTMLs = {}
+for (let iqdMenu of iqdMenus) {
+  let id = iqdMenu.parentNode.id
+  iqdMenusHTMLs[id] = ($(iqdMenu).html())
+}
+
 
 // Функция очистки iqDropdown
 const clearFn = (event) => {
   const target = event.target;
   const dropdownMenu = target.closest('.iqdropdown-menu')
-  $('.iqdropdown-menu').html(idqMenuHTML)
-  iqDropdownInit()
+  const dropdown = target.closest('.iqdropdown')
+  $(dropdownMenu).html(iqdMenusHTMLs[dropdown.id])
+  iqDropdownInit(dropdown)
 }
 
-// Проверка на нажатие вне дропдауна и закрытие его
-$(document).click(toggleDropDown)
+// Проверка на нажатие внутри/вне дропдауна и закрытие его
+$('.iqdropdown-selection').click(toggleDropDown)

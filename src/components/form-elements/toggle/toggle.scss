@@ -16,7 +16,7 @@
 
   &__label {
     color: $darkShade75;
-    margin-left: 50px;
+    padding-left: 50px;
 
     &::before {
       @extend %pseudo-element-basic;
