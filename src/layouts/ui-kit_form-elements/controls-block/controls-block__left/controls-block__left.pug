@@ -5,7 +5,7 @@ section.controls-block__left
   .control-container
     h3.control-container__title dropdown
     include ../../../../components/form-elements/dropdown/dropdown
-    //- dropdown(id, type, title, hasButtons, options)
+    //- dropdown(id, type, title, hasButtons, options[name, defaultcount, maxcount, declensions], isOpened)
     +dropdown(
       'guests1', 'guests', 'Сколько гостей', true, [
         { name: 'Взрослые', maxcount: '10', 
@@ -21,42 +21,6 @@ section.controls-block__left
             'младенец',
             'младенца',
             'младенцев'
-          ]
-        }
-      ])
-    +dropdown(
-      'amenities1', 'amenities', 'Какие удобства', false, [
-        { name: 'Спальни', maxcount: '10', 
-         declensions: [
-           'спальня',
-           'спальни',
-           'спален'
-         ]
-        },
-        { name: 'Кровати', maxcount: '5' },
-        { name: 'Ванные комнаты', maxcount: '4',
-          declensions: [
-            'ванная комната',
-            'ванные комнаты',
-            'ванных комнат'
-          ]
-        }
-      ])
-    +dropdown(
-      'guests2', 'guests', 'Сколько гостей', true, [
-        { name: 'Взрослые', maxcount: '10', 
-         declensions: [
-           'гость',
-           'гостя',
-           'гостей'
-         ]
-        },
-        { name: 'Дети', maxcount: '5' },
-        { name: 'Старики', maxcount: '3',
-          declensions: [
-            'старик',
-            'старика',
-            'стариков'
           ]
         }
       ])

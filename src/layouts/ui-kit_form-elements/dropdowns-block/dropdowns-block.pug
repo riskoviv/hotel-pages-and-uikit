@@ -1,5 +1,58 @@
 section.section-row.dropdowns-block
-  h2 // dropdowns-block
-  //- section.dropdowns-block-left
+  section.dropdowns-block-left
+    include ../../../components/form-elements/dropdown/dropdown
+    //- dropdown(id, type, title, hasButtons, options[name, defaultcount, maxcount, declensions], isOpened)
+    .control-container
+      h3.control-container__title dropdown
+      +dropdown(
+        'amenities1', 'amenities', 'Выберите удобства', false, [
+          { name: 'Спальни', defaultcount: '2', maxcount: '10', 
+          declensions: [
+            'спальня',
+            'спальни',
+            'спален'
+          ]
+          },
+          { name: 'Кровати', defaultcount: '2', maxcount: '5',
+            declensions: [
+              'кровать',
+              'кровати',
+              'кроватей'
+            ]
+          },
+          { name: 'Ванные комнаты', maxcount: '4',
+            declensions: [
+              'ванная комната',
+              'ванные комнаты',
+              'ванных комнат'
+            ]
+          }
+        ])
+    .control-container
+      h3.control-container__title dropdown
+      +dropdown(
+        'amenities1', 'amenities', 'Выберите удобства', false, [
+          { name: 'Спальни', defaultcount: '2', maxcount: '10', 
+          declensions: [
+            'спальня',
+            'спальни',
+            'спален'
+          ]
+          },
+          { name: 'Кровати', defaultcount: '2', maxcount: '5',
+            declensions: [
+              'кровать',
+              'кровати',
+              'кроватей'
+            ]
+          },
+          { name: 'Ванные комнаты', maxcount: '4',
+            declensions: [
+              'ванная комната',
+              'ванные комнаты',
+              'ванных комнат'
+            ]
+          }
+        ], true)
   //- section.dropdowns-block-middle
   //- section.dropdowns-block-right

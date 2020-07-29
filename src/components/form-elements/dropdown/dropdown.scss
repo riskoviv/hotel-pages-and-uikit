@@ -5,6 +5,11 @@
   padding: 0;
   color: $darkShade75;
 
+  &.dropdown_amenities {
+    min-width: 266px;
+    width: 266px;
+  }
+
   &:focus,
   &:hover {
     border: 1px solid $darkShade50;
@@ -19,14 +24,17 @@
   .iqdropdown-selection {
     font-family: $mainFont;
     font-size: $mainFontSize;
-    line-height: $mainLineHeight;
   }
 
   .iqdropdown-selection {
     position: static;
+    line-height: 18px;
     color: $darkShade75;
     height: 100%;
-    padding: 10px 15px;
+    padding: 11px 34px 0 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     &::after {
       color: $darkShade50;
@@ -55,24 +63,31 @@
     box-shadow: 0px 10px 20px $darkShade5;
 
     &-option {
-      height: 44px;
+      height: 30px;
       padding: 0 7px 0 15px;
+      margin-top: 7px;
 
-      &:not(:first-child) {
-        margin-top: -7px;
+      &:last-child {
+        margin-bottom: 7px;
       }
     }
+  }
+
+  .iqdropdown-content {
+    margin-top: -4px;
+    margin-left: -1px;
   }
 
   .iqdropdown-item {
     font-family: $mainFont;
     font-weight: bold;
     font-size: 12px;
-    line-height: 1;
+    line-height: 15px;
     text-transform: uppercase;
 
     &-controls {
       align-items: center;
+      height: 30px;
 
       button.button-decrement,
       button.button-increment {
@@ -83,7 +98,7 @@
         transition: none;
 
         &_disabled {
-          opacity: 0.35;
+          opacity: 0.38;
           cursor: default;
         }
 
@@ -94,7 +109,12 @@
         .icon-decrement,
         .icon-increment {
           font-style: normal;
+          font-size: 18px;
+          line-height: 22px;
           color: $darkShade50;
+          display: flex;
+          align-items: center;
+          justify-content: center;
 
           &::after,
           &::before {

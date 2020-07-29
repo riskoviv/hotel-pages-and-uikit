@@ -45,13 +45,29 @@ const iqDropdownInit = (dropdown) => {
         }
         return declensionText
       }
-      
-      if (itemsCount.item3 > 0) {
-        const text = chooseDeclension('item1', totalItems - itemsCount.item3)
-        const textInfants = chooseDeclension('item3', itemsCount.item3)
-        return `${totalItems - itemsCount.item3} ${text}, ${itemsCount.item3} ${textInfants}`
+        
+      if ($(dropdown).hasClass('dropdown_guests')) {
+        // Если это выбор кол-ва гостей
+        if (itemsCount.item3 > 0) {
+          const text = chooseDeclension('item1', totalItems - itemsCount.item3)
+          const textInfants = chooseDeclension('item3', itemsCount.item3)
+          return `${totalItems - itemsCount.item3} ${text}, ${itemsCount.item3} ${textInfants}`
+        } else {
+          return `${totalItems} ${chooseDeclension('item1', totalItems)}`;
+        }
       } else {
-        return `${totalItems} ${chooseDeclension('item1', totalItems)}`;
+        // если выбор удобств
+        let text = ''
+        
+        for (let i = 1; i <= Object.keys(itemsCount).length; i++) {
+          if (itemsCount[`item${i}`]) {
+            if (text)
+              text += ', '
+            text += `${itemsCount[`item${i}`]} ${chooseDeclension(`item${i}`, itemsCount[`item${i}`])}`
+          }
+        }
+        
+        return text
       }
     },
     onChange: (id, count, totalItems) => {
@@ -81,10 +97,16 @@ const iqDropdownInit = (dropdown) => {
     },
     
   });
-  $('.button-decrement').prop('disabled', true);
-  $('.button-decrement').addClass('button-decrement_disabled');
-  $('.icon-decrement').text('-');
-  $('.icon-increment').text('+');
+  
+  const options = $('.iqdropdown-menu-option', dropdown)
+  for (let option of options) { // disable '-' if item's count is 0
+    if (option.dataset.defaultcount === '0') {
+      $('.button-decrement', option).prop('disabled', true)
+      $('.button-decrement', option).addClass('button-decrement_disabled')
+    }
+  }
+  $(`#${dropdown.id} .icon-decrement`).text('-');
+  $(`#${dropdown.id} .icon-increment`).text('+');
 
   // удаление события клика по дропдауну
   $('.iqdropdown').off('click')
@@ -122,4 +144,4 @@ const clearFn = (event) => {
 }
 
 // Проверка на нажатие внутри/вне дропдауна и закрытие его
-$('.iqdropdown-selection').click(toggleDropDown)
+$(document).click(toggleDropDown)
