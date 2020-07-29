@@ -1,5 +1,7 @@
 @import '../../../../styles/variables.scss';
 
+// extends some dropdown styles from ../dropdown.pug
+
 .dropdown.date-dropdown {
   min-width: 150px;
   color: $darkShade75;

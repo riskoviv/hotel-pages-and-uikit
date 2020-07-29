@@ -1,0 +1,41 @@
+@import '../../jquery-ui/jquery-ui.min.css';
+@import '../../../styles/variables.scss';
+
+.range-slider__container {
+  width: 266px;
+  margin-bottom: 40px;
+}
+
+.range-slider__text {
+  display: flex;
+  justify-content: space-between;
+}
+
+.range-slider__amount {
+  font-size: 12px;
+  line-height: 15px;
+  color: $darkShade50;
+}
+
+.ui-slider {
+  margin-top: 20px;
+  height: 6px;
+  width: 266px;
+  border-radius: 3px;
+
+  &.ui-slider-horizontal &-range {
+    top: -1px;
+    height: 6px;
+    background: $greenGradient;
+  }
+
+  .ui-slider-handle {
+    box-sizing: content-box;
+    width: 12px;
+    height: 12px;
+    top: -6px;
+    background: $greenGradient;
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+  }
+}
