@@ -7,7 +7,13 @@ mixin dropdown(id, type, title, hasButtons, options, isOpened)
     p.iqdropdown-selection(id=id)
     .iqdropdown-menu
       each item, index in options
-        .iqdropdown-menu-option(data-id='item'+(index+1) data-defaultcount=item.defaultcount ? item.defaultcount : "0" data-maxcount=item.maxcount data-declensions=item.declensions)
+        .iqdropdown-menu-option(
+          data-id='item'+(index+1)
+          data-name=item.name
+          data-defaultcount=item.defaultcount || '0'
+          data-maxcount=item.maxcount
+          data-declensions=item.declensions || ''
+          )
           div
             p.iqdropdown-item= item.name
       if hasButtons

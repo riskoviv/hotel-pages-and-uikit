@@ -4,18 +4,18 @@ import '../../../../node_modules/item-quantity-dropdown/lib/item-quantity-dropdo
 // Функция закрытия/открытия дропдауна
 const toggleDropDown = (event) => {
   const target = event.target;
-  const dropdownOpen = $('.iqdropdown.menu-open')
-  const dropdown = target.closest('.iqdropdown')
-  const dropdownSelection = target.closest('.iqdropdown-selection')
+  const openedDropdowns = $('.iqdropdown.menu-open')
+  const currentDropdown = target.closest('.iqdropdown')
+  const dropdownMenu = target.closest('.iqdropdown-menu')
   const dropdownControls = target.closest('.iqdropdown__controls')
   const applyButton = target.closest('.button_link:not(.button_link_clear)')
   const clearButton = target.closest('.button_link.button_link_clear')
 
-  if ((dropdownSelection || applyButton) && !clearButton) {
-    $(dropdown).toggleClass('menu-open')
-    $(dropdownOpen[0]).removeClass('menu-open')
-  } else if (!clearButton && !dropdownControls) {
-    $(dropdownOpen[0]).removeClass('menu-open')
+  if ((currentDropdown && !dropdownMenu && !dropdownControls) || applyButton) {
+    $(currentDropdown).toggleClass('menu-open')
+    $(openedDropdowns).removeClass('menu-open')
+  } else if (!currentDropdown && !clearButton) {
+    $(openedDropdowns).removeClass('menu-open')
   }
 }
 
@@ -37,11 +37,14 @@ const iqDropdownInit = (dropdown) => {
         const totalItemsEnd = parseInt(itemsCount.toString().split('').pop())
 
         const option = $(`#${dropdown.id} .iqdropdown-menu-option[data-id="${optionId}"`)
-        let declensionText = option.data('declensions')[2] //5+
-        if ([2, 3, 4].indexOf(totalItemsEnd) != -1 && (itemsCount < 12 || itemsCount > 21)) {
-          declensionText = option.data('declensions')[1] //2-4
-        } else if (itemsCount === 1 || totalItemsEnd === 1 && itemsCount > 20) {
-          declensionText = option.data('declensions')[0] //1
+        let declensionText = option.data('name') // Если нет списка склонений, используется название элемента
+        if (option.data('declensions')) { // Если есть список склонений, выбрать нужное
+          declensionText = option.data('declensions')[2] //5+
+          if ([2, 3, 4].indexOf(totalItemsEnd) != -1 && (itemsCount < 12 || itemsCount > 21)) {
+            declensionText = option.data('declensions')[1] //2-4
+          } else if (itemsCount === 1 || totalItemsEnd === 1 && itemsCount > 20) {
+            declensionText = option.data('declensions')[0] //1
+          }
         }
         return declensionText
       }
