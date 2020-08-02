@@ -67,3 +67,17 @@ $dropdownShadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
   content: '';
   position: absolute;
 }
+
+%expand-more-button {
+  border: none;
+  background: none;
+  color: $darkShade50;
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  text-align: center;
+  padding: 10px;
+  top: 0;
+  right: 0;
+  content: 'expand_more';
+}

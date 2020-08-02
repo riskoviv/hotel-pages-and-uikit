@@ -10,8 +10,7 @@
        url(MaterialIcons-Regular.ttf) format('truetype');
 }
 
-.material-icons,
-.iqdropdown-selection::after {
+.material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;

@@ -1,10 +1,7 @@
-//- mixin dropdown(classname, ...options)
-//-   select.dropdown(class=classname ? classname : '')
-//-     each option in options.length ? options : ['No options']
-//-       option= option
 mixin dropdown(id, type, title, hasButtons, options, isOpened)
   .iqdropdown(id=id, class='dropdown_' + type, data-title=title, class=isOpened ? 'menu-open' : '' )
-    p.iqdropdown-selection(id=id)
+    p.iqdropdown-selection
+    button.iqdropdown__arrow.material-icons expand_more
     .iqdropdown-menu
       each item, index in options
         .iqdropdown-menu-option(

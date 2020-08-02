@@ -52,10 +52,12 @@ const iqDropdownInit = (dropdown) => {
       if ($(dropdown).hasClass('dropdown_guests')) {
         // Если это выбор кол-ва гостей
         if (itemsCount.item3 > 0) {
+          // Если выбраны младенцы
           const text = chooseDeclension('item1', totalItems - itemsCount.item3)
           const textInfants = chooseDeclension('item3', itemsCount.item3)
           return `${totalItems - itemsCount.item3} ${text}, ${itemsCount.item3} ${textInfants}`
         } else {
+          // Если нет младенцев
           return `${totalItems} ${chooseDeclension('item1', totalItems)}`;
         }
       } else {

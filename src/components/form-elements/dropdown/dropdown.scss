@@ -1,6 +1,7 @@
 @import '../../../styles/variables.scss';
 
-.iqdropdown {
+.iqdropdown,
+.dropdown {
   @extend %input-basic;
   padding: 0;
   color: $darkShade75;
@@ -27,18 +28,17 @@
   }
 
   .iqdropdown-selection {
-    position: static;
     line-height: 18px;
     color: $darkShade75;
-    height: 100%;
-    padding: 11px 34px 0 14px;
+    height: 18px;
+    padding: 0 34px 0 14px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
 
-    &::after {
-      color: $darkShade50;
-    }
+  &__arrow {
+    @extend %expand-more-button;
   }
 
   &.menu-open .iqdropdown-selection::after {
@@ -47,13 +47,7 @@
 
   .iqdropdown-selection::after,
   &.menu-open .iqdropdown-selection::after {
-    content: 'expand_more';
-    background-image: none;
-    width: 44px;
-    height: 44px;
-    text-align: center;
-    padding: 10px;
-    top: 0;
+    display: none;
   }
 
   .iqdropdown-menu {

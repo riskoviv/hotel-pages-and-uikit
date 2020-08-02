@@ -2,7 +2,38 @@
 
 // extends some dropdown styles from ../dropdown.pug
 
-.dropdown.date-dropdown {
-  min-width: 150px;
-  color: $darkShade75;
+.date-dropdown {
+  &__container {
+    @extend %input-basic;
+    position: relative;
+
+    
+  }
+
+  &__input {
+    color: $darkShade75;
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 18px;
+
+    &::after {
+      @extend %expand-more-button;
+      cursor: pointer;
+    }
+  }
+
+
+  
+}
+
+.ui-datepicker {
+  position: absolute;
+  top: 44px;
+  left: 0;
+  z-index: 3;
 }

@@ -1,20 +1,20 @@
 @import '../../jquery-ui/jquery-ui.min.css';
 @import '../../../styles/variables.scss';
 
-.range-slider__container {
-  width: 266px;
-  margin-bottom: 40px;
-}
-
-.range-slider__text {
-  display: flex;
-  justify-content: space-between;
-}
-
-.range-slider__amount {
-  font-size: 12px;
-  line-height: 15px;
-  color: $darkShade50;
+.range-slider {
+  &__container {
+    width: 266px;
+    margin-bottom: 40px;
+  }
+  &__text {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__amount {
+    font-size: 12px;
+    line-height: 15px;
+    color: $darkShade50;
+  }
 }
 
 .ui-slider {
