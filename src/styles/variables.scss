@@ -29,15 +29,20 @@ $headingColor: $darkShade100;
 
 $activeBorder: 1px solid $darkShade50;
 $dropdownShadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+$inputPadding: 0 34px 0 14px;
+$inputHeight: 44px;
 
 %input-basic {
   padding: 0 15px;
-  height: 44px;
+  height: $inputHeight;
   border-radius: 4px;
   border: 1px solid $darkShade25;
   color: $darkShade25;
   min-width: 320px;
   max-width: 320px;
+  font-family: $mainFont;
+  font-size: $mainFontSize;
+  line-height: 18px;
 }
 
 %text-field-basic {
@@ -73,8 +78,8 @@ $dropdownShadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
   background: none;
   color: $darkShade50;
   position: absolute;
-  width: 44px;
-  height: 44px;
+  width: $inputHeight;
+  height: $inputHeight;
   text-align: center;
   padding: 10px;
   top: 0;

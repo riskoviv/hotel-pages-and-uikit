@@ -1,7 +1,6 @@
 @import '../../../styles/variables.scss';
 
-.iqdropdown,
-.dropdown {
+.iqdropdown {
   @extend %input-basic;
   padding: 0;
   color: $darkShade75;
@@ -31,7 +30,7 @@
     line-height: 18px;
     color: $darkShade75;
     height: 18px;
-    padding: 0 34px 0 14px;
+    padding: $inputPadding;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -51,7 +50,7 @@
   }
 
   .iqdropdown-menu {
-    top: 44px;
+    top: $inputHeight;
     border: $activeBorder;
     border-radius: 0 0 4px 4px;
     box-shadow: 0px 10px 20px $darkShade5;

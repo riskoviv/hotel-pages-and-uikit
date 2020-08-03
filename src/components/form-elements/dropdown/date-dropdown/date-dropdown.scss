@@ -4,36 +4,30 @@
 
 .date-dropdown {
   &__container {
-    @extend %input-basic;
     position: relative;
+  }
 
-    
+  &__arrow {
+    @extend %expand-more-button;
   }
 
   &__input {
+    @extend %text-field-basic;
     color: $darkShade75;
     position: relative;
     cursor: pointer;
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    line-height: 18px;
-
-    &::after {
-      @extend %expand-more-button;
-      cursor: pointer;
-    }
+    min-width: unset;
+    width: 150px;
+    height: $inputHeight;
+    background-color: transparent;
+    padding: $inputPadding;
   }
-
-
-  
+ 
 }
 
-.ui-datepicker {
-  position: absolute;
-  top: 44px;
-  left: 0;
-  z-index: 3;
-}
+// .ui-datepicker {
+//   position: absolute;
+//   top: $inputHeight;
+//   left: 0;
+//   z-index: 3;
+// }

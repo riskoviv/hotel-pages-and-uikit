@@ -8,10 +8,10 @@
   &__button {
     position: relative;
     top: -1px;
-    right: 44px;
+    right: $inputHeight;
     vertical-align: middle;
-    width: 44px;
-    height: 44px;
+    width: $inputHeight;
+    height: $inputHeight;
     border: none;
     @extend %text-gradient;
   }
