@@ -1,6 +1,5 @@
 @import '../../../../styles/variables.scss';
-
-// extends some dropdown styles from ../dropdown.pug
+@import '~air-datepicker/dist/css/datepicker.css';
 
 .date-dropdown {
   &__container {
@@ -25,9 +24,18 @@
  
 }
 
-// .ui-datepicker {
-//   position: absolute;
-//   top: $inputHeight;
-//   left: 0;
-//   z-index: 3;
-// }
+//
+// Air Datepicker styles
+//
+
+.datepicker {
+  font-family: $mainFont;
+
+  &--pointer {
+    display: none;
+  }
+  
+  &--nav-action {
+    display: flex;
+  }
+}

@@ -1,4 +1,4 @@
-mixin dateDropdown
-  .date-dropdown.date-dropdown__container.material-icons
+mixin dateDropdown(id, isMain)
+  .date-dropdown.date-dropdown__container
     button.date-dropdown__arrow.material-icons expand_more
-    input.date-dropdown__input.datepicker-here(type='text' data-position='bottom right' placeholder='ДД.ММ.ГГГГ' readonly)
+    input.date-dropdown__input(type='text' class=isMain ? 'datepicker-here' : '' id=id placeholder='ДД.ММ.ГГГГ' data-range='true' data-multiple-dates-separator=' - ' readonly)

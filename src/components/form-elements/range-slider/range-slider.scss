@@ -1,4 +1,4 @@
-@import '../../jquery-ui/jquery-ui.min.css';
+// @import '../../jquery-ui/jquery-ui.min.css';
 @import '../../../styles/variables.scss';
 
 .range-slider {
@@ -27,6 +27,7 @@
     top: -1px;
     height: 6px;
     background: $greenGradient;
+    cursor: ew-resize;
   }
 
   .ui-slider-handle {
@@ -37,5 +38,6 @@
     background: $greenGradient;
     border: 2px solid #FFFFFF;
     border-radius: 50%;
+    cursor: ew-resize;
   }
 }
