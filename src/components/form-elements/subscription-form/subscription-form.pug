@@ -1,3 +1,8 @@
-form(type='post' action="#").subscription-form
-  input(type='text').text-field.subscription-form__text-field
-  input(type='submit' value='arrow_forward').subscription-form__button.material-icons
+include ../text-field/text-field
+mixin subscriptionField
+  form(type='post' action="#").subscription-form
+    +textField({
+      placeholder: 'Email',
+      class: 'subscription-form__text-field'
+    })
+    input(type='submit' value='arrow_forward').subscription-form__button.material-icons

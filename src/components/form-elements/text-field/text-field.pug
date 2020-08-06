@@ -1,1 +1,12 @@
-input(type='text').text-field
+mixin textField(options)
+  .control-container.text-field
+    if options.title
+      h3.control-container__title.text-field__title= options.title
+    if options.description
+      span.control-container__description= options.description
+    input.text-field__input(
+      type='text'
+      placeholder=options.placeholder
+      value=options.value
+      class=options.class
+    )

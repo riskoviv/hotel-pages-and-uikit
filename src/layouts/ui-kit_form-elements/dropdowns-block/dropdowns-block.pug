@@ -1,7 +1,8 @@
+include ../../../components/form-elements/dropdown/dropdown
+
 section.section-row.dropdowns-block
   section.dropdowns-block-left
-    include ../../../components/form-elements/dropdown/dropdown
-    //- dropdown(id, type, title, hasButtons, options[name, defaultcount, maxcount, declensions], isOpened)
+    //- dropdown(id, type, title, hasButtons, options[name, defaultcount, maxcount, declensions], isOpened, isForceOpened)
     .control-container
       h3.control-container__title dropdown
       +dropdown(
@@ -53,6 +54,6 @@ section.section-row.dropdowns-block
               'ванных комнат'
             ]
           }
-        ], true)
+        ], true, true)
   //- section.dropdowns-block-middle
   //- section.dropdowns-block-right

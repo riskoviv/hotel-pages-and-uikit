@@ -1,5 +1,5 @@
-mixin dropdown(id, type, title, hasButtons, options, isOpened)
-  .iqdropdown(id=id, class='dropdown_' + type, data-title=title, class=isOpened ? 'menu-open' : '' )
+mixin dropdown(id, type, title, hasButtons, options, isOpened, isForceOpened)
+  .iqdropdown(id=id, class='dropdown_' + type, data-title=title, class=isOpened ? 'menu-open' : '' data-force-opened=isForceOpened ? 'true' : '')
     p.iqdropdown-selection
     button.iqdropdown__arrow.material-icons expand_more
     .iqdropdown-menu

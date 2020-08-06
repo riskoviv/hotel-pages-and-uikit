@@ -1,5 +1,2 @@
 mixin switch(controlType, isChecked)
-  if isChecked
-    input(id=id, type='checkbox', checked, class=controlType+'__switch').switch
-  else
-    input(id=id, type='checkbox', class=controlType+'__switch').switch
+  input.switch(id=id, type='checkbox', checked=isChecked, class=controlType+'__switch')

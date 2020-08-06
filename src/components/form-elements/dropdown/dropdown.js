@@ -11,20 +11,23 @@ const toggleDropDown = (event) => {
   const applyButton = target.closest('.button_link:not(.button_link_clear)')
   const clearButton = target.closest('.button_link.button_link_clear')
 
-  if ((currentDropdown && !dropdownMenu && !dropdownControls) || applyButton) {
-    $(currentDropdown).toggleClass('menu-open')
-    $(openedDropdowns).removeClass('menu-open')
-  } else if (!currentDropdown && !clearButton) {
-    $(openedDropdowns).removeClass('menu-open')
+  const closeNOTForceOpenedDropdowns = () => {
+    for (let openedDropdown of openedDropdowns) {
+      if (!$(openedDropdown).data('force-opened')) {
+        $(openedDropdown).removeClass('menu-open')
+      }
+    }
+  }
+
+  if (currentDropdown && !dropdownMenu && !dropdownControls) {
+    closeNOTForceOpenedDropdowns()
+    $(currentDropdown).addClass('menu-open')
+    
+  } else if (!currentDropdown && !clearButton || applyButton) {
+    closeNOTForceOpenedDropdowns()
+
   }
 }
-
-
-/*
-  *********************************************
-  =============================================
-  *********************************************
-*/
 
 const iqDropdownInit = (dropdown) => {
   $(dropdown).iqDropdown({

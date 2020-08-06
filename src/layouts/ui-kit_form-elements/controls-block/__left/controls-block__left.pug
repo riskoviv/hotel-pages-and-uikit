@@ -1,10 +1,24 @@
+include ../../../../components/form-elements/text-field/text-field
+include ../../../../components/form-elements/dropdown/dropdown
+include ../../../../components/form-elements/text-field/text-field_masked/text-field_masked
+include ../../../../components/form-elements/dropdown/date-dropdown/date-dropdown
+include ../../../../components/form-elements/dropdown/date-dropdown/date-dropdown_filtered/date-dropdown_filtered
+include ../../../../components/form-elements/subscription-form/subscription-form
+
 section.controls-block__left
   .control-container
-    h3.control-container__title text field
-    include ../../../../components/form-elements/text-field/text-field
+    +textField({
+      title: 'text field',
+      placeholder: 'Email'
+    })
+  .control-container
+    +textField({
+      title: 'text field',
+      placeholder: 'Email',
+      value: 'This is pretty awesome'
+    })
   .control-container
     h3.control-container__title dropdown
-    include ../../../../components/form-elements/dropdown/dropdown
     //- dropdown(id, type, title, hasButtons, options[name, defaultcount, maxcount, declensions], isOpened)
     +dropdown(
       'guests1', 'guests', 'Сколько гостей', true, [
@@ -26,19 +40,17 @@ section.controls-block__left
       ])
   .control-container
     h3.control-container__title masked text field
-    include ../../../../components/form-elements/text-field/text-field_masked/text-field_masked
+    +textFieldMasked
   .control-container_row
     .control-container
       h3.control-container__title date dropdown
-      include ../../../../components/form-elements/dropdown/date-dropdown/date-dropdown
       +dateDropdown('date1', true)
     .control-container
       h3.control-container__title date dropdown
       +dateDropdown('date2')
   .control-container
     h3.control-container__title filter date dropdown
-    include ../../../../components/form-elements/dropdown/date-dropdown/date-dropdown_filtered/date-dropdown_filtered
     //- +dropdown('date-dropdown_filter', '19 авг - 23 авг')
   .control-container
     h3.control-container__title subscription text field
-    include ../../../../components/form-elements/subscription-form/subscription-form
+    +subscriptionField
