@@ -45,7 +45,7 @@ $inputHeight: 44px;
   line-height: 18px;
 }
 
-%text-field-basic {
+%text-field-input-basic {
   @extend %input-basic;
   
   &::placeholder {
@@ -53,7 +53,8 @@ $inputHeight: 44px;
   }
 
   &:focus,
-  &:hover {
+  &:hover,
+  &.force-focus-hover {
     border: 1px solid $darkShade50;
     color: $darkShade75;
   }

@@ -23,6 +23,22 @@
 .control-container {
   margin-bottom: 20px;
 
+  &__caption {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    margin-bottom: 5px;
+  }
+
+  &__description {
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: $darkShade50;
+  }
+
   &_group {
     &__title {
       margin-bottom: 16px;
@@ -30,10 +46,6 @@
     &:not(:last-child) {
       margin-bottom: 40px;
     }
-  }
-
-  &__title {
-    margin-bottom: 5px;
   }
 
   &_row {

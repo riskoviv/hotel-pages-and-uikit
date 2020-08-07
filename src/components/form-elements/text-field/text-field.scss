@@ -1,5 +1,29 @@
 @import '../../../styles/variables.scss';
 
-.text-field__input {
-  @extend %text-field-basic;
+.text-field {
+  &__input {
+    @extend %text-field-input-basic;
+  }
+
+  &_subscription {
+
+    &.control-container {
+      max-width: 266px;
+      position: relative;
+    }
+
+    &__input {
+      min-width: 266px;
+    }
+
+    &__button {
+      position: absolute;
+      right: 0;
+      vertical-align: middle;
+      width: $inputHeight;
+      height: $inputHeight;
+      border: none;
+      @extend %text-gradient;
+    }
+  }
 }

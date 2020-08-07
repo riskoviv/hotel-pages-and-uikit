@@ -1,33 +1,34 @@
+include ../../../../components/form-elements/checkbox/checkbox
+include ../../../../components/form-elements/radio/radio
+include ../../../../components/form-elements/toggle/toggle
+include ../../../../components/form-elements/like-button/like-button
+include ../../../../components/form-elements/rate-button/rate-button
+
 section.controls-block__middle
   .control-container_group
     h3.control-container_group__title checkbox buttons
     .controls-group
-      include ../../../../components/form-elements/checkbox/checkbox
       +checkbox('cb1', 'Можно курить')
       +checkbox('cb2', 'Можно с питомцами', true)
       +checkbox('cb3', 'Можно пригласить гостей (до 10 человек)', true)
   .control-container_group
     h3.control-container_group__title radio buttons
     .controls-group.controls-group_row
-      include ../../../../components/form-elements/radio/radio
       +radio('gender', 'male', 'Мужчина', true)
       +radio('gender', 'female', 'Женщина')
   .control-container_group
     h3.control-container_group__title toggle
     .controls-group
-      include ../../../../components/form-elements/toggle/toggle
       +toggle('toggle1', 'Получать спецпредложения', true)
       +toggle('toggle2', 'Получать спецпредложения', false)
   .control-container_group
     h3.control-container_group__title like button
     .controls-group.controls-group_row
-      include ../../../../components/form-elements/like-button/like-button
       +likeButton('two', 2)
       +likeButton('two', 11, true)
   .control-container_group
     h3.control-container_group__title rate button
     .controls-group.controls-group_row
-      include ../../../../components/form-elements/rate-button/rate-button
       +rateButton('opinion_1', 4)
       +rateButton('opinion_2', 5)
     

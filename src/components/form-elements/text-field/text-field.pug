@@ -1,12 +1,16 @@
 mixin textField(options)
-  .control-container.text-field
-    if options.title
-      h3.control-container__title.text-field__title= options.title
-    if options.description
-      span.control-container__description= options.description
+  .control-container.text-field(class=options.class)
+    .control-container__caption
+      if options.title
+        h3.control-container__title.text-field__title= options.title
+      if options.description
+        span.control-container__description= options.description
     input.text-field__input(
       type='text'
       placeholder=options.placeholder
       value=options.value
-      class=options.class
+      class=options.class ? options.class + '__input' : ''
+      class=options.forceHoverStyle ? 'force-focus-hover' : ''
     )
+    if options.class == 'text-field_subscription'
+      button.text-field_subscription__button.material-icons(type='button') arrow_forward

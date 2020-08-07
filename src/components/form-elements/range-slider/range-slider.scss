@@ -6,15 +6,6 @@
     width: 266px;
     margin-bottom: 40px;
   }
-  &__text {
-    display: flex;
-    justify-content: space-between;
-  }
-  &__amount {
-    font-size: 12px;
-    line-height: 15px;
-    color: $darkShade50;
-  }
 }
 
 .ui-slider {
