@@ -1,4 +1,4 @@
-@import '../../../styles/variables.scss';
+@import '../../../../styles/variables.scss';
 
 .controls-block {
   display: flex;
@@ -26,9 +26,6 @@
   &__caption {
     display: flex;
     justify-content: space-between;
-  }
-
-  &__title {
     margin-bottom: 5px;
   }
 
@@ -63,7 +60,7 @@
   display: flex;
   flex-direction: column;
 
-  > *:not(:last-child) {
+  &.buttons-group > *:not(:last-child) {
     margin-bottom: 30px;
   }
 

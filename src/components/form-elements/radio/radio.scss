@@ -5,20 +5,17 @@
 .radio {
   margin-bottom: 0;
 
-  &__label::before {
+  &__switch {
     border-radius: 50%;
     padding: 3px;
-  }
 
-  &__switch:checked {
-
-    & + .radio__label::before {
+    &:checked {
       background: $primaryGradient;
       background-clip: content-box;
-    }
 
-    & + .radio__label {
-      color: $darkShade75;
+      & + .radio__label {
+        color: $darkShade75;
+      }
     }
   }
 }

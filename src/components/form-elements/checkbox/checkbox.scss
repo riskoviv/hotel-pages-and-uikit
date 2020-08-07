@@ -9,11 +9,11 @@
     margin-bottom: 10px;
   }
 
-  &__label::before {
+  &__switch {
     border-radius: 4px;
-  }
 
-  &__switch:checked + .checkbox__label::before {
-    background: no-repeat center 40% url('../../../res/img/controls/checkbox_toggle.svg');
+    &:checked {
+      background: no-repeat center 40% url('../../../res/img/controls/checkbox_toggle.svg');
+    }
   }
 }

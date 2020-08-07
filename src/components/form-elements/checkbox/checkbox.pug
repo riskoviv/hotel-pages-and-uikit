@@ -1,5 +1,5 @@
+include ../switch-common/switch-common
 mixin checkbox(id, label, isChecked)
   .input-button.checkbox
-    include ../switch-common/switch-common
-    +switch('checkbox', isChecked)
+    +switch(id, 'checkbox', isChecked)
     label(for=id).input-button__label.checkbox__label= label

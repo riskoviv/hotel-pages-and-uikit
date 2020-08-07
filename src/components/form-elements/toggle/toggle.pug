@@ -1,5 +1,5 @@
 mixin toggle(id, label, isChecked)
   .input-button.toggle
     include ../switch-common/switch-common
-    +switch('toggle', isChecked)
+    +switch(id, 'toggle', isChecked)
     label(for=id).input-button__label.toggle__label= label

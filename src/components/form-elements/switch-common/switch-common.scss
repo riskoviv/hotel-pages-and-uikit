@@ -2,28 +2,25 @@
 
 .input-button {
   display: flex;
-  position: relative;
   
   &__label {
     line-height: 20px;
     color: $darkShade50;
-    padding-left: 30px;
+    padding-left: 10px;
     user-select: none;
-
-    &::before {
-      @extend %pseudo-element-basic;
-      border: 1px solid $darkShade25;
-      width: 20px;
-      height: 20px;
-      left: 0;
-    }
   }
 }
 
 .switch {
-  display: none;
+  -moz-appearance: none;
+       appearance: none;
+  background-color: #fff;
+  border: 1px solid $darkShade25;
+  min-width: 20px;
+  width: 20px;
+  height: 20px;
 
-  &:checked + .input-button__label::before {
+  &:checked {
     border: 1px solid $purple;
   }
 }
