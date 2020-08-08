@@ -1,2 +1,7 @@
-mixin switch(id, controlType, isChecked)
-  input.switch(id=id, type='checkbox', checked=isChecked, class=controlType+'__switch')
+mixin switch(options)
+  input.switch(
+    id=options.id,
+    type='checkbox',
+    checked=options.isChecked,
+    class=options.controlType+'__switch'
+  )

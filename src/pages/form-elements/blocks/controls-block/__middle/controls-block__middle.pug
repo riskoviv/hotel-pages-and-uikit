@@ -8,27 +8,42 @@ section.controls-block__middle
   .control-container_group
     h3.control-container_group__title checkbox buttons
     .controls-group
-      +checkbox('cb1', 'Можно курить')
-      +checkbox('cb2', 'Можно с питомцами', true)
-      +checkbox('cb3', 'Можно пригласить гостей (до 10 человек)', true)
+      -
+        var checkboxes = [
+          { id: 'cb1', label: 'Можно курить' },
+          { id: 'cb2', label: 'Можно с питомцами', isChecked: true },
+          { id: 'cb3', label: 'Можно пригласить гостей (до 10 человек)', isChecked: true }
+        ]
+      each val in checkboxes
+        +checkbox(val)
   .control-container_group
     h3.control-container_group__title radio buttons
     .controls-group.controls-group_row
-      +radio('gender', 'male', 'Мужчина', true)
-      +radio('gender', 'female', 'Женщина')
+      -
+        var radios = [
+          { name: 'gender', id: 'male', label: 'Мужчина', isChecked: true },
+          { name: 'gender', id: 'female', label: 'Женщина' }
+        ]
+      each val in radios
+        +radio(val)
   .control-container_group
     h3.control-container_group__title toggle
     .controls-group
-      +toggle('toggle1', 'Получать спецпредложения', true)
-      +toggle('toggle2', 'Получать спецпредложения', false)
+      -
+        var toggles = [
+          { id: 'toggle1', label: 'Получать спецпредложения', isChecked: true },
+          { id: 'toggle2', label: 'Получать спецпредложения' }
+        ]
+      each val in toggles
+        +toggle(val)
   .control-container_group
     h3.control-container_group__title like button
     .controls-group.controls-group_row
-      +likeButton('two', 2)
-      +likeButton('two', 11, true)
+      +likeButton({ id: 'two', likesCount: 2 })
+      +likeButton({ id: 'twelve', likesCount: 11, isClicked: true })
   .control-container_group
     h3.control-container_group__title rate button
     .controls-group.controls-group_row
-      +rateButton('opinion_1', 4)
-      +rateButton('opinion_2', 5)
+      +rateButton({ id: 'opinion_1', rating: 4 })
+      +rateButton({ id: 'opinion_2', rating: 5 })
     

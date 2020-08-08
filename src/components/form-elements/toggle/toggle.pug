@@ -1,5 +1,9 @@
-mixin toggle(id, label, isChecked)
+mixin toggle(options)
   .input-button.toggle
     include ../switch-common/switch-common
-    +switch(id, 'toggle', isChecked)
-    label(for=id).input-button__label.toggle__label= label
+    +switch({
+      id: options.id,
+      controlType: 'toggle',
+      isChecked: options.isChecked
+    })
+    label.input-button__label.toggle__label(for=options.id)= options.label

@@ -1,5 +1,5 @@
-mixin likeButton(id, count, isClicked)
-  .like-button(class=isClicked ? 'like-button_clicked' : '')
+mixin likeButton(options)
+  .like-button(class=options.isClicked ? 'like-button_clicked' : '' id=options.id)
       .like-button__body
         span.like-button__heart.material-icons favorite_border
-        span.like-button__count= count
+        span.like-button__count= options.likesCount

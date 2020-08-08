@@ -1,5 +1,9 @@
 include ../switch-common/switch-common
-mixin checkbox(id, label, isChecked)
+mixin checkbox(options)
   .input-button.checkbox
-    +switch(id, 'checkbox', isChecked)
-    label(for=id).input-button__label.checkbox__label= label
+    +switch({
+      id: options.id,
+      controlType: 'checkbox',
+      isChecked: options.isChecked
+    })
+    label(for=options.id).input-button__label.checkbox__label= options.label
