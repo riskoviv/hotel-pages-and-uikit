@@ -1,9 +1,14 @@
-mixin dropdown(id, type, title, hasButtons, options, isOpened, isForceOpened)
-  .iqdropdown(id=id, class='dropdown_' + type, data-title=title, class=isOpened ? 'menu-open' : '' data-force-opened=isForceOpened ? 'true' : '')
+mixin dropdown(options)
+  .iqdropdown(
+    id=options.id
+    class='dropdown_' + options.type
+    data-title=options.title
+    class=options.isOpened ? 'menu-open' : ''
+    data-always-opened=options.isAlwaysOpened ? 'true' : '')
     p.iqdropdown-selection
     button.iqdropdown__arrow.material-icons expand_more
     .iqdropdown-menu
-      each item, index in options
+      each item, index in options.items
         .iqdropdown-menu-option(
           data-id='item'+(index+1)
           data-name=item.name
@@ -13,7 +18,7 @@ mixin dropdown(id, type, title, hasButtons, options, isOpened, isForceOpened)
           )
           div
             p.iqdropdown-item= item.name
-      if hasButtons
+      if options.hasButtons
         .iqdropdown__controls
           button.iqdropdown__button.button.button_link.button_link_clear.button_link_clear_hidden Очистить
           button.iqdropdown__button.button.button_link Применить

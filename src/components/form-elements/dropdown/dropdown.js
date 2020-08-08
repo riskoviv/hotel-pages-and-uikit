@@ -11,20 +11,20 @@ const toggleDropDown = (event) => {
   const applyButton = target.closest('.button_link:not(.button_link_clear)')
   const clearButton = target.closest('.button_link.button_link_clear')
 
-  const closeNOTForceOpenedDropdowns = () => {
+  const closeNotAlwaysOpenedDropdowns = () => {
     for (let openedDropdown of openedDropdowns) {
-      if (!$(openedDropdown).data('force-opened')) {
+      if (!$(openedDropdown).data('always-opened')) {
         $(openedDropdown).removeClass('menu-open')
       }
     }
   }
 
   if (currentDropdown && !dropdownMenu && !dropdownControls) {
-    closeNOTForceOpenedDropdowns()
+    closeNotAlwaysOpenedDropdowns()
     $(currentDropdown).addClass('menu-open')
     
   } else if (!currentDropdown && !clearButton || applyButton) {
-    closeNOTForceOpenedDropdowns()
+    closeNotAlwaysOpenedDropdowns()
 
   }
 }

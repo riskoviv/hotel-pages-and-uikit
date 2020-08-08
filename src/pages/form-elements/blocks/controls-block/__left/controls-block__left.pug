@@ -18,25 +18,37 @@ section.controls-block__left
   })
   .control-container
     h3.control-container__title dropdown
-    //- dropdown(id, type, title, hasButtons, options[name, defaultcount, maxcount, declensions], isOpened)
-    +dropdown(
-      'guests1', 'guests', 'Сколько гостей', true, [
-        { name: 'взрослые', maxcount: '10', 
-         declensions: [
-           'гость',
-           'гостя',
-           'гостей'
-         ]
+    //- dropdown(id, type, title, hasButtons, items[name, defaultcount, maxcount, declensions], isOpened)
+    +dropdown({
+      id: 'guests1',
+      type: 'guests',
+      title: 'Сколько гостей',
+      hasButtons: true,
+      items: [
+        {
+          name: 'взрослые',
+          maxcount: '10', 
+          declensions: [
+            'гость',
+            'гостя',
+            'гостей'
+          ]
         },
-        { name: 'дети', maxcount: '5' },
-        { name: 'младенцы', maxcount: '6',
+        {
+          name: 'дети',
+          maxcount: '5'
+        },
+        {
+          name: 'младенцы',
+          maxcount: '6',
           declensions: [
             'младенец',
             'младенца',
             'младенцев'
           ]
         }
-      ])
+      ]
+    })
   +textField({
     class: 'text-field_masked',
     title: 'masked text field',
