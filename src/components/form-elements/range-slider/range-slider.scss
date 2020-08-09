@@ -1,34 +1,37 @@
-// @import '../../jquery-ui/jquery-ui.min.css';
 @import '../../../styles/variables.scss';
 
 .range-slider {
-  &__container {
-    width: 266px;
-    margin-bottom: 40px;
-  }
-}
-
-.ui-slider {
-  margin-top: 20px;
-  height: 6px;
   width: 266px;
-  border-radius: 3px;
+  margin-bottom: 40px;
 
-  &.ui-slider-horizontal &-range {
-    top: -1px;
-    height: 6px;
-    background: $greenGradient;
-    cursor: ew-resize;
-  }
-
-  .ui-slider-handle {
-    box-sizing: content-box;
-    width: 12px;
-    height: 12px;
-    top: -6px;
-    background: $greenGradient;
-    border: 2px solid #FFFFFF;
-    border-radius: 50%;
-    cursor: ew-resize;
+  & &__caption {
+    margin-bottom: 20px;
   }
 }
+
+
+
+// .ui-slider {
+//   margin-top: 20px;
+//   height: 6px;
+//   width: 266px;
+//   border-radius: 3px;
+
+//   &.ui-slider-horizontal &-range {
+//     top: -1px;
+//     height: 6px;
+//     background: $greenGradient;
+//     cursor: ew-resize;
+//   }
+
+//   .ui-slider-handle {
+//     box-sizing: content-box;
+//     width: 12px;
+//     height: 12px;
+//     top: -6px;
+//     background: $greenGradient;
+//     border: 2px solid #FFFFFF;
+//     border-radius: 50%;
+//     cursor: ew-resize;
+//   }
+// }

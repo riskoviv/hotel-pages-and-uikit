@@ -19,13 +19,19 @@ const toggleDropDown = (event) => {
     }
   }
 
+  const setAllIQDropdownsZIndexTo1 = () => {
+    $('.iqdropdown').css('z-index', 1)
+  }
+
   if (currentDropdown && !dropdownMenu && !dropdownControls) {
     closeNotAlwaysOpenedDropdowns()
     $(currentDropdown).addClass('menu-open')
+    setAllIQDropdownsZIndexTo1()
+    currentDropdown.style.zIndex = '99'
     
   } else if (!currentDropdown && !clearButton || applyButton) {
     closeNotAlwaysOpenedDropdowns()
-
+    setAllIQDropdownsZIndexTo1()
   }
 }
 
@@ -33,7 +39,7 @@ const iqDropdownInit = (dropdown) => {
   $(dropdown).iqDropdown({
     setSelectionText(itemsCount, totalItems) {
       if (!totalItems) {
-        return $(dropdown).data('title');
+        return $(dropdown).data('placeholder');
       }
 
       function chooseDeclension(optionId, itemsCount) {

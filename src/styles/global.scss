@@ -13,7 +13,7 @@ body {
   height: 100%;
 }
 
-body {
+html {
   font-family: $mainFont;
   font-style: $mainFontStyle;
   font-weight: $mainFontWeight;
@@ -21,11 +21,20 @@ body {
   line-height: $mainLineHeight;
   color: $mainFontColor;
 }
+
+body {
+  font-family: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
 // Common heading styles
 %heading {
-  font-family: 'Quicksand', 'Open Sans', sans-serif;
+  font-family: $headingFont;
   font-style: normal;
-  font-weight: bold;
+  font-weight: $headingFontWeight;
   color: $headingColor;
 }
 h1 {

@@ -2,87 +2,85 @@ include ../../../../components/form-elements/dropdown/dropdown
 
 section.section-row.dropdowns-block
   section.dropdowns-block-left
-    .control-container
-      h3.control-container__title dropdown
-      //- dropdown(id, type, title, hasButtons, items[name, defaultcount, maxcount, declensions], isOpened, isAlwaysOpened)
-      +dropdown({
-        id: 'amenities1',
-        type: 'amenities',
-        title: 'Выберите удобства',
-        hasButtons: false,
-        items: [
-          {
-            name: 'Спальни',
-            defaultcount: '2',
-            maxcount: '10', 
-            declensions: [
-              'спальня',
-              'спальни',
-              'спален'
-            ]
-          },
-          {
-            name: 'Кровати',
-            defaultcount: '2',
-            maxcount: '5',
-            declensions: [
-              'кровать',
-              'кровати',
-              'кроватей'
-            ]
-          },
-          {
-            name: 'Ванные комнаты',
-            maxcount: '4',
-            declensions: [
-              'ванная комната',
-              'ванные комнаты',
-              'ванных комнат'
-            ]
-          }
-        ]
-      })
-    .control-container
-      h3.control-container__title dropdown
-      //- dropdown(id, type, title, hasButtons, items[name, defaultcount, maxcount, declensions], isOpened, isAlwaysOpened)
-      +dropdown({
-        id: 'amenities1',
-        type: 'amenities',
-        title: 'Выберите удобства',
-        hasButtons: false,
-        items: [
-          {
-            name: 'Спальни',
-            defaultcount: '2',
-            maxcount: '10', 
-            declensions: [
+    +dropdown({
+      title: 'dropdown',
+      description: 'default',
+      id: 'amenities1',
+      type: 'amenities',
+      placeholder: 'Выберите удобства',
+      hasButtons: false,
+      items: [
+        {
+          name: 'Спальни',
+          defaultcount: '2',
+          maxcount: '10', 
+          declensions: [
             'спальня',
             'спальни',
             'спален'
           ]
-          },
-          {
-            name: 'Кровати',
-            defaultcount: '2',
-            maxcount: '5',
-            declensions: [
-              'кровать',
-              'кровати',
-              'кроватей'
-            ]
-          },
-          {
-            name: 'Ванные комнаты',
-            maxcount: '4',
-            declensions: [
-              'ванная комната',
-              'ванные комнаты',
-              'ванных комнат'
-            ]
-          }
-        ],
-        isOpened: true,
-        isAlwaysOpened: true
-      })
+        },
+        {
+          name: 'Кровати',
+          defaultcount: '2',
+          maxcount: '5',
+          declensions: [
+            'кровать',
+            'кровати',
+            'кроватей'
+          ]
+        },
+        {
+          name: 'Ванные комнаты',
+          maxcount: '4',
+          declensions: [
+            'ванная комната',
+            'ванные комнаты',
+            'ванных комнат'
+          ]
+        }
+      ]
+    })
+    +dropdown({
+      title: 'dropdown',
+      description: 'expanded',
+      id: 'amenities1',
+      type: 'amenities',
+      placeholder: 'Выберите удобства',
+      hasButtons: false,
+      items: [
+        {
+          name: 'Спальни',
+          defaultcount: '2',
+          maxcount: '10', 
+          declensions: [
+          'спальня',
+          'спальни',
+          'спален'
+        ]
+        },
+        {
+          name: 'Кровати',
+          defaultcount: '2',
+          maxcount: '5',
+          declensions: [
+            'кровать',
+            'кровати',
+            'кроватей'
+          ]
+        },
+        {
+          name: 'Ванные комнаты',
+          maxcount: '4',
+          declensions: [
+            'ванная комната',
+            'ванные комнаты',
+            'ванных комнат'
+          ]
+        }
+      ],
+      isOpened: true,
+      isAlwaysOpened: true
+    })
   //- section.dropdowns-block-middle
   //- section.dropdowns-block-right

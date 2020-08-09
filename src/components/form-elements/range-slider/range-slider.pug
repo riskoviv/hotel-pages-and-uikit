@@ -1,5 +1,7 @@
-mixin rangeSlider(title)
-  .control-container__caption
-    h3.control-container__title=title
-    span.control-container__description#amount(type='text', readonly='')
-  #slider-range
+mixin rangeSlider(options)
+  .control-container.range-slider(class=options.class)
+    .control-container__caption.range-slider__caption
+      if options.title
+        h3.control-container__title.range-slider__title= options.title
+      span.control-container__description.range-slider__description диапазон
+    #slider.range-slider__slider

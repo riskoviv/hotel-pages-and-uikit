@@ -1,4 +1,4 @@
-//- include ../../../../../components/form-elements/range-slider/range-slider
+include ../../../../../components/form-elements/range-slider/range-slider
 include ../../../../../components/form-elements/button/button_gradient/button_gradient
 include ../../../../../components/form-elements/button/button_white/button_white
 include ../../../../../components/form-elements/button/button_link/button_link
@@ -6,8 +6,9 @@ include ../../../../../components/form-elements/button/button_submit/button_subm
 
 
 section.controls-block__right
-  .control-container.range-slider__container
-    //- +rangeSlider('range slider')
+  +rangeSlider({
+    title: 'range slider'
+  })
   .control-container_group
     h3.control-container_group__title buttons
     .controls-group.buttons-group
@@ -17,5 +18,5 @@ section.controls-block__right
         +button_link('click me')
         +button_link('click me', true)
       +button_submit('Перейти к оплате')
-  .control-container_group
-    h3.control-container_group__title pagination
+  .control-container
+    h3.control-container__title pagination
