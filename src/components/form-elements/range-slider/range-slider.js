@@ -16,10 +16,10 @@ import 'nouislider/distribute/nouislider.css'
 var slider = document.getElementById('slider');
 
 noUiSlider.create(slider, {
-    start: [20, 80],
+    start: [5, 10],
     connect: true,
     range: {
         'min': 0,
-        'max': 100
+        'max': 16
     }
 });

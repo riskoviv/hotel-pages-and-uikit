@@ -15,8 +15,8 @@ section.controls-block__right
       +button_gradient('click me')
       +button_white('click me')
       .controls-group.controls-group_row
-        +button_link('click me')
-        +button_link('click me', true)
+        +button_link({ title: 'click me' })
+        +button_link({ title: 'click me', isClear: true })
       +button_submit('Перейти к оплате')
   .control-container
     h3.control-container__title pagination

@@ -1,2 +1,2 @@
-mixin button_link(title, isClear)
-  button(type='button' class=isClear ? 'button_link_clear' : '').button.button_link= title
+mixin button_link(options)
+  button(type='button' class=options.isClear ? 'button_link_clear' : '').button.button_link= options.title
