@@ -1,7 +1,11 @@
 mixin rangeSlider(options)
-  .control-container.range-slider(class=options.class)
+  .control-container.range-slider(
+    class=options.class
+    id=options.id
+    data-range=options.range
+    data-start=options.start
+  )
     .control-container__caption.range-slider__caption
-      if options.title
-        h3.control-container__title.range-slider__title= options.title
-      span.control-container__description.range-slider__description диапазон
+      h3.control-container__title.range-slider__title= options.title
+      span.control-container__description.range-slider__values
     #slider.range-slider__slider

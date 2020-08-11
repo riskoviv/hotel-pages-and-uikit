@@ -1,25 +1,32 @@
-// $(document).ready(function () {
-//   $( "#slider-range" ).slider({
-//       range: true,
-//       min: 0,
-//       max: 16,
-//       values: [ 5, 10 ],
-//       slide: function( event, ui ) {
-//         $( "#amount" ).text( `${ui.values[0] ? ui.values[0] + ' 000' : '0'}₽ - ${ui.values[1] ? ui.values[1] + ' 000' : '0'}₽` );
-//       }
-//     });
-//     $( "#amount" ).text( `${$( "#slider-range" ).slider( "values", 0 )} 000₽ - ${$( "#slider-range" ).slider( "values", 1 )} 000₽` );
-// });
 import noUiSlider from 'nouislider'
 import 'nouislider/distribute/nouislider.css'
 
-var slider = document.getElementById('slider');
+const slider = document.getElementById('slider');
+const rangeSlider = document.querySelector('.range-slider')
+const range = JSON.parse(rangeSlider.dataset.range)
 
 noUiSlider.create(slider, {
-    start: [5, 10],
-    connect: true,
-    range: {
-        'min': 0,
-        'max': 16
+  range: {
+    'min': range[0],
+    'max': range[1]
+  },
+  start: JSON.parse(rangeSlider.dataset.start),
+  connect: true,
+  step: 1000,
+  format: {
+    to: function (value) {
+      let val = value ? value / 1000 + ' 000' : 0
+      return val + '₽'
+    },
+
+    from: function (value) {
+      return Number(value.replace('₽', ''))
     }
+  }
 });
+
+const rangeValues = document.querySelector('.range-slider__values')
+
+slider.noUiSlider.on('update', function (values) {
+  rangeValues.innerText = `${values[0]} - ${values[1]}`
+})

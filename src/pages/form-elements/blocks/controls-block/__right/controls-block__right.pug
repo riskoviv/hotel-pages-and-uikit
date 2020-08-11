@@ -4,7 +4,10 @@ include ../../../../../components/form-elements/button/button
 
 section.controls-block__right
   +rangeSlider({
-    title: 'range slider'
+    title: 'range slider',
+    id: 'range1',
+    range: [0, 16000],
+    start: [5000, 10000]
   })
   .control-container_group
     h3.control-container_group__title buttons
