@@ -1,0 +1,170 @@
+@import '../../../styles/variables.scss';
+@import '~air-datepicker/dist/css/datepicker.css';
+
+.date-dropdown {
+  position: relative;
+
+  &__container {
+    position: relative;
+  }
+
+  &__arrow {
+    @extend %expand-more-button;
+  }
+
+  &__input {
+    @extend %text-field-input-basic;
+    color: $darkShade75;
+    position: relative;
+    cursor: pointer;
+    min-width: unset;
+    width: 150px;
+    height: $inputHeight;
+    background-color: transparent;
+    padding: $inputPadding;
+
+    &_fake {
+      position: absolute;
+      top: 15px;
+      background-color: transparent;
+      width: 100%;
+      height: calc(100% - 15px);
+      z-index: 3;
+      cursor: pointer;
+      border: none;
+    }
+  }
+ 
+}
+
+//
+// Air Datepicker styles
+//
+
+.datepicker {
+  box-sizing: border-box;
+  font-family: $mainFont;
+  border: $inputBorder;
+  box-shadow: $dropdownShadow;
+  width: 320px;
+
+  &--pointer {
+    display: none;
+  }
+  
+  &--nav {
+    border: none;
+    padding: 19px 16px;
+
+    &-action {
+      display: flex;
+      color: $purple;
+    }
+
+    &-title {
+      cursor: default;
+      user-select: none;
+
+      > i {
+        color: inherit;
+      }
+
+      &:hover {
+        background: white;
+      }
+    }
+  }
+
+  &--content {
+    font-size: 12px;
+    line-height: 15px;
+    padding: 10px 20px;
+
+  }
+
+  &--days-names {
+    margin: 0;
+  }
+
+  &--day-name {
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 12px;
+    height: 40px;
+    color: $purple;
+  }
+
+  &--cell {
+    height: 40px;
+    color: $darkShade50;
+
+    &.-other-month- {
+      color: $darkShade25;
+    }
+
+    &.-current-,
+    &.-selected-,
+    &.-range-to- {
+      color: white;
+      border-radius: 50%;
+      font-weight: bold;
+    }
+
+    &.-current- {
+      background: $greenGradient;
+
+      &.-in-range- {
+        background: $greenGradient;
+        color: white;
+      }
+    }
+
+    &.-selected-,
+    &.-in-range- {
+      background: $primaryGradient;
+    }
+
+    &.-focus- {
+      border-radius: 50%;
+
+      &.-selected- {
+        background: $primaryGradient;
+      }
+    }
+
+    &.-in-range- {
+      background: linear-gradient(180deg, transparentize($purple , 0.75) 0%, transparentize(#8BA4F9, 0.75) 100%);
+      color: $darkShade50;
+
+      &.-focus- {
+        border-radius: 0;
+      }
+    }
+
+    &.-range-from-::after,
+    &.-range-to-::before {
+      @extend %pseudo-element-basic;
+      top: 0;
+      right: 0;
+      background: $primaryGradient;
+      opacity: 0.25;
+      width: 50%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    &.-range-to- {
+      border: none;
+      background: $primaryGradient;
+
+      &::before {
+        right: unset;
+        left: 0;
+
+        &.-focus- {
+
+        }
+      }
+    }
+  }
+}

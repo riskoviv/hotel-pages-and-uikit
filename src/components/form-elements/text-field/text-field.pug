@@ -6,7 +6,7 @@ mixin textField(options)
       if options.description
         span.control-container__description= options.description
     input.text-field__input(
-      type='text'
+      type=options.type || 'text'
       placeholder=options.placeholder
       value=options.value
       class=options.class ? options.class + '__input' : ''

@@ -11,7 +11,7 @@
   &__slider {
     height: 6px;
     cursor: ew-resize;
-    border: 1px solid $darkShade25;
+    border: $inputBorder;
     background-color: white;
     box-shadow: none;
   }

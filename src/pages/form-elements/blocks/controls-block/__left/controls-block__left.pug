@@ -1,22 +1,21 @@
 include ../../../../../components/form-elements/text-field/text-field
 include ../../../../../components/form-elements/dropdown/dropdown
-include ../../../../../components/form-elements/dropdown/date-dropdown/date-dropdown
-include ../../../../../components/form-elements/dropdown/date-dropdown/date-dropdown_filtered/date-dropdown_filtered
+include ../../../../../components/form-elements/date-dropdown/date-dropdown
+include ../../../../../components/form-elements/date-dropdown/date-dropdown_filtered/date-dropdown_filtered
 
 section.controls-block__left
   +textField({
+    type: 'email',
     title: 'text field',
     placeholder: 'Email',
     description: 'default'
   })
   +textField({
     title: 'text field',
-    placeholder: 'Email',
     value: 'This is pretty awesome',
     forceHoverStyle: true,
     description: 'hover / focus'
   })
-  //- dropdown(id, type, title, hasButtons, items[name, defaultcount, maxcount, declensions], isOpened)
   +dropdown({
     title: 'dropdown',
     description: 'default',
@@ -55,17 +54,14 @@ section.controls-block__left
     placeholder: 'ДД.ММ.ГГГГ',
     description: 'default'
   })
-  .control-container_row
-    .control-container
-      h3.control-container__title date dropdown
-      +dateDropdown('date1', true)
-    .control-container
-      h3.control-container__title date dropdown
-      +dateDropdown('date2')
+  +dateDropdown({
+    
+  })
   .control-container
     h3.control-container__title filter date dropdown
     //- +dropdown('date-dropdown_filter', '19 авг - 23 авг')
   +textField({
+    type: 'email',
     title: 'subscription text field',
     placeholder: 'Email',
     class: 'text-field_subscription'

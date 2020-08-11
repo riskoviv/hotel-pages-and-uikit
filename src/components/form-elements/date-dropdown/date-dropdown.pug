@@ -1,0 +1,9 @@
+mixin dateDropdown(options)
+  .date-dropdown.control-container_row
+    input#datepicker.date-dropdown__input_fake.datepicker-here(type='text' readonly)
+    each val in [1, 2]
+      .control-container
+        h3.control-container__title #{options['title' + val] || 'date dropdown'}
+        .date-dropdown__container
+          button.date-dropdown__arrow.material-icons expand_more
+          input.date-dropdown__input(type='text' id='date' + val placeholder='ДД.ММ.ГГГГ' readonly)

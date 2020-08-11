@@ -4,7 +4,7 @@ import '../../../../node_modules/item-quantity-dropdown/lib/item-quantity-dropdo
 // Функция закрытия/открытия дропдауна
 const toggleDropDown = (event) => {
   const target = event.target;
-  const openedDropdowns = $('.iqdropdown.menu-open')
+  const $openedDropdowns = $('.iqdropdown.menu-open')
   const currentDropdown = target.closest('.iqdropdown')
   const dropdownMenu = target.closest('.iqdropdown-menu')
   const dropdownControls = target.closest('.iqdropdown__controls')
@@ -12,7 +12,7 @@ const toggleDropDown = (event) => {
   const clearButton = target.closest('.button_link.button_link_clear')
 
   const closeNotAlwaysOpenedDropdowns = () => {
-    for (let openedDropdown of openedDropdowns) {
+    for (let openedDropdown of $openedDropdowns) {
       if (!$(openedDropdown).data('always-opened')) {
         $(openedDropdown).removeClass('menu-open')
       }
@@ -43,16 +43,17 @@ const iqDropdownInit = (dropdown) => {
       }
 
       function chooseDeclension(optionId, itemsCount) {
-        const totalItemsEnd = parseInt(itemsCount.toString().split('').pop())
+        const totalItemsLastDigit = parseInt(itemsCount.toString().split('').pop())
 
-        const option = $(`#${dropdown.id} .iqdropdown-menu-option[data-id="${optionId}"`)
-        let declensionText = option.data('name') // Если нет списка склонений, используется название элемента
-        if (option.data('declensions')) { // Если есть список склонений, выбрать нужное
-          declensionText = option.data('declensions')[2] //5+
-          if ([2, 3, 4].indexOf(totalItemsEnd) != -1 && (itemsCount < 12 || itemsCount > 21)) {
-            declensionText = option.data('declensions')[1] //2-4
-          } else if (itemsCount === 1 || totalItemsEnd === 1 && itemsCount > 20) {
-            declensionText = option.data('declensions')[0] //1
+        const $option = $(`#${dropdown.id} .iqdropdown-menu-option[data-id="${optionId}"`)
+        let declensionText = $option.data('name') // Если нет списка склонений, используется название элемента
+        if ($option.data('declensions')) { // Если есть список склонений, выбрать нужное
+          const declensionsList = $option.data('declensions')
+          declensionText = declensionsList[2] //5+
+          if ([2, 3, 4].indexOf(totalItemsLastDigit) != -1 && (itemsCount < 12 || itemsCount > 21)) {
+            declensionText = declensionsList[1] //2-4
+          } else if (itemsCount === 1 || totalItemsLastDigit === 1 && itemsCount > 20) {
+            declensionText = declensionsList[0] //1
           }
         }
         return declensionText
@@ -75,8 +76,7 @@ const iqDropdownInit = (dropdown) => {
         
         for (let i = 1; i <= Object.keys(itemsCount).length; i++) {
           if (itemsCount[`item${i}`]) {
-            if (text)
-              text += ', '
+            if (text) text += ', '
             text += `${itemsCount[`item${i}`]} ${chooseDeclension(`item${i}`, itemsCount[`item${i}`])}`
           }
         }
@@ -85,21 +85,21 @@ const iqDropdownInit = (dropdown) => {
       }
     },
     onChange: (id, count, totalItems) => {
-      const buttonIncrement = $(`#${dropdown.id} [data-id='${id}'] .button-increment`)
-      const buttonDecrement = $(`#${dropdown.id} [data-id='${id}'] .button-decrement`)
+      const $buttonIncrement = $(`#${dropdown.id} [data-id='${id}'] .button-increment`)
+      const $buttonDecrement = $(`#${dropdown.id} [data-id='${id}'] .button-decrement`)
       if (count === $(`#${dropdown.id} [data-id='${id}']`).data('maxcount')) {
-        buttonIncrement.prop('disabled', true)
-        buttonIncrement.addClass('button-increment_disabled')
+        $buttonIncrement.prop('disabled', true)
+        $buttonIncrement.addClass('button-increment_disabled')
       }
       else if (!count) {
-        buttonDecrement.prop('disabled', true)
-        buttonDecrement.addClass('button-decrement_disabled')
+        $buttonDecrement.prop('disabled', true)
+        $buttonDecrement.addClass('button-decrement_disabled')
       }
       else {
-        buttonIncrement.removeAttr('disabled')
-        buttonDecrement.removeAttr('disabled')
-        buttonIncrement.removeClass('button-increment_disabled')
-        buttonDecrement.removeClass('button-decrement_disabled')
+        $buttonIncrement.removeAttr('disabled')
+        $buttonDecrement.removeAttr('disabled')
+        $buttonIncrement.removeClass('button-increment_disabled')
+        $buttonDecrement.removeClass('button-decrement_disabled')
       }
 
       // Отображение/скрытие кнопки очистить
@@ -112,18 +112,19 @@ const iqDropdownInit = (dropdown) => {
     
   });
   
-  const options = $('.iqdropdown-menu-option', dropdown)
-  for (let option of options) { // disable '-' if item's count is 0
+  const $options = $('.iqdropdown-menu-option', dropdown)
+  for (let option of $options) { // disable '-' if item's count is 0
     if (option.dataset.defaultcount === '0') {
-      $('.button-decrement', option).prop('disabled', true)
-      $('.button-decrement', option).addClass('button-decrement_disabled')
+      const $decrementButton = $('.button-decrement', option)
+      $decrementButton.prop('disabled', true)
+      $decrementButton.addClass('button-decrement_disabled')
     }
   }
   $(`#${dropdown.id} .icon-decrement`).text('-');
   $(`#${dropdown.id} .icon-increment`).text('+');
 
   // удаление события клика по дропдауну
-  $('.iqdropdown').off('click')
+  $(dropdown).off('click')
 
   // Кнопка "очистить"
   if ($(`#${dropdown.id} .iqdropdown__controls`).length) {
@@ -134,15 +135,15 @@ const iqDropdownInit = (dropdown) => {
 
 // Инициализация дропдауна после загрузки страницы
 $(document).ready(function () {
-  const iqdropdowns = $('.iqdropdown')
-  for (let iqdropdown of iqdropdowns) {
+  const $iqdropdowns = $('.iqdropdown')
+  for (let iqdropdown of $iqdropdowns) {
     iqDropdownInit(iqdropdown)
   }
 });
 
-const iqdMenus = $('.iqdropdown-menu')
+const $iqdMenus = $('.iqdropdown-menu')
 const iqdMenusHTMLs = {}
-for (let iqdMenu of iqdMenus) {
+for (let iqdMenu of $iqdMenus) {
   let id = iqdMenu.parentNode.id
   iqdMenusHTMLs[id] = ($(iqdMenu).html())
 }
