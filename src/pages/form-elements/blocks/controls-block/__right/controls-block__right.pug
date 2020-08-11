@@ -1,8 +1,5 @@
 include ../../../../../components/form-elements/range-slider/range-slider
-include ../../../../../components/form-elements/button/button_gradient/button_gradient
-include ../../../../../components/form-elements/button/button_white/button_white
-include ../../../../../components/form-elements/button/button_link/button_link
-include ../../../../../components/form-elements/button/button_submit/button_submit
+include ../../../../../components/form-elements/button/button
 
 
 section.controls-block__right
@@ -12,11 +9,11 @@ section.controls-block__right
   .control-container_group
     h3.control-container_group__title buttons
     .controls-group.buttons-group
-      +button_gradient('click me')
-      +button_white('click me')
+      +button_filled('click me')
+      +button_bordered('click me')
       .controls-group.controls-group_row
         +button_link({ title: 'click me' })
         +button_link({ title: 'click me', isClear: true })
-      +button_submit('Перейти к оплате')
+      +button_wide('Перейти к оплате')
   .control-container
     h3.control-container__title pagination

@@ -1,7 +1,7 @@
 include ../../../../../components/form-elements/checkbox/checkbox
 include ../../../../../components/form-elements/radio/radio
 include ../../../../../components/form-elements/toggle/toggle
-include ../../../../../components/form-elements/button/button_like/button_like
+include ../../../../../components/form-elements/button/button
 include ../../../../../components/form-elements/rate-button/rate-button
 
 section.controls-block__middle
@@ -39,8 +39,8 @@ section.controls-block__middle
   .control-container_group
     h3.control-container_group__title like button
     .controls-group.controls-group_row
-      +likeButton({ id: 'two', likesCount: 2 })
-      +likeButton({ id: 'twelve', likesCount: 11, isClicked: true })
+      +button_like({ id: 'two', likesCount: 2 })
+      +button_like({ id: 'twelve', likesCount: 11, isClicked: true })
   .control-container_group
     h3.control-container_group__title rate button
     .controls-group.controls-group_row
