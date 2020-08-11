@@ -1,12 +1,12 @@
 mixin button_filled(title)
-  button(type='button').button.button_filled= title
+  button.button.button_filled(type='button')= title
 
 mixin button_bordered(title)
   .button.button_bordered
-    button(type='button').button.button_bordered__body= title
+    button.button.button_bordered__body(type='button')= title
 
 mixin button_link(options)
-  button(type='button' class=options.isClear ? 'button_link_clear' : '').button.button_link= options.title
+  button.button.button_link(type='button' class=options.isClear ? 'button_link_clear' : '')= options.title
 
 mixin button_like(options)
   .button.button_like(class=options.isClicked ? 'button_like_clicked' : '' id=options.id)
@@ -15,5 +15,5 @@ mixin button_like(options)
       span.button_like__count= options.likesCount
 
 mixin button_wide(title)
-  button(type='submit').button.button_filled.button_wide= title
+  button.button.button_filled.button_wide(type='submit')= title
     span.button_wide__arrow.material-icons arrow_forward
