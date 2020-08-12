@@ -4,6 +4,10 @@
 .date-dropdown {
   position: relative;
 
+  .control-container__title {
+    margin-bottom: 5px;
+  }
+
   &__container {
     position: relative;
   }
@@ -26,12 +30,13 @@
     &_fake {
       position: absolute;
       top: 15px;
-      background-color: transparent;
       width: 100%;
       height: calc(100% - 15px);
       z-index: 3;
       cursor: pointer;
       border: none;
+      background-color: transparent;
+      color: transparent;
     }
   }
  
@@ -65,10 +70,6 @@
       cursor: default;
       user-select: none;
 
-      > i {
-        color: inherit;
-      }
-
       &:hover {
         background: white;
       }
@@ -79,7 +80,6 @@
     font-size: 12px;
     line-height: 15px;
     padding: 10px 20px;
-
   }
 
   &--days-names {
@@ -98,73 +98,150 @@
     height: 40px;
     color: $darkShade50;
 
-    &.-other-month- {
-      color: $darkShade25;
-    }
-
     &.-current-,
     &.-selected-,
+    &.-range-from-,
     &.-range-to- {
       color: white;
-      border-radius: 50%;
       font-weight: bold;
-    }
+      background: none;
 
-    &.-current- {
-      background: $greenGradient;
-
-      &.-in-range- {
-        background: $greenGradient;
-        color: white;
+      &::before {
+        @extend %pseudo-element-basic;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        z-index: -1;
       }
     }
 
     &.-selected-,
+    &.-range-from-,
+    &.-range-to- {
+
+      &::before {
+        background: $primaryGradient;
+      }
+
+      &::after {
+        @extend %pseudo-element-basic;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        z-index: -2;
+        background: $primaryGradientTransparentized25;
+      }
+    }
+
+    &.-current- {
+
+      &::before {
+        background: $greenGradient;
+      }
+
+      &.-selected- {
+        background: none;
+      }
+
+      &.-focus- {
+        color: white;
+      }
+
+      &.-in-range- {
+        color: white;
+        
+        &::after {
+          width: 100%;
+          left: 0;
+        }
+      }
+    }
+
+    &.-range-from- {
+      border: none;
+
+      &::after {
+        right: 0;
+      }
+    }
+
+    &.-range-to- {
+      border: none;
+
+      &::after {
+        left: 0;
+      }
+
+      &.-selected-::before {
+        border-radius: 50%;
+      }
+    }
+
     &.-in-range- {
-      background: $primaryGradient;
+      background: none;
+
+      &::after {
+        @extend %pseudo-element-basic;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: $primaryGradientTransparentized25;
+        color: $darkShade50;
+        z-index: -2;
+      }
+
+      &.-focus-:not(.-current-) {
+        border-radius: 0;
+      }
     }
 
     &.-focus- {
       border-radius: 50%;
 
       &.-selected- {
-        background: $primaryGradient;
+        background: none;
       }
     }
 
-    &.-in-range- {
-      background: linear-gradient(180deg, transparentize($purple , 0.75) 0%, transparentize(#8BA4F9, 0.75) 100%);
-      color: $darkShade50;
+    &.-other-month- {
+      color: $darkShade25;
 
-      &.-focus- {
-        border-radius: 0;
+      &.-range-from-,
+      &.-range-to- {
+        color: white;
       }
-    }
 
-    &.-range-from-::after,
-    &.-range-to-::before {
-      @extend %pseudo-element-basic;
-      top: 0;
-      right: 0;
-      background: $primaryGradient;
-      opacity: 0.25;
-      width: 50%;
-      height: 100%;
-      z-index: -1;
-    }
-
-    &.-range-to- {
-      border: none;
-      background: $primaryGradient;
-
-      &::before {
-        right: unset;
-        left: 0;
-
-        &.-focus- {
-
+      &.-selected-,
+      &.-in-range- {
+        background: none;
+        
+        &::after {
+          background: $primaryGradientTransparentized25;
         }
       }
     }
+  }
+
+  &--button {
+
+    &:hover {
+      background: unset;
+      color: $darkShade50;
+    }
+
+    &.button_link_clear {
+      max-width: 75px;
+    }
+
+    &s {
+      border-top: none;
+      padding: 20px;
+      padding-top: 10px;
+      justify-content: space-between;
+    }
+    
   }
 }

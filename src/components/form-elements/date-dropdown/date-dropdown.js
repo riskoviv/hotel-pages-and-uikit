@@ -11,17 +11,17 @@ $(() => {
     changeNavIcons()
     disableNavTitle()
     $('.datepicker--nav-title').addClass('heading-2')
+    $('.datepicker--button[data-action="clear"]')
+      .addClass('button button_link button_link_clear')
   }
   const date1 = $('#date1')
   const date2 = $('#date2')
   const setDates = (selectedDates) => {
-    $('#datepicker').val('') // clear fake input
     const dates = selectedDates.split(',')
     $(date1).val(dates[0] || '')
     $(date2).val(dates[1] || '')
   }
   var myDatepicker = $('#datepicker').datepicker().data('datepicker');
-  myDatepicker.show()
 
   $('#datepicker').datepicker({
     inline: false,
@@ -31,7 +31,7 @@ $(() => {
     nextHtml: 'arrow_forward',
     offset: 5,
     navTitles: {
-      days: 'MM <i>yyyy</i>'
+      days: 'MM yyyy'
     },
     onChangeMonth() {
       setCustomOptions()
@@ -39,14 +39,14 @@ $(() => {
     onSelect(formattedDate) {
       setDates(formattedDate)
       setCustomOptions()
-    },
-    onShow() {
-      // setCustomOptions()
-    },
-    onHide() {
-      myDatepicker.show()
-      setCustomOptions()
     }
   })
+
   setCustomOptions()
+
+  $('.datepicker--buttons')
+    .append('<button class="button button_link">Применить</button>')
+  $('.datepicker--buttons > button').click(function () {
+    myDatepicker.hide()
+  })
 })
