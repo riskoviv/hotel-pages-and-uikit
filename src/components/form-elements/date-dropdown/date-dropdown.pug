@@ -1,9 +1,25 @@
 mixin dateDropdown(options)
+  - var randID = Math.floor(Math.random() * (1 - 100) + 100)
   .date-dropdown.control-container_row
-    input#datepicker.date-dropdown__input_fake.datepicker-here(type='text' readonly)
+    input.date-dropdown__input_fake.datepicker-here(type='text' data-classes='calendar-' + randID readonly)
     each val in [1, 2]
       .control-container
         h3.control-container__title #{options['title' + val] || 'date dropdown'}
         .date-dropdown__container
           button.date-dropdown__arrow.material-icons expand_more
-          input.date-dropdown__input(type='text' id='date' + val placeholder='ДД.ММ.ГГГГ' readonly)
+          input.date-dropdown__input(type='text' class='date-' + val placeholder='ДД.ММ.ГГГГ' readonly)
+
+mixin dateDropdownFilter(options)
+  - var randID = Math.floor(Math.random() * (1 - 100) + 100)
+  .date-dropdown.date-dropdown_filter.control-container
+    h3.control-container__title #{options['title' + val] || 'filter date dropdown'}
+    .date-dropdown__container.date-dropdown_filter__container
+      button.date-dropdown__arrow.date-dropdown_filter__arrow.material-icons expand_more
+      input.date-dropdown__input.date-dropdown_filter__input.datepicker-here(
+        type='text'
+        placeholder='ДД.ММ.ГГГГ'
+        data-classes='calendar-' + randID
+        data-multiple-dates-separator=' - '
+        data-date-format='dd M'
+        readonly
+      )

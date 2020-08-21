@@ -39,6 +39,25 @@
       color: transparent;
     }
   }
+
+  &_filter {
+    max-width: 266px;
+    color: $darkShade75;
+    margin-bottom: 40px;
+
+    &__container {
+      position: relative;
+    }
+
+    &__input {
+      width: 100%;
+      text-transform: lowercase;
+
+      &::placeholder {
+        text-transform: uppercase;
+      }
+    }
+  }
  
 }
 
@@ -221,6 +240,15 @@
         &::after {
           background: $primaryGradientTransparentized25;
         }
+      }
+    }
+
+    &.-disabled- {
+      color: $darkShade25;
+
+      &.-focus- {
+        background: none;
+        color: $darkShade25;
       }
     }
   }
