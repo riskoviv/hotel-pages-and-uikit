@@ -87,4 +87,6 @@ $inputBorder: 1px solid $darkShade25;
   top: 0;
   right: 0;
   content: 'expand_more';
+  -moz-user-select: none;
+  user-select: none;
 }

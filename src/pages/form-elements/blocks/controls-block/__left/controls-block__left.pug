@@ -48,16 +48,18 @@ section.controls-block__left
     ]
   })
   +textField({
-    class: 'text-field_masked',
+    class: 'masked',
     title: 'masked text field',
     placeholder: 'ДД.ММ.ГГГГ',
     description: 'default'
   })
-  +dateDropdown({})
-  +dateDropdownFilter({})
+  .control-container_vertically-spacey
+    +dateDropdown({})
+  .control-container_vertically-spacey
+    +dateDropdownFilter({})
   +textField({
+    class: 'subscription',
     type: 'email',
     title: 'subscription text field',
-    placeholder: 'Email',
-    class: 'text-field_subscription'
+    placeholder: 'Email'
   })

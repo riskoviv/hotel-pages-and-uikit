@@ -37,13 +37,17 @@
       border: none;
       background-color: transparent;
       color: transparent;
+
+      &::selection {
+        background-color: none;
+        color: none;
+      }
     }
   }
 
   &_filter {
     max-width: 266px;
     color: $darkShade75;
-    margin-bottom: 40px;
 
     &__container {
       position: relative;
@@ -55,6 +59,8 @@
 
       &::placeholder {
         text-transform: uppercase;
+        -moz-user-select: none;
+        user-select: none;
       }
     }
   }
