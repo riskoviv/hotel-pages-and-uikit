@@ -1,6 +1,6 @@
 include ../../../../../components/form-elements/range-slider/range-slider
 include ../../../../../components/form-elements/button/button
-
+include ../../../../../components/form-elements/pagination/pagination
 
 section.controls-block__right
   +rangeSlider({
@@ -18,5 +18,6 @@ section.controls-block__right
         +button_link({ title: 'click me' })
         +button_link({ title: 'click me', isClear: true })
       +button_wide('Перейти к оплате')
-  .control-container
-    h3.control-container__title pagination
+  .control-container.pagination
+    h3.control-container__title.pagination__title pagination
+    +pagination

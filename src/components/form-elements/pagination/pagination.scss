@@ -1,0 +1,21 @@
+@import '../../../styles/variables.scss';
+@import '~paginationjs/dist/pagination.css';
+
+.pagination {
+  
+  &__title {
+    margin-bottom: 16px;
+  }
+
+  &__data-container {
+    // display: none;
+  }
+
+  &__container {
+
+  }
+
+  &__item {
+    
+  }
+}
