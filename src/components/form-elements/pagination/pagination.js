@@ -11,12 +11,14 @@ $(() => {
       return html;
   }
 
-  function addClassesToArrows() {
+  function addClassesToElements() {
     $('.paginationjs-prev > a').addClass('material-icons')
     $('.paginationjs-next > a').addClass('material-icons')
   }
 
-  $('.pagination__container').pagination({
+  const $paginator = $('.pagination__container')
+  
+  $paginator.pagination({
     dataSource: function(done){
       let result = [];
       for (let i = 1; i <= 180; i++) {
@@ -34,10 +36,16 @@ $(() => {
     autoHideNext: true,
     prevText: 'arrow_back',
     nextText: 'arrow_forward',
-    pageNumber: 2,
+    pageNumber: 1,
+    pageRange: 2,
     afterRender: function () {
-      addClassesToArrows()
+      addClassesToElements()
+      const navData = $('.paginationjs-nav').text().split(',')
+      $('.paginationjs-nav')
+        .text(`${navData[0] * 12 - 11} - ${navData[0] * 12} из ${navData[1]} вариантов аренды`)
     },
+    formatNavigator: '<%= currentPage %>,<%= totalNumber %>',
+    showNavigator: true,
   })
 
   
