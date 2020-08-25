@@ -3,28 +3,97 @@
 
 .pagination {
 
-  &js {
-    display: flex;
-    flex-direction: column;
-
-    & &-nav {
-      margin-left: 0;
-    }
-  }
-  
   &__title {
     margin-bottom: 16px;
   }
 
   &__data-container {
-    // display: none;
+    display: none;
+
+    &__item {
+      
+    }
   }
 
-  &__container {
-
-  }
-
-  &__item {
+  &js {
+    display: flex;
+    flex-direction: column;
+    font-family: $mainFont;
+    width: -moz-fit-content;
+    width: fit-content;
     
+    & &-pages,
+    & &-nav {
+      float: none;
+    }
+
+    & &-pages {
+      width: 100%;
+
+      li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border: none;
+
+        &.paginationjs-next,
+        &.paginationjs-prev,
+        &.active {
+          border-radius: 50%;
+          background: $greenGradient;
+
+          > a {
+            color: white;
+            background: transparent;
+          }
+        }
+
+        &.active {
+          background: $primaryGradient;
+          font-weight: bold;
+        }
+
+        &:last-child {
+          border: none;
+        }
+
+        &.disabled > a {
+          opacity: 1;
+        }
+
+        > a {
+          width: 40px;
+          height: 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 12px;
+          line-height: 15px;
+          background: transparent;
+          color: $darkShade50;
+          
+          &:hover {
+            border-radius: 50%;
+          }
+          
+          &.material-icons {
+            font-size: 24px;
+            line-height: 20px;
+            vertical-align: middle;
+          }
+        }
+      }
+    }
+
+    & &-nav {
+      margin-top: 10px;
+      margin-left: 0;
+      align-self: center;
+      font-size: $mainFontSize;
+      line-height: $mainLineHeight;
+    }
   }
+  
 }
