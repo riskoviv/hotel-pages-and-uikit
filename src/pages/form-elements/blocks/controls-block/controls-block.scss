@@ -1,23 +1,22 @@
 @import '../../../../styles/variables.scss';
 
 .controls-block {
-  display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
   margin-bottom: 100px;
-
-  > *:not(:last-child) {
-    margin-right: 20px;
-  }
 
   &__left,
   &__right {
     min-width: 320px;
   }
 
+  &__left {
+    margin-right: 126px;
+  }
+
   &__middle {
     min-width: 260px;
+    margin-right: 132px;
   }
 }
 

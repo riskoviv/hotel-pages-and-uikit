@@ -1,11 +1,20 @@
 @import '../../styles/variables.scss';
 
+.form-elements {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .page-wrapper_form-elements {
   max-width: 1400px;
-  margin: 0 140px;
   flex-direction: column;
 }
 
 .section-row {
-  min-width: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-width: 300px;
 }

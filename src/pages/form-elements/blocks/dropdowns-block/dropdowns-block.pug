@@ -82,5 +82,35 @@ section.section-row.dropdowns-block
       isOpened: true,
       isAlwaysOpened: true
     })
-  //- section.dropdowns-block-middle
-  //- section.dropdowns-block-right
+  section.dropdowns-block-middle
+    +dropdown({
+      type: 'guests',
+      id: 'guests2',
+      placeholder: 'Сколько гостей',
+      hasButtons: true,
+      items: [
+        {
+          name: 'взрослые',
+          maxcount: '10', 
+          declensions: [
+            'гость',
+            'гостя',
+            'гостей'
+          ]
+        },
+        {
+          name: 'дети',
+          maxcount: '5'
+        },
+        {
+          name: 'младенцы',
+          maxcount: '6',
+          declensions: [
+            'младенец',
+            'младенца',
+            'младенцев'
+          ]
+        }
+      ]
+    })
+  section.dropdowns-block-right

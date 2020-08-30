@@ -1,7 +1,8 @@
+//- options: title, description, id, type, placeholder, hasButtons, items[{name, maxcount, declensions[]}], isOpened, isAlwaysOpened
 mixin dropdown(options)
   .control-container.dropdown
     .control-container__caption
-      h3.control-container__title= options.title
+      h3.control-container__title= options.title || 'dropdown'
       span.control-container__description= options.description
     .iqdropdown(
       id=options.id

@@ -1,11 +1,19 @@
 @import '../../../../styles/variables.scss';
 
 .dropdowns-block {
-
+  display: flex;
   height: 266px;
   margin-bottom: 40px;
 
   &-left {
     max-width: 266px;
+  }
+
+  &-middle {
+    margin-left: 181px;
+  }
+
+  &-right {
+    margin-left: 72px;
   }
 }

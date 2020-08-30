@@ -133,7 +133,7 @@ const iqDropdownInit = (dropdown) => {
 }
 
 
-// Инициализация дропдауна после загрузки страницы
+// Инициализация дропдаунов после загрузки страницы
 $(document).ready(function () {
   const $iqdropdowns = $('.iqdropdown')
   for (let iqdropdown of $iqdropdowns) {
@@ -141,6 +141,7 @@ $(document).ready(function () {
   }
 });
 
+// Сохранение всех списков в один объект
 const $iqdMenus = $('.iqdropdown-menu')
 const iqdMenusHTMLs = {}
 for (let iqdMenu of $iqdMenus) {
