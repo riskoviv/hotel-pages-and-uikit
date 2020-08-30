@@ -27,62 +27,58 @@
       float: none;
     }
 
-    & &-pages {
-      width: 100%;
+    & &-pages li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      border: none;
 
-      li {
+      &.paginationjs-next,
+      &.paginationjs-prev,
+      &.active {
+        border-radius: 50%;
+        background: $greenGradient;
+
+        > a {
+          color: white;
+          background: transparent;
+        }
+      }
+
+      &.active {
+        background: $primaryGradient;
+        font-weight: bold;
+      }
+
+      &:last-child {
+        border: none;
+      }
+
+      &.disabled > a {
+        opacity: 1;
+      }
+
+      > a {
+        width: 40px;
+        height: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 40px;
-        height: 40px;
-        border: none;
-
-        &.paginationjs-next,
-        &.paginationjs-prev,
-        &.active {
+        font-size: 12px;
+        line-height: 15px;
+        background: transparent;
+        color: $darkShade50;
+        
+        &:hover {
           border-radius: 50%;
-          background: $greenGradient;
-
-          > a {
-            color: white;
-            background: transparent;
-          }
         }
-
-        &.active {
-          background: $primaryGradient;
-          font-weight: bold;
-        }
-
-        &:last-child {
-          border: none;
-        }
-
-        &.disabled > a {
-          opacity: 1;
-        }
-
-        > a {
-          width: 40px;
-          height: 40px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-size: 12px;
-          line-height: 15px;
-          background: transparent;
-          color: $darkShade50;
-          
-          &:hover {
-            border-radius: 50%;
-          }
-          
-          &.material-icons {
-            font-size: 24px;
-            line-height: 20px;
-            vertical-align: middle;
-          }
+        
+        &.material-icons {
+          font-size: 24px;
+          line-height: 20px;
+          vertical-align: middle;
         }
       }
     }
