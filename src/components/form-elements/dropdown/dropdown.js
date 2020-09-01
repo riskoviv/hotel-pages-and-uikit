@@ -139,6 +139,8 @@ $(document).ready(function () {
   for (let iqdropdown of $iqdropdowns) {
     iqDropdownInit(iqdropdown)
   }
+  // здесь можно запустить проверку, что выбранные количества не равны 0
+  // checkNotZeros()
 });
 
 // Сохранение всех списков в один объект
@@ -156,6 +158,9 @@ const clearFn = (event) => {
   const dropdownMenu = target.closest('.iqdropdown-menu')
   const dropdown = target.closest('.iqdropdown')
   $(dropdownMenu).html(iqdMenusHTMLs[dropdown.id])
+  console.log('iqdMenusHTMLs[dropdown.id]: ', $.parseHTML(iqdMenusHTMLs[dropdown.id]));
+  // ^^^ ПОПРОБОВАТЬ ПЕРЕДЕЛАТЬ ПЕРЕДАВАЕМЫЙ HTML ДЛЯ СБРОСА НА НОЛЬ
+  // можно сделать через jquery
   iqDropdownInit(dropdown)
 }
 

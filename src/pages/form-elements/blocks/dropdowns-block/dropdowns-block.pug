@@ -8,38 +8,7 @@ section.section-row.dropdowns-block
       id: 'amenities1',
       type: 'amenities',
       placeholder: 'Выберите удобства',
-      hasButtons: false,
-      items: [
-        {
-          name: 'Спальни',
-          defaultcount: '2',
-          maxcount: '10', 
-          declensions: [
-            'спальня',
-            'спальни',
-            'спален'
-          ]
-        },
-        {
-          name: 'Кровати',
-          defaultcount: '2',
-          maxcount: '5',
-          declensions: [
-            'кровать',
-            'кровати',
-            'кроватей'
-          ]
-        },
-        {
-          name: 'Ванные комнаты',
-          maxcount: '4',
-          declensions: [
-            'ванная комната',
-            'ванные комнаты',
-            'ванных комнат'
-          ]
-        }
-      ]
+      hasButtons: false
     })
     +dropdown({
       title: 'dropdown',
@@ -48,37 +17,6 @@ section.section-row.dropdowns-block
       type: 'amenities',
       placeholder: 'Выберите удобства',
       hasButtons: false,
-      items: [
-        {
-          name: 'Спальни',
-          defaultcount: '2',
-          maxcount: '10', 
-          declensions: [
-          'спальня',
-          'спальни',
-          'спален'
-        ]
-        },
-        {
-          name: 'Кровати',
-          defaultcount: '2',
-          maxcount: '5',
-          declensions: [
-            'кровать',
-            'кровати',
-            'кроватей'
-          ]
-        },
-        {
-          name: 'Ванные комнаты',
-          maxcount: '4',
-          declensions: [
-            'ванная комната',
-            'ванные комнаты',
-            'ванных комнат'
-          ]
-        }
-      ],
       isOpened: true,
       isAlwaysOpened: true
     })
@@ -88,29 +26,16 @@ section.section-row.dropdowns-block
       id: 'guests2',
       placeholder: 'Сколько гостей',
       hasButtons: true,
-      items: [
-        {
-          name: 'взрослые',
-          maxcount: '10', 
-          declensions: [
-            'гость',
-            'гостя',
-            'гостей'
-          ]
-        },
-        {
-          name: 'дети',
-          maxcount: '5'
-        },
-        {
-          name: 'младенцы',
-          maxcount: '6',
-          declensions: [
-            'младенец',
-            'младенца',
-            'младенцев'
-          ]
-        }
-      ]
+      isOpened: true,
+      isAlwaysOpened: true
     })
   section.dropdowns-block-right
+    +dropdown({
+      type: 'guests',
+      id: 'guests3',
+      placeholder: 'Сколько гостей',
+      hasButtons: true,
+      isOpened: true,
+      isAlwaysOpened: true,
+      defaultCounts: [ 2, 1, 0 ]
+    })
