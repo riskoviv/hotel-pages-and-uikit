@@ -2,39 +2,23 @@ include ../../../../components/form-elements/dropdown/dropdown
 
 section.section-row.dropdowns-block
   section.dropdowns-block-left
-    +dropdown({
-      title: 'dropdown',
+    +dropdown-amenities({
       description: 'default',
-      id: 'amenities1',
-      type: 'amenities',
-      placeholder: 'Выберите удобства',
       hasButtons: false
     })
-    +dropdown({
-      title: 'dropdown',
+    +dropdown-amenities({
       description: 'expanded',
-      id: 'amenities2',
-      type: 'amenities',
-      placeholder: 'Выберите удобства',
-      hasButtons: false,
       isOpened: true,
-      isAlwaysOpened: true
+      isAlwaysOpened: true,
+      defaultCounts: [ 2, 2, 0 ]
     })
   section.dropdowns-block-middle
-    +dropdown({
-      type: 'guests',
-      id: 'guests2',
-      placeholder: 'Сколько гостей',
-      hasButtons: true,
+    +dropdown-guests({
       isOpened: true,
       isAlwaysOpened: true
     })
   section.dropdowns-block-right
-    +dropdown({
-      type: 'guests',
-      id: 'guests3',
-      placeholder: 'Сколько гостей',
-      hasButtons: true,
+    +dropdown-guests({
       isOpened: true,
       isAlwaysOpened: true,
       defaultCounts: [ 2, 1, 0 ]

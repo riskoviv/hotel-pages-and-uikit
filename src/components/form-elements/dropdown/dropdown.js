@@ -139,8 +139,6 @@ $(document).ready(function () {
   for (let iqdropdown of $iqdropdowns) {
     iqDropdownInit(iqdropdown)
   }
-  // здесь можно запустить проверку, что выбранные количества не равны 0
-  // checkNotZeros()
 });
 
 // Сохранение всех списков в один объект
@@ -151,16 +149,19 @@ for (let iqdMenu of $iqdMenus) {
   iqdMenusHTMLs[id] = ($(iqdMenu).html())
 }
 
-
 // Функция очистки iqDropdown
 const clearFn = (event) => {
   const target = event.target;
   const dropdownMenu = target.closest('.iqdropdown-menu')
   const dropdown = target.closest('.iqdropdown')
-  $(dropdownMenu).html(iqdMenusHTMLs[dropdown.id])
-  console.log('iqdMenusHTMLs[dropdown.id]: ', $.parseHTML(iqdMenusHTMLs[dropdown.id]));
-  // ^^^ ПОПРОБОВАТЬ ПЕРЕДЕЛАТЬ ПЕРЕДАВАЕМЫЙ HTML ДЛЯ СБРОСА НА НОЛЬ
-  // можно сделать через jquery
+  const resetedHTML = $.parseHTML(iqdMenusHTMLs[dropdown.id])
+  for (let item of resetedHTML) {
+    if ($(item).hasClass('iqdropdown-menu-option')) {
+      $(item).attr('data-defaultcount', '0')
+    }
+  }
+  $(dropdownMenu).html(resetedHTML)
+  $('.button_link_clear', dropdown).addClass('button_link_clear_hidden')
   iqDropdownInit(dropdown)
 }
 

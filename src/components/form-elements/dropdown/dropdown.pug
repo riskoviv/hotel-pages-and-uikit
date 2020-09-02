@@ -1,4 +1,15 @@
-//- options: title, description, id, type, placeholder, hasButtons, items[{name, maxcount, declensions[]}], isOpened, isAlwaysOpened, maxCounts[], defaultCounts[]
+//-
+  options:
+    title,
+    description,
+    type,
+    placeholder,
+    hasButtons,
+    isOpened,
+    isAlwaysOpened, 
+    maxCounts[],
+    defaultCounts[],
+    items[{name, defaultcount, maxcount, declensions[]}]
 
 mixin addItems(itemsArray)
   each item, index in itemsArray
@@ -12,9 +23,17 @@ mixin addItems(itemsArray)
       div
         p.iqdropdown-item= item.name
 
-mixin dropdown(options)
-  -
-    var guestsItems = [
+mixin dropdown-guests(options)
+  +dropdown({
+    title: options.title,
+    description: options.description,
+    type: 'guests',
+    placeholder: options.placeholder || 'Сколько гостей',
+    hasButtons: true,
+    isOpened: options.isOpened,
+    isAlwaysOpened: options.isAlwaysOpened,
+    defaultCounts: options.defaultCounts,
+    items: options.items || [
       {
         name: 'взрослые',
         defaultcount: options.defaultCounts ? options.defaultCounts[0] : '0',
@@ -41,8 +60,18 @@ mixin dropdown(options)
         ]
       }
     ]
-
-    var amenitiesItems = [
+  })
+mixin dropdown-amenities(options)
+  +dropdown({
+    title: options.title,
+    description: options.description,
+    type: 'amenities',
+    placeholder: options.placeholder || 'Выберите удобства',
+    hasButtons: false,
+    isOpened: options.isOpened,
+    isAlwaysOpened: options.isAlwaysOpened,
+    defaultCounts: options.defaultCounts,
+    items: options.items || [
       {
         name: 'Спальни',
         defaultcount: options.defaultCounts ? options.defaultCounts[0] : '0',
@@ -74,12 +103,16 @@ mixin dropdown(options)
         ]
       }
     ]
+  })
+
+mixin dropdown(options)
+  - var randID = Math.floor(Math.random() * (1 - 100) + 100)
   .control-container.dropdown
     .control-container__caption
       h3.control-container__title= options.title || 'dropdown'
       span.control-container__description= options.description
     .iqdropdown(
-      id=options.id
+      id=`dd-${randID}`
       class='dropdown_' + options.type
       data-placeholder=options.placeholder
       class=options.isOpened ? 'menu-open' : ''
@@ -88,12 +121,10 @@ mixin dropdown(options)
       p.iqdropdown-selection
       button.iqdropdown__arrow.material-icons expand_more
       .iqdropdown-menu
-        case options.type 
-          when 'guests'
-            +addItems(guestsItems)
-          when 'amenities'
-            +addItems(amenitiesItems)
+        +addItems(options.items)
         if options.hasButtons
           .iqdropdown__controls
-            button.iqdropdown__button.button.button_link.button_link_clear.button_link_clear_hidden Очистить
+            button.iqdropdown__button.button.button_link.button_link_clear(
+              class=options.defaultCounts ? '' : 'button_link_clear_hidden'
+            ) Очистить
             button.iqdropdown__button.button.button_link Применить
