@@ -68,7 +68,7 @@ const iqDropdownInit = (dropdown) => {
           return `${totalItems - itemsCount.item3} ${text}, ${itemsCount.item3} ${textInfants}`
         } else {
           // Если нет младенцев
-          return `${totalItems} ${chooseDeclension('item1', totalItems)}`;
+          return `${totalItems} ${chooseDeclension('item1', totalItems)}`
         }
       } else {
         // если выбор удобств

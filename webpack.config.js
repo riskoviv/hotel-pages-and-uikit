@@ -14,7 +14,8 @@ const isProd = !isDev
 const PATHS = {
   src: path.resolve(__dirname, 'src'),
   res: path.resolve(__dirname, 'src/res'),
-  dist: path.resolve(__dirname, 'dist')
+  dist: path.resolve(__dirname, 'dist'),
+  components: path.resolve(__dirname, 'src/components'),
 }
 
 const PAGES_DIR = `${PATHS.src}/pages`
@@ -113,7 +114,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.json'],
     // alias: {
-    //   '@models': path.resolve(__dirname, 'src/models'),
+    //   '@components': path.resolve(__dirname, 'src/components'),
     //   '@': path.resolve(__dirname, 'src')
     // }
   },
@@ -121,7 +122,12 @@ module.exports = {
   devServer: {
     contentBase: './dist',
     port: 4200,
-    hot: isDev
+    hot: false,
+    openPage: [
+      // 'colors-and-type.html',
+      'form-elements.html',
+    ],
+    stats: 'minimal',
   },
   devtool: isDev ? 'source-map' : '',
   plugins: plugins(),
@@ -129,7 +135,12 @@ module.exports = {
     rules: [
       {
         test: /\.pug$/,
-        loader: 'pug-loader'
+        use: {
+          loader: 'pug-loader',
+          options: {
+            root: PATHS.components
+          }
+        }  
       },
       {
         test: /\.css$/,

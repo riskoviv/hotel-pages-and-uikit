@@ -4,7 +4,9 @@
 
 .button {
   display: inline-block;
-  width: 99px;
+  width: -moz-fit-content;
+  width:      fit-content;
+  max-width: 100%;
   height: $inputHeight;
   border: none;
   border-radius: 22px;
@@ -15,11 +17,14 @@
   font-size: 12px;
   line-height: 15px;
   text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   user-select: none;
 
   &_filled {
     background: $primaryGradient;
     color: #fff;
+    padding: 0 20px;
 
     &:hover {
       opacity: 0.5;
@@ -31,8 +36,10 @@
     padding: 2px;
 
     &__body {
-      width: 95px;
+      width: -moz-fit-content;
+      width: fit-content;
       height: 40px;
+      padding: 0 18px;
       background-color: #fff;
       color: $purple;
     }

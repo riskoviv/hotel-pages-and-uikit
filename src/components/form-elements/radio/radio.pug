@@ -1,9 +1,10 @@
 mixin radio(options)
+  - var randID = Math.floor(Math.random() * (1 - 100) + 100)
   .input-button.radio
     input.switch.radio__switch(
       type='radio',
       name=options.name,
-      id=options.id,
+      id=`r-${randID}`,
       checked=options.isChecked
     )
-    label.input-button__label.radio__label(for=options.id)= options.label
+    label.input-button__label.radio__label(for=`r-${randID}`)= options.label

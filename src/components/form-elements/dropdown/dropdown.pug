@@ -113,7 +113,7 @@ mixin dropdown(options)
       span.control-container__description= options.description
     .iqdropdown(
       id=`dd-${randID}`
-      class='dropdown_' + options.type
+      class=options.type ? 'dropdown_' + options.type : ''
       data-placeholder=options.placeholder
       class=options.isOpened ? 'menu-open' : ''
       data-always-opened=options.isAlwaysOpened ? 'true' : ''

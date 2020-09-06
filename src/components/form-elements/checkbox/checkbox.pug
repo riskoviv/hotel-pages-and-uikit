@@ -1,9 +1,10 @@
-include ../switch-common/switch-common
+include /form-elements/switch-common/switch-common
 mixin checkbox(options)
+  - var randID = Math.floor(Math.random() * (1 - 100) + 100)
   .input-button.checkbox
     +switch({
-      id: options.id,
+      id: `cb-${randID}`,
       controlType: 'checkbox',
       isChecked: options.isChecked
     })
-    label(for=options.id).input-button__label.checkbox__label= options.label
+    label.input-button__label.checkbox__label(for=`cb-${randID}`)= options.label

@@ -1,9 +1,10 @@
+include /form-elements/switch-common/switch-common
 mixin toggle(options)
+  - var randID = Math.floor(Math.random() * (1 - 100) + 100)
   .input-button.toggle
-    include ../switch-common/switch-common
     +switch({
-      id: options.id,
+      id: `t-${randID}`,
       controlType: 'toggle',
       isChecked: options.isChecked
     })
-    label.input-button__label.toggle__label(for=options.id)= options.label
+    label.input-button__label.toggle__label(for=`t-${randID}`)= options.label
