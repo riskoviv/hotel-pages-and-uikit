@@ -1,5 +1,28 @@
+include /form-elements/expandable-checkbox-list/expandable-checkbox-list
+
 section.section-row.lists-block
-  h2 // lists-block
-  //- section.lists-block-left
+  section.lists-block-left
+    +expandableCheckboxList({
+      isOpened: false,
+      checkboxes: [
+        { label: 'Завтрак', isChecked: false},
+        { label: 'Письменный стол', isChecked: true},
+        { label: 'Стул для кормления', isChecked: true},
+        { label: 'Кроватка', isChecked: true},
+        { label: 'телевизор', isChecked: false},
+        { label: 'шампунь', isChecked: false},
+      ]
+    })
+    +expandableCheckboxList({
+      isOpened: true,
+      checkboxes: [
+        { label: 'Завтрак', isChecked: false},
+        { label: 'Письменный стол', isChecked: true},
+        { label: 'Стул для кормления', isChecked: true},
+        { label: 'Кроватка', isChecked: true},
+        { label: 'телевизор', isChecked: false},
+        { label: 'шампунь', isChecked: false},
+      ]
+    })
   //- section.lists-block-middle
   //- section.lists-block-right

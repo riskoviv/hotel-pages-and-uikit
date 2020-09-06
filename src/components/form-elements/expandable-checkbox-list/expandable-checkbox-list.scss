@@ -1,0 +1,46 @@
+@import '../../../styles/variables.scss';
+
+.expandable-checkbox-list {
+  margin-top: 50px;
+
+  &_opened {
+    .expandable-checkbox-list__arrow {
+      transform: rotate(180deg);
+    }
+
+    > .expandable-checkbox-list__items-list {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+    }
+  }
+
+  &__toggle {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 266px;
+    margin-bottom: 17px;
+    cursor: pointer;
+  }
+
+  &__title {
+    line-height: 15px;
+    user-select: none;
+  }
+
+  &__arrow {
+    width: $inputHeight;
+    text-align: center;
+    line-height: 15px;
+    color: $darkShade50;
+    cursor: pointer;
+    user-select: none;
+    transition-property: transform;
+    transition-duration: .2s;
+  }
+
+  &__items-list {
+    display: none;
+  }
+}

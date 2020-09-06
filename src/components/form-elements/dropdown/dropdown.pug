@@ -106,7 +106,7 @@ mixin dropdown-amenities(options)
   })
 
 mixin dropdown(options)
-  - var randID = Math.floor(Math.random() * (1 - 100) + 100)
+  - var randID = Math.floor(Math.random() * (1 - 1000) + 1000)
   .control-container.dropdown
     .control-container__caption
       h3.control-container__title= options.title || 'dropdown'

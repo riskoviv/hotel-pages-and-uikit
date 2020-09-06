@@ -16,4 +16,8 @@
       background: no-repeat center 40% url('../../../res/img/controls/checkbox_toggle.svg');
     }
   }
+
+  &__label {
+    cursor: pointer;
+  }
 }

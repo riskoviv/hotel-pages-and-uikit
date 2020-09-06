@@ -1,6 +1,13 @@
 include /form-elements/switch-common/switch-common
+
+//-
+  options: {
+    label: 'string',
+    isChecked: boolean
+  }
+
 mixin checkbox(options)
-  - var randID = Math.floor(Math.random() * (1 - 100) + 100)
+  - var randID = Math.floor(Math.random() * (1 - 1000) + 1000)
   .input-button.checkbox
     +switch({
       id: `cb-${randID}`,
