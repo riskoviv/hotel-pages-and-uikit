@@ -1,4 +1,25 @@
+include /form-elements/advantage/advantage
+include /form-elements/review/review
+
 section.section-row.descriptions-block
-  h2 // descriptions-block
-  //- section.descriptions-block-left
-  //- section.descriptions-block-right
+  section.descriptions-block__left
+    .controls-container_group.advantages-block
+      +advantage_comfort
+      +advantage_convenience
+      //- +advantage({
+      //-   icon: 'favorite',
+      //-   title: 'Сердце',
+      //-   description: 'Символ лайка'
+      //- })
+
+  section.descriptions-block__right
+    +review({
+      photoName: 'feedback_man.png',
+      name: 'Мурад Сарафанов',
+      date: '5 дней назад',
+      like: {
+        count: 11,
+        isClicked: true
+      },
+      text: 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.'
+    })

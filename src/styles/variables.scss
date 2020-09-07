@@ -6,6 +6,7 @@ $darkShade100:  #1F2041;
 $darkShade75:   rgba($darkShade100, 0.75);
 $darkShade50:   rgba($darkShade100, 0.5);
 $darkShade25:   rgba($darkShade100, 0.25);
+$darkShade10:   rgba($darkShade100, 0.1);
 $darkShade5:    rgba($darkShade100, 0.05);
 $purple:        #BC9CFF;
 $green:         #6FCF97;
@@ -14,7 +15,7 @@ $primaryGradientTransparentized25: linear-gradient(180deg, transparentize($purpl
 $greenGradient: linear-gradient(180deg, $green 0%, #66D2EA 100%);
 
 // Main font
-$mainFont:    'Montserrat', 'Arial', sans-serif;
+$mainFontFamily: 'Montserrat', 'Arial', sans-serif;
 $mainFontColor: $darkShade75;
 $mainFontStyle:   normal;
 $mainFontWeight:  400;
@@ -22,7 +23,7 @@ $mainFontSize:    14px;
 $mainLineHeight:  24px;
 
 // Headings font
-$headingFont:  'Quicksand', 'Open Sans', 'Arial', sans-serif;
+$headingFontFamily:  'Quicksand', 'Open Sans', 'Arial', sans-serif;
 $headingFontWeight: 700;
 $headingColor: $darkShade100;
 
@@ -42,7 +43,7 @@ $inputBorder: 1px solid $darkShade25;
   color: $darkShade25;
   min-width: 320px;
   max-width: 320px;
-  font-family: $mainFont;
+  font-family: $mainFontFamily;
   font-size: $mainFontSize;
   line-height: 18px;
 }

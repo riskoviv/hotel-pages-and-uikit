@@ -11,11 +11,7 @@
   border: none;
   border-radius: 22px;
   cursor: pointer;
-  font-family: $mainFont;
-  font-style: $mainFontStyle;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 15px;
+  font: $mainFontStyle bold 12px/15px $mainFontFamily;
   text-transform: uppercase;
   text-overflow: ellipsis;
   white-space: nowrap;

@@ -22,7 +22,7 @@
 
   &,
   .iqdropdown-selection {
-    font-family: $mainFont;
+    font-family: $mainFontFamily;
     font-size: $mainFontSize;
   }
 
@@ -72,10 +72,7 @@
   }
 
   .iqdropdown-item {
-    font-family: $mainFont;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 15px;
+    font: bold 12px/15px $mainFontFamily;
     text-transform: uppercase;
 
     &-controls {
@@ -119,10 +116,7 @@
 
       .counter {
         border: none;
-        font-family: $mainFont;
-        font-weight: bold;
-        font-size: 12px;
-        line-height: 1;
+        font: bold 12px/1 $mainFontFamily;
         vertical-align: middle;
         padding: 11px 0;
         width: 32px;

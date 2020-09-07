@@ -14,11 +14,7 @@ body {
 }
 
 html {
-  font-family: $mainFont;
-  font-style: $mainFontStyle;
-  font-weight: $mainFontWeight;
-  font-size: $mainFontSize;
-  line-height: $mainLineHeight;
+  font: $mainFontStyle $mainFontWeight #{$mainFontSize}/#{$mainLineHeight} $mainFontFamily;
   color: $mainFontColor;
 }
 
@@ -31,30 +27,43 @@ body {
   color: inherit;
   background-color: white;
 }
+
 // Common heading styles
 %heading {
-  font-family: $headingFont;
+  font-family: $headingFontFamily;
   font-style: normal;
   font-weight: $headingFontWeight;
   color: $headingColor;
 }
+
 h1,
 .heading-1 {
   @extend %heading;
   font-size: 24px;
   line-height: 30px;
 }
+
 h2,
 .heading-2 {
   @extend %heading;
   font-size: 19px;
   line-height: 24px;
 }
+
 h3,
 .heading-3 {
   @extend %heading;
-  font-family: 'Montserrat', sans-serif;
+  font-family: $mainFontFamily;
   font-size: 12px;
   line-height: 15px;
   text-transform: uppercase;
+}
+
+h4,
+.heading-4 {
+  @extend %heading;
+  font: $headingFontWeight 14px/1 $mainFontFamily;
+  margin-bottom: 5px;
+  text-transform: capitalize;
+  color: $darkShade75;
 }

@@ -1,0 +1,28 @@
+//-
+  +advantage
+  options: {
+    icon: 'string' (Material icons icon name)
+    title: 'string',
+    description: 'string'
+  }
+
+mixin advantage_comfort
+  +advantage({
+    icon: 'insert_emoticon',
+    title: 'Комфорт',
+    description: 'Шумопоглощающие стены'
+  })
+
+mixin advantage_convenience
+  +advantage({
+    icon: 'location_city',
+    title: 'Удобство',
+    description: 'Окно в каждой из спален'
+  })
+
+mixin advantage(options)
+  .advantage
+    span.advantage__icon= options.icon
+    .advantage__text
+      h4.advantage__title= options.title
+      span.advantage__description= options.description

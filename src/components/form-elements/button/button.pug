@@ -8,6 +8,11 @@ mixin button_bordered(title)
 mixin button_link(options)
   button.button.button_link(type='button' class=options.isClear ? 'button_link_clear' : '')= options.title
 
+//-
+  options: {
+    isClicked: boolean,
+    likesCount: number
+  }
 mixin button_like(options)
   - var randID = Math.floor(Math.random() * (1 - 1000) + 1000)
   .button.button_like(class=options.isClicked ? 'button_like_clicked' : '' id=`like-${randID}`)

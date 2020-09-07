@@ -1,0 +1,17 @@
+@import '../../../styles/variables.scss';
+
+.advantage {
+  display: flex;
+  border-bottom: 1px solid $darkShade10;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  padding-right: 25px;
+  width: 290px;
+
+  &__icon {
+    @extend %text-gradient;
+    font: 48px/41px 'Material Icons';
+    margin-right: 10px;
+    user-select: none;
+  }
+}

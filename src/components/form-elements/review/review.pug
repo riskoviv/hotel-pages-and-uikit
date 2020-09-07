@@ -1,0 +1,26 @@
+include /form-elements/button/button
+
+//-
+  options: {
+    photoName: 'string',
+    name: 'string',
+    date: 'string',
+    like: {
+      count: number,
+      isClicked: boolean
+    },
+    text: 'string'
+  }
+
+mixin review(options)
+  .control-container.review
+    img.review__reviewer-photo(src=require('../../res/img/pictures/' + options.photoName).default alt="reviewer photo")
+    .review__title
+      h4.review__reviewer-name= options.name
+      span.review__date= options.date
+  
+    +button_like({
+      isClicked: options.like.isClicked,
+      likesCount: options.like.count
+    })
+    p.review__text= options.text
