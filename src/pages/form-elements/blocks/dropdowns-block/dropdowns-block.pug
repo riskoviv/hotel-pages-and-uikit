@@ -1,7 +1,7 @@
 include /form-elements/dropdown/dropdown
 
 section.section-row.dropdowns-block
-  section.dropdowns-block-left
+  section.dropdowns-block__left
     +dropdown-amenities({
       description: 'default',
       hasButtons: false
@@ -12,12 +12,12 @@ section.section-row.dropdowns-block
       isAlwaysOpened: true,
       defaultCounts: [ 2, 2, 0 ]
     })
-  section.dropdowns-block-middle
+  section.dropdowns-block__middle
     +dropdown-guests({
       isOpened: true,
       isAlwaysOpened: true
     })
-  section.dropdowns-block-right
+  section.dropdowns-block__right
     +dropdown-guests({
       isOpened: true,
       isAlwaysOpened: true,

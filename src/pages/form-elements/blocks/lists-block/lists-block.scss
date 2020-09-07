@@ -2,4 +2,12 @@
 
 .lists-block {
   margin-bottom: 100px;
+
+  &__left {
+    margin-right: 181px;
+  }
+
+  &__middle {
+    margin-right: 126px;
+  }
 }

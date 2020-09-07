@@ -5,15 +5,12 @@
   height: 266px;
   margin-bottom: 40px;
 
-  &-left {
+  &__left {
     max-width: 266px;
+    margin-right: 181px;
   }
 
-  &-middle {
-    margin-left: 181px;
-  }
-
-  &-right {
-    margin-left: 72px;
+  &__middle {
+    margin-right: 72px;
   }
 }

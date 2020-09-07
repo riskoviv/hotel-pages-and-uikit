@@ -5,15 +5,15 @@ include /form-elements/button/button
 include /form-elements/rate-button/rate-button
 
 section.controls-block__middle
+  -
+    var checkboxes = [
+      { label: 'Можно курить' },
+      { label: 'Можно с питомцами', isChecked: true },
+      { label: 'Можно пригласить гостей (до 10 человек)', isChecked: true }
+    ]
   .control-container_group
     h3.control-container_group__title checkbox buttons
-    .controls-group
-      -
-        var checkboxes = [
-          { label: 'Можно курить' },
-          { label: 'Можно с питомцами', isChecked: true },
-          { label: 'Можно пригласить гостей (до 10 человек)', isChecked: true }
-        ]
+    .controls-group.checkbox__group
       each item in checkboxes
         +checkbox(item)
   .control-container_group

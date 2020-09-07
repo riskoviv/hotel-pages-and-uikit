@@ -1,28 +1,43 @@
 include /form-elements/expandable-checkbox-list/expandable-checkbox-list
+include /form-elements/checkbox/_rich/checkbox_rich
 
 section.section-row.lists-block
-  section.lists-block-left
+  section.lists-block__left
+    -
+      var listOfCheckboxesForExpandableCheckboxList = [
+        { label: 'Завтрак', isChecked: false },
+        { label: 'Письменный стол', isChecked: true },
+        { label: 'Стул для кормления', isChecked: true },
+        { label: 'Кроватка', isChecked: true },
+        { label: 'телевизор', isChecked: false },
+        { label: 'шампунь', isChecked: false },
+      ]
     +expandableCheckboxList({
       isOpened: false,
-      checkboxes: [
-        { label: 'Завтрак', isChecked: false},
-        { label: 'Письменный стол', isChecked: true},
-        { label: 'Стул для кормления', isChecked: true},
-        { label: 'Кроватка', isChecked: true},
-        { label: 'телевизор', isChecked: false},
-        { label: 'шампунь', isChecked: false},
-      ]
+      checkboxes: listOfCheckboxesForExpandableCheckboxList
     })
     +expandableCheckboxList({
       isOpened: true,
-      checkboxes: [
-        { label: 'Завтрак', isChecked: false},
-        { label: 'Письменный стол', isChecked: true},
-        { label: 'Стул для кормления', isChecked: true},
-        { label: 'Кроватка', isChecked: true},
-        { label: 'телевизор', isChecked: false},
-        { label: 'шампунь', isChecked: false},
-      ]
+      checkboxes: listOfCheckboxesForExpandableCheckboxList
     })
-  //- section.lists-block-middle
-  //- section.lists-block-right
+  section.lists-block__middle
+    -
+      var richCheckboxes = [
+        {
+          label: 'Широкий коридор',
+          description: 'Ширина коридоров в номере не менее 91 см.',
+          isChecked: false
+        },
+        {
+          label: 'Помощник для инвалидов',
+          description: 'На 1 этаже вас встретит специалист  и проводит до номера.',
+          isChecked: false
+        }
+      ]
+    +checkbox_rich({
+      title: '',
+      items: richCheckboxes
+    })
+  section.lists-block__right
+    .control-container
+      h3.control-container__title.bullet-list__title

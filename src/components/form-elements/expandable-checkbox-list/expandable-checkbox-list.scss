@@ -1,7 +1,10 @@
 @import '../../../styles/variables.scss';
 
 .expandable-checkbox-list {
-  margin-top: 50px;
+
+  &:not(:first-child) {
+    margin-top: 50px;
+  }
 
   &_opened {
     .expandable-checkbox-list__arrow {
@@ -9,9 +12,8 @@
     }
 
     > .expandable-checkbox-list__items-list {
-      display: flex;
-      flex-direction: column;
-      justify-content: start;
+      display: block;
+      max-width: 100%;
     }
   }
 

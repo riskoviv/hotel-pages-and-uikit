@@ -3,7 +3,10 @@
 //extends common styles from ../switch-common/switch-common.scss
 
 .checkbox {
-  max-width: 222px;
+  
+  &__group {
+    max-width: 222px;
+  }
 
   &:not(:last-child) {
     margin-bottom: 10px;

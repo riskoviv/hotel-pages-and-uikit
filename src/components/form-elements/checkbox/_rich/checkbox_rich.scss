@@ -1,0 +1,32 @@
+@import '../../../../styles/variables.scss';
+
+.checkbox_rich {
+  
+  margin-bottom: 10px;
+
+  &__group {
+    max-width: 266px;
+  }
+
+  &__title {
+    margin-bottom: 15px;
+  }
+
+  .checkbox.input-button {
+    margin-bottom: 0;
+  }
+
+  .checkbox__label {
+    font-weight: bold;
+    color: $darkShade75;
+  }
+
+  &__description {
+    display: block;
+    margin-top: 5px;
+    margin-left: 30px;
+    color: $darkShade50;
+    font-size: 12px;
+    line-height: 14px;
+  }
+}
