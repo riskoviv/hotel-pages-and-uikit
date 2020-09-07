@@ -1,0 +1,13 @@
+//-
+  options: {
+    items: [
+      {
+        label: 'string'
+      },
+    ]
+  }
+
+mixin bulletList(options)
+  ul.bullet-list
+    each item in options.items
+      li.bullet-list__item= item.label

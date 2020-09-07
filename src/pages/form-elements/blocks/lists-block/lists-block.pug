@@ -1,5 +1,6 @@
 include /form-elements/expandable-checkbox-list/expandable-checkbox-list
 include /form-elements/checkbox/_rich/checkbox_rich
+include /form-elements/bullet-list/bullet-list
 
 section.section-row.lists-block
   section.lists-block__left
@@ -39,5 +40,14 @@ section.section-row.lists-block
       items: richCheckboxes
     })
   section.lists-block__right
+    -
+      var bulletListItems = [
+        { label: 'нельзя с питомцами' },
+        { label: 'Без вечеринок и мероприятий' },
+        { label: 'Время прибытия — после 13:00, а выезд до 12:00' }
+      ]
     .control-container
-      h3.control-container__title.bullet-list__title
+      h3.control-container__title.bullet-list__title bullet list
+      +bulletList({
+        items: bulletListItems
+      })

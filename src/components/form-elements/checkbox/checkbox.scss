@@ -22,5 +22,9 @@
 
   &__label {
     cursor: pointer;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
   }
 }

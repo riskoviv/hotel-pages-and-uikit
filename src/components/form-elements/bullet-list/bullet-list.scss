@@ -1,0 +1,30 @@
+@import '../../../styles/variables.scss';
+
+.bullet-list {
+  max-width: 292px;
+  list-style: none;
+
+  &__title {
+    margin-bottom: 15px;
+  }
+
+  &__item {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+
+    &::before {
+      @extend %pseudo-element-basic;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      left: 0;
+      top: 7px;
+      background-color: $darkShade25;
+    }
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+}
