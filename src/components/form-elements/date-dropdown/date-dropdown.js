@@ -26,6 +26,7 @@ const datePickerInit = (datepicker) => {
   }
   var myDatepicker = $(datepicker).datepicker().data('datepicker');
   
+  // datepicker initialization
   $(datepicker).datepicker({
     inline: false,
     range: true,
@@ -61,5 +62,14 @@ $(() => {
   const $datepickerInputs = $('.datepicker-here')
   for (let datepickerInput of $datepickerInputs) {
     datePickerInit(datepickerInput)
+    const dates = $(datepickerInput).data('select-date')
+    if (dates) {
+      const dateArray = []
+      for (let date of dates) {
+        dateArray.push(new Date(date))
+      }
+      const datePicker = $(datepickerInput).datepicker().data('datepicker')
+      datePicker.selectDate(dateArray)
+    }
   }
 })

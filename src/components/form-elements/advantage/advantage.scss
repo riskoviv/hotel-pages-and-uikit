@@ -1,17 +1,30 @@
-@import '../../../styles/variables.scss';
+@import '../../../styles/constants.scss';
 
 .advantage {
   display: flex;
   border-bottom: 1px solid $darkShade10;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   padding-bottom: 20px;
   padding-right: 25px;
   width: 290px;
 
   &__icon {
     @extend %text-gradient;
-    font: 48px/41px 'Material Icons';
+    width: 48px;
+    height: 48px;
+    font: 48px/48px 'Material Icons';
     margin-right: 10px;
     user-select: none;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: auto;
+  }
+
+  &__description {
+    line-height: 14px;
   }
 }

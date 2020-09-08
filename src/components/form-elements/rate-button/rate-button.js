@@ -5,3 +5,10 @@ export const setRating = (rateButtonID, rating) => {
     stars[i].textContent = 'star'
   }
 }
+
+/*
+    For setting rate-button's ratings (count of filled stars) from external script:
+*/
+// import { setRating } from '../../components/form-elements/rate-button/rate-button'
+// setRating('opinion_1', 3)
+// setRating('opinion_2', 5)

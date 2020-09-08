@@ -1,4 +1,4 @@
-@import '../../../../styles/variables.scss';
+@import '../../../../styles/constants.scss';
 
 .checkbox_rich {
   
@@ -18,7 +18,7 @@
 
   .checkbox__label {
     font-weight: bold;
-    color: $darkShade75;
+    color: $mainFontColor;
   }
 
   &__description {

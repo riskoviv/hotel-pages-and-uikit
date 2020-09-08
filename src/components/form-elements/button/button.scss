@@ -1,4 +1,4 @@
-@import '../../../styles/variables.scss';
+@import '../../../styles/constants.scss';
 
 // common button styles
 
@@ -22,7 +22,8 @@
     color: #fff;
     padding: 0 20px;
 
-    &:hover {
+    &:hover,
+    &_force-hover {
       opacity: 0.5;
     }
   }
@@ -40,7 +41,8 @@
       color: $purple;
     }
 
-    &:hover {
+    &:hover,
+    &_force-hover {
       background: linear-gradient(180deg, rgba($purple, 0.5) 0%, rgba(#8BA4F9, 0.5) 100%);
     }
   }

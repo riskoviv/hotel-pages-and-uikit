@@ -1,17 +1,16 @@
 const pagination = require('paginationjs')
 
-
 $(() => {
   function simpleTemplating(data) {
-      var html = '<ul class="pagination__items-list">'
-      $.each(data, function(index, item){
-          html += '<li class="pagination__item">'+ item +'</li>'
-      })
-      html += '</ul>'
-      return html
+    var html = '<ul class="pagination__items-list">'
+    $.each(data, function(index, item){
+      html += '<li class="pagination__item">'+ item +'</li>'
+    })
+    html += '</ul>'
+    return html
   }
 
-  function addClassesToElements() {
+  function addClassToArrows() {
     $('.paginationjs-prev > a').addClass('material-icons')
     $('.paginationjs-next > a').addClass('material-icons')
   }
@@ -32,10 +31,14 @@ $(() => {
       )
         $(pageNumber).css('display', 'none')
     }
-    if ($activePage.data('num') === 5)
-      $ellipsis.clone().insertAfter('.paginationjs-page[data-num="1"]')
-    if ($activePage.data('num') === $paginationNumberLastNum-4)
-      $ellipsis.clone().insertBefore($('.paginationjs-page:last'))
+    switch ($activePage.data('num')) {
+      case 5:
+        $ellipsis.clone().insertAfter('.paginationjs-page[data-num="1"]')
+        break
+      case $paginationNumberLastNum-4:
+        $ellipsis.clone().insertBefore($('.paginationjs-page:last'))
+        break
+    }
   }
 
   const $paginator = $('.pagination__container')
@@ -61,15 +64,23 @@ $(() => {
     pageNumber: 1,
     pageRange: 2,
     afterRender: function () {
-      addClassesToElements()
+      addClassToArrows()
       removeExcessPageNumbers()
       const navData = $('.paginationjs-nav').text().split(',')
       if (navData[0] == $paginationNumberLastNum)
         $('.paginationjs-nav')
-          .text(`${navData[0] * 12 - 11} - ${navData[1]} из ${navData[1]} вариантов аренды`)
+          .text(
+            `${navData[0] * 12 - 11} - ${navData[1]}
+            из ${(navData[1]) >= 100 ? '100+' : navData[1]}
+            вариантов аренды`
+          )
       else
         $('.paginationjs-nav')
-          .text(`${navData[0] * 12 - 11} - ${navData[0] * 12} из ${navData[1]} вариантов аренды`)
+          .text(
+            `${navData[0] * 12 - 11} - ${navData[0] * 12}
+            из ${(navData[1]) >= 100 ? '100+' : navData[1]}
+            вариантов аренды`
+          )
     },
     formatNavigator: '<%= currentPage %>,<%= totalNumber %>',
     showNavigator: true

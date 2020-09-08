@@ -1,7 +1,19 @@
+@import '../../../../styles/constants.scss';
+
 .descriptions-block {
   margin-bottom: 130px;
+}
 
-  &__left {
-    margin-right: 165px;
+@media (max-width: $laptop) {
+  .descriptions-block {
+    &__right {
+      flex-basis: 500px;
+    }
+  }
+}
+
+@media (max-width: $mobileL) {
+  .descriptions-block {
+    margin-bottom: 50px;
   }
 }

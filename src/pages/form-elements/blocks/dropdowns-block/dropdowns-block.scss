@@ -1,16 +1,46 @@
-@import '../../../../styles/variables.scss';
+@import '../../../../styles/constants.scss';
 
 .dropdowns-block {
-  display: flex;
-  height: 266px;
+  min-height: 266px;
   margin-bottom: 55px;
-
+  
   &__left {
-    max-width: 266px;
-    margin-right: 181px;
+    flex: 2 2 310px;
   }
 
   &__middle {
-    margin-right: 72px;
+    flex: 1 0 auto;
   }
+
+  &__right {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: $laptop) {
+  .dropdowns-block {
+
+    &__left,
+    &__middle,
+    &__right {
+      flex: none;
+    }
+
+    &__left {
+      margin-bottom: 120px;
+    }
+    &__right {
+      margin-bottom: 140px;
+    }
+  }
+}
+
+@media (max-width: $tablet) {
+  .dropdowns-block {
+    
+    &__middle {
+      margin-bottom: 160px;
+    }
+  }
+  
 }

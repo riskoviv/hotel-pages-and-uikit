@@ -27,6 +27,14 @@ $headingFontFamily:  'Quicksand', 'Open Sans', 'Arial', sans-serif;
 $headingFontWeight: 700;
 $headingColor: $darkShade100;
 
+// Screen sizes
+$laptopL: 1440px;
+$laptop: 1024px;
+$tablet: 768px;
+$mobileL: 425px;
+$mobileM: 375px;
+$mobileS: 320px;
+
 // Common elements styles
 
 $activeBorder: 1px solid $darkShade50;
@@ -59,7 +67,7 @@ $inputBorder: 1px solid $darkShade25;
   &:hover,
   &.force-focus-hover {
     border: 1px solid $darkShade50;
-    color: $darkShade75;
+    color: $mainFontColor;
   }
 }
 

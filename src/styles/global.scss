@@ -1,16 +1,11 @@
-@import './variables.scss';
+@import './constants.scss';
 @import './fonts.scss';
 
-* {
+html * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   outline: none;
-}
-
-html,
-body {
-  height: 100%;
 }
 
 html {
@@ -63,7 +58,6 @@ h4,
 .heading-4 {
   @extend %heading;
   font: $headingFontWeight 14px/1 $mainFontFamily;
-  margin-bottom: 5px;
   text-transform: capitalize;
-  color: $darkShade75;
+  color: $mainFontColor;
 }

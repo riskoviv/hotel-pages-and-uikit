@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import '../../styles/constants.scss';
 
 .form-elements {
   display: flex;
@@ -8,13 +8,35 @@
 }
 
 .page-wrapper_form-elements {
-  max-width: 1400px;
+  max-width: 1158px;
+  width: 100%;
   flex-direction: column;
+  box-sizing: content-box;
+
 }
 
 .section-row {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
+  flex-wrap: wrap;
   min-width: 300px;
+}
+
+@media (max-width: $laptopL) {
+  .form-elements {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: $laptop) {
+  .section-row {
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: $mobileS) {
+  .form-elements {
+    padding: 0;
+  }
 }

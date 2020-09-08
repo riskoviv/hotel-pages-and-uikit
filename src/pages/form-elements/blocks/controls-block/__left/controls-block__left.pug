@@ -27,7 +27,12 @@ section.controls-block__left
   .control-container_vertically-spacey
     +dateDropdown({})
   .control-container_vertically-spacey
-    +dateDropdownFilter({})
+    +dateDropdownFilter({
+      selectDate: [
+        [2020, 08, 19],
+        [2020, 08, 23]
+      ]
+    })
   +textField({
     class: 'subscription',
     type: 'email',

@@ -1,4 +1,11 @@
-//- options: title1, title2
+//- options: {
+      title1: 'string',
+      title2: 'string',
+      selectDate: [
+        [yyyy, mm, dd],
+        [yyyy, mm, dd],
+      ]
+    }
 mixin dateDropdown(options)
   - var randID = Math.floor(Math.random() * (1 - 1000) + 1000)
   .date-dropdown.control-container.control-container_row
@@ -6,6 +13,7 @@ mixin dateDropdown(options)
       type='text'
       data-classes=`calendar-${randID}`
       data-keyboard-nav='false'
+      data-select-date=options.selectDate
       readonly
     )
     each val in [1, 2]
@@ -15,7 +23,13 @@ mixin dateDropdown(options)
           button.date-dropdown__arrow.material-icons expand_more
           input.date-dropdown__input(type='text' class='date-' + val placeholder='ДД.ММ.ГГГГ' readonly)
 
-//- options: title
+//- options: {
+      title,
+      selectDate: [
+        [yyyy, mm, dd],
+        [yyyy, mm, dd],
+      ]
+    } 
 mixin dateDropdownFilter(options)
   - var randID = Math.floor(Math.random() * (1 - 1000) + 1000)
   .date-dropdown.date-dropdown_filter.control-container
@@ -29,5 +43,6 @@ mixin dateDropdownFilter(options)
         data-multiple-dates-separator=' - '
         data-date-format='dd M'
         data-keyboard-nav='false'
+        data-select-date=options.selectDate
         readonly
       )

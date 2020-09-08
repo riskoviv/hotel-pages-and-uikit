@@ -1,10 +1,11 @@
-@import '../../../styles/variables.scss';
+@import '../../../styles/constants.scss';
 
 .review {
   display: grid;
-  grid-template-columns: 48px 653px;
+  grid-template-columns: 48px auto;
   justify-items: center;
   gap: 10px;
+  max-width: 711px;
 
   &__reviewer-photo {
     width: 48px;
@@ -17,10 +18,23 @@
   }
 
   &__title {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     justify-self: start;
     align-self: center;
+  }
+
+  &__reviewer-name {
+    margin-bottom: 0;
+  }
+
+  &__date {
+    line-height: 14px;
   }
 
   .button_like {

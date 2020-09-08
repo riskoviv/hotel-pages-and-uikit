@@ -13,7 +13,9 @@ section.controls-block__right
     h3.control-container_group__title buttons
     .controls-group.buttons-group
       +button_filled('click me')
+      +button_filled('click me')(class='force-hover')
       +button_bordered('click me')
+      +button_bordered('click me')(class='force-hover')
       .controls-group.controls-group_row
         +button_link({ title: 'click me' })
         +button_link({ title: 'click me', isClear: true })

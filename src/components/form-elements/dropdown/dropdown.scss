@@ -1,9 +1,14 @@
-@import '../../../styles/variables.scss';
+@import '../../../styles/constants.scss';
+
+.dropdown {
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+}
 
 .iqdropdown {
   @extend %input-basic;
   padding: 0;
-  color: $darkShade75;
+  color: $mainFontColor;
 
   &.dropdown_amenities {
     min-width: 266px;
@@ -28,7 +33,7 @@
 
   .iqdropdown-selection {
     line-height: 18px;
-    color: $darkShade75;
+    color: $mainFontColor;
     height: 18px;
     padding: $inputPadding;
     overflow: hidden;
@@ -41,7 +46,7 @@
   }
 
   &.menu-open .iqdropdown-selection::after {
-    color: $darkShade75;
+    color: $mainFontColor;
   }
 
   .iqdropdown-selection::after,

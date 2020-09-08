@@ -1,4 +1,4 @@
-@import '../../../../styles/variables.scss';
+@import '../../../../styles/constants.scss';
 
 .controls-block {
   flex-wrap: wrap;
@@ -10,17 +10,22 @@
     min-width: 320px;
   }
 
-  &__left {
-    margin-right: 126px;
-  }
-
   &__middle {
     min-width: 260px;
-    margin-right: 132px;
   }
 
   &__right {
     width: 320px;
+
+    .control-container.range-slider {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+@media (max-width: $mobileL) {
+  .controls-block {
+    margin-bottom: 50px;
   }
 }
 
@@ -67,9 +72,18 @@
   display: flex;
   flex-direction: column;
 
-  &.buttons-group > *:not(:last-child) {
-    margin-bottom: 30px;
-  }
+  &.buttons-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    > .button {
+      margin-right: 19px;
+    }
+
+    > *:not(:last-child) {
+      margin-bottom: 30px;
+    }
+  } 
 
   &_row {
     flex-direction: row;

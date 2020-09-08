@@ -2,14 +2,17 @@ const $maskedInput = $('.text-field_masked__input')
 
 $maskedInput.keydown(function (event) {
   const key = event.key
-  if (
-    key >= 0 && key <= 9
-    || key === 'Backspace'
-    || key === 'Delete'
-    || key === 'ArrowRight'
-    || key === 'ArrowLeft'
-  )
+  if (key >= 0 && key <= 9)
     return true
+  else {
+    switch (key) {
+      case 'Backspace':
+      case 'Delete':
+      case 'ArrowRight':
+      case 'ArrowLeft':
+        return true
+    }
+  }
   return false
 })
 
