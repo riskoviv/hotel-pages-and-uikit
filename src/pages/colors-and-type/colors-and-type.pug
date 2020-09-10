@@ -1,4 +1,6 @@
-extends ../../layouts/ui-kit_main/ui-kit_main
+extends ../../layouts/ui-kit/ui-kit
+include /colors-and-type/color-example/color-example
+include /colors-and-type/heading-example/heading-example
 
 block variables
   - var title = 'Colors & type'
@@ -21,25 +23,10 @@ block variables
       { type: 'body', textExample: 'This is the body text which is used for most of the design, like paragraphs, lists, etc.' }
     ]
 block content
-  ul.examples-list.color-examples-list
+  ul.colors-and-type__examples-list.colors-and-type__examples-list_color
     each color in colorsList
       +color-example(color)
 
-  ul.examples-list.heading-examples-list
+  ul.colors-and-type__examples-list.colors-and-type__examples-list_heading
     each heading in headingsList
       +heading-example(heading)
-
-//- MIXINS
-mixin color-example(options)
-  li.color-examples-list__color-example
-    div.color-examples-list__color-square(
-      class='color-examples-list__color-square_color_' + options.color
-    )
-    div.color-examples-list__text-block
-      h2.color-examples-list__color-title= options.title
-      span.color-examples-list__color-code= options.code
-
-mixin heading-example(options)
-  li.heading-examples-list__heading-example(class='heading-examples-list__heading-example_type_' + options.type)
-    span.heading-examples-list__type= options.type
-    p.heading-examples-list__text-example= options.textExample

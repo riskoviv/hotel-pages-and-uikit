@@ -1,0 +1,14 @@
+//- options: {
+      color: 'ds-100',
+      title: 'Dark Shade 100%',
+      code: '#1F2041'
+    }
+
+mixin color-example(options)
+  li.color-example
+    div.color-example__color-square(
+      class=`color-example__color-square_color_${options.color}`
+    )
+    div.color-example__text-block
+      h2.color-example__color-title= options.title
+      span.color-example__color-code= options.code

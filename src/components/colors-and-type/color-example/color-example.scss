@@ -1,0 +1,52 @@
+@import '../../../styles/constants.scss';
+
+.color-example {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  &__color-square {
+    width: 70px;
+    height: 70px;
+    background-color: $darkShade100;
+    border-radius: 6px;
+    margin-right: 40px;
+
+    &_color_ds-75 {
+      background-color: $darkShade75;
+    }
+    &_color_ds-50 {
+      background-color: $darkShade50;
+    }
+    &_color_ds-25 {
+      background-color: $darkShade25;
+    }
+    &_color_ds-5 {
+      background-color: $darkShade5;
+    }
+    &_color_purple {
+      background-color: $purple;
+    }
+    &_color_green {
+      background-color: $green;
+    }
+  }
+
+  &__text-block {
+    font-size: 19px;
+    line-height: 29px;
+    font-family: $headingFontFamily;
+    color: $headingColor;
+  }
+
+  &__color-title {
+    margin: 0;
+    font-size: inherit;
+    font-weight: $headingFontWeight;
+    color: $headingColor;
+  }
+}

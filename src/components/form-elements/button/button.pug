@@ -1,25 +1,25 @@
-mixin button_filled(title)
+mixin button_filled(options)
   button.button.button_filled(
     type='button'
-    class!=attributes.class ? `button_filled_${attributes.class}` : ''
-  )= title
+    class=options.isForceHover ? 'button_filled_force-hover' : ''
+  )= options.caption
 
-mixin button_bordered(title)
+mixin button_bordered(options)
   .button.button_bordered(
-    class!=attributes.class ? `button_bordered_${attributes.class}` : ''
+    class=options.isForceHover ? 'button_bordered_force-hover' : ''
   )
-    button.button.button_bordered__body(type='button')= title
+    button.button.button_bordered__body(type='button')= options.caption
 
 
 //- options {
-      title: 'string',
+      caption: 'string',
       isClear: boolean
     }
 mixin button_link(options)
   button.button.button_link(
     type='button'
     class=options.isClear ? 'button_link_clear' : ''
-  )= options.title
+  )= options.caption
 
 //- options: {
       isClicked: boolean,
@@ -35,6 +35,6 @@ mixin button_like(options)
       span.button_like__heart.material-icons favorite_border
       span.button_like__count= options.likesCount
 
-mixin button_wide(title)
-  button.button.button_filled.button_wide(type='submit')= title
+mixin button_wide(options)
+  button.button.button_filled.button_wide(type='submit')= options.caption
     span.button_wide__arrow.material-icons arrow_forward

@@ -124,8 +124,8 @@ module.exports = {
     port: 4200,
     hot: false,
     openPage: [
-      // 'colors-and-type.html',
-      'form-elements.html',
+      'colors-and-type.html',
+      // 'form-elements.html',
     ],
     stats: 'minimal',
   },

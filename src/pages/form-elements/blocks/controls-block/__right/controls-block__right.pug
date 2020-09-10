@@ -12,14 +12,24 @@ section.controls-block__right
   .control-container_group
     h3.control-container_group__title buttons
     .controls-group.buttons-group
-      +button_filled('click me')
-      +button_filled('click me')(class='force-hover')
-      +button_bordered('click me')
-      +button_bordered('click me')(class='force-hover')
+      +button_filled({
+        caption: 'click me'
+      })
+      +button_filled({
+        caption: 'click me',
+        isForceHover: true
+      })
+      +button_bordered({
+        caption: 'click me'
+      })
+      +button_bordered({
+        caption: 'click me',
+        isForceHover: true
+      })
       .controls-group.controls-group_row
-        +button_link({ title: 'click me' })
-        +button_link({ title: 'click me', isClear: true })
-      +button_wide('Перейти к оплате')
+        +button_link({ caption: 'click me' })
+        +button_link({ caption: 'click me', isClear: true })
+      +button_wide({ caption: 'Перейти к оплате' })
   .control-container.pagination
     h3.control-container__title.pagination__title pagination
     +pagination

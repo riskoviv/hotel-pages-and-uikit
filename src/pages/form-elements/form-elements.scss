@@ -5,14 +5,14 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-}
 
-.page-wrapper_form-elements {
-  max-width: 1158px;
-  width: 100%;
-  flex-direction: column;
-  box-sizing: content-box;
-
+  &__page-wrapper {
+    max-width: 1158px;
+    width: 100%;
+    flex-direction: column;
+    box-sizing: content-box;
+  
+  }
 }
 
 .section-row {

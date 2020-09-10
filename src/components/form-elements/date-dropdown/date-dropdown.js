@@ -3,14 +3,10 @@ const airDatePicker = require('air-datepicker')
 const datePickerInit = (datepicker) => {
   const calendarClass = '.' + $(datepicker).data('classes')
 
-  const changeNavIcons = () => {
-    $(`${calendarClass} .datepicker--nav-action`).addClass('material-icons')
-  }
   const disableNavTitle = () => {
     $(`${calendarClass} .datepicker--nav-title`).prop('disabled', true)
   }
   const setCustomOptions = () => {
-    changeNavIcons()
     disableNavTitle()
     $(`${calendarClass} .datepicker--nav-title`)
       .addClass('heading-2')

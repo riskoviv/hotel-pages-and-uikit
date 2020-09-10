@@ -9,5 +9,5 @@ html(lang='en')
   body(class=pageClass)
     header.page-header
       img.page-header__image(alt='toxin logo', src=require('../../res/img/logo/logo_small.svg').default)
-    main.page-wrapper(class='page-wrapper_' + pageClass)
+    main.page-wrapper(class=pageClass + '__page-wrapper')
       block content

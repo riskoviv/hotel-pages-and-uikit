@@ -1,11 +1,3 @@
-//-
-  +advantage
-  options: {
-    icon: 'string' (Material icons icon name)
-    title: 'string',
-    description: 'string'
-  }
-
 mixin advantage_comfort
   +advantage({
     icon: 'insert_emoticon',
@@ -20,6 +12,13 @@ mixin advantage_convenience
     description: 'Окно в каждой из спален'
   })
 
+//-
+  +advantage
+  options: {
+    icon: 'string' (Material icons icon name)
+    title: 'string',
+    description: 'string'
+  }
 mixin advantage(options)
   .advantage
     span.advantage__icon= options.icon
