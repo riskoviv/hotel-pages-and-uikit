@@ -128,13 +128,13 @@ const iqDropdownInit = (dropdown) => {
 
   // Кнопка "очистить"
   if ($(`#${dropdown.id} .iqdropdown__controls`).length) {
-    $(`#${dropdown.id} .button_link_clear`).click(clearFn)
+    $(`#${dropdown.id} .button_link_clear`).on('click', clearFn)
   }
 }
 
 
 // Инициализация дропдаунов после загрузки страницы
-$(document).ready(function () {
+$(function() {
   const $iqdropdowns = $('.iqdropdown')
   for (let iqdropdown of $iqdropdowns) {
     iqDropdownInit(iqdropdown)
@@ -166,4 +166,4 @@ const clearFn = (event) => {
 }
 
 // Проверка на нажатие внутри/вне дропдауна и закрытие его
-$(document).click(toggleDropDown)
+$(document).on('click', toggleDropDown)

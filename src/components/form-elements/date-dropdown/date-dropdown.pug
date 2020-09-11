@@ -18,7 +18,7 @@ mixin dateDropdown(options)
     )
     each val in [1, 2]
       .control-container
-        h3.control-container__title #{options['title' + val] || 'date dropdown'}
+        h3.control-container__title #{options[`title${val}`] || 'date dropdown'}
         .date-dropdown__container
           button.date-dropdown__arrow.material-icons expand_more
           input.date-dropdown__input(type='text' class='date-' + val placeholder='ДД.ММ.ГГГГ' readonly)
