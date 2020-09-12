@@ -7,6 +7,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const webpack = require('webpack')
+const ImageminPlugin = require('imagemin-webpack-plugin').default
+const imageminMozjpeg = require('imagemin-mozjpeg')
+const imageminSvgo = require('imagemin-svgo')
 
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
@@ -27,7 +30,9 @@ const PAGES = fs.readdirSync(PAGES_DIR)
 const optimization = () => {
   const config = {
     splitChunks: {
-      chunks: 'all'
+      chunks: 'all',
+      minSize: 1,
+      minChunks: 2
     }
   }
 
@@ -75,25 +80,35 @@ const plugins = () => {
     }),
     // new CopyWebpackPlugin({
     //   patterns: [
-    //     // {
-    //     //   from: `${PATHS.res}/img`,
-    //     //   to: `${PATHS.assets}img`
-    //     // }//,
-    //     // {
-    //     //   from: `${PATHS.res}/fonts`,
-    //     //   to: `${PATHS.assets}fonts`
-    //     // }
+    //     {
+    //       from: `${PATHS.res}/img`,
+    //       to: `${PATHS.assets}img`
+    //     },
+    //     {
+    //       from: `${PATHS.res}/fonts`,
+    //       to: `${PATHS.assets}fonts`
+    //     }
     //   ]
     // }),
     new MiniCssExtractPlugin({
       filename: filename('css')
     }),
-
+    
     ...PAGES.map(page => new HTMLWebpackPlugin({
         template: `${PAGES_DIR}/${page.replace(/\.pug/, '')}/${page}`, // .pug
         filename: `./${page.replace(/\.pug/, '.html')}`, // .html
-        favicon: `${PATHS.res}/favicon/favicon.svg`
-    }))
+        favicon: `${PATHS.res}/favicon/favicon.svg`,
+        chunks: [`${page.replace(/\.pug/, '')}`, 'common']
+    })),
+
+    new ImageminPlugin({
+      disable: isDev,
+      minFileSize: 100000,
+      pngquant: {quality: '50-50'},
+      plugins: [
+        imageminMozjpeg({quality: 50}),
+      ],
+    })
   ]
 
   return base
@@ -105,7 +120,9 @@ module.exports = {
   context: PATHS.src,
   mode: 'development',
   entry: {
-    main: "./index.js"
+    common: './js/common.js',
+    'colors-and-type': './js/colors-and-type.js',
+    'form-elements': './js/form-elements.js',
   },
   output: {
     filename: filename('js'),

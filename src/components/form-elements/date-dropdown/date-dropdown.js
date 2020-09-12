@@ -43,7 +43,7 @@ const datePickerInit = (datepicker) => {
       $(datepicker).val(savedDatesFilter)
     }
   }
-  var myDatepicker = $(datepicker).datepicker().data('datepicker');
+  const myDatepicker = $(datepicker).datepicker().data('datepicker')
   
   let onSelectCounter = 0
 
@@ -87,7 +87,6 @@ const datePickerInit = (datepicker) => {
       printDates()
       myDatepicker.hide()
     })
-
 }
 
 $(() => {
