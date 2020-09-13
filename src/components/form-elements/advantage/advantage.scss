@@ -10,9 +10,9 @@
 
   &__icon {
     @extend %text-gradient;
-    width: 48px;
-    height: 48px;
-    font: 48px/48px 'Material Icons';
+    width: $iconSize;
+    height: $iconSize;
+    font: #{$iconSize}/#{$iconSize} 'Material Icons';
     margin-right: 10px;
     user-select: none;
   }

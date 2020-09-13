@@ -6,9 +6,11 @@
   $asset-pipeline: false
 ) {
   @font-face {
-    font-family: $font-family;
-    font-weight: $weight;
-    font-style: $style;
+    font: {
+      family: $font-family;
+      weight: $weight;
+      style: $style;
+    }
 
     src: url('#{$file-path}.woff') format('woff'),
       url('#{$file-path}.woff2') format('woff2'),

@@ -9,7 +9,6 @@ const TerserPlugin = require('terser-webpack-plugin')
 const webpack = require('webpack')
 const ImageminPlugin = require('imagemin-webpack-plugin').default
 const imageminMozjpeg = require('imagemin-mozjpeg')
-const imageminSvgo = require('imagemin-svgo')
 
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
@@ -54,7 +53,7 @@ const cssLoaders = extra => {
       loader: MiniCssExtractPlugin.loader,
       options: {
         hmr: isDev,
-        reloadAll: true
+        reloadAll: true,
       },
     },
     'css-loader'

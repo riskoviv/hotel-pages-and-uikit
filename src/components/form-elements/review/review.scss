@@ -2,14 +2,14 @@
 
 .review {
   display: grid;
-  grid-template-columns: 48px auto;
+  grid-template-columns: $iconSize auto;
   justify-items: center;
   gap: 10px;
   max-width: 711px;
 
   &__reviewer-photo {
-    width: 48px;
-    height: 48px;
+    width: $iconSize;
+    height: $iconSize;
     grid-column: 1 / 2;
     grid-row: 1 / 2;
     border: 2px solid #FFFFFF;

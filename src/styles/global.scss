@@ -14,10 +14,12 @@ html {
 }
 
 body {
-  font-family: inherit;
-  font-style: inherit;
-  font-weight: inherit;
-  font-size: inherit;
+  font: {
+    family: inherit;
+    style: inherit;
+    weight: inherit;
+    size: inherit;
+  }
   line-height: inherit;
   color: inherit;
   background-color: white;
@@ -25,9 +27,11 @@ body {
 
 // Common heading styles
 %heading {
-  font-family: $headingFontFamily;
-  font-style: normal;
-  font-weight: $headingFontWeight;
+  font: {
+    family: $headingFontFamily;
+    style: normal;
+    weight: $headingFontWeight;
+  }
   color: $headingColor;
 }
 

@@ -37,16 +37,20 @@
   }
 
   &__text-block {
-    font-size: 19px;
+    font: {
+      size: 19px;
+      family: $headingFontFamily;
+    }
     line-height: 29px;
-    font-family: $headingFontFamily;
     color: $headingColor;
   }
 
   &__color-title {
     margin: 0;
-    font-size: inherit;
-    font-weight: $headingFontWeight;
+    font: {
+      size: inherit;
+      weight: $headingFontWeight;
+    }
     color: $headingColor;
   }
 }
