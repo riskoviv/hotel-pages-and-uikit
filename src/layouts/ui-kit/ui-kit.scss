@@ -5,7 +5,7 @@
   width: 100%;
 }
 
-.page-header__image {
+.page-header__logo {
   width: $iconSize;
   height: $iconSize;
   position: absolute;
@@ -13,8 +13,13 @@
   left: 30px;
 }
 
-.page-wrapper {
+.page-wrapper_ui-kit {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-content: center;
+  max-width: 1188px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0 15px;
 }

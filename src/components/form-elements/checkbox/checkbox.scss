@@ -14,9 +14,21 @@
 
   &__switch {
     border-radius: 4px;
+    position: relative;
 
-    &:checked {
-      background: no-repeat center 40% url('../../../res/img/controls/checkbox_toggle.svg');
+    &:checked::after {
+      @extend %pseudo-element-basic;
+      top: 4px;
+      left: 6px;
+      width: 6px;
+      height: 8px;
+      border-style: solid;
+      border-image: $primaryGradient;
+      border-image-slice: 0 1 1 0;
+      border-width: 2px;
+      border-left: none;
+      border-top: none;
+      transform: rotate(45deg);
     }
   }
 

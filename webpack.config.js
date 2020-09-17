@@ -2,7 +2,6 @@ const path = require('path')
 const fs = require('fs')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-// const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
@@ -14,10 +13,11 @@ const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
 
 const PATHS = {
-  src: path.resolve(__dirname, 'src'),
-  res: path.resolve(__dirname, 'src/res'),
+  assets: 'assets',
   dist: path.resolve(__dirname, 'dist'),
   components: path.resolve(__dirname, 'src/components'),
+  res: path.resolve(__dirname, 'src/res'),
+  src: path.resolve(__dirname, 'src'),
 }
 
 const PAGES_DIR = `${PATHS.src}/pages`
@@ -77,20 +77,8 @@ const plugins = () => {
       jQuery: 'jquery',
       "window.jQuery": 'jquery'
     }),
-    // new CopyWebpackPlugin({
-    //   patterns: [
-    //     {
-    //       from: `${PATHS.res}/img`,
-    //       to: `${PATHS.assets}img`
-    //     },
-    //     {
-    //       from: `${PATHS.res}/fonts`,
-    //       to: `${PATHS.assets}fonts`
-    //     }
-    //   ]
-    // }),
     new MiniCssExtractPlugin({
-      filename: filename('css')
+      filename: `assets/css/${filename('css')}`
     }),
     
     ...PAGES.map(page => new HTMLWebpackPlugin({
@@ -129,10 +117,6 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.json'],
-    // alias: {
-    //   '@components': path.resolve(__dirname, 'src/components'),
-    //   '@': path.resolve(__dirname, 'src')
-    // }
   },
   optimization: optimization(),
   devServer: {
@@ -167,26 +151,22 @@ module.exports = {
         use: cssLoaders('sass-loader')
       },
       {
-        test: /\.((pn|jp(e)?|sv)g|ttf|woff(2)?)$/,
-        loader: 'file-loader?name=[path]' + filename('[ext]')
+        test: /\.((pn|jp(e)?)g|gif)$/,
+        loader: 'file-loader',
+        options: {
+          outputPath: `${PATHS.assets}/img`,
+          name: filename('[ext]')
+        }
+      },
+      {
+        test: /\.(ttf|woff(2)?|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: filename('[ext]'),
+          outputPath: `${PATHS.assets}/fonts`,
+          publicPath: '../fonts'
+        }
       }
-      // {
-      //   test: /\.(png|jpg|svg|gif)$/,
-      //   loader: 'file-loader',
-      //   options: {
-      //     outputPath: `${PATHS.assets}img`,
-      //     name: filename('[ext]')
-      //   }
-      // },
-      // {
-      //   test: /\.(ttf|woff(2)?)$/,
-      //   loader: 'file-loader',
-      //   options: {
-      //     outputPath: `${PATHS.assets}fonts`,
-      //     publicPath: `${PATHS.assets}fonts`,
-      //     name: filename('[ext]')
-      //   }
-      // }
     ]
   }
 };
