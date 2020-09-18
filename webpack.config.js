@@ -21,10 +21,17 @@ const PATHS = {
 }
 
 const PAGES_DIR = `${PATHS.src}/pages`
-const PAGES = fs.readdirSync(PAGES_DIR)
-  .map(dir => fs.readdirSync(`${PAGES_DIR}/${dir}`))
-  .reduce((acc, item) => [...acc, ...item], [])
-  .filter(filename => filename.endsWith('.pug'))
+const PAGES_ARR = []
+
+for (let pages_subdir of ['ui-kit',]) {
+  const PAGES = fs.readdirSync(`${PAGES_DIR}/${pages_subdir}`)
+    .map(dir => fs.readdirSync(`${PAGES_DIR}/${pages_subdir}/${dir}`))
+    .reduce((acc, item) => [...acc, ...item], [])
+    .filter(filename => filename.endsWith('.pug'))
+  for (let page of PAGES) {
+    PAGES_ARR.push([pages_subdir, page])
+  }
+}
 
 const optimization = () => {
   const config = {
@@ -81,11 +88,11 @@ const plugins = () => {
       filename: `assets/css/${filename('css')}`
     }),
     
-    ...PAGES.map(page => new HTMLWebpackPlugin({
-        template: `${PAGES_DIR}/${page.replace(/\.pug/, '')}/${page}`, // .pug
-        filename: `./${page.replace(/\.pug/, '.html')}`, // .html
-        favicon: `${PATHS.res}/favicon/favicon.svg`,
-        chunks: [`${page.replace(/\.pug/, '')}`, 'common']
+    ...PAGES_ARR.map(page => new HTMLWebpackPlugin({
+      template: `${PAGES_DIR}/${page[0]}/${page[1].replace(/\.pug/, '')}/${page[1]}`, // .pug
+      filename: `./${page[1].replace(/\.pug/, '.html')}`, // .html
+      favicon: `${PATHS.res}/favicon/favicon.svg`,
+      chunks: [`${page[1].replace(/\.pug/, '')}`, 'common']
     })),
 
     new ImageminPlugin({
@@ -107,9 +114,9 @@ module.exports = {
   context: PATHS.src,
   mode: 'development',
   entry: {
-    common: './js/common.js',
-    'colors-and-type': './js/colors-and-type.js',
-    'form-elements': './js/form-elements.js',
+    common: './pages/common/common.js',
+    'colors-and-type': './pages/ui-kit/colors-and-type/colors-and-type.js',
+    'form-elements': './pages/ui-kit/form-elements/form-elements.js',
   },
   output: {
     filename: filename('js'),
