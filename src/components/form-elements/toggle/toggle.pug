@@ -4,7 +4,7 @@ mixin toggle(options)
   .input-button.toggle
     +switch({
       id: `t-${randID}`,
-      controlType: 'toggle',
+      controlType: "toggle",
       isChecked: options.isChecked
     })
-    label.input-button__label.toggle__label(for=`t-${randID}`) #{options.label || 'Получать спецпредложения'}
+    label.input-button__label.toggle__label(for=`t-${randID}`) #{options.label || "Получать спецпредложения"}

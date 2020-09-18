@@ -29,7 +29,7 @@ for (let pages_subdir of ['ui-kit',]) {
     .reduce((acc, item) => [...acc, ...item], [])
     .filter(filename => filename.endsWith('.pug'))
   for (let page of PAGES) {
-    PAGES_ARR.push([pages_subdir, page])
+    PAGES_ARR.push({pagesGroup: pages_subdir, pageName: page})
   }
 }
 
@@ -89,10 +89,10 @@ const plugins = () => {
     }),
     
     ...PAGES_ARR.map(page => new HTMLWebpackPlugin({
-      template: `${PAGES_DIR}/${page[0]}/${page[1].replace(/\.pug/, '')}/${page[1]}`, // .pug
-      filename: `./${page[1].replace(/\.pug/, '.html')}`, // .html
-      favicon: `${PATHS.res}/favicon/favicon.svg`,
-      chunks: [`${page[1].replace(/\.pug/, '')}`, 'common']
+      template: `${PAGES_DIR}/${page.pagesGroup}/${page.pageName.replace(/\.pug/, '')}/${page.pageName}`, // .pug
+      filename: `./${page.pageName.replace(/\.pug/, '.html')}`, // .html
+      favicon: `${PATHS.res}/images/favicon/favicon.svg`,
+      chunks: [`${page.pageName.replace(/\.pug/, '')}`, 'common']
     })),
 
     new ImageminPlugin({

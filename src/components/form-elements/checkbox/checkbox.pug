@@ -2,7 +2,7 @@ include /form-elements/switch-common/switch-common
 
 //-
   options: {
-    label: 'string',
+    label: "string",
     isChecked: boolean
   }
 
@@ -11,7 +11,7 @@ mixin checkbox(options)
   .input-button.checkbox
     +switch({
       id: `cb-${randID}`,
-      controlType: 'checkbox',
+      controlType: "checkbox",
       isChecked: options.isChecked
     })
     label.input-button__label.checkbox__label(for=`cb-${randID}`)= options.label

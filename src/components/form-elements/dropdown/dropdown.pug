@@ -14,11 +14,11 @@
 mixin addItems(itemsArray)
   each item, index in itemsArray
     .iqdropdown-menu-option(
-      data-id='item'+(index+1)
+      data-id="item"+(index+1)
       data-name=item.name
-      data-defaultcount=item.defaultcount || '0'
+      data-defaultcount=item.defaultcount || "0"
       data-maxcount=item.maxcount
-      data-declensions=item.declensions || ''
+      data-declensions=item.declensions || ""
     )
       div
         p.iqdropdown-item= item.name
@@ -27,36 +27,36 @@ mixin dropdown-guests(options)
   +dropdown({
     title: options.title,
     description: options.description,
-    type: 'guests',
-    placeholder: options.placeholder || 'Сколько гостей',
+    type: "guests",
+    placeholder: options.placeholder || "Сколько гостей",
     hasButtons: true,
     isOpened: options.isOpened,
     isAlwaysOpened: options.isAlwaysOpened,
     defaultCounts: options.defaultCounts,
     items: options.items || [
       {
-        name: 'взрослые',
-        defaultcount: options.defaultCounts ? options.defaultCounts[0] : '0',
-        maxcount: options.maxCounts ? options.maxCounts[0] : 'Infinity', 
+        name: "взрослые",
+        defaultcount: options.defaultCounts ? options.defaultCounts[0] : "0",
+        maxcount: options.maxCounts ? options.maxCounts[0] : "Infinity", 
         declensions: [
-          'гость',
-          'гостя',
-          'гостей'
+          "гость",
+          "гостя",
+          "гостей"
         ]
       },
       {
-        name: 'дети',
-        defaultcount: options.defaultCounts ? options.defaultCounts[1] : '0',
-        maxcount: options.maxCounts ? options.maxCounts[1] : 'Infinity'
+        name: "дети",
+        defaultcount: options.defaultCounts ? options.defaultCounts[1] : "0",
+        maxcount: options.maxCounts ? options.maxCounts[1] : "Infinity"
       },
       {
-        name: 'младенцы',
-        defaultcount: options.defaultCounts ? options.defaultCounts[2] : '0',
-        maxcount: options.maxCounts ? options.maxCounts[2] : 'Infinity',
+        name: "младенцы",
+        defaultcount: options.defaultCounts ? options.defaultCounts[2] : "0",
+        maxcount: options.maxCounts ? options.maxCounts[2] : "Infinity",
         declensions: [
-          'младенец',
-          'младенца',
-          'младенцев'
+          "младенец",
+          "младенца",
+          "младенцев"
         ]
       }
     ]
@@ -65,41 +65,41 @@ mixin dropdown-amenities(options)
   +dropdown({
     title: options.title,
     description: options.description,
-    type: 'amenities',
-    placeholder: options.placeholder || 'Выберите удобства',
+    type: "amenities",
+    placeholder: options.placeholder || "Выберите удобства",
     hasButtons: false,
     isOpened: options.isOpened,
     isAlwaysOpened: options.isAlwaysOpened,
     defaultCounts: options.defaultCounts,
     items: options.items || [
       {
-        name: 'Спальни',
-        defaultcount: options.defaultCounts ? options.defaultCounts[0] : '0',
-        maxcount: options.maxCounts ? options.maxCounts[0] : '10', 
+        name: "Спальни",
+        defaultcount: options.defaultCounts ? options.defaultCounts[0] : "0",
+        maxcount: options.maxCounts ? options.maxCounts[0] : "10", 
         declensions: [
-          'спальня',
-          'спальни',
-          'спален'
+          "спальня",
+          "спальни",
+          "спален"
         ]
       },
       {
-        name: 'Кровати',
-        defaultcount: options.defaultCounts ? options.defaultCounts[1] : '0',
-        maxcount: options.maxCounts ? options.maxCounts[1] : '5',
+        name: "Кровати",
+        defaultcount: options.defaultCounts ? options.defaultCounts[1] : "0",
+        maxcount: options.maxCounts ? options.maxCounts[1] : "5",
         declensions: [
-          'кровать',
-          'кровати',
-          'кроватей'
+          "кровать",
+          "кровати",
+          "кроватей"
         ]
       },
       {
-        name: 'Ванные комнаты',
-        defaultcount: options.defaultCounts ? options.defaultCounts[2] : '0',
-        maxcount: options.maxCounts ? options.maxCounts[2] : '4',
+        name: "Ванные комнаты",
+        defaultcount: options.defaultCounts ? options.defaultCounts[2] : "0",
+        maxcount: options.maxCounts ? options.maxCounts[2] : "4",
         declensions: [
-          'ванная комната',
-          'ванные комнаты',
-          'ванных комнат'
+          "ванная комната",
+          "ванные комнаты",
+          "ванных комнат"
         ]
       }
     ]
@@ -109,14 +109,14 @@ mixin dropdown(options)
   - var randID = Math.floor(Math.random() * (1 - 1000) + 1000)
   .control-container.dropdown
     .control-container__caption
-      h3.control-container__title= options.title || 'dropdown'
+      h3.control-container__title= options.title || "dropdown"
       span.control-container__description= options.description
     .iqdropdown(
       id=`dd-${randID}`
-      class=options.type ? 'dropdown_' + options.type : ''
+      class=options.type ? "dropdown_" + options.type : ""
       data-placeholder=options.placeholder
-      class=options.isOpened ? 'menu-open' : ''
-      data-always-opened=options.isAlwaysOpened ? 'true' : ''
+      class=options.isOpened ? "menu-open" : ""
+      data-always-opened=options.isAlwaysOpened ? "true" : ""
     )
       p.iqdropdown-selection
       button.iqdropdown__arrow.material-icons expand_more
@@ -125,6 +125,6 @@ mixin dropdown(options)
         if options.hasButtons
           .iqdropdown__controls
             button.iqdropdown__button.button.button_link.button_link_clear(
-              class=options.defaultCounts ? '' : 'button_link_clear_hidden'
+              class=options.defaultCounts ? "" : "button_link_clear_hidden"
             ) Очистить
             button.iqdropdown__button.button.button_link Применить

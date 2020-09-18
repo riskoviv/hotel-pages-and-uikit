@@ -7,9 +7,9 @@ include /form-elements/rate-button/rate-button
 section.controls-block__middle
   -
     var checkboxes = [
-      { label: 'Можно курить' },
-      { label: 'Можно с питомцами', isChecked: true },
-      { label: 'Можно пригласить гостей (до 10 человек)', isChecked: true }
+      { label: "Можно курить" },
+      { label: "Можно с питомцами", isChecked: true },
+      { label: "Можно пригласить гостей (до 10 человек)", isChecked: true }
     ]
   .control-container_group
     h3.control-container_group__title checkbox buttons
@@ -21,8 +21,8 @@ section.controls-block__middle
     .controls-group.controls-group_row
       -
         var radios = [
-          { name: 'gender', label: 'Мужчина', isChecked: true },
-          { name: 'gender', label: 'Женщина' }
+          { name: "gender", label: "Мужчина", isChecked: true },
+          { name: "gender", label: "Женщина" }
         ]
       each item in radios
         +radio(item)

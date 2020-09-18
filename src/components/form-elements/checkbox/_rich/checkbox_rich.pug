@@ -2,24 +2,24 @@ include /form-elements/checkbox/checkbox
 
 //-
   options: {
-    title: 'string',
+    title: "string",
     items: [{
-      label: 'string',
-      description: 'string',
+      label: "string",
+      description: "string",
       isChecked: boolean
     }, { ... }]
   }
 mixin checkbox_rich(options)
   .control-container
-    h3.control-container__title.checkbox_rich__title #{options.title || 'rich checkbox buttons'}
+    h3.control-container__title.checkbox_rich__title #{options.title || "rich checkbox buttons"}
     .controls-group.checkbox_rich__group
       each checkbox in options.items
         +checkbox_rich__generator(checkbox)
 
 //-
   options: {
-    label: 'string',
-    description: 'string',
+    label: "string",
+    description: "string",
     isChecked: boolean
   }
 mixin checkbox_rich__generator(options)

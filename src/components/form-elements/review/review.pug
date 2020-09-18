@@ -2,19 +2,19 @@ include /form-elements/button/button
 
 //-
   options: {
-    photoName: 'string',
-    name: 'string',
-    date: 'string',
+    photoName: "string",
+    name: "string",
+    date: "string",
     like: {
       count: number,
       isClicked: boolean
     },
-    text: 'string'
+    text: "string"
   }
 
 mixin review(options)
   .control-container.review
-    img.review__reviewer-photo(src=require('../../../res/img/pictures/' + options.photoName).default alt="reviewer photo")
+    img.review__reviewer-photo(src=require("../../../res/images/avatars/" + options.photoName).default alt="reviewer photo")
     .review__title
       h4.review__reviewer-name= options.name
       span.review__date= options.date
