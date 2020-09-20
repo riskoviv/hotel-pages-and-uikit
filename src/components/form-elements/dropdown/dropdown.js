@@ -3,7 +3,7 @@ import 'item-quantity-dropdown/lib/item-quantity-dropdown.min.css'
 
 // Функция закрытия/открытия дропдауна
 const toggleDropDown = (event) => {
-  const target = event.target;
+  const target = event.target
   const $openedDropdowns = $('.iqdropdown.menu-open')
   const currentDropdown = target.closest('.iqdropdown')
   const dropdownMenu = target.closest('.iqdropdown-menu')
@@ -12,11 +12,11 @@ const toggleDropDown = (event) => {
   const clearButton = target.closest('.button_link.button_link_clear')
 
   const closeNotAlwaysOpenedDropdowns = () => {
-    for (let openedDropdown of $openedDropdowns) {
-      if (!$(openedDropdown).data('always-opened')) {
-        $(openedDropdown).removeClass('menu-open')
+    $openedDropdowns.each(function() {
+      if (!$(this).data('always-opened')) {
+        $(this).removeClass('menu-open')
       }
-    }
+    })
   }
 
   const setAllIQDropdownsZIndexTo1 = () => {
@@ -35,54 +35,70 @@ const toggleDropDown = (event) => {
   }
 }
 
+const dropdownsItemsCounts = {}
+
+function setSelectionText(dropdown, itemsCount, totalItems) {
+  const $selectionText = $('.iqdropdown-selection', dropdown)
+  if (!totalItems) {
+    $selectionText.text($(dropdown).data('placeholder'))
+    return
+  }
+
+  function chooseDeclension(optionId, itemsCount) {
+    const totalItemsLastDigit = parseInt(itemsCount.toString().split('').pop())
+
+    const $option = $(`#${dropdown.id} .iqdropdown-menu-option[data-id="${optionId}"`)
+    let declensionText = $option.data('name') // Если нет списка склонений, используется название элемента
+    if ($option.data('declensions')) { // Если есть список склонений, выбрать нужное
+      const declensionsList = $option.data('declensions')
+      declensionText = declensionsList[2] //5+
+      if ([2, 3, 4].indexOf(totalItemsLastDigit) != -1 && (itemsCount < 12 || itemsCount > 21)) {
+        declensionText = declensionsList[1] //2-4
+      } else if (itemsCount === 1 || totalItemsLastDigit === 1 && itemsCount > 20) {
+        declensionText = declensionsList[0] //1
+      }
+    }
+    return declensionText
+  }
+    
+  if ($(dropdown).hasClass('dropdown_guests')) {
+    // Если это выбор кол-ва гостей
+    if (itemsCount.item3 > 0) {
+      // Если выбраны младенцы
+      const text = chooseDeclension('item1', totalItems - itemsCount.item3)
+      const textInfants = chooseDeclension('item3', itemsCount.item3)
+      $selectionText.text(`${totalItems - itemsCount.item3} ${text}, ${itemsCount.item3} ${textInfants}`)
+    } else {
+      // Если нет младенцев
+      $selectionText.text(`${totalItems} ${chooseDeclension('item1', totalItems)}`)
+    }
+  } else {
+    // если выбор удобств
+    let text = ''
+    
+    for (let i = 1; i <= Object.keys(itemsCount).length; i++) {
+      if (itemsCount[`item${i}`]) {
+        if (text) text += ', '
+        text += `${itemsCount[`item${i}`]} ${chooseDeclension(`item${i}`, itemsCount[`item${i}`])}`
+      }
+    }
+    
+    $selectionText.text(text)
+  }
+}
+
 const iqDropdownInit = (dropdown) => {
   $(dropdown).iqDropdown({
     setSelectionText(itemsCount, totalItems) {
-      if (!totalItems) {
-        return $(dropdown).data('placeholder');
+      dropdownsItemsCounts[dropdown.id] = {
+        itemsCount,
+        totalItems
       }
-
-      function chooseDeclension(optionId, itemsCount) {
-        const totalItemsLastDigit = parseInt(itemsCount.toString().split('').pop())
-
-        const $option = $(`#${dropdown.id} .iqdropdown-menu-option[data-id="${optionId}"`)
-        let declensionText = $option.data('name') // Если нет списка склонений, используется название элемента
-        if ($option.data('declensions')) { // Если есть список склонений, выбрать нужное
-          const declensionsList = $option.data('declensions')
-          declensionText = declensionsList[2] //5+
-          if ([2, 3, 4].indexOf(totalItemsLastDigit) != -1 && (itemsCount < 12 || itemsCount > 21)) {
-            declensionText = declensionsList[1] //2-4
-          } else if (itemsCount === 1 || totalItemsLastDigit === 1 && itemsCount > 20) {
-            declensionText = declensionsList[0] //1
-          }
-        }
-        return declensionText
-      }
-        
-      if ($(dropdown).hasClass('dropdown_guests')) {
-        // Если это выбор кол-ва гостей
-        if (itemsCount.item3 > 0) {
-          // Если выбраны младенцы
-          const text = chooseDeclension('item1', totalItems - itemsCount.item3)
-          const textInfants = chooseDeclension('item3', itemsCount.item3)
-          return `${totalItems - itemsCount.item3} ${text}, ${itemsCount.item3} ${textInfants}`
-        } else {
-          // Если нет младенцев
-          return `${totalItems} ${chooseDeclension('item1', totalItems)}`
-        }
-      } else {
-        // если выбор удобств
-        let text = ''
-        
-        for (let i = 1; i <= Object.keys(itemsCount).length; i++) {
-          if (itemsCount[`item${i}`]) {
-            if (text) text += ', '
-            text += `${itemsCount[`item${i}`]} ${chooseDeclension(`item${i}`, itemsCount[`item${i}`])}`
-          }
-        }
-        
-        return text
-      }
+      if ($(dropdown).hasClass('dropdown_amenities'))
+        setSelectionText(dropdown, itemsCount, totalItems)
+      else
+        return $(dropdown).data('placeholder')
+      
     },
     onChange: (id, count, totalItems) => {
       const $buttonIncrement = $(`#${dropdown.id} [data-id='${id}'] .button-increment`)
@@ -103,10 +119,9 @@ const iqDropdownInit = (dropdown) => {
       }
 
       // Отображение/скрытие кнопки очистить
-      totalItems ?
-        $(`#${dropdown.id} .iqdropdown__button.button_link_clear`).removeClass('button_link_clear_hidden')
-        :
-        $(`#${dropdown.id} .iqdropdown__button.button_link_clear`).addClass('button_link_clear_hidden')
+      totalItems
+        ? $(`#${dropdown.id} .iqdropdown__button.button_link_clear`).removeClass('button_link_clear_hidden')
+        : $(`#${dropdown.id} .iqdropdown__button.button_link_clear`).addClass('button_link_clear_hidden')
 
     },
     
@@ -120,26 +135,37 @@ const iqDropdownInit = (dropdown) => {
       $decrementButton.addClass('button-decrement_disabled')
     }
   }
-  $(`#${dropdown.id} .icon-decrement`).text('-');
-  $(`#${dropdown.id} .icon-increment`).text('+');
+  $(`#${dropdown.id} .icon-decrement`).text('-')
+  $(`#${dropdown.id} .icon-increment`).text('+')
 
   // удаление события клика по дропдауну
   $(dropdown).off('click')
 
-  // Кнопка "очистить"
+  // Если есть блок с кнопками "очистить" и "применить", создать обработчики нажатий
   if ($(`#${dropdown.id} .iqdropdown__controls`).length) {
     $(`#${dropdown.id} .button_link_clear`).on('click', clearFn)
+    $('.button_link:not(.button_link_clear)', dropdown).on('click', () => {
+      setSelectionText(
+        dropdown,
+        dropdownsItemsCounts[dropdown.id].itemsCount,
+        dropdownsItemsCounts[dropdown.id].totalItems
+      )
+    })
   }
 }
 
 
 // Инициализация дропдаунов после загрузки страницы
 $(function() {
-  const $iqdropdowns = $('.iqdropdown')
-  for (let iqdropdown of $iqdropdowns) {
-    iqDropdownInit(iqdropdown)
-  }
-});
+  $('.iqdropdown').each(function() {
+    iqDropdownInit(this)
+    setSelectionText(
+      this,
+      dropdownsItemsCounts[this.id].itemsCount,
+      dropdownsItemsCounts[this.id].totalItems
+    )
+  })
+})
 
 // Сохранение всех списков в один объект
 const $iqdMenus = $('.iqdropdown-menu')
