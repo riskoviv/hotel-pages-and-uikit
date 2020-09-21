@@ -1,16 +1,16 @@
-const path = require('path')
-const fs = require('fs')
-const HTMLWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
-const webpack = require('webpack')
-const ImageminPlugin = require('imagemin-webpack-plugin').default
-const imageminMozjpeg = require('imagemin-mozjpeg')
+const path = require('path');
+const fs = require('fs');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const webpack = require('webpack');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const imageminMozjpeg = require('imagemin-mozjpeg');
 
-const isDev = process.env.NODE_ENV === 'development'
-const isProd = !isDev
+const isDev = process.env.NODE_ENV === 'development';
+const isProd = !isDev;
 
 const PATHS = {
   assets: 'assets',
@@ -18,18 +18,18 @@ const PATHS = {
   components: path.resolve(__dirname, 'src/components'),
   res: path.resolve(__dirname, 'src/res'),
   src: path.resolve(__dirname, 'src'),
-}
+};
 
-const PAGES_DIR = `${PATHS.src}/pages`
-const PAGES_ARR = []
+const PAGES_DIR = `${PATHS.src}/pages`;
+const PAGES_ARR = [];
 
 for (let pages_subdir of ['ui-kit',]) {
   const PAGES = fs.readdirSync(`${PAGES_DIR}/${pages_subdir}`)
     .map(dir => fs.readdirSync(`${PAGES_DIR}/${pages_subdir}/${dir}`))
     .reduce((acc, item) => [...acc, ...item], [])
-    .filter(filename => filename.endsWith('.pug'))
+    .filter(filename => filename.endsWith('.pug'));
   for (let page of PAGES) {
-    PAGES_ARR.push({pagesGroup: pages_subdir, pageName: page})
+    PAGES_ARR.push({pagesGroup: pages_subdir, pageName: page});
   }
 }
 
@@ -38,21 +38,21 @@ const optimization = () => {
     splitChunks: {
       chunks: 'all',
       minSize: 1,
-      minChunks: 2
+      minChunks: 2,
     }
   }
 
   if (isProd) {
     config.minimizer = [
       new OptimizeCssAssetsPlugin(),
-      new TerserPlugin()
+      new TerserPlugin(),
     ]
   }
 
-  return config
-}
+  return config;
+};
 
-const filename = ext => isDev ? `[name].${ext}` : `[name].[hash:7].${ext}`
+const filename = ext => isDev ? `[name].${ext}` : `[name].[hash:7].${ext}`;
 
 const cssLoaders = extra => {
   const loaders = [
@@ -63,36 +63,36 @@ const cssLoaders = extra => {
         reloadAll: true,
       },
     },
-    'css-loader'
+    'css-loader',
   ]
 
   if (extra) {
-    loaders.push(extra)
+    loaders.push(extra);
   }
 
-  return loaders
+  return loaders;
 }
 
 
 const plugins = () => {
   const base = [
     new CleanWebpackPlugin({
-      cleanStaleWebpackAssets: false
+      cleanStaleWebpackAssets: false,
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
-      "window.jQuery": 'jquery'
+      "window.jQuery": 'jquery',
     }),
     new MiniCssExtractPlugin({
-      filename: `assets/css/${filename('css')}`
+      filename: `assets/css/${filename('css')}`,
     }),
     
     ...PAGES_ARR.map(page => new HTMLWebpackPlugin({
       template: `${PAGES_DIR}/${page.pagesGroup}/${page.pageName.replace(/\.pug/, '')}/${page.pageName}`, // .pug
       filename: `./${page.pageName.replace(/\.pug/, '.html')}`, // .html
       favicon: `${PATHS.res}/images/favicon/favicon.svg`,
-      chunks: [`${page.pageName.replace(/\.pug/, '')}`, 'common']
+      chunks: [`${page.pageName.replace(/\.pug/, '')}`, 'common'],
     })),
 
     new ImageminPlugin({
@@ -102,10 +102,10 @@ const plugins = () => {
       plugins: [
         imageminMozjpeg({quality: 50}),
       ],
-    })
+    }),
   ]
 
-  return base
+  return base;
 }
 
 
@@ -146,24 +146,24 @@ module.exports = {
           loader: 'pug-loader',
           options: {
             root: PATHS.components
-          }
-        }  
+          },
+        },
       },
       {
         test: /\.css$/,
-        use: cssLoaders()
+        use: cssLoaders(),
       },
       {
         test: /\.s[ac]ss$/,
-        use: cssLoaders('sass-loader')
+        use: cssLoaders('sass-loader'),
       },
       {
         test: /\.((pn|jp(e)?)g|gif)$/,
         loader: 'file-loader',
         options: {
           outputPath: `${PATHS.assets}/img`,
-          name: filename('[ext]')
-        }
+          name: filename('[ext]'),
+        },
       },
       {
         test: /\.(ttf|woff(2)?|svg)$/,
@@ -171,9 +171,9 @@ module.exports = {
         options: {
           name: filename('[ext]'),
           outputPath: `${PATHS.assets}/fonts`,
-          publicPath: '../fonts'
-        }
-      }
-    ]
-  }
+          publicPath: '../fonts',
+        },
+      },
+    ],
+  },
 };

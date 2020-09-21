@@ -1,12 +1,12 @@
 const setRating = (rateButtonID, rating) => {
-  const rateButton = document.querySelector(`.rate-button#${rateButtonID}`)
-  const stars = rateButton.querySelectorAll('.rate-button__star')
+  const rateButton = document.querySelector(`.rate-button#${rateButtonID}`);
+  const stars = rateButton.querySelectorAll('.rate-button__star');
   for (let i = 0; i < rating; i++) {
-    stars[i].textContent = 'star'
+    stars[i].textContent = 'star';
   }
 }
 
-export { setRating }
+export { setRating };
 
 /*
     For setting rate-button's ratings (count of filled stars) from external script:
