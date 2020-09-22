@@ -1,6 +1,9 @@
 import 'item-quantity-dropdown/lib/item-quantity-dropdown.min';
 import 'item-quantity-dropdown/lib/item-quantity-dropdown.min.css';
 
+
+let lastOpenedDropdown;
+
 // Функция закрытия/открытия дропдауна
 const toggleDropDown = (event) => {
   const target = event.target;
@@ -32,9 +35,16 @@ const toggleDropDown = (event) => {
     $(currentDropdown).addClass('menu-open');
     setAllIQDropdownsZIndexTo1();
     currentDropdown.style.zIndex = '99';
+    lastOpenedDropdown = currentDropdown;
   } else if (isClickedOutsideOfDropdownOrOnApply) {
     closeNotAlwaysOpenedDropdowns();
     setAllIQDropdownsZIndexTo1();
+    // TODO: add new function to restore previous menu html & reinit dropdown
+    if (!applyButton) {
+      console.log(lastOpenedDropdown.id);
+      $('.iqdropdown-menu', lastOpenedDropdown).html(iqdMenusHTMLs[lastOpenedDropdown.id]);
+      iqDropdownInit(lastOpenedDropdown);
+    }
   }
 };
 
@@ -46,6 +56,8 @@ function setSelectionText(dropdown, itemsCount, totalItems) {
     $selectionText.text($(dropdown).data('placeholder'));
     return;
   }
+
+  let selectionText = '';
 
   function chooseDeclension(optionId, itemsCount) {
     const totalItemsLastDigit = parseInt(
@@ -75,17 +87,15 @@ function setSelectionText(dropdown, itemsCount, totalItems) {
       // Если выбраны младенцы
       const text = chooseDeclension('item1', totalItems - itemsCount.item3);
       const textInfants = chooseDeclension('item3', itemsCount.item3);
-      $selectionText.text(
-        `${totalItems - itemsCount.item3} ${text}, ${itemsCount.item3} ${textInfants}`
-      );
+      selectionText = `${totalItems - itemsCount.item3} ${text}, ${itemsCount.item3} ${textInfants}`;
+      $selectionText.text(selectionText);
     } else {
       // Если нет младенцев
-      $selectionText.text(`${totalItems} ${chooseDeclension('item1', totalItems)}`);
+      selectionText = `${totalItems} ${chooseDeclension('item1', totalItems)}`;
+      $selectionText.text(selectionText);
     }
   } else {
     // если выбор удобств
-    let selectionText = '';
-    
     for (let i = 1; i <= Object.keys(itemsCount).length; i++) {
       if (itemsCount[`item${i}`] > 0) {
         if (selectionText !== '') selectionText += ', ';
@@ -96,6 +106,8 @@ function setSelectionText(dropdown, itemsCount, totalItems) {
     
     $selectionText.text(selectionText);
   }
+
+  dropdownsItemsCounts[dropdown.id].selectionText = selectionText;
 }
 
 const iqDropdownInit = (dropdown) => {
@@ -105,10 +117,11 @@ const iqDropdownInit = (dropdown) => {
         itemsCount,
         totalItems,
       }
+      // проверка на класс dropdown_amenities, т. к. у dropdown этого типа нет блока кнопок 
       if ($(dropdown).hasClass('dropdown_amenities')) {
         setSelectionText(dropdown, itemsCount, totalItems);
       } else {
-        return $(dropdown).data('placeholder');
+        return dropdownsItemsCounts[dropdown.id].selectionText;
       }
     },
     onChange: (id, count, totalItems) => {
@@ -160,12 +173,14 @@ const iqDropdownInit = (dropdown) => {
         dropdownsItemsCounts[dropdown.id].itemsCount,
         dropdownsItemsCounts[dropdown.id].totalItems,
       );
+      // TODO: save current dropdown's menu's html to object
+      iqdMenusHTMLs[dropdown.id] = $('.iqdropdown-menu', dropdown).html();
     });
   }
 }
 
 
-// Инициализация дропдаунов после загрузки страницы
+// Инициализация dropdown'ов после загрузки страницы
 $(function() {
   $('.iqdropdown').each(function() {
     iqDropdownInit(this);
@@ -199,6 +214,7 @@ const clearFn = (event) => {
   $(dropdownMenu).html(resetedHTML);
   $('.button_link_clear', dropdown).addClass('button_link_clear_hidden');
   iqDropdownInit(dropdown);
+  setSelectionText(dropdown, 0, 0);
 };
 
 // Проверка на нажатие внутри/вне дропдауна и закрытие его
