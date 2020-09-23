@@ -2,7 +2,23 @@ import 'item-quantity-dropdown/lib/item-quantity-dropdown.min';
 import 'item-quantity-dropdown/lib/item-quantity-dropdown.min.css';
 
 
+const dropdownsItemsCounts = {};
+const $iqDropdowns = $('.iqdropdown');
+const iqDropdownsInitialHTMLs = {};
 let lastOpenedDropdown;
+
+// Инициализация dropdown'ов после загрузки страницы
+$(function () {
+  $iqDropdowns.each(function () {
+    iqDropdownsInitialHTMLs[this.id] = $(this).html();
+    initIqDropdown(this);
+    setSelectionText(
+      this,
+      dropdownsItemsCounts[this.id].itemsCount,
+      dropdownsItemsCounts[this.id].totalItems,
+    );
+  });
+});
 
 // Функция закрытия/открытия дропдауна
 const toggleDropDown = (event) => {
@@ -15,7 +31,7 @@ const toggleDropDown = (event) => {
   const clearButton = target.closest('.button_link.button_link_clear');
 
   const closeNotAlwaysOpenedDropdowns = () => {
-    $openedDropdowns.each(function() {
+    $openedDropdowns.each(function () {
       if (!$(this).data('always-opened')) {
         $(this).removeClass('menu-open');
       }
@@ -23,12 +39,12 @@ const toggleDropDown = (event) => {
   };
 
   const setAllIQDropdownsZIndexTo1 = () => {
-    $('.iqdropdown').css('z-index', 1);
+    $iqDropdowns.css('z-index', 1);
   };
 
   const isDropdownPressed = currentDropdown && !dropdownMenu && !dropdownControls;
   const isClickedOutsideOfDropdownOrOnApply =
-        !currentDropdown && !clearButton || applyButton;
+    (!currentDropdown && !clearButton) || applyButton;
 
   if (isDropdownPressed) {
     closeNotAlwaysOpenedDropdowns();
@@ -39,19 +55,21 @@ const toggleDropDown = (event) => {
   } else if (isClickedOutsideOfDropdownOrOnApply) {
     closeNotAlwaysOpenedDropdowns();
     setAllIQDropdownsZIndexTo1();
-    // TODO: add new function to restore previous menu html & reinit dropdown
-    if (!applyButton) {
-      console.log(lastOpenedDropdown.id);
-      $('.iqdropdown-menu', lastOpenedDropdown).html(iqdMenusHTMLs[lastOpenedDropdown.id]);
-      iqDropdownInit(lastOpenedDropdown);
+    if (!applyButton && lastOpenedDropdown) {
+      $(lastOpenedDropdown).html(iqDropdownsInitialHTMLs[lastOpenedDropdown.id]);
+      initIqDropdown(lastOpenedDropdown);
+      setSelectionText(
+        lastOpenedDropdown,
+        dropdownsItemsCounts[lastOpenedDropdown.id].itemsCount,
+        dropdownsItemsCounts[lastOpenedDropdown.id].totalItems,
+      );
+      lastOpenedDropdown = null;
     }
   }
 };
 
-const dropdownsItemsCounts = {};
-
-function setSelectionText(dropdown, itemsCount, totalItems) {
-  const $selectionText = $('.iqdropdown-selection', dropdown);
+const setSelectionText = (dropdown, itemsCount, totalItems) => {
+  const $selectionText = $(dropdown).find('.iqdropdown-selection');
   if (totalItems === 0) {
     $selectionText.text($(dropdown).data('placeholder'));
     return;
@@ -80,7 +98,7 @@ function setSelectionText(dropdown, itemsCount, totalItems) {
     }
     return declensionText;
   }
-    
+
   if ($(dropdown).hasClass('dropdown_guests')) {
     // Если это выбор кол-ва гостей
     if (itemsCount.item3 > 0) {
@@ -103,16 +121,25 @@ function setSelectionText(dropdown, itemsCount, totalItems) {
           `${itemsCount[`item${i}`]} ${chooseDeclension(`item${i}`, itemsCount[`item${i}`])}`;
       }
     }
-    
+
     $selectionText.text(selectionText);
   }
 
   dropdownsItemsCounts[dropdown.id].selectionText = selectionText;
-}
+};
 
-const iqDropdownInit = (dropdown) => {
+const initIqDropdown = (dropdown) => {
+  const showOrHideClearButton = (totalItems) => {
+    // Отображение/скрытие кнопки очистить
+    const $clearButton = $(`#${dropdown.id} .iqdropdown__button.button_link_clear`);
+    totalItems > 0
+      ? $clearButton.removeClass('button_link_clear_hidden')
+      : $clearButton.addClass('button_link_clear_hidden');
+  };
+
   $(dropdown).iqDropdown({
     setSelectionText(itemsCount, totalItems) {
+      showOrHideClearButton(totalItems);
       dropdownsItemsCounts[dropdown.id] = {
         itemsCount,
         totalItems,
@@ -125,6 +152,7 @@ const iqDropdownInit = (dropdown) => {
       }
     },
     onChange: (id, count, totalItems) => {
+      showOrHideClearButton(totalItems);
       const $buttonIncrement = $(`#${dropdown.id} [data-id='${id}'] .button-increment`);
       const $buttonDecrement = $(`#${dropdown.id} [data-id='${id}'] .button-decrement`);
       const maxCount = $(`#${dropdown.id} [data-id='${id}']`).data('maxcount');
@@ -141,23 +169,19 @@ const iqDropdownInit = (dropdown) => {
         $buttonIncrement.removeClass('button-increment_disabled');
         $buttonDecrement.removeClass('button-decrement_disabled');
       }
-
-      // Отображение/скрытие кнопки очистить
-      const $clearButton = $(`#${dropdown.id} .iqdropdown__button.button_link_clear`);
-      totalItems > 0
-        ? $clearButton.removeClass('button_link_clear_hidden')
-        : $clearButton.addClass('button_link_clear_hidden');
     },
   });
-  
-  const $options = $('.iqdropdown-menu-option', dropdown);
-  for (let option of $options) { // disable '-' if item's count is 0
-    if (option.dataset.defaultcount === '0') {
-      const $decrementButton = $('.button-decrement', option);
+
+  const $options = $(dropdown).find('.iqdropdown-menu-option');
+  $options.each(function () {
+    if (this.dataset.defaultcount === '0') {
+      // disable '-' if item's count is 0
+      const $decrementButton = $(this).find('.button-decrement');
       $decrementButton.prop('disabled', true);
       $decrementButton.addClass('button-decrement_disabled');
     }
-  }
+  });
+  
   $(`#${dropdown.id} .icon-decrement`).text('-');
   $(`#${dropdown.id} .icon-increment`).text('+');
 
@@ -167,53 +191,55 @@ const iqDropdownInit = (dropdown) => {
   // Если есть блок с кнопками "очистить" и "применить", создать обработчики нажатий
   if ($(`#${dropdown.id} .iqdropdown__controls`).length > 0) {
     $(`#${dropdown.id} .button_link_clear`).on('click', clearFn);
-    $('.button_link:not(.button_link_clear)', dropdown).on('click', () => {
-      setSelectionText(
-        dropdown,
-        dropdownsItemsCounts[dropdown.id].itemsCount,
-        dropdownsItemsCounts[dropdown.id].totalItems,
-      );
-      // TODO: save current dropdown's menu's html to object
-      iqdMenusHTMLs[dropdown.id] = $('.iqdropdown-menu', dropdown).html();
-    });
+    $(`#${dropdown.id} .button_link:not(.button_link_clear`).on('click', applyFn);
   }
-}
+};
 
-
-// Инициализация dropdown'ов после загрузки страницы
-$(function() {
-  $('.iqdropdown').each(function() {
-    iqDropdownInit(this);
-    setSelectionText(
-      this,
-      dropdownsItemsCounts[this.id].itemsCount,
-      dropdownsItemsCounts[this.id].totalItems,
-    );
+const composeHTMLFromArray = (arrayOfNodes = []) => {
+  const container = $('<div></div>');
+  $(arrayOfNodes).each(function () {
+    container.append(this);
   });
-});
+  return container.html();
+};
 
-// Сохранение всех списков в один объект
-const $iqdMenus = $('.iqdropdown-menu');
-const iqdMenusHTMLs = {};
-for (let iqdMenu of $iqdMenus) {
-  let id = iqdMenu.parentNode.id;
-  iqdMenusHTMLs[id] = ($(iqdMenu).html());
-}
+// Функция сохранения выбранных значений
+const applyFn = (event) => {
+  const target = event.target;
+  const dropdown = target.closest('.iqdropdown');
+  const dropdownHTML = $.parseHTML(iqDropdownsInitialHTMLs[dropdown.id]);
+  const itemsCount = dropdownsItemsCounts[dropdown.id].itemsCount;
+  const totalItems = dropdownsItemsCounts[dropdown.id].totalItems;
+  const $iqdMenu = dropdownHTML[2];
+  const $menuOptions = $($iqdMenu).find('.iqdropdown-menu-option');
+
+  $menuOptions.each(function (index, element) {
+    $(element).attr('data-defaultcount', `${itemsCount[`item${index + 1}`]}`);
+  })
+
+  iqDropdownsInitialHTMLs[dropdown.id] = composeHTMLFromArray(dropdownHTML);
+
+  $(dropdown).html(iqDropdownsInitialHTMLs[dropdown.id]);
+  initIqDropdown(dropdown);
+  setSelectionText(
+    dropdown,
+    itemsCount,
+    totalItems,
+  );
+};
 
 // Функция очистки iqDropdown
 const clearFn = (event) => {
   const target = event.target;
-  const dropdownMenu = target.closest('.iqdropdown-menu');
   const dropdown = target.closest('.iqdropdown');
-  const resetedHTML = $.parseHTML(iqdMenusHTMLs[dropdown.id]);
-  for (let item of resetedHTML) {
-    if ($(item).hasClass('iqdropdown-menu-option')) {
-      $(item).attr('data-defaultcount', '0');
-    }
-  }
-  $(dropdownMenu).html(resetedHTML);
-  $('.button_link_clear', dropdown).addClass('button_link_clear_hidden');
-  iqDropdownInit(dropdown);
+  const dropdownHTML = $.parseHTML(iqDropdownsInitialHTMLs[dropdown.id]);
+  const $iqdMenu = dropdownHTML[2];
+
+  $($iqdMenu).find('.iqdropdown-menu-option').attr('data-defaultcount', '0');
+
+  iqDropdownsInitialHTMLs[dropdown.id] = composeHTMLFromArray(dropdownHTML);
+  $(dropdown).html(iqDropdownsInitialHTMLs[dropdown.id]);
+  initIqDropdown(dropdown);
   setSelectionText(dropdown, 0, 0);
 };
 
