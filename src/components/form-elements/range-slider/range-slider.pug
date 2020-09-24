@@ -1,12 +1,12 @@
 mixin rangeSlider(options)
   - var randID = Math.floor(Math.random() * (1 - 1000) + 1000)
-  .control-container.range-slider(
+  .range-slider(
     class=options.class
     id=`range-${randID}`
     data-range=options.range
     data-start=options.start
   )
-    .control-container__caption.range-slider__caption
-      h3.control-container__title.range-slider__title= options.title
-      span.control-container__description.range-slider__values
+    .range-slider__caption
+      h3.range-slider__title= options.title
+      span.range-slider__values
     #slider.range-slider__slider

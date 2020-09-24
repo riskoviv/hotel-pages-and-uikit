@@ -1,31 +1,27 @@
 @import '../../../styles/constants.scss';
 
 .form-elements {
-    
   &__content {
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+
+  &__row {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    min-width: 100%;
+    margin-bottom: 100px;
   }
-}
 
-.section-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  min-width: 100%;
-}
-
-@media (max-width: $laptop) {
-  .section-row {
-    justify-content: space-around;
+  &__column {
+    min-width: 320px;
   }
-}
 
-@media (max-width: $mobileS) {
-  .form-elements {
-    padding: 0;
+  @media (max-width: $laptop) {
+    &__row {
+      justify-content: space-around;
+    }
   }
 }

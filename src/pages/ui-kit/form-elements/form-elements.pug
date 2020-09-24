@@ -1,11 +1,249 @@
 extends /../layouts/ui-kit/ui-kit
 
+include /form-elements/text-field/text-field
+include /form-elements/dropdown/dropdown
+include /form-elements/date-dropdown/date-dropdown
+include /form-elements/checkbox/checkbox
+include /form-elements/radio/radio
+include /form-elements/toggle/toggle
+include /form-elements/button/button
+include /form-elements/rate-button/rate-button
+include /form-elements/range-slider/range-slider
+include /form-elements/button/button
+include /form-elements/pagination/pagination
+include /form-elements/dropdown/dropdown
+include /form-elements/expandable-checkbox-list/expandable-checkbox-list
+include /form-elements/checkbox/_rich/checkbox_rich
+include /form-elements/bullet-list/bullet-list
+include /form-elements/advantage/advantage
+include /form-elements/review/review
+
 block variables
   - var title = "Form elements"
   - var pageClass = "form-elements"
 
 block content
-  include blocks/controls-block/controls-block
-  include blocks/dropdowns-block/dropdowns-block
-  include blocks/lists-block/lists-block
-  include blocks/descriptions-block/descriptions-block
+  //- 
+  //- TOP ROW - CONTROLS
+  //- 
+  section.form-elements__row
+    //- LEFT COLUMN
+    section.form-elements__column
+      .form-elements__text-field
+        +textField({
+          type: "email",
+          title: "text field",
+          placeholder: "Email",
+          description: "default",
+        })
+      .form-elements__text-field.form-elements__text-field_hover
+        +textField({
+          title: "text field",
+          value: "This is pretty awesome",
+          idForceHoverStyle: true,
+          description: "hover / focus",
+        })
+      .form-elements__dropdown
+        +dropdown-guests({
+          description: "default",
+        })
+      .form-elements__text-field.form-elements__text-field_masked
+        +textField({
+          modifier: "masked",
+          title: "masked text field",
+          placeholder: "ДД.ММ.ГГГГ",
+          description: "default",
+        })
+      .form-elements__date-dropdown
+        +dateDropdown({})
+      .form-elements__date-dropdown.form-elements__date-dropdown_filter
+        +dateDropdownFilter({
+          selectDate: [
+            [2020, 08, 19],
+            [2020, 08, 23],
+          ],
+        })
+      .form-elements__text-field.form-elements__text-field_subscription
+        +textField({
+          modifier: "subscription",
+          type: "email",
+          title: "subscription text field",
+          placeholder: "Email",
+        })
+
+    //- MIDDLE COLUMN
+    section.form-elements__column
+      -
+        var checkboxes = [
+          { label: "Можно курить" },
+          { label: "Можно с питомцами", isChecked: true },
+          { label: "Можно пригласить гостей (до 10 человек)", isChecked: true },
+        ]
+      .control-container_group
+        h3.control-container_group__title checkbox buttons
+        .controls-group.checkbox__group
+          each item in checkboxes
+            +checkbox(item)
+      .control-container_group
+        h3.control-container_group__title radio buttons
+        .controls-group.controls-group_row
+          -
+            var radios = [
+              { name: "gender", label: "Мужчина", isChecked: true },
+              { name: "gender", label: "Женщина" },
+            ]
+          each item in radios
+            +radio(item)
+      .control-container_group
+        h3.control-container_group__title toggle
+        .controls-group
+          -
+            var toggles = [
+              { isChecked: true },
+              {  },
+            ]
+          each item in toggles
+            +toggle(item)
+      .control-container_group
+        h3.control-container_group__title like button
+        .controls-group.controls-group_row
+          +button_like({ likesCount: 2 })
+          +button_like({ likesCount: 11, isClicked: true })
+      .control-container_group
+        h3.control-container_group__title rate button
+        .controls-group.controls-group_row
+          +rateButton({ rating: 4 })
+          +rateButton({ rating: 5 })      
+
+    //- RIGHT COLUMN
+    section.form-elements__column
+      +rangeSlider({
+        title: "range slider",
+        id: "range1",
+        range: [0, 16000],
+        start: [5000, 10000]
+      })
+      .control-container_group
+        h3.control-container_group__title buttons
+        .controls-group.buttons-group
+          +button_filled({
+            caption: "click me"
+          })
+          +button_filled({
+            caption: "click me",
+            isForceHover: true
+          })
+          +button_bordered({
+            caption: "click me"
+          })
+          +button_bordered({
+            caption: "click me",
+            isForceHover: true
+          })
+          .controls-group.controls-group_row
+            +button_link({ caption: "click me" })
+            +button_link({ caption: "click me", isClear: true })
+          +button_wide({ caption: "Перейти к оплате" })
+      .control-container.pagination
+        h3.control-container__title.pagination__title pagination
+        +pagination
+
+  //- 
+  //- DROPDOWNS ROW
+  //- 
+  section.form-elements__row
+    section.form-elements__column
+      +dropdown-amenities({
+        description: "default",
+        hasButtons: false
+      })
+      +dropdown-amenities({
+        description: "expanded",
+        isOpened: true,
+        isAlwaysOpened: true,
+        defaultCounts: [ 2, 2, 0 ]
+      })
+    section.form-elements__column
+      +dropdown-guests({
+        isOpened: true,
+        isAlwaysOpened: true
+      })
+    section.form-elements__column
+      +dropdown-guests({
+        isOpened: true,
+        isAlwaysOpened: true,
+        defaultCounts: [ 2, 1, 0 ]
+      })
+
+  //- 
+  //- LISTS ROW
+  //- 
+  section.section-row.lists-block
+    section.lists-block__left
+      -
+        var listOfCheckboxesForExpandableCheckboxList = [
+          { label: "Завтрак", isChecked: false },
+          { label: "Письменный стол", isChecked: true },
+          { label: "Стул для кормления", isChecked: true },
+          { label: "Кроватка", isChecked: true },
+          { label: "телевизор", isChecked: false },
+          { label: "шампунь", isChecked: false },
+        ]
+      +expandableCheckboxList({
+        isOpened: false,
+        checkboxes: listOfCheckboxesForExpandableCheckboxList
+      })
+      +expandableCheckboxList({
+        isOpened: true,
+        checkboxes: listOfCheckboxesForExpandableCheckboxList
+      })
+    section.lists-block__middle
+      -
+        var richCheckboxes = [
+          {
+            label: "Широкий коридор",
+            description: "Ширина коридоров в номере не менее 91 см.",
+            isChecked: false
+          },
+          {
+            label: "Помощник для инвалидов",
+            description: "На 1 этаже вас встретит специалист  и проводит до номера.",
+            isChecked: false
+          }
+        ]
+      +checkbox_rich({
+        title: "",
+        items: richCheckboxes
+      })
+    section.lists-block__right
+      -
+        var bulletListItems = [
+          { label: "нельзя с питомцами" },
+          { label: "без вечеринок и мероприятий" },
+          { label: "время прибытия — после 13:00, а выезд до 12:00" }
+        ]
+      .control-container
+        h3.control-container__title.bullet-list__title bullet list
+        +bulletList({
+          items: bulletListItems
+        })
+  //- 
+  //- DESCRIPTIONS ROW
+  //- 
+  section.section-row.descriptions-block
+    section.descriptions-block__left
+      .controls-container_group.advantages-block
+        +advantage_comfort
+        +advantage_convenience
+
+    section.descriptions-block__right
+      +review({
+        photoName: "feedback_man.jpg",
+        name: "Мурад Сарафанов",
+        date: "5 дней назад",
+        like: {
+          count: 11,
+          isClicked: true
+        },
+        text: "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."
+      })

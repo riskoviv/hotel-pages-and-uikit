@@ -8,10 +8,13 @@ html(lang="en")
     meta(charset="utf-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title= title
-  body(class=`${pageClass} ${modifierClass}`)
-    header.page-header
-      .page-header__logo
+  body(
+    class=pageClass
+    class=modifierClass ? modifierClass : ''
+  )
+    header.ui-kit-header
+      .ui-kit-header__logo
         +logo-mini
-    .page-wrapper_ui-kit
-      main(class=`${pageClass}__content`)
+    .container
+      div(class=pageClass + "__content")
         block content

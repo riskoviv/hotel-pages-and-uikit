@@ -1,9 +1,7 @@
 @import '../../../../../styles/constants.scss';
 
 .controls-block {
-  flex-wrap: wrap;
-  width: 100%;
-  margin-bottom: 100px;
+  
 
   &__left,
   &__right {
@@ -23,11 +21,7 @@
   }
 }
 
-@media (max-width: $mobileL) {
-  .controls-block {
-    margin-bottom: 50px;
-  }
-}
+
 
 .control-container {
   margin-bottom: 20px;

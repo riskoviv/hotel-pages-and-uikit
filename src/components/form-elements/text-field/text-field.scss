@@ -1,19 +1,17 @@
 @import '../../../styles/constants.scss';
 
 .text-field {
+  max-width: 266px;
+  position: relative;
+
   &__input {
     @extend %text-field-input-basic;
   }
 
   &_subscription {
 
-    &.control-container {
-      max-width: 266px;
-      position: relative;
-    }
-
     &__input {
-      min-width: 266px;
+      max-width: 266px;
     }
 
     &__arrow {
