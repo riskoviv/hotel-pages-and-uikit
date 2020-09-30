@@ -6,6 +6,11 @@
 
   &__input {
     @extend %text-field-input-basic;
+
+    &_force-focus-hover {
+      border: 1px solid $darkShade50;
+      color: $mainFontColor;
+    }
   }
 
   &_subscription {

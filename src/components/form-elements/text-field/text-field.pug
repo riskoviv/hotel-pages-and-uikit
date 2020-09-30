@@ -1,19 +1,32 @@
+//- options: {
+      type: "string",
+      title: "string",
+      placeholder: "string",
+      description: "string",
+      isForceHoverStyle: boolean,
+      isMasked: boolean,
+      value: "string"
+    }
 mixin textField(options)
-  .text-field(
-    class=options.modifier ? "text-field_" + options.modifier : ""
-  )
-    .text-field__caption
-      if options.title
-        h3.text-field__title= options.title
-      if options.description
-        span.text-field__description= options.description
-    input.text-field__input(
-      type=options.type || "text"
-      placeholder=options.placeholder
-      value=options.value
-      class=options.modifier ? "text-field_" + options.modifier + "__input" : ""
-      class=options.idForceHoverStyle ? "force-focus-hover" : ""
-      maxlength=options.modifier=="masked" ? "10" : ""
+  -
+    var inputClassName = "text-field__input"
+    if options.isMasked
+      inputClassName += " text-field__input_masked"
+    if options.isForceHoverStyle
+      inputClassName += " text-field__input_force-focus-hover"
+  .text-field
+    if options.title || options.description
+      .text-field__caption
+        if options.title
+          h3.text-field__title= options.title
+        if options.description
+          span.text-field__description= options.description
+    input(
+      class = inputClassName
+      type = options.type || "text"
+      placeholder = options.placeholder
+      value = options.value
+      maxlength = options.isMasked ? "10" : ""
     )
-    if options.modifier == "subscription"
+    if options.isSubscription
       button.text-field_subscription__arrow.material-icons(type="button") arrow_forward

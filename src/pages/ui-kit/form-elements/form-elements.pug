@@ -3,6 +3,7 @@ extends /../layouts/ui-kit/ui-kit
 include /form-elements/text-field/text-field
 include /form-elements/dropdown/dropdown
 include /form-elements/date-dropdown/date-dropdown
+include /form-elements/date-dropdown/_filter/date-dropdown_filter
 include /form-elements/checkbox/checkbox
 include /form-elements/radio/radio
 include /form-elements/toggle/toggle
@@ -40,7 +41,7 @@ block content
         +textField({
           title: "text field",
           value: "This is pretty awesome",
-          idForceHoverStyle: true,
+          isForceHoverStyle: true,
           description: "hover / focus",
         })
       .form-elements__dropdown
@@ -49,7 +50,7 @@ block content
         })
       .form-elements__text-field.form-elements__text-field_masked
         +textField({
-          modifier: "masked",
+          isMasked: true,
           title: "masked text field",
           placeholder: "ДД.ММ.ГГГГ",
           description: "default",
@@ -65,7 +66,7 @@ block content
         })
       .form-elements__text-field.form-elements__text-field_subscription
         +textField({
-          modifier: "subscription",
+          isSubscription: true,
           type: "email",
           title: "subscription text field",
           placeholder: "Email",
@@ -79,20 +80,20 @@ block content
           { label: "Можно с питомцами", isChecked: true },
           { label: "Можно пригласить гостей (до 10 человек)", isChecked: true },
         ]
-      .control-container_group
-        h3.control-container_group__title checkbox buttons
-        .controls-group.checkbox__group
-          each item in checkboxes
+      .form-elements__checkbox-group
+        h3.form-elements__checkbox-group-title checkbox buttons
+        each item in checkboxes
+          .form-elements__checkbox
             +checkbox(item)
-      .control-container_group
-        h3.control-container_group__title radio buttons
-        .controls-group.controls-group_row
-          -
-            var radios = [
-              { name: "gender", label: "Мужчина", isChecked: true },
-              { name: "gender", label: "Женщина" },
-            ]
-          each item in radios
+      .form-elements__radio-button-group
+        h3.form-elements__radio-button-group-title radio buttons
+        -
+          var radios = [
+            { name: "gender", label: "Мужчина", isChecked: true },
+            { name: "gender", label: "Женщина" },
+          ]
+        each item in radios
+          .form-elements__radio-button
             +radio(item)
       .control-container_group
         h3.control-container_group__title toggle

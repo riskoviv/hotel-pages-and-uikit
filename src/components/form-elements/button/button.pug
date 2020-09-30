@@ -1,3 +1,7 @@
+//- options: {
+      isForceHover: boolean,
+      caption: "string"
+    }
 mixin button_filled(options)
   button.button.button_filled(
     type="button"
@@ -11,30 +15,18 @@ mixin button_bordered(options)
     button.button.button_bordered__body(type="button")= options.caption
 
 
-//- options {
+//- options: {
       caption: "string",
       isClear: boolean
     }
 mixin button_link(options)
-  button.button.button_link(
-    type="button"
+  a.button.button_link(
     class=options.isClear ? "button_link_clear" : ""
   )= options.caption
 
 //- options: {
-      isClicked: boolean,
-      likesCount: number
+      caption: "string"
     }
-mixin button_like(options)
-  - var randID = Math.floor(Math.random() * (1 - 1000) + 1000)
-  .button.button_like(
-    class=options.isClicked ? "button_like_clicked" : ""
-    id=`like-${randID}`
-  )
-    .button_like__body
-      span.button_like__heart.material-icons favorite_border
-      span.button_like__count= options.likesCount
-
 mixin button_wide(options)
   button.button.button_filled.button_wide(type="submit")= options.caption
     span.button_wide__arrow.material-icons arrow_forward
