@@ -19,9 +19,5 @@
     min-width: 320px;
   }
 
-  @media (max-width: $laptop) {
-    &__row {
-      justify-content: space-around;
-    }
-  }
+  
 }

@@ -33,6 +33,7 @@
   }
 
   &__label {
+    @extend %input-button-label;
     cursor: pointer;
 
     &::first-letter {

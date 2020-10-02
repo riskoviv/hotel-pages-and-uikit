@@ -1,32 +1,29 @@
 extends /../layouts/ui-kit/ui-kit
 
-include /form-elements/text-field/text-field
-include /form-elements/dropdown/dropdown
-include /form-elements/date-dropdown/date-dropdown
-include /form-elements/date-dropdown/_filter/date-dropdown_filter
-include /form-elements/checkbox/checkbox
-include /form-elements/radio/radio
-include /form-elements/toggle/toggle
-include /form-elements/button/button
-include /form-elements/rate-button/rate-button
-include /form-elements/range-slider/range-slider
-include /form-elements/button/button
-include /form-elements/pagination/pagination
-include /form-elements/dropdown/dropdown
-include /form-elements/expandable-checkbox-list/expandable-checkbox-list
-include /form-elements/checkbox/_rich/checkbox_rich
-include /form-elements/bullet-list/bullet-list
-include /form-elements/advantage/advantage
-include /form-elements/review/review
-
 block variables
   - var title = "Form elements"
   - var pageClass = "form-elements"
 
 block content
-  //- 
-  //- TOP ROW - CONTROLS
-  //- 
+  include /form-elements/text-field/text-field
+  include /form-elements/dropdown/dropdown
+  include /form-elements/date-dropdown/date-dropdown
+  include /form-elements/date-dropdown/_filter/date-dropdown_filter
+  include /form-elements/checkbox/checkbox
+  include /form-elements/radio/radio
+  include /form-elements/toggle/toggle
+  include /form-elements/like-button/like-button
+  include /form-elements/rate-button/rate-button
+  include /form-elements/range-slider/range-slider
+  include /form-elements/button/button
+  include /form-elements/pagination/pagination
+  include /form-elements/dropdown/dropdown
+  include /form-elements/expandable-checkbox-list/expandable-checkbox-list
+  include /form-elements/checkbox/_rich/checkbox_rich
+  include /form-elements/bullet-list/bullet-list
+  include /form-elements/advantage/advantage
+  include /form-elements/review/review
+   
   section.form-elements__row
     //- LEFT COLUMN
     section.form-elements__column
@@ -37,7 +34,7 @@ block content
           placeholder: "Email",
           description: "default",
         })
-      .form-elements__text-field.form-elements__text-field_hover
+      .form-elements__text-field-hover
         +textField({
           title: "text field",
           value: "This is pretty awesome",
@@ -48,7 +45,7 @@ block content
         +dropdown-guests({
           description: "default",
         })
-      .form-elements__text-field.form-elements__text-field_masked
+      .form-elements__text-field-masked
         +textField({
           isMasked: true,
           title: "masked text field",
@@ -57,14 +54,14 @@ block content
         })
       .form-elements__date-dropdown
         +dateDropdown({})
-      .form-elements__date-dropdown.form-elements__date-dropdown_filter
+      .form-elements__date-dropdown-filter
         +dateDropdownFilter({
           selectDate: [
             [2020, 08, 19],
             [2020, 08, 23],
           ],
         })
-      .form-elements__text-field.form-elements__text-field_subscription
+      .form-elements__text-field-subscription
         +textField({
           isSubscription: true,
           type: "email",
@@ -95,38 +92,41 @@ block content
         each item in radios
           .form-elements__radio-button
             +radio(item)
-      .control-container_group
-        h3.control-container_group__title toggle
-        .controls-group
-          -
-            var toggles = [
-              { isChecked: true },
-              {  },
-            ]
-          each item in toggles
+      .form-elements__toggle-group
+        h3.form-elements__toggle-group-title toggle
+        -
+          var toggles = [
+            { isChecked: true },
+            {  },
+          ]
+        each item in toggles
+          .form-elements__toggle
             +toggle(item)
-      .control-container_group
-        h3.control-container_group__title like button
-        .controls-group.controls-group_row
-          +button_like({ likesCount: 2 })
-          +button_like({ likesCount: 11, isClicked: true })
-      .control-container_group
-        h3.control-container_group__title rate button
-        .controls-group.controls-group_row
-          +rateButton({ rating: 4 })
-          +rateButton({ rating: 5 })      
+      .form-elements__like-buttons
+        h3.form-elements__like-buttons-title like button
+        .form-elements__like-button
+          +like-button({ likesCount: 2 })
+        .form-elements__like-button
+          +like-button({ likesCount: 11, isClicked: true })
+      .form-elements__rate-buttons
+        h3.form-elements__rate-buttons-title rate button
+        .form-elements__rate-button
+          +rate-button({ rating: 4 })
+        .form-elements__rate-button
+          +rate-button({ rating: 5 })      
 
     //- RIGHT COLUMN
     section.form-elements__column
-      +rangeSlider({
-        title: "range slider",
-        id: "range1",
-        range: [0, 16000],
-        start: [5000, 10000]
-      })
-      .control-container_group
-        h3.control-container_group__title buttons
-        .controls-group.buttons-group
+      .form-elements__range-slider
+        +rangeSlider({
+          title: "range slider",
+          id: "range1",
+          range: [0, 16000],
+          start: [5000, 10000]
+        })
+      .form-elements__buttons
+        h3.form-elements__buttons-title buttons
+        .form-elements__buttons-group
           +button_filled({
             caption: "click me"
           })
@@ -141,12 +141,14 @@ block content
             caption: "click me",
             isForceHover: true
           })
-          .controls-group.controls-group_row
-            +button_link({ caption: "click me" })
-            +button_link({ caption: "click me", isClear: true })
+        .form-elements__button-link
+          +button_link({ caption: "click me" })
+        .form-elements__button-link
+          +button_link({ caption: "click me", isClear: true })
+        .form-elements__button-wide
           +button_wide({ caption: "Перейти к оплате" })
-      .control-container.pagination
-        h3.control-container__title.pagination__title pagination
+      .form-elements__pagination
+        h3.pagination__title pagination
         +pagination
 
   //- 
@@ -154,35 +156,40 @@ block content
   //- 
   section.form-elements__row
     section.form-elements__column
-      +dropdown-amenities({
-        description: "default",
-        hasButtons: false
-      })
-      +dropdown-amenities({
-        description: "expanded",
-        isOpened: true,
-        isAlwaysOpened: true,
-        defaultCounts: [ 2, 2, 0 ]
-      })
+      .form-elements__dropdown-amenities
+        +dropdown-amenities({
+          description: "default",
+          hasButtons: false
+        })
+      .form-elements__dropdown-amenities-opened
+        +dropdown-amenities({
+          description: "expanded",
+          isOpened: true,
+          isAlwaysOpened: true,
+          defaultCounts: [ 2, 2, 0 ]
+        })
     section.form-elements__column
-      +dropdown-guests({
-        isOpened: true,
-        isAlwaysOpened: true
-      })
+      .form-elements__dropdown-guests-opened
+        +dropdown-guests({
+          isOpened: true,
+          isAlwaysOpened: true
+        })
     section.form-elements__column
-      +dropdown-guests({
-        isOpened: true,
-        isAlwaysOpened: true,
-        defaultCounts: [ 2, 1, 0 ]
-      })
+      .form-elements__dropdown-guests-opened
+        +dropdown-guests({
+          isOpened: true,
+          isAlwaysOpened: true,
+          defaultCounts: [ 2, 1, 0 ]
+        })
 
   //- 
   //- LISTS ROW
   //- 
-  section.section-row.lists-block
-    section.lists-block__left
+  section.form-elements__row
+    //- LEFT BLOCK
+    section.form-elements__column
       -
-        var listOfCheckboxesForExpandableCheckboxList = [
+        var expandableCheckboxListItems = [
           { label: "Завтрак", isChecked: false },
           { label: "Письменный стол", isChecked: true },
           { label: "Стул для кормления", isChecked: true },
@@ -190,15 +197,19 @@ block content
           { label: "телевизор", isChecked: false },
           { label: "шампунь", isChecked: false },
         ]
-      +expandableCheckboxList({
-        isOpened: false,
-        checkboxes: listOfCheckboxesForExpandableCheckboxList
-      })
-      +expandableCheckboxList({
-        isOpened: true,
-        checkboxes: listOfCheckboxesForExpandableCheckboxList
-      })
-    section.lists-block__middle
+      .form-elements__expandable-checkbox-list
+        +expandableCheckboxList({
+          isOpened: false,
+          checkboxes: expandableCheckboxListItems
+        })
+      .form-elements__expandable-checkbox-list-opened
+        +expandableCheckboxList({
+          isOpened: true,
+          checkboxes: expandableCheckboxListItems
+        })
+
+    //- MIDDLE BLOCK
+    section.form-elements__column
       -
         var richCheckboxes = [
           {
@@ -212,32 +223,35 @@ block content
             isChecked: false
           }
         ]
-      +checkbox_rich({
-        title: "",
-        items: richCheckboxes
-      })
-    section.lists-block__right
+      .form-elements__checkbox-rich-group
+        h3.form-elements__checkbox-rich-group-title rich checkbox buttons
+          each checkbox in richCheckboxes
+            .form-elements__checkbox-rich
+              +checkbox_rich(checkbox)
+
+    //- RIGHT BLOCK
+    section.form-elements__column
       -
         var bulletListItems = [
           { label: "нельзя с питомцами" },
           { label: "без вечеринок и мероприятий" },
           { label: "время прибытия — после 13:00, а выезд до 12:00" }
         ]
-      .control-container
-        h3.control-container__title.bullet-list__title bullet list
+      .form-elements__bullet-list
+        h3.form-elements__bullet-list-title bullet list
         +bulletList({
           items: bulletListItems
         })
   //- 
   //- DESCRIPTIONS ROW
   //- 
-  section.section-row.descriptions-block
-    section.descriptions-block__left
-      .controls-container_group.advantages-block
+  section.form-elements__row
+    section.form-elements__column
+      .form-elements__advantages-block
         +advantage_comfort
         +advantage_convenience
 
-    section.descriptions-block__right
+    section.form-elements__column_wide
       +review({
         photoName: "feedback_man.jpg",
         name: "Мурад Сарафанов",

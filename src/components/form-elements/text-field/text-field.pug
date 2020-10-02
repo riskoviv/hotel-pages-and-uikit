@@ -10,10 +10,8 @@
 mixin textField(options)
   -
     var inputClassName = "text-field__input"
-    if options.isMasked
-      inputClassName += " text-field__input_masked"
-    if options.isForceHoverStyle
-      inputClassName += " text-field__input_force-focus-hover"
+    inputClassName += options.isMasked ? " text-field__input_masked" : ""
+    inputClassName += options.isForceHoverStyle ? " text-field__input_force-focus-hover" : ""
   .text-field
     if options.title || options.description
       .text-field__caption
@@ -22,11 +20,11 @@ mixin textField(options)
         if options.description
           span.text-field__description= options.description
     input(
-      class = inputClassName
-      type = options.type || "text"
-      placeholder = options.placeholder
-      value = options.value
-      maxlength = options.isMasked ? "10" : ""
+      class=inputClassName
+      type=options.type || "text"
+      placeholder=options.placeholder
+      value=options.value
+      maxlength=options.isMasked ? "10" : ""
     )
     if options.isSubscription
       button.text-field_subscription__arrow.material-icons(type="button") arrow_forward

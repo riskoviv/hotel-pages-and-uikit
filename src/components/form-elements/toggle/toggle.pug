@@ -1,10 +1,13 @@
-include /form-elements/switch-common/switch-common
+//- options: {
+      label: "string",
+      isChecked: boolean
+    }
 mixin toggle(options)
   - var randID = Math.floor(Math.random() * (1 - 1000) + 1000)
-  .input-button.toggle
-    +switch({
-      id: `t-${randID}`,
-      controlType: "toggle",
-      isChecked: options.isChecked
-    })
-    label.input-button__label.toggle__label(for=`t-${randID}`) #{options.label || "Получать спецпредложения"}
+  label.toggle
+    input.toggle__switch(
+      id=`t-${randID}`
+      type="checkbox"
+      checked=options.isChecked
+    )
+    span.toggle__label #{options.label || "Получать спецпредложения"}

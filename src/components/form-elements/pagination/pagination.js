@@ -53,7 +53,7 @@ $(() => {
     callback: function(data, pagination) {
       // template method of yourself
       var html = simpleTemplating(data);
-      $('.pagination__data-container').html(html);
+      $('.page-content__container').html(html);
     },
     pageSize: 12,
     autoHidePrevious: true,

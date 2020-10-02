@@ -2,12 +2,12 @@
       isClicked: boolean,
       likesCount: number
     }
-mixin button_like(options)
+mixin like-button(options)
   - var randID = Math.floor(Math.random() * (1 - 1000) + 1000)
-  .button.button_like(
+  .like-button(
     class=options.isClicked ? "button_like_clicked" : ""
     id=`like-${randID}`
   )
-    .button_like__body
-      span.button_like__heart.material-icons favorite_border
-      span.button_like__count= options.likesCount
+    .like-button__body
+      span.like-button__heart.material-icons favorite_border
+      span.like-button__count= options.likesCount
