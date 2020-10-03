@@ -1,8 +1,12 @@
 @import '../../../styles/constants.scss';
 
 .text-field {
-  max-width: 266px;
   position: relative;
+
+  &__caption {
+    display: flex;
+    justify-content: space-between;
+  }
 
   &__input {
     @extend %text-field-input-basic;

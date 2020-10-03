@@ -19,5 +19,13 @@
     min-width: 320px;
   }
 
+  &__control-state {
+    line-height: 15px;
+  }
+
+  &__text-field,
+  &__text-field-hover {
+    margin-bottom: 20px;
+  }
   
 }

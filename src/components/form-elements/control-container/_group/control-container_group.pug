@@ -1,0 +1,17 @@
+//- options: {
+      title: "string",
+      state: "string",
+      modifierClass: "string"
+    }
+mixin control-container_group(options)
+  .contol-container_group(
+    class=options.modifierClass ? `control-container_${options.modifierClass}` : ""
+  )
+    .control-container_group__caption
+      if options.title
+        h3.control-container_group__title= options.title
+      if options.state
+        span.control-container_group__state= options.state
+    .control-container_group__controls
+      if block
+        block
