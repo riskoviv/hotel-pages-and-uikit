@@ -1,52 +1,7 @@
 @import '../../../../../styles/constants.scss';
 
-.controls-block {
-  
-
-  &__left,
-  &__right {
-    min-width: 320px;
-  }
-
-  &__middle {
-    min-width: 260px;
-  }
-
-  &__right {
-    width: 320px;
-
-    .control-container.range-slider {
-      margin-bottom: 40px;
-    }
-  }
-}
-
-
-
 .control-container {
-  margin-bottom: 20px;
-
-  &__caption {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-  }
-
-  &__description {
-    font-size: 12px;
-    line-height: 15px;
-    text-transform: uppercase;
-    color: $darkShade50;
-  }
-
-  &_group {
-    &__title {
-      margin-bottom: 16px;
-    }
-    &:not(:last-child) {
-      margin-bottom: 40px;
-    }
-  }
+  
 
   &_row {
     display: flex;

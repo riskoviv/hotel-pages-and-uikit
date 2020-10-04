@@ -19,13 +19,21 @@
     min-width: 320px;
   }
 
-  &__control-state {
-    line-height: 15px;
-  }
 
-  &__text-field,
-  &__text-field-hover {
+  &__control-container {
     margin-bottom: 20px;
+
+    &_date-dropdown,
+    &_date-dropdown-filter {
+      margin: {
+        top: 40px;
+        bottom: 40px;
+      }
+    }
+
+    &_group {
+      margin-bottom: 40px;
+    }
   }
   
 }

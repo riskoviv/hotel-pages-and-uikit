@@ -1,0 +1,16 @@
+@import '../../../../styles/constants.scss';
+
+.control-container_group {
+  margin-bottom: 40px;
+
+  &__caption {
+    margin-bottom: 16px;
+  }
+
+  &__controls {
+
+    &_row {
+      display: flex;
+    }
+  }
+}

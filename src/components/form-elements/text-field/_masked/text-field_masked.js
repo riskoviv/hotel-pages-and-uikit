@@ -1,4 +1,4 @@
-const $maskedInput = $('.text-field__input_masked');
+const $maskedInput = $('.text-field_masked > .js-text-field__input');
 
 $maskedInput.on('keydown', function (event) {
   const key = event.key;

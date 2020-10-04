@@ -1,3 +1,5 @@
+include /form-elements/control-container/control-container
+
 //- options: {
       title1: "string",
       title2: "string",
@@ -6,9 +8,9 @@
         [yyyy, mm, dd],
       ]
     }
-mixin dateDropdown(options)
+mixin date-dropdown(options)
   - var randID = Math.floor(Math.random() * (1 - 1000) + 1000)
-  .date-dropdown.control-container.control-container_row
+  .date-dropdown
     input.date-dropdown__input_fake.datepicker-here(
       type="text"
       data-classes=`calendar-${randID}`
@@ -17,8 +19,10 @@ mixin dateDropdown(options)
       readonly
     )
     each val in [1, 2]
-      .control-container
-        h3.control-container__title #{options[`title${val}`] || "date dropdown"}
+      +control-container({
+        title: options[`title${val}`] || "date dropdown",
+        modifierClass: "date-dropdown",
+      })
         .date-dropdown__container
           button.date-dropdown__arrow.material-icons expand_more
           input.date-dropdown__input(type="text" class="date-" + val placeholder="ДД.ММ.ГГГГ" readonly)

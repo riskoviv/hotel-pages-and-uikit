@@ -1,3 +1,5 @@
+include /form-elements/control-container/control-container
+
 //- options: {
       title,
       selectDate: [
@@ -5,11 +7,15 @@
         [yyyy, mm, dd],
       ]
     } 
-mixin dateDropdownFilter(options)
+mixin date-dropdown_filter(options)
   - var randID = Math.floor(Math.random() * (1 - 1000) + 1000)
-  .date-dropdown.date-dropdown_filter.control-container
-    h3.control-container__title #{options.title || "filter date dropdown"}
-    .date-dropdown__container.date-dropdown_filter__container
+    
+  +control-container({
+    title: options.title || "filter date dropdown",
+    state: options.state,
+    modifierClass: "date-dropdown",
+  })
+    .date-dropdown.date-dropdown_filter
       button.date-dropdown__arrow.date-dropdown_filter__arrow.material-icons expand_more
       input.date-dropdown__input.date-dropdown_filter__input.datepicker-here(
         type="text"

@@ -1,3 +1,5 @@
+include /form-elements/control-container/control-container
+
 //- options: {
       type: "string",
       title: "string",
@@ -7,19 +9,23 @@
       isMasked: boolean,
       value: "string"
     }
-mixin textField(options)
+mixin text-field(options)
   -
-    var inputClassName = "text-field__input"
-    inputClassName += options.isMasked ? " text-field__input_masked" : ""
-    inputClassName += options.isForceHoverStyle ? " text-field__input_force-focus-hover" : ""
-    
-  .text-field
-    input(
-      class=inputClassName
-      type=options.type || "text"
-      placeholder=options.placeholder
-      value=options.value
-      maxlength=options.isMasked ? "10" : ""
-    )
-    if options.isSubscription
-      button.text-field_subscription__arrow.material-icons(type="button") arrow_forward
+    var blockClassName = "text-field"
+    blockClassName += options.isMasked ? " text-field_masked" : ""
+    blockClassName += options.isForceHoverStyle ? " text-field_force-focus-hover" : ""
+    blockClassName += options.isSubscription ? " text-field_subscription" : ""
+
+  +control-container({
+    title: options.title,
+    state: options.state,
+  })
+    div(class=blockClassName)
+      input.text-field__input.js-text-field__input(
+        type=options.type || "text"
+        placeholder=options.placeholder
+        value=options.value
+        maxlength=options.isMasked ? "10" : ""
+      )
+      if options.isSubscription
+        button.text-field_subscription__arrow.material-icons(type="button") arrow_forward

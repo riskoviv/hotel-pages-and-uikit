@@ -9,9 +9,9 @@ mixin control-container(options)
   )
     .control-container__caption
       if options.title
-        h3.text-field__title= options.title
+        h3.control-container__title= options.title
       if options.state
-        span.form-elements__control-state= options.state
+        span.control-container__state= options.state
     .control-container__control
       if block
         block

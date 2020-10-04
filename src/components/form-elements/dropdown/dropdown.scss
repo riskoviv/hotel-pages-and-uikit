@@ -1,10 +1,5 @@
 @import '../../../styles/constants.scss';
 
-.dropdown {
-  max-width: -moz-fit-content;
-  max-width: fit-content;
-}
-
 .iqdropdown {
   @extend %input-basic;
   padding: 0;

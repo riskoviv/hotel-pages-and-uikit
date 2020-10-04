@@ -5,6 +5,8 @@ block variables
   - var pageClass = "form-elements"
 
 block content
+  include /form-elements/control-container/control-container
+  include /form-elements/control-container/_group/control-container_group
   include /form-elements/text-field/text-field
   include /form-elements/dropdown/dropdown
   include /form-elements/date-dropdown/date-dropdown
@@ -27,42 +29,43 @@ block content
   section.form-elements__row
     //- LEFT COLUMN
     section.form-elements__column
-      .form-elements__text-field
-        +textField({
-          type: "email",
+      .form-elements__control-container
+        +text-field({
           title: "text field",
-          placeholder: "Email",
           state: "default",
+          type: "email",
+          placeholder: "Email",
         })
-      .form-elements__text-field-hover
-        +textField({
+      .form-elements__control-container
+        +text-field({
           title: "text field",
+          state: "hover / focus",
           value: "This is pretty awesome",
           isForceHoverStyle: true,
-          state: "hover / focus",
         })
-      .form-elements__dropdown
+      .form-elements__control-container
         +dropdown-guests({
+          title: "dropdown",
           state: "default",
         })
-      .form-elements__text-field-masked
-        +textField({
-          isMasked: true,
+      .form-elements__control-container
+        +text-field({
           title: "masked text field",
-          placeholder: "ДД.ММ.ГГГГ",
           state: "default",
+          isMasked: true,
+          placeholder: "ДД.ММ.ГГГГ",
         })
-      .form-elements__date-dropdown
-        +dateDropdown({})
-      .form-elements__date-dropdown-filter
-        +dateDropdownFilter({
+      .form-elements__control-container_date-dropdown
+        +date-dropdown({})
+      .form-elements__control-container_date-dropdown-filter
+        +date-dropdown_filter({
           selectDate: [
             [2020, 08, 19],
             [2020, 08, 23],
           ],
         })
       .form-elements__text-field-subscription
-        +textField({
+        +text-field({
           isSubscription: true,
           type: "email",
           title: "subscription text field",
