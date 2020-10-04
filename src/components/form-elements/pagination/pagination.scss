@@ -1,18 +1,14 @@
 @import '../../../styles/constants.scss';
 @import '~paginationjs/dist/pagination.css';
 
+.page-content__container {
+  display: none;
+}
+
 .pagination {
 
   &__title {
     margin-bottom: 16px;
-  }
-
-  &__data-container {
-    display: none;
-
-    &__item {
-      
-    }
   }
 
   &js {

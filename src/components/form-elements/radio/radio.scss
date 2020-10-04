@@ -3,9 +3,11 @@
 //extends common styles from ../switch-common/switch-common.scss
 
 .radio {
-  margin-bottom: 0;
+  display: flex;
+  cursor: pointer;
 
   &__switch {
+    @extend %switch;
     border-radius: 50%;
     padding: 3px;
 
@@ -20,6 +22,6 @@
   }
 
   &__label {
-    cursor: pointer;
+    @extend %input-button-label;
   }
 }

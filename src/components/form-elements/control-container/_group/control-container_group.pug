@@ -10,8 +10,8 @@ mixin control-container_group(options)
     .control-container_group__caption
       if options.title
         h3.control-container_group__title= options.title
-      if options.state
-        span.control-container_group__state= options.state
-    .control-container_group__controls
+    .control-container_group__controls(
+      class=options.isRow ? "control-container_group__controls_row" : ""
+    )
       if block
         block

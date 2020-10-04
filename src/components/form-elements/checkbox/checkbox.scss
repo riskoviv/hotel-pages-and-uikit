@@ -3,16 +3,11 @@
 //extends common styles from ../switch-common/switch-common.scss
 
 .checkbox {
-  
-  &__group {
-    max-width: 222px;
-  }
-
-  &:not(:last-child) {
-    margin-bottom: 10px;
-  }
+  display: flex;
+  cursor: pointer;
 
   &__switch {
+    @extend %switch;
     border-radius: 4px;
     position: relative;
 
@@ -34,7 +29,6 @@
 
   &__label {
     @extend %input-button-label;
-    cursor: pointer;
 
     &::first-letter {
       text-transform: uppercase;

@@ -107,8 +107,9 @@ $iconSize: 48px;
 }
 
 %input-button-label {
+  line-height: 20px;
   color: $darkShade50;
-  padding-left: 10px;
+  margin-left: 10px;
   user-select: none;
 }
 

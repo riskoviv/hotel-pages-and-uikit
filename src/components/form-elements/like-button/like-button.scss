@@ -6,6 +6,7 @@
   height: 20px;
   border-radius: 10px;
   padding: 1px;
+  cursor: pointer;
 
   &__body {
     border-radius: 10px;
@@ -37,8 +38,8 @@
   &_clicked {
     background: $primaryGradient;
 
-    .button_like__heart,
-    .button_like__count {
+    .like-button__heart,
+    .like-button__count {
       color: $purple;
     }
   }

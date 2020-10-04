@@ -35,5 +35,47 @@
       margin-bottom: 40px;
     }
   }
-  
+
+  &__checkbox {
+    max-width: 222px;
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__radio-button,
+  &__rate-button {
+    margin-right: 20px;
+  }
+
+  &__toggle {
+    margin-bottom: 14px;
+  }
+
+  &__like-button {
+    margin-right: 10px;
+  }
+
+  &__range-slider {
+    margin-bottom: 40px;
+  }
+
+  &__buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 100px);
+    grid-template-rows: auto auto;
+    gap: 30px 20px;
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+
+  &__button-link {
+    margin-right: 20px;
+
+    &-group {
+      display: flex;
+      margin-bottom: 30px;
+    }
+  }
 }

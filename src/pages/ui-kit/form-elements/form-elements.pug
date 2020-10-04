@@ -74,49 +74,62 @@ block content
 
     //- MIDDLE COLUMN
     section.form-elements__column
-      -
-        var checkboxes = [
-          { label: "Можно курить" },
-          { label: "Можно с питомцами", isChecked: true },
-          { label: "Можно пригласить гостей (до 10 человек)", isChecked: true },
-        ]
-      .form-elements__checkbox-group
-        h3.form-elements__checkbox-group-title checkbox buttons
-        each item in checkboxes
-          .form-elements__checkbox
-            +checkbox(item)
-      .form-elements__radio-button-group
-        h3.form-elements__radio-button-group-title radio buttons
-        -
-          var radios = [
-            { name: "gender", label: "Мужчина", isChecked: true },
-            { name: "gender", label: "Женщина" },
-          ]
-        each item in radios
-          .form-elements__radio-button
-            +radio(item)
-      .form-elements__toggle-group
-        h3.form-elements__toggle-group-title toggle
-        -
-          var toggles = [
-            { isChecked: true },
-            {  },
-          ]
-        each item in toggles
-          .form-elements__toggle
-            +toggle(item)
-      .form-elements__like-buttons
-        h3.form-elements__like-buttons-title like button
-        .form-elements__like-button
-          +like-button({ likesCount: 2 })
-        .form-elements__like-button
-          +like-button({ likesCount: 11, isClicked: true })
-      .form-elements__rate-buttons
-        h3.form-elements__rate-buttons-title rate button
-        .form-elements__rate-button
-          +rate-button({ rating: 4 })
-        .form-elements__rate-button
-          +rate-button({ rating: 5 })      
+      .form-elements__control-container_group
+        +control-container_group({
+          title: "checkbox buttons",
+        })
+          -
+            var checkboxes = [
+              { label: "Можно курить" },
+              { label: "Можно с питомцами", isChecked: true },
+              { label: "Можно пригласить гостей (до 10 человек)", isChecked: true },
+            ]
+          each item in checkboxes
+            .form-elements__checkbox
+              +checkbox(item)
+      .form-elements__control-container_group
+        +control-container_group({
+          title: "radio buttons",
+          isRow: true,
+        })
+          -
+            var radios = [
+              { name: "gender", label: "Мужчина", isChecked: true },
+              { name: "gender", label: "Женщина" },
+            ]
+          each item in radios
+            .form-elements__radio-button
+              +radio(item)
+      .form-elements__control-container_group
+        +control-container_group({
+          title: "toggle",
+        })
+          -
+            var toggles = [
+              { isChecked: true },
+              {  },
+            ]
+          each item in toggles
+            .form-elements__toggle
+              +toggle(item)
+      .form-elements__control-container_group
+        +control-container_group({
+          title: "like button",
+          isRow: true,
+        })
+          .form-elements__like-button
+            +like-button({ likesCount: 2 })
+          .form-elements__like-button
+            +like-button({ likesCount: 11, isClicked: true })
+      .form-elements__control-container_group
+        +control-container_group({
+          title: "rate button",
+          isRow: true,
+        })
+          .form-elements__rate-button
+            +rate-button({ rating: 4 })
+          .form-elements__rate-button
+            +rate-button({ rating: 5 })
 
     //- RIGHT COLUMN
     section.form-elements__column
@@ -125,31 +138,38 @@ block content
           title: "range slider",
           id: "range1",
           range: [0, 16000],
-          start: [5000, 10000]
+          start: [5000, 10000],
         })
-      .form-elements__buttons
-        h3.form-elements__buttons-title buttons
-        .form-elements__buttons-group
-          +button_filled({
-            caption: "click me"
-          })
-          +button_filled({
-            caption: "click me",
-            isForceHover: true
-          })
-          +button_bordered({
-            caption: "click me"
-          })
-          +button_bordered({
-            caption: "click me",
-            isForceHover: true
-          })
-        .form-elements__button-link
-          +button_link({ caption: "click me" })
-        .form-elements__button-link
-          +button_link({ caption: "click me", isClear: true })
-        .form-elements__button-wide
-          +button_wide({ caption: "Перейти к оплате" })
+      .form-elements__control-container_group
+        +control-container_group({
+          title: "buttons",
+        })
+          .form-elements__buttons-grid
+            .form-elements__button
+              +button_filled({
+                caption: "click me",
+              })
+            .form-elements__button
+              +button_filled({
+                caption: "click me",
+                isForceHover: true,
+              })
+            .form-elements__button
+              +button_bordered({
+                caption: "click me",
+              })
+            .form-elements__button
+              +button_bordered({
+                caption: "click me",
+                isForceHover: true,
+              })
+          .form-elements__button-link-group
+            .form-elements__button-link
+              +button_link({ caption: "click me", })
+            .form-elements__button-link
+              +button_link({ caption: "click me", isClear: true, })
+          .form-elements__button-wide
+            +button_wide({ caption: "Перейти к оплате", })
       .form-elements__pagination
         h3.pagination__title pagination
         +pagination
@@ -162,27 +182,27 @@ block content
       .form-elements__dropdown-amenities
         +dropdown-amenities({
           state: "default",
-          hasButtons: false
+          hasButtons: false,
         })
       .form-elements__dropdown-amenities-opened
         +dropdown-amenities({
           state: "expanded",
           isOpened: true,
           isAlwaysOpened: true,
-          defaultCounts: [ 2, 2, 0 ]
-        })
-    section.form-elements__column
-      .form-elements__dropdown-guests-opened
-        +dropdown-guests({
-          isOpened: true,
-          isAlwaysOpened: true
+          defaultCounts: [ 2, 2, 0 ],
         })
     section.form-elements__column
       .form-elements__dropdown-guests-opened
         +dropdown-guests({
           isOpened: true,
           isAlwaysOpened: true,
-          defaultCounts: [ 2, 1, 0 ]
+        })
+    section.form-elements__column
+      .form-elements__dropdown-guests-opened
+        +dropdown-guests({
+          isOpened: true,
+          isAlwaysOpened: true,
+          defaultCounts: [ 2, 1, 0 ],
         })
 
   //- 
@@ -203,12 +223,12 @@ block content
       .form-elements__expandable-checkbox-list
         +expandableCheckboxList({
           isOpened: false,
-          checkboxes: expandableCheckboxListItems
+          checkboxes: expandableCheckboxListItems,
         })
       .form-elements__expandable-checkbox-list-opened
         +expandableCheckboxList({
           isOpened: true,
-          checkboxes: expandableCheckboxListItems
+          checkboxes: expandableCheckboxListItems,
         })
 
     //- MIDDLE BLOCK
@@ -218,12 +238,12 @@ block content
           {
             label: "Широкий коридор",
             description: "Ширина коридоров в номере не менее 91 см.",
-            isChecked: false
+            isChecked: false,
           },
           {
             label: "Помощник для инвалидов",
             description: "На 1 этаже вас встретит специалист  и проводит до номера.",
-            isChecked: false
+            isChecked: false,
           }
         ]
       .form-elements__checkbox-rich-group
@@ -238,12 +258,12 @@ block content
         var bulletListItems = [
           { label: "нельзя с питомцами" },
           { label: "без вечеринок и мероприятий" },
-          { label: "время прибытия — после 13:00, а выезд до 12:00" }
+          { label: "время прибытия — после 13:00, а выезд до 12:00" },
         ]
       .form-elements__bullet-list
         h3.form-elements__bullet-list-title bullet list
         +bulletList({
-          items: bulletListItems
+          items: bulletListItems,
         })
   //- 
   //- DESCRIPTIONS ROW
@@ -263,5 +283,5 @@ block content
           count: 11,
           isClicked: true
         },
-        text: "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."
+        text: "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.",
       })

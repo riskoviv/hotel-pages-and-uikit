@@ -3,8 +3,16 @@
 .range-slider {
   width: 266px;
 
-  & &__caption {
+  &__caption {
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__values {
+    font-size: 12px;
+    line-height: 15px;
+    color: $darkShade50;
   }
 
   &__slider {

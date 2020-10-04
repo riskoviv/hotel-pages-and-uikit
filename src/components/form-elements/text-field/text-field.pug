@@ -13,8 +13,8 @@ mixin text-field(options)
   -
     var blockClassName = "text-field"
     blockClassName += options.isMasked ? " text-field_masked" : ""
-    blockClassName += options.isForceHoverStyle ? " text-field_force-focus-hover" : ""
     blockClassName += options.isSubscription ? " text-field_subscription" : ""
+    inputModifierClassName = options.isForceHoverStyle ? "text-field__input_force-focus-hover" : ""
 
   +control-container({
     title: options.title,
@@ -22,6 +22,7 @@ mixin text-field(options)
   })
     div(class=blockClassName)
       input.text-field__input.js-text-field__input(
+        class=inputModifierClassName
         type=options.type || "text"
         placeholder=options.placeholder
         value=options.value

@@ -3,12 +3,15 @@
 //extends common styles from ../switch-common/switch-common.scss
 
 .toggle {
+  display: flex;
+  cursor: pointer;
 
   &:not(:last-child) {
     margin-bottom: 14px;
   }
 
   &__switch {
+    @extend %switch;
     width: 40px;
     border-radius: 10px;
     position: relative;
@@ -31,8 +34,7 @@
   }
 
   &__label {
+    @extend %input-button-label;
     color: $mainFontColor;
-    padding-left: 10px;
-    cursor: pointer;
   }
 }
