@@ -1,4 +1,4 @@
-include /form-elements/control-container/control-container
+include /form-elements/control-caption/control-caption
 
 //- options: {
       title1: "string",
@@ -19,10 +19,10 @@ mixin date-dropdown(options)
       readonly
     )
     each val in [1, 2]
-      +control-container({
-        title: options[`title${val}`] || "date dropdown",
-        modifierClass: "date-dropdown",
-      })
+      .date-dropdown__dropdown
+        +control-caption({
+          title: options[`title${val}`] || "date dropdown",
+        })
         .date-dropdown__container
           button.date-dropdown__arrow.material-icons expand_more
           input.date-dropdown__input(type="text" class="date-" + val placeholder="ДД.ММ.ГГГГ" readonly)

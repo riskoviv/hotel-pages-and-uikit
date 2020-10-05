@@ -65,12 +65,18 @@
     width: 320px;
     position: relative;
 
-    &__arrow {
-      height: 100%;
-      width: $inputHeight;
+    &::after {
       position: absolute;
+      content: 'arrow_forward';
+      font-family: 'Material Icons';
       top: 0;
       right: 0;
+      width: $inputHeight;
+      height: $inputHeight;
+      font-size: 24px;
+      font-weight: $mainFontWeight;
+      line-height: 1;
+      text-transform: none;
       padding: 10px;
     }
   }

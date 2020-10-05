@@ -1,7 +1,6 @@
 @import '../../../styles/constants.scss';
 
-.control-container {
-  &__caption {
+.control-caption {
     display: flex;
     justify-content: space-between;
     margin-bottom: 5px;
@@ -10,7 +9,6 @@
     &:empty {
       margin: 0;
     }
-  }
 
   &__state {
     font-size: 12px;

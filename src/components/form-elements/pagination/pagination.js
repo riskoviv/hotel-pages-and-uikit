@@ -40,7 +40,7 @@ $(() => {
     }
   }
 
-  const $paginator = $('.pagination__container');
+  const $paginator = $('.pagination');
   
   $paginator.pagination({
     dataSource: function(done){
@@ -53,7 +53,7 @@ $(() => {
     callback: function(data, pagination) {
       // template method of yourself
       var html = simpleTemplating(data);
-      $('.page-content__container').html(html);
+      $('.page-content').html(html);
     },
     pageSize: 12,
     autoHidePrevious: true,

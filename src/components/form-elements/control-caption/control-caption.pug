@@ -1,0 +1,10 @@
+//- options: {
+      title: "string",
+      state: "string",
+    }
+mixin control-caption(options)
+  .control-caption
+    if options.title
+      h3.control-caption__title= options.title
+    if options.state
+      span.control-caption__state= options.state

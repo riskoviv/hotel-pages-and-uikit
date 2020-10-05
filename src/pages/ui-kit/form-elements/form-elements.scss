@@ -17,6 +17,10 @@
 
   &__column {
     min-width: 320px;
+
+    &:first-child {
+      margin-right: 4.66%;
+    }
   }
 
 
