@@ -1,4 +1,4 @@
-include /form-elements/control-caption/control-caption
+include /common/control-caption/control-caption
 
 //- options: {
       title1: "string",
@@ -11,7 +11,7 @@ include /form-elements/control-caption/control-caption
 mixin date-dropdown(options)
   - var randID = Math.floor(Math.random() * (1 - 1000) + 1000)
   .date-dropdown
-    input.date-dropdown__input_fake.datepicker-here(
+    input.date-dropdown__input_fake.datepicker-here.js-datepicker-here(
       type="text"
       data-classes=`calendar-${randID}`
       data-keyboard-nav="false"
@@ -25,4 +25,9 @@ mixin date-dropdown(options)
         })
         .date-dropdown__container
           button.date-dropdown__arrow.material-icons expand_more
-          input.date-dropdown__input(type="text" class="date-" + val placeholder="ДД.ММ.ГГГГ" readonly)
+          input.date-dropdown__input(
+            type="text"
+            class=`date-${val} js-date-${val}`
+            placeholder="ДД.ММ.ГГГГ"
+            readonly
+          )

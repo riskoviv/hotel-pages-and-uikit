@@ -1,14 +1,14 @@
 @import '../../../styles/constants.scss';
 
 .control-caption {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-    user-select: none;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  user-select: none;
 
-    &:empty {
-      margin: 0;
-    }
+  &:empty {
+    margin: 0;
+  }
 
   &__state {
     font-size: 12px;

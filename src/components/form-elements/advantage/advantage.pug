@@ -13,12 +13,13 @@ mixin advantage_convenience
   })
 
 //-
-  +advantage
-  options: {
-    icon: "string" (Material icons icon name)
-    title: "string",
-    description: "string"
-  }
+  +advantage(
+    options: {
+      icon: "string" (Material icons icon name, e.g. "insert_emoticon")
+      title: "string",
+      description: "string"
+    }
+  )
 mixin advantage(options)
   .advantage
     span.advantage__icon= options.icon

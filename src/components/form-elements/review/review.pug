@@ -18,9 +18,8 @@ mixin review(options)
     .review__title
       h4.review__reviewer-name= options.name
       span.review__date= options.date
-  
     +like-button({
       isClicked: options.like.isClicked,
-      likesCount: options.like.count
+      likesCount: options.like.count,
     })
     p.review__text= options.text

@@ -1,12 +1,7 @@
 @import '../../../../styles/constants.scss';
 
 .checkbox_rich {
-  
-  margin-bottom: 10px;
-
-  &__group {
-    max-width: 266px;
-  }
+  max-width: 260px;  
 
   &__title {
     margin-bottom: 15px;
@@ -22,11 +17,14 @@
   }
 
   &__description {
-    display: block;
     margin-top: 5px;
     margin-left: 30px;
     color: $darkShade50;
     font-size: 12px;
     line-height: 14px;
+
+    &-line {
+      display: block;
+    }
   }
 }

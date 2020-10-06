@@ -18,10 +18,11 @@ const datePickerInit = (datepicker) => {
       setCustomOptions();
     },
     onSelect(formattedDate) {
-      onSelectCounter++;
+      onSelectCounter += 1;
       saveDates(formattedDate);
       const isDateSelectedManually =
-        $(datepicker).data('selectDate') && onSelectCounter > 2  || !$(datepicker).data('selectDate');
+        ($(datepicker).data('selectDate') !== '' && onSelectCounter > 2)
+        || $(datepicker).data('selectDate') === '';
       if (isDateSelectedManually) {
         $(datepicker).val('');
         if (!isFilter) {
@@ -33,7 +34,7 @@ const datePickerInit = (datepicker) => {
       }
       setCustomOptions();
       if (formattedDate !== '') {
-        makeClearButtonVisible();
+        showClearButton();
       }
     },
     onShow() {
@@ -41,7 +42,7 @@ const datePickerInit = (datepicker) => {
     },
   })
 
-  const calendarClass = '.' + $(datepicker).data('classes');
+  const calendarClass = `.${$(datepicker).data('classes')}`;
   const $calendarClearButton = $(`${calendarClass} .datepicker--button[data-action="clear"]`);
 
   const disableNavTitle = () => {
@@ -54,14 +55,14 @@ const datePickerInit = (datepicker) => {
     $calendarClearButton.addClass('button button_link button_link_clear');
   };
 
-  const makeClearButtonVisible = () => {
+  const showClearButton = () => {
     $calendarClearButton.css('visibility', 'visible');
   };
 
-  const isFilter = $(datepicker).hasClass('date-dropdown_filter__input');
+  const isFilter = $(datepicker).hasClass('js-date-dropdown_filter__input');
 
-  const $date1 = $('.date-1', datepicker.parentNode);
-  const $date2 = $('.date-2', datepicker.parentNode);
+  const $date1 = $(datepicker.parentNode).find('.js-date-1');
+  const $date2 = $(datepicker.parentNode).find('.js-date-2');
   let savedDates = [];
   let savedDatesFilter = '';
 
@@ -90,7 +91,6 @@ const datePickerInit = (datepicker) => {
       $(datepicker).val(savedDatesFilter);
     }
   };
-   
   
   setCustomOptions();
 
@@ -103,13 +103,13 @@ const datePickerInit = (datepicker) => {
       printDates();
       myDatepicker.hide();
     });
-  $calendarClearButton.on('click', function () {
+  $calendarClearButton.on('click', function hideClearButton() {
     $(this).css('visibility', 'hidden');
   });
 }
 
 $(() => {
-  const $datepickerInputs = $('.datepicker-here');
+  const $datepickerInputs = $('.js-datepicker-here');
   $datepickerInputs.each(function() {
     datePickerInit(this);
     const datePicker = $(this).datepicker().data('datepicker');
@@ -120,6 +120,5 @@ $(() => {
       });
       datePicker.selectDate(dateArray);
     }
-    console.log('datePicker: ', datePicker);
   });
 });

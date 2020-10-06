@@ -1,4 +1,4 @@
-const $maskedInput = $('.text-field_masked > .js-text-field__input');
+const $maskedInput = $('.js-text-field__input_masked');
 
 $maskedInput.on('keydown', function (event) {
   const key = event.key;
@@ -17,8 +17,8 @@ $maskedInput.on('keydown', function (event) {
 });
 
 $maskedInput.on('keyup', function (event) {
-  if (this.value.length == 2 || this.value.length == 5) {
-    if (event.key == 'Backspace') {
+  if (this.value.length === 2 || this.value.length === 5) {
+    if (event.key === 'Backspace') {
       this.value = this.value.slice(0, -1);
     } else {
       this.value += '.';

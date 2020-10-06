@@ -4,22 +4,22 @@
   &__content {
     max-width: 1160px;
     margin: 0 auto;
-  }
-
-  &__row {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
-    min-width: 100%;
-    margin-bottom: 100px;
   }
 
   &__column {
-    min-width: 320px;
+    margin-bottom: 100px;
+    width: 320px;
 
-    &:first-child {
+    &:nth-child(3n-2) {
       margin-right: 4.66%;
+    }
+
+    &_expandable-checkbox-lists {
+      margin-top: -14px;
     }
   }
 
@@ -94,10 +94,13 @@
       margin-bottom: 20px;
 
       &_opened {
-        height: 181px;
+        height: 128px;
       }
     }
     
-    
+  }
+
+  &__checkbox-rich {
+    margin-bottom: 10px;
   }
 }

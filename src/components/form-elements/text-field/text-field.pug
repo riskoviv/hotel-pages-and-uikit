@@ -1,4 +1,4 @@
-include /form-elements/control-caption/control-caption
+include /common/control-caption/control-caption
 
 //- options: {
       type: "string",
@@ -12,7 +12,8 @@ include /form-elements/control-caption/control-caption
 mixin text-field(options)
   -
     var inputModifierClassName = "text-field"
-    inputModifierClassName += options.isMasked ? " text-field__input_masked" : ""
+    inputModifierClassName += options.isMasked
+      ? " text-field__input_masked js-text-field__input_masked" : ""
     inputModifierClassName += options.isSubscription ? " text-field__input_subscription" : ""
     inputModifierClassName += options.isForceHoverStyle ? " text-field__input_force-focus-hover" : ""
 

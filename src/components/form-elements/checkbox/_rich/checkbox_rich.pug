@@ -12,4 +12,6 @@ mixin checkbox_rich(options)
       label: options.label,
       isChecked: options.isChecked
     })
-    span.checkbox_rich__description= options.description
+    .checkbox_rich__description
+      each line in options.description
+        span.checkbox_rich__description-line= line

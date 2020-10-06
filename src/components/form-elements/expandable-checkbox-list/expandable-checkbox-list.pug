@@ -16,7 +16,8 @@ mixin expandableCheckboxList(options)
       span.expandable-checkbox-list__arrow.material-icons expand_more
     .expandable-checkbox-list__items-list
       each item in options.checkboxes
-        +checkbox({
-          label: item.label,
-          isChecked: item.isChecked
-        })
+        .expandable-checkbox-list__item
+          +checkbox({
+            label: item.label,
+            isChecked: item.isChecked
+          })

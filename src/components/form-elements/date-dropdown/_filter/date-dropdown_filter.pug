@@ -1,4 +1,4 @@
-include /form-elements/control-caption/control-caption
+include /common/control-caption/control-caption
 
 //- options: {
       title,
@@ -15,7 +15,7 @@ mixin date-dropdown_filter(options)
   })
   .date-dropdown.date-dropdown_filter
     button.date-dropdown__arrow.date-dropdown_filter__arrow.material-icons expand_more
-    input.date-dropdown__input.date-dropdown_filter__input.datepicker-here(
+    input.date-dropdown__input.date-dropdown_filter__input.js-date-dropdown_filter__input.datepicker-here.js-datepicker-here(
       type="text"
       placeholder="ДД.ММ.ГГГГ"
       data-classes=`calendar-${randID}`

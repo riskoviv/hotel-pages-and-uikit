@@ -8,10 +8,6 @@
   font-weight: $headingFontWeight;
   color: $headingColor;
   
-  &:not(:last-child) {
-    margin-bottom: 50px;
-  }
-
   &:last-child .heading-examples-list__text-example {
     max-width: 301px;
   }

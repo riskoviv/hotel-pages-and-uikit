@@ -28,4 +28,12 @@
       min-width: 403px;
     }
   }
+
+  &__color-example:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  &__heading-example:not(:last-child) {
+    margin-bottom: 50px;
+  }
 }

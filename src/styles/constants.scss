@@ -57,12 +57,6 @@ $iconSize: 48px;
   line-height: 18px;
 }
 
-@media (max-width: $mobileM) {
-  %input-basic {
-    min-width: 290px;
-  }
-}
-
 %text-field-input-basic {
   @extend %input-basic;
   

@@ -1,6 +1,7 @@
 @import '../../../styles/constants.scss';
 
 .expandable-checkbox-list {
+  max-width: 266px;
 
   &:not(:first-child) {
     margin-top: 50px;
@@ -13,7 +14,6 @@
 
     > .expandable-checkbox-list__items-list {
       display: block;
-      max-width: 100%;
     }
   }
 
@@ -21,8 +21,8 @@
     position: relative;
     display: flex;
     justify-content: space-between;
-    width: 266px;
-    margin-bottom: 17px;
+    align-items: center;
+    height: $inputHeight;
     cursor: pointer;
   }
 
@@ -44,5 +44,9 @@
 
   &__items-list {
     display: none;
+  }
+
+  &__item {
+    margin-bottom: 10px;
   }
 }
