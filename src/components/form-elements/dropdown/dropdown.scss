@@ -5,9 +5,8 @@
   padding: 0;
   color: $mainFontColor;
 
-  &.dropdown_amenities {
-    min-width: 266px;
-    width: 266px;
+  &_amenities {
+    max-width: 266px;
   }
 
   &:focus,

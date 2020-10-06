@@ -99,7 +99,7 @@ const setSelectionText = (dropdown, itemsCount, totalItems) => {
     return declensionText;
   }
 
-  if ($(dropdown).hasClass('js-dropdown_guests')) {
+  if ($(dropdown).hasClass('js-iqdropdown_guests')) {
     // Если это выбор кол-ва гостей
     if (itemsCount.item3 > 0) {
       // Если выбраны младенцы
@@ -144,8 +144,8 @@ const initIqDropdown = (dropdown) => {
         itemsCount,
         totalItems,
       }
-      // проверка на класс js-dropdown_amenities, т. к. у dropdown этого типа нет блока кнопок 
-      if ($(dropdown).hasClass('js-dropdown_amenities')) {
+      // проверка на класс js-iqdropdown_amenities, т. к. у dropdown этого типа нет блока кнопок 
+      if ($(dropdown).hasClass('js-iqdropdown_amenities')) {
         setSelectionText(dropdown, itemsCount, totalItems);
       } else {
         return dropdownsItemsCounts[dropdown.id].selectionText;

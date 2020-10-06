@@ -113,9 +113,9 @@ mixin dropdown(options)
     title: options.title,
     state: options.state,
   })
-  .dropdown.iqdropdown.js-iqdropdown(
+  .iqdropdown.js-iqdropdown(
     id=`dd-${randID}`
-    class=options.type ? "js-dropdown_" + options.type : ""
+    class=options.type ? `iqdropdown_${options.type} js-iqdropdown_${options.type}` : ""
     data-placeholder=options.placeholder
     class=options.isOpened ? "menu-open" : ""
     data-always-opened=options.isAlwaysOpened ? "true" : ""

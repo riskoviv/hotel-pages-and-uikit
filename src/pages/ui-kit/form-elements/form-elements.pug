@@ -29,35 +29,35 @@ block content
   section.form-elements__row
     //- LEFT COLUMN
     section.form-elements__column
-      .form-elements__control-container
+      .form-elements__control
         +text-field({
           title: "text field",
           state: "default",
           type: "email",
           placeholder: "Email",
         })
-      .form-elements__control-container
+      .form-elements__control
         +text-field({
           title: "text field",
           state: "hover / focus",
           value: "This is pretty awesome",
           isForceHoverStyle: true,
         })
-      .form-elements__control-container
+      .form-elements__control
         +dropdown-guests({
           title: "dropdown",
           state: "default",
         })
-      .form-elements__control-container
+      .form-elements__control
         +text-field({
           title: "masked text field",
           state: "default",
           isMasked: true,
           placeholder: "ДД.ММ.ГГГГ",
         })
-      .form-elements__control-container_date-dropdown
+      .form-elements__control_date-dropdown
         +date-dropdown({})
-      .form-elements__control-container_date-dropdown-filter
+      .form-elements__control_date-dropdown-filter
         +date-dropdown_filter({
           selectDate: [
             [2020, 08, 19],
@@ -74,8 +74,8 @@ block content
 
     //- MIDDLE COLUMN
     section.form-elements__column
-      .form-elements__control-container_group
-        +control-container_group({
+      .form-elements__controls-group
+        +controls-group({
           title: "checkbox buttons",
         })
           -
@@ -87,8 +87,8 @@ block content
           each item in checkboxes
             .form-elements__checkbox
               +checkbox(item)
-      .form-elements__control-container_group
-        +control-container_group({
+      .form-elements__controls-group
+        +controls-group({
           title: "radio buttons",
           isRow: true,
         })
@@ -100,8 +100,8 @@ block content
           each item in radios
             .form-elements__radio-button
               +radio(item)
-      .form-elements__control-container_group
-        +control-container_group({
+      .form-elements__controls-group
+        +controls-group({
           title: "toggle",
         })
           -
@@ -112,8 +112,8 @@ block content
           each item in toggles
             .form-elements__toggle
               +toggle(item)
-      .form-elements__control-container_group
-        +control-container_group({
+      .form-elements__controls-group
+        +controls-group({
           title: "like button",
           isRow: true,
         })
@@ -121,8 +121,8 @@ block content
             +like-button({ likesCount: 2 })
           .form-elements__like-button
             +like-button({ likesCount: 11, isClicked: true })
-      .form-elements__control-container_group
-        +control-container_group({
+      .form-elements__controls-group
+        +controls-group({
           title: "rate button",
           isRow: true,
         })
@@ -140,8 +140,8 @@ block content
           range: [0, 16000],
           start: [5000, 10000],
         })
-      .form-elements__control-container_group
-        +control-container_group({
+      .form-elements__controls-group
+        +controls-group({
           title: "buttons",
         })
           .form-elements__buttons-grid
@@ -179,27 +179,31 @@ block content
   //- 
   section.form-elements__row
     section.form-elements__column
-      .form-elements__dropdown-amenities
+      .form-elements__dropdown_narrow
         +dropdown-amenities({
+          title: "dropdown",
           state: "default",
           hasButtons: false,
         })
-      .form-elements__dropdown-amenities-opened
+      .form-elements__dropdown_narrow.form-elements__dropdown_narrow_opened
         +dropdown-amenities({
+          title: "dropdown",
           state: "expanded",
           isOpened: true,
           isAlwaysOpened: true,
           defaultCounts: [ 2, 2, 0 ],
         })
     section.form-elements__column
-      .form-elements__dropdown-guests-opened
+      .form-elements__dropdown_opened
         +dropdown-guests({
+          title: "dropdown",
           isOpened: true,
           isAlwaysOpened: true,
         })
     section.form-elements__column
-      .form-elements__dropdown-guests-opened
+      .form-elements__dropdown_opened
         +dropdown-guests({
+          title: "dropdown",
           isOpened: true,
           isAlwaysOpened: true,
           defaultCounts: [ 2, 1, 0 ],

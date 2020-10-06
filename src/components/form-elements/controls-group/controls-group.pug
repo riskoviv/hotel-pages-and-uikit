@@ -3,15 +3,15 @@
       state: "string",
       modifierClass: "string"
     }
-mixin control-container_group(options)
+mixin controls-group(options)
   .contol-container_group(
     class=options.modifierClass ? `control-container_${options.modifierClass}` : ""
   )
-    .control-container_group__caption
+    .controls-group__caption
       if options.title
-        h3.control-container_group__title= options.title
-    .control-container_group__controls(
-      class=options.isRow ? "control-container_group__controls_row" : ""
+        h3.controls-group__title= options.title
+    .controls-group__controls(
+      class=options.isRow ? "controls-group__controls_row" : ""
     )
       if block
         block

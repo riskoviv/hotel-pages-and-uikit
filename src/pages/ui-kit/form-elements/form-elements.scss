@@ -24,7 +24,7 @@
   }
 
 
-  &__control-container {
+  &__control {
     margin-bottom: 20px;
 
     &_date-dropdown,
@@ -35,7 +35,7 @@
       }
     }
 
-    &_group {
+    &s-group {
       margin-bottom: 40px;
     }
   }
@@ -81,5 +81,23 @@
       display: flex;
       margin-bottom: 30px;
     }
+  }
+
+  &__dropdown {
+
+    &_opened {
+      height: 222px;
+    }
+    
+    &_narrow {
+      width: 266px;
+      margin-bottom: 20px;
+
+      &_opened {
+        height: 181px;
+      }
+    }
+    
+    
   }
 }
