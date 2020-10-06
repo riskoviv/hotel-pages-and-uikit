@@ -1,0 +1,20 @@
+extends /../layouts/ui-kit/ui-kit
+
+block variables
+  -
+    var title = "Cards"
+    var pageClass = "cards"
+    var modifierClass = "grey"
+
+block content
+  include /cards/card-container/card-container
+
+  article.cards__card
+    +card-container
+      h2 hello world!
+  //- article.cards__card
+  //- article.cards__card
+  //- article.cards__card
+  //- article.cards__card
+  //- article.cards__card
+  //- article.cards__card

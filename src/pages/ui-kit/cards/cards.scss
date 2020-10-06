@@ -1,0 +1,13 @@
+@import '../../../styles/constants.scss';
+
+.cards {
+  margin: 0 auto;
+  max-width: 1160px;
+  max-height: 1060px;
+  // column-count: 3;
+
+  &__card {
+    margin-bottom: 40px;
+    background-color: #fff;
+  }
+}

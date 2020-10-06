@@ -117,6 +117,7 @@ module.exports = {
     common: './pages/common/common.js',
     'colors-and-type': './pages/ui-kit/colors-and-type/colors-and-type.js',
     'form-elements': './pages/ui-kit/form-elements/form-elements.js',
+    'cards': './pages/ui-kit/cards/cards.js',
   },
   output: {
     filename: filename('js'),
@@ -132,7 +133,8 @@ module.exports = {
     hot: false,
     openPage: [
       // 'colors-and-type.html',
-      'form-elements.html',
+      // 'form-elements.html',
+      'cards.html',
     ],
     stats: 'minimal',
   },

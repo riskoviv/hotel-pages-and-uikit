@@ -1,5 +1,11 @@
 @import '../../styles/constants.scss';
 
+.ui-kit-page {
+  
+  &_grey {
+    background-color: #E5E5E5;
+  }
+}
 
 .ui-kit-header {
   min-height: 145px;
