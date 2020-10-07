@@ -1,4 +1,4 @@
-include /common/control-caption/control-caption
+include /common/control-container/control-container
 
 //- options: {
       title1: "string",
@@ -20,14 +20,14 @@ mixin date-dropdown(options)
     )
     each val in [1, 2]
       .date-dropdown__dropdown
-        +control-caption({
+        +control-container({
           title: options[`title${val}`] || "date dropdown",
         })
-        .date-dropdown__container
-          button.date-dropdown__arrow.material-icons expand_more
-          input.date-dropdown__input(
-            type="text"
-            class=`date-${val} js-date-${val}`
-            placeholder="ДД.ММ.ГГГГ"
-            readonly
-          )
+          .date-dropdown__container
+            button.date-dropdown__arrow.material-icons expand_more
+            input.date-dropdown__input(
+              type="text"
+              class=`date-${val} js-date-${val}`
+              placeholder="ДД.ММ.ГГГГ"
+              readonly
+            )

@@ -1,0 +1,25 @@
+@import '../../../styles/constants.scss';
+
+.control-container {
+  &__caption {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    user-select: none;
+
+    &_group {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__state {
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: $darkShade50;
+  }
+
+  &__controls_row {
+    display: flex;
+  }
+}

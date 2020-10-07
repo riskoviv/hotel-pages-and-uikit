@@ -1,0 +1,35 @@
+@import '../../../styles/constants.scss';
+
+.registration-card {
+
+  &__title,
+  &__radio-buttons,
+  &__bithdate,
+  &__toggle {
+    margin-bottom: 20px;
+  }
+
+  &__text-field,
+  &__login-data {
+    margin-bottom: 10px;
+  }
+
+  &__radio-button {
+    margin-right: 20px;
+  }
+
+  &__registration-form {
+    margin-bottom: 30px;
+  }
+
+  &__login-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__login-text {
+    line-height: 18px;
+    color: #000;
+  }
+}

@@ -3,11 +3,6 @@
 .text-field {
   position: relative;
 
-  &__caption {
-    display: flex;
-    justify-content: space-between;
-  }
-
   &__input {
     @extend %text-field-input-basic;
 

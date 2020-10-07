@@ -1,0 +1,20 @@
+//- options: {
+      title: "string",
+      state: "string",
+      isRow: boolean,
+      isGroup: boolean,
+    }
+mixin control-container(options)
+  .control-container
+    if options.title
+      .control-container__caption(
+        class=options.isGroup ? "control-container__caption_group" : ""
+      )
+        h3.control-container__title= options.title
+        if options.state
+          span.control-container__state= options.state
+    .control-container__controls(
+      class=options.isRow ? "control-container__controls_row" : ""
+    )
+      if block
+        block

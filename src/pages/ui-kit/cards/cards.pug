@@ -8,13 +8,10 @@ block variables
 
 block content
   include /cards/card-container/card-container
+  include /cards/search-card/search-card
+  include /cards/registration-card/registration-card
 
   article.cards__card
-    +card-container
-      h2 hello world!
-  //- article.cards__card
-  //- article.cards__card
-  //- article.cards__card
-  //- article.cards__card
-  //- article.cards__card
-  //- article.cards__card
+    +search-card
+  article.cards__card
+    +registration-card

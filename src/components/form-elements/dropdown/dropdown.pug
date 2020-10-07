@@ -1,17 +1,4 @@
-include /common/control-caption/control-caption
-
-//- options: {
-      title,
-      state,
-      type,
-      placeholder,
-      hasButtons,
-      isOpened,
-      isAlwaysOpened, 
-      maxCounts[],
-      defaultCounts[],
-      items[{name, defaultcount, maxcount, declensions[]}]
-    }
+include /common/control-container/control-container
 
 mixin dropdown-guests(options)
   +dropdown({
@@ -107,26 +94,38 @@ mixin add-items(itemsArray)
       div
         p.iqdropdown-item= item.name
 
+//- options: {
+      title,
+      state,
+      type,
+      placeholder,
+      hasButtons,
+      isOpened,
+      isAlwaysOpened, 
+      maxCounts[],
+      defaultCounts[],
+      items[{name, defaultcount, maxcount, declensions[]}]
+    }
 mixin dropdown(options)
   - var randID = Math.floor(Math.random() * (1 - 1000) + 1000)
-  +control-caption({
+  +control-container({
     title: options.title,
     state: options.state,
   })
-  .iqdropdown.js-iqdropdown(
-    id=`dd-${randID}`
-    class=options.type ? `iqdropdown_${options.type} js-iqdropdown_${options.type}` : ""
-    data-placeholder=options.placeholder
-    class=options.isOpened ? "menu-open" : ""
-    data-always-opened=options.isAlwaysOpened ? "true" : ""
-  )
-    p.iqdropdown-selection.js-iqdropdown-selection
-    button.iqdropdown__arrow.material-icons expand_more
-    .iqdropdown-menu.js-iqdropdown-menu
-      +add-items(options.items)
-      if options.hasButtons
-        .iqdropdown__controls.js-iqdropdown__controls
-          button.iqdropdown__button.button.button_link.button_link_clear.js-button_link_clear(
-            class=options.defaultCounts ? "" : "button_link_clear_hidden"
-          ) Очистить
-          button.iqdropdown__button.button.button_link.js-button_link Применить
+    .iqdropdown.js-iqdropdown(
+      id=`dd-${randID}`
+      class=options.type ? `iqdropdown_${options.type} js-iqdropdown_${options.type}` : ""
+      data-placeholder=options.placeholder
+      class=options.isOpened ? "menu-open" : ""
+      data-always-opened=options.isAlwaysOpened ? "true" : ""
+    )
+      p.iqdropdown-selection.js-iqdropdown-selection
+      button.iqdropdown__arrow.material-icons expand_more
+      .iqdropdown-menu.js-iqdropdown-menu
+        +add-items(options.items)
+        if options.hasButtons
+          .iqdropdown__controls.js-iqdropdown__controls
+            button.iqdropdown__button.button.button_link.button_link_clear.js-button_link_clear(
+              class=options.defaultCounts ? "" : "button_link_clear_hidden"
+            ) Очистить
+            button.iqdropdown__button.button.button_link.js-button_link Применить

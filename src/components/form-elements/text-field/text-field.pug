@@ -1,10 +1,8 @@
-include /common/control-caption/control-caption
+include /common/control-container/control-container
 
 //- options: {
       type: "string",
-      title: "string",
       placeholder: "string",
-      state: "string",
       isForceHoverStyle: boolean,
       isMasked: boolean,
       value: "string"
@@ -17,17 +15,13 @@ mixin text-field(options)
     inputModifierClassName += options.isSubscription ? " text-field__input_subscription" : ""
     inputModifierClassName += options.isForceHoverStyle ? " text-field__input_force-focus-hover" : ""
 
-  +control-caption({
-    title: options.title,
-    state: options.state,
-  })
   .text-field(
     class=options.isSubscription ? "text-field_subscription" : ""
   )
     input.text-field__input.js-text-field__input(
       class=inputModifierClassName
       type=options.type || "text"
-      placeholder=options.placeholder
+      placeholder=options.isMasked ? "ДД.ММ.ГГГГ" : options.placeholder
       value=options.value
       maxlength=options.isMasked ? "10" : ""
     )

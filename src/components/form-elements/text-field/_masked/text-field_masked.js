@@ -18,7 +18,7 @@ $maskedInput.on('keydown', function (event) {
 
 $maskedInput.on('keyup', function (event) {
   if (this.value.length === 2 || this.value.length === 5) {
-    if (event.key === 'Backspace') {
+    if (event.key === 'Backspace' || event.key === 'Delete') {
       this.value = this.value.slice(0, -1);
     } else {
       this.value += '.';

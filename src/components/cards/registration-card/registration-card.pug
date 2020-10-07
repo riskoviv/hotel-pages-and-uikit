@@ -1,0 +1,68 @@
+include /cards/card-container/card-container
+include /common/control-container/control-container
+include /form-elements/text-field/text-field
+include /form-elements/radio/radio
+include /form-elements/toggle/toggle
+include /form-elements/button/button
+
+mixin registration-card
+  .registration-card
+    +card-container
+      h1.registration-card__title Регистрация аккаунта
+      form.registration-card__registration-form
+        .registration-card__text-field
+          +text-field({
+            placeholder: "Имя"
+          })
+        .registration-card__text-field
+          +text-field({
+            placeholder: "Фамилия"
+          })
+        .registration-card__radio-buttons
+          +control-container({
+            isRow: true,
+          })
+            .registration-card__radio-button
+              +radio({
+                name: "gender",
+                label: "Мужчина",
+                isChecked: true,
+              })
+            .registration-card__radio-button
+              +radio({
+                name: "gender",
+                label: "Женщина",
+              })
+        .registration-card__bithdate
+          +control-container({
+            title: "Дата рождения",
+          })
+            +text-field({
+              isMasked: true,
+            })
+        .registration-card__login-data
+          +control-container({
+            title: "данные для входа в сервис"
+          })
+            .registration-card__text-field
+              +text-field({
+                placeholder: "Email",
+                type: "email",
+              })
+            .registration-card__text-field
+              +text-field({
+                placeholder: "Пароль",
+                type: "password",
+              })
+        .registration-card__toggle
+          +toggle({})
+        .registration-card__submit-button
+          +button_wide({
+            caption: "перейти к оплате",
+          })
+      .registration-card__login-block
+        span.registration-card__login-text Уже есть аккаунт на Toxin           
+        .registration-card__login-button
+          +button_bordered({
+            caption: "войти",
+          })

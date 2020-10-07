@@ -1,0 +1,13 @@
+@import '../../../styles/constants.scss';
+
+.search-card {
+
+  &__title,
+  &__date-dropdown {
+    margin-bottom: 20px;
+  }
+
+  &__dropdown {
+    margin-bottom: 30px;
+  }
+}

@@ -42,47 +42,50 @@ $(() => {
 
   const $paginator = $('.pagination');
   
-  $paginator.pagination({
-    dataSource: function(done){
-      let result = [];
-      for (let i = 1; i <= 180; i++) {
-        result.push(i);
-      }
-      done(result);
-    },
-    callback: function(data, pagination) {
-      // template method of yourself
-      var html = simpleTemplating(data);
-      $('.page-content').html(html);
-    },
-    pageSize: 12,
-    autoHidePrevious: true,
-    autoHideNext: true,
-    prevText: 'arrow_back',
-    nextText: 'arrow_forward',
-    pageNumber: 1,
-    pageRange: 2,
-    afterRender: function() {
-      addMaterialIconsClassToArrows();
-      removeExcessPageNumbers();
-      const navData = $('.paginationjs-nav').text().split(',');
-      if (navData[0] == $paginationNumberLastNum) {
-        $('.paginationjs-nav').text(
-          `${ navData[0] * 12 - 11} - ${navData[1] }
-          из ${ (navData[1]) >= 100 ? '100+' : navData[1] }
-          вариантов аренды`
-        );
-      } else {
-        $('.paginationjs-nav').text(
-          `${ navData[0] * 12 - 11 } - ${ navData[0] * 12 }
-          из ${ (navData[1]) >= 100 ? '100+' : navData[1] }
-          вариантов аренды`
-        );
-      }
-    },
-    formatNavigator: '<%= currentPage %>,<%= totalNumber %>',
-    showNavigator: true,
-  })
+  if ($paginator.length > 0) {
+    $paginator.pagination({
+      dataSource: function(done){
+        let result = [];
+        for (let i = 1; i <= 180; i++) {
+          result.push(i);
+        }
+        done(result);
+      },
+      callback: function(data, pagination) {
+        // template method of yourself
+        var html = simpleTemplating(data);
+        $('.page-content').html(html);
+      },
+      pageSize: 12,
+      autoHidePrevious: true,
+      autoHideNext: true,
+      prevText: 'arrow_back',
+      nextText: 'arrow_forward',
+      pageNumber: 1,
+      pageRange: 2,
+      afterRender: function() {
+        addMaterialIconsClassToArrows();
+        removeExcessPageNumbers();
+        const navData = $('.paginationjs-nav').text().split(',');
+        if (navData[0] == $paginationNumberLastNum) {
+          $('.paginationjs-nav').text(
+            `${ navData[0] * 12 - 11} - ${navData[1] }
+            из ${ (navData[1]) >= 100 ? '100+' : navData[1] }
+            вариантов аренды`
+          );
+        } else {
+          $('.paginationjs-nav').text(
+            `${ navData[0] * 12 - 11 } - ${ navData[0] * 12 }
+            из ${ (navData[1]) >= 100 ? '100+' : navData[1] }
+            вариантов аренды`
+          );
+        }
+      },
+      formatNavigator: '<%= currentPage %>,<%= totalNumber %>',
+      showNavigator: true,
+    })
+  }
+  
 
   $paginationNumberLastNum = $('.paginationjs-last').data('num');
 });

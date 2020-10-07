@@ -1,4 +1,4 @@
-include /common/control-caption/control-caption
+include /common/control-container/control-container
 
 //- options: {
       title,
@@ -10,18 +10,18 @@ include /common/control-caption/control-caption
 mixin date-dropdown_filter(options)
   - var randID = Math.floor(Math.random() * (1 - 1000) + 1000)
     
-  +control-caption({
+  +control-container({
     title: options.title || "filter date dropdown",
   })
-  .date-dropdown.date-dropdown_filter
-    button.date-dropdown__arrow.date-dropdown_filter__arrow.material-icons expand_more
-    input.date-dropdown__input.date-dropdown_filter__input.js-date-dropdown_filter__input.datepicker-here.js-datepicker-here(
-      type="text"
-      placeholder="ДД.ММ.ГГГГ"
-      data-classes=`calendar-${randID}`
-      data-multiple-dates-separator=" - "
-      data-date-format="dd M"
-      data-keyboard-nav="false"
-      data-select-date=options.selectDate
-      readonly
-    )
+    .date-dropdown.date-dropdown_filter
+      button.date-dropdown__arrow.date-dropdown_filter__arrow.material-icons expand_more
+      input.date-dropdown__input.date-dropdown_filter__input.js-date-dropdown_filter__input.datepicker-here.js-datepicker-here(
+        type="text"
+        placeholder="ДД.ММ.ГГГГ"
+        data-classes=`calendar-${randID}`
+        data-multiple-dates-separator=" - "
+        data-date-format="dd M"
+        data-keyboard-nav="false"
+        data-select-date=options.selectDate
+        readonly
+      )

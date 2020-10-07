@@ -6,8 +6,7 @@ block variables
     var pageClass = "form-elements"
 
 block content
-  include /common/control-caption/control-caption
-  include /common/controls-group/controls-group
+  include /common/control-container/control-container
   include /form-elements/text-field/text-field
   include /form-elements/dropdown/dropdown
   include /form-elements/date-dropdown/date-dropdown
@@ -33,31 +32,36 @@ block content
   //- LEFT COLUMN
   section.form-elements__column
     .form-elements__control
-      +text-field({
+      +control-container({
         title: "text field",
         state: "default",
-        type: "email",
-        placeholder: "Email",
       })
+        +text-field({
+          type: "email",
+          placeholder: "Email",
+        })
     .form-elements__control
-      +text-field({
+      +control-container({
         title: "text field",
         state: "hover / focus",
-        value: "This is pretty awesome",
-        isForceHoverStyle: true,
       })
+        +text-field({
+          value: "This is pretty awesome",
+          isForceHoverStyle: true,
+        })
     .form-elements__control
       +dropdown-guests({
         title: "dropdown",
         state: "default",
       })
     .form-elements__control
-      +text-field({
+      +control-container({
         title: "masked text field",
         state: "default",
-        isMasked: true,
-        placeholder: "ДД.ММ.ГГГГ",
       })
+        +text-field({
+          isMasked: true,
+        })
     .form-elements__control_date-dropdown
       +date-dropdown({})
     .form-elements__control_date-dropdown-filter
@@ -78,8 +82,9 @@ block content
   //- MIDDLE COLUMN
   section.form-elements__column
     .form-elements__controls-group
-      +controls-group({
+      +control-container({
         title: "checkbox buttons",
+        isGroup: true,
       })
         -
           var checkboxes = [
@@ -91,9 +96,10 @@ block content
           .form-elements__checkbox
             +checkbox(item)
     .form-elements__controls-group
-      +controls-group({
+      +control-container({
         title: "radio buttons",
         isRow: true,
+        isGroup: true,
       })
         -
           var radios = [
@@ -104,8 +110,9 @@ block content
           .form-elements__radio-button
             +radio(item)
     .form-elements__controls-group
-      +controls-group({
+      +control-container({
         title: "toggle",
+        isGroup: true,
       })
         -
           var toggles = [
@@ -116,18 +123,20 @@ block content
           .form-elements__toggle
             +toggle(item)
     .form-elements__controls-group
-      +controls-group({
+      +control-container({
         title: "like button",
         isRow: true,
+        isGroup: true,
       })
         .form-elements__like-button
           +like-button({ likesCount: 2 })
         .form-elements__like-button
           +like-button({ likesCount: 11, isClicked: true })
     .form-elements__controls-group
-      +controls-group({
+      +control-container({
         title: "rate button",
         isRow: true,
+        isGroup: true,
       })
         .form-elements__rate-button
           +rate-button({ rating: 4 })
@@ -144,8 +153,9 @@ block content
         start: [5000, 10000],
       })
     .form-elements__controls-group
-      +controls-group({
+      +control-container({
         title: "buttons",
+        isGroup: true,
       })
         .form-elements__buttons-grid
           .form-elements__button
@@ -187,6 +197,7 @@ block content
         title: "dropdown",
         state: "default",
         hasButtons: false,
+        defaultCounts: [ 2, 2, 0 ],
       })
     .form-elements__dropdown_narrow.form-elements__dropdown_narrow_opened
       +dropdown-amenities({
@@ -261,8 +272,9 @@ block content
         }
       ]
     .form-elements__controls-group
-      +controls-group({
+      +control-container({
         title: "rich checkbox buttons",
+        isGroup: true,
       })
         each checkbox in richCheckboxes
           .form-elements__checkbox-rich
@@ -277,8 +289,9 @@ block content
         { label: "время прибытия — после 13:00, а выезд до 12:00" },
       ]
     .form-elements__controls-group
-      +controls-group({
+      +control-container({
         title: "bullet list",
+        isGroup: true,
       })
         +bulletList({
           items: bulletListItems,
