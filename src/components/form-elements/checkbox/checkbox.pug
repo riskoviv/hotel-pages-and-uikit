@@ -4,7 +4,7 @@
     }
 
 mixin checkbox(options)
-  - var randID = Math.floor(Math.random() * (1 - 1000) + 1000)
+  - const randID = Math.floor(Math.random() * (1 - 1000) + 1000)
   label.checkbox
     input.checkbox__switch(
       id=`cb-${randID}`

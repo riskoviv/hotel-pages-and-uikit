@@ -210,6 +210,7 @@
 
     &.-in-range- {
       background: none;
+      color: $darkShade50;
 
       &::after {
         @extend %pseudo-element-basic;
@@ -218,12 +219,7 @@
         width: 100%;
         height: 100%;
         background: $primaryGradientTransparentized25;
-        color: $darkShade50;
         z-index: -2;
-      }
-
-      &.-focus-:not(.-current-) {
-        border-radius: 0;
       }
     }
 
@@ -268,12 +264,6 @@
     &:hover {
       background: unset;
       color: $darkShade50;
-    }
-
-    &.button_link_clear {
-      max-width: 75px;
-      color: $darkShade50;
-      visibility: hidden;
     }
 
     &s {

@@ -2,8 +2,8 @@ extends /../layouts/ui-kit/ui-kit
 
 block variables
   -
-    var title = "Form elements"
-    var pageClass = "form-elements"
+    const title = "Form elements"
+    const pageClass = "form-elements"
 
 block content
   include /common/control-container/control-container
@@ -72,12 +72,14 @@ block content
         ],
       })
     .form-elements__text-field-subscription
-      +text-field({
-        isSubscription: true,
-        type: "email",
+      +control-container({
         title: "subscription text field",
-        placeholder: "Email",
       })
+        +text-field({
+          isSubscription: true,
+          type: "email",
+          placeholder: "Email",
+        })
 
   //- MIDDLE COLUMN
   section.form-elements__column
@@ -87,7 +89,7 @@ block content
         isGroup: true,
       })
         -
-          var checkboxes = [
+          const checkboxes = [
             { label: "Можно курить" },
             { label: "Можно с питомцами", isChecked: true },
             { label: "Можно пригласить гостей (до 10 человек)", isChecked: true },
@@ -98,11 +100,11 @@ block content
     .form-elements__controls-group
       +control-container({
         title: "radio buttons",
-        isRow: true,
         isGroup: true,
+        isRow: true,
       })
         -
-          var radios = [
+          const radios = [
             { name: "gender", label: "Мужчина", isChecked: true },
             { name: "gender", label: "Женщина" },
           ]
@@ -115,7 +117,7 @@ block content
         isGroup: true,
       })
         -
-          var toggles = [
+          const toggles = [
             { isChecked: true },
             {  },
           ]
@@ -125,8 +127,8 @@ block content
     .form-elements__controls-group
       +control-container({
         title: "like button",
-        isRow: true,
         isGroup: true,
+        isRow: true,
       })
         .form-elements__like-button
           +like-button({ likesCount: 2 })
@@ -135,8 +137,8 @@ block content
     .form-elements__controls-group
       +control-container({
         title: "rate button",
-        isRow: true,
         isGroup: true,
+        isRow: true,
       })
         .form-elements__rate-button
           +rate-button({ rating: 4 })
@@ -197,7 +199,7 @@ block content
         title: "dropdown",
         state: "default",
         hasButtons: false,
-        defaultCounts: [ 2, 2, 0 ],
+        defaultCounts: [2, 2, 0],
       })
     .form-elements__dropdown_narrow.form-elements__dropdown_narrow_opened
       +dropdown-amenities({
@@ -205,7 +207,7 @@ block content
         state: "expanded",
         isOpened: true,
         isAlwaysOpened: true,
-        defaultCounts: [ 2, 2, 0 ],
+        defaultCounts: [2, 2, 0],
       })
   //- MIDDLE BLOCK
   section.form-elements__column
@@ -222,7 +224,7 @@ block content
         title: "dropdown",
         isOpened: true,
         isAlwaysOpened: true,
-        defaultCounts: [ 2, 1, 0 ],
+        defaultCounts: [2, 1, 0],
       })
 
   //- 
@@ -231,7 +233,7 @@ block content
   //- LEFT BLOCK
   section.form-elements__column.form-elements__column_expandable-checkbox-lists
     -
-      var expandableCheckboxListItems = [
+      const expandableCheckboxListItems = [
         { label: "Завтрак", isChecked: false },
         { label: "Письменный стол", isChecked: true },
         { label: "Стул для кормления", isChecked: true },
@@ -253,7 +255,7 @@ block content
   //- MIDDLE BLOCK
   section.form-elements__column
     -
-      var richCheckboxes = [
+      const richCheckboxes = [
         {
           label: "Широкий коридор",
           description: [
@@ -283,7 +285,7 @@ block content
   //- MIDDLE BLOCK
   section.form-elements__column
     -
-      var bulletListItems = [
+      const bulletListItems = [
         { label: "нельзя с питомцами" },
         { label: "без вечеринок и мероприятий" },
         { label: "время прибытия — после 13:00, а выезд до 12:00" },

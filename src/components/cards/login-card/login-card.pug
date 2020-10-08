@@ -1,0 +1,29 @@
+include /cards/card-container/card-container
+include /form-elements/text-field/text-field
+include /form-elements/button/button
+
+mixin login-card
+  .login-card
+    +card-container
+      h1.login-card__title Войти
+      form.login-card__login-form
+        .login-card__text-field
+          +text-field({
+            placeholder: "Email",
+            type: "email",
+          })
+        .login-card__text-field
+          +text-field({
+            placeholder: "Пароль",
+            type: "password",
+          })
+        .login-card__submit-button
+          +button_wide({
+            caption: "войти",
+          })
+      .login-card__registration-block
+        span.login-card__registration-text Нет аккаунта на Toxin?
+        .login-card__registration-button
+          +button_bordered({
+            caption: "создать",
+          })

@@ -2,15 +2,17 @@ extends /../layouts/ui-kit/ui-kit
 
 block variables
   -
-    var title = "Cards"
-    var pageClass = "cards"
-    var modifierClass = "grey"
+    const title = "Cards"
+    const pageClass = "cards"
+    const modifierClass = "grey"
 
 block content
   include /cards/card-container/card-container
   include /cards/search-card/search-card
   include /cards/registration-card/registration-card
   include /cards/booking-card/booking-card
+  include /cards/login-card/login-card
+  include /cards/calendar-card/calendar-card
 
   article.cards__card
     +search-card
@@ -18,3 +20,12 @@ block content
     +registration-card
   article.cards__card
     +booking-card
+  article.cards__card
+    +login-card
+  article.cards__calendar-card
+    +calendar-card({
+      selectDate: [
+        [2020, 10, 19],
+        [2020, 10, 23],
+      ],
+    })

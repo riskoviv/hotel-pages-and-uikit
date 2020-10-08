@@ -33,8 +33,11 @@ const datePickerInit = (datepicker) => {
         printDates();
       }
       setCustomOptions();
+      console.log('formattedDate: ', formattedDate);
       if (formattedDate !== '') {
         showClearButton();
+      } else {
+        hideClearButton();
       }
     },
     onShow() {
@@ -42,21 +45,25 @@ const datePickerInit = (datepicker) => {
     },
   })
 
-  const calendarClass = `.${$(datepicker).data('classes')}`;
-  const $calendarClearButton = $(`${calendarClass} .datepicker--button[data-action="clear"]`);
+  const calendarClass = $(datepicker).data('classes');
+  const $calendarClearButton = $(`.${calendarClass} .datepicker--button[data-action="clear"]`);
 
   const disableNavTitle = () => {
-    $(`${calendarClass} .datepicker--nav-title`).prop('disabled', true);
+    $(`.${calendarClass} .datepicker--nav-title`).prop('disabled', true);
   };
 
   const setCustomOptions = () => {
     disableNavTitle();
-    $(`${calendarClass} .datepicker--nav-title`).addClass('heading-2');
+    $(`.${calendarClass} .datepicker--nav-title`).addClass('heading-2');
     $calendarClearButton.addClass('button button_link button_link_clear');
   };
 
   const showClearButton = () => {
-    $calendarClearButton.css('visibility', 'visible');
+    $calendarClearButton.removeClass('button_link_clear_hidden');
+  };
+
+  const hideClearButton = () => {
+    $calendarClearButton.addClass('button_link_clear_hidden');
   };
 
   const isFilter = $(datepicker).hasClass('js-date-dropdown_filter__input');
@@ -96,16 +103,14 @@ const datePickerInit = (datepicker) => {
 
   const myDatepicker = $(datepicker).datepicker().data('datepicker');
   
-  $(`${calendarClass} .datepicker--buttons`)
+  $(`.${calendarClass} .datepicker--buttons`)
     .append('<button class="button button_link">Применить</button>');
-  $(`${calendarClass} .datepicker--buttons > button`)
+  $(`.${calendarClass} .datepicker--buttons > button`)
     .on('click', function () {
       printDates();
       myDatepicker.hide();
     });
-  $calendarClearButton.on('click', function hideClearButton() {
-    $(this).css('visibility', 'hidden');
-  });
+  $calendarClearButton.on('click', hideClearButton);
 }
 
 $(() => {

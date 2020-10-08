@@ -3,9 +3,9 @@
     }
 
 mixin rate-button(options)
-  - var randID = Math.floor(Math.random() * (1 - 1000) + 1000)
+  - const randID = Math.floor(Math.random() * (1 - 1000) + 1000)
   .rate-button(id=`rating-${randID}`)
-    - var n = 0;
+    - let n = 0;
     while n < 5
       span.rate-button__star.material-icons(
         id=`rating-${randID}_${++n}`

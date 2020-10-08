@@ -12,14 +12,15 @@ mixin registration-card
       form.registration-card__registration-form
         .registration-card__text-field
           +text-field({
-            placeholder: "Имя"
+            placeholder: "Имя",
           })
         .registration-card__text-field
           +text-field({
-            placeholder: "Фамилия"
+            placeholder: "Фамилия",
           })
         .registration-card__radio-buttons
           +control-container({
+            isGroup: true,
             isRow: true,
           })
             .registration-card__radio-button
@@ -42,7 +43,7 @@ mixin registration-card
             })
         .registration-card__login-data
           +control-container({
-            title: "данные для входа в сервис"
+            title: "данные для входа в сервис",
           })
             .registration-card__text-field
               +text-field({

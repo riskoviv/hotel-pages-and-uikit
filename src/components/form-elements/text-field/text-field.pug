@@ -9,7 +9,7 @@ include /common/control-container/control-container
     }
 mixin text-field(options)
   -
-    var inputModifierClassName = "text-field"
+    let inputModifierClassName = "text-field"
     inputModifierClassName += options.isMasked
       ? " text-field__input_masked js-text-field__input_masked" : ""
     inputModifierClassName += options.isSubscription ? " text-field__input_subscription" : ""
