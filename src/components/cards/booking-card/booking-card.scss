@@ -1,0 +1,100 @@
+@import '../../../styles/constants.scss';
+
+.booking-card {
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+  }
+
+  &__date-dropdown,
+  &__dropdown,
+  &__calculations {
+    margin-bottom: 20px;
+  }
+
+  &__room-number {
+    display: inline-block;
+    font-family: $headingFontFamily;
+    font-weight: $headingFontWeight;
+    font-size: 14px;
+    line-height: 17px;
+    color: $darkShade100;
+  }
+
+  &__number {
+    font-size: 24px;
+    line-height: 30px;
+  }
+  
+  &__room-class {
+    margin-left: 5px;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: $purple;
+  }
+
+  &__room-price {
+    color: $darkShade50;
+    font-size: 12px;
+    line-height: 18px;
+
+    &-amount {
+      font-size: $mainFontSize;
+    }
+  }
+
+  &__calculations {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    &-caption,
+    &-price {
+      margin-bottom: 10px;
+    }
+
+    &-caption {
+      width: 214px;
+      word-wrap: break-word;
+      line-height: 18px;
+
+      &_informative {
+        position: relative;
+
+        &::after {
+          @extend %pseudo-element-basic;
+          content: 'i';
+          top: 0;
+          right: -25px;
+          border: 1px solid $darkShade25;
+          border-radius: 50%;
+          width: 20px;
+          height: 20px;
+          text-align: center;
+          color: $darkShade25;
+          font-size: 12px;
+          line-height: 18px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  
+  &__total {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    column-gap: 5px;
+    margin-bottom: 20px;
+
+    &-line {
+      border-bottom: 1px dotted $darkShade25;
+      height: 1em;
+    }
+  }
+  
+}

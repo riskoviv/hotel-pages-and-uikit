@@ -12,7 +12,7 @@ $purple:        #BC9CFF;
 $green:         #6FCF97;
 $primaryGradient: linear-gradient(180deg, $purple 0%, #8BA4F9 100%);
 $primaryGradientTransparentized25: linear-gradient(180deg, transparentize($purple , 0.75) 0%, transparentize(#8BA4F9, 0.75) 100%);
-$greenGradient: linear-gradient(180deg, $green 0%, #66D2EA 100%);
+$secondaryGradient: linear-gradient(180deg, $green 0%, #66D2EA 100%);
 
 // Main font
 $mainFontFamily: 'Montserrat', 'Arial', sans-serif;
@@ -23,7 +23,7 @@ $mainFontSize:    14px;
 $mainLineHeight:  24px;
 
 // Headings font
-$headingFontFamily:  'Quicksand', 'Open Sans', 'Arial', sans-serif;
+$headingFontFamily: 'Quicksand', 'Open Sans', 'Arial', sans-serif;
 $headingFontWeight: 700;
 $headingColor: $darkShade100;
 

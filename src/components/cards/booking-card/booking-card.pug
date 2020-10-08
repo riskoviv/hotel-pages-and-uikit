@@ -1,0 +1,43 @@
+include /cards/card-container/card-container
+include /common/control-container/control-container
+include /form-elements/date-dropdown/date-dropdown
+include /form-elements/dropdown/dropdown
+include /form-elements/button/button
+
+mixin booking-card
+  .booking-card
+    +card-container
+      .booking-card__header
+        .booking-card__room-info
+          .booking-card__room-number
+            | № 
+            b.booking-card__number 888
+          span.booking-card__room-class люкс
+        .booking-card__room-price
+          b.booking-card__room-price-amount 9 990₽
+          |  в сутки
+      form.booking-card__booking-form
+        .booking-card__date-dropdown
+          +date-dropdown({
+            title1: "прибытие",
+            title2: "выезд",
+          })
+        .booking-card__dropdown
+          +dropdown-guests({
+            title: "гости",
+          })
+        .booking-card__calculations
+          span.booking-card__calculations-caption 9 990₽ х 4 суток
+          span.booking-card__calculations-price 39 960₽
+          span.booking-card__calculations-caption.booking-card__calculations-caption_informative Сбор за услуги: скидка 2 179₽
+          span.booking-card__calculations-price 0₽
+          span.booking-card__calculations-caption.booking-card__calculations-caption_informative Сбор за дополнительные услуги
+          span.booking-card__calculations-price 300₽
+        h2.booking-card__total
+          span.booking-card__total-caption Итого
+          span.booking-card__total-line
+          span.booking-card__total-price 38 081₽
+        .booking-card__submit-button
+          +button_wide({
+            caption: "забронировать",
+          })

@@ -34,7 +34,7 @@
 
     &s { overflow: visible; }
 
-    background: $greenGradient;
+    background: $secondaryGradient;
     height: 6px;
     top: -1px;
   }
@@ -43,7 +43,7 @@
     box-sizing: content-box;
     width: 12px;
     height: 12px;
-    background: $greenGradient;
+    background: $secondaryGradient;
     border: 2px solid white;
     border-radius: 50%;
     cursor: pointer;
