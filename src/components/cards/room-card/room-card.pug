@@ -1,0 +1,40 @@
+include /cards/room-main-info/room-main-info
+include /form-elements/rate-button/rate-button
+
+mixin room-card(options)
+  .room-card
+    .room-card__slider
+      .slider
+        .slides
+          img.image1(
+            src=require("../../../res/images/slides/0000ff.png").default
+            alt="photo1"
+          )
+          img.image2(
+            src=require("../../../res/images/slides/00ff00.png").default
+            alt="photo2"
+          )
+          img.image3(
+            src=require("../../../res/images/slides/00ffff.png").default
+            alt="photo3"
+          )
+          img.image4(
+            src=require("../../../res/images/slides/ff0000.png").default
+            alt="photo4"
+          )
+        .prev
+        .next
+        .position
+    .room-card__info
+      .room-card__header
+        +room-main-info({
+          number: options.number,
+          class: options.class,
+          price: options.price,
+          isSmall: true,
+        })
+      .room-card__rating
+        +rate-button({rating: options.rating,})
+        span.rate-button__ratings
+          b.rate-button__ratings-count= options.reviewsCount
+          |  Отзывов

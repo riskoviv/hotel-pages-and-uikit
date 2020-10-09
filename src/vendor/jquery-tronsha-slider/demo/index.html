@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="../dist/css/slider.min.css">
+    <title>jQuery Slider Demo</title>
+    <style>
+        * {
+            border: 0;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            background-color: #cccccc;
+        }
+
+        #slider {
+            box-shadow: #888888 0px 15px 60px 10px;
+            height: 400px;
+            margin: 100px auto 0 auto;
+            width: 640px;
+        }
+    </style>
+</head>
+<body>
+<div id="slider" class="slider no-js">
+    <div class="slides">
+        <img class="image1" src="slides/0000ff.png">
+        <img class="image2" src="slides/00ffff.png">
+        <img class="image3" src="slides/00ff00.png">
+        <img class="image4" src="slides/ffff00.png">
+        <img class="image5" src="slides/ff0000.png">
+        <img class="image6" src="slides/ff00ff.png">
+    </div>
+    <div class="prev">
+        <img src="../dist/images/prev.png" alt="prev">
+    </div>
+    <div class="next">
+        <img src="../dist/images/next.png" alt="next">
+    </div>
+    <div class="position"></div>
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../dist/js/slider.min.js"></script>
+<script>
+    jQuery(document).ready(function () {
+        jQuery("#slider").slider({delay: 1000, interval: 5000});
+    });
+</script>
+</body>
+</html>

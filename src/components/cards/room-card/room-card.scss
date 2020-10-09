@@ -1,0 +1,33 @@
+@import '../../../vendor/jquery-tronsha-slider/dist/css/slider.min.css';
+@import '../../../styles/constants.scss';
+
+.room-card {
+  width: 270px;
+  background-color: #fff;
+  border-radius: 4px;
+
+  &__slider {
+    height: 150px;
+    background-color: rgb(167, 167, 167);
+    border-radius: 4px 4px 0 0;
+  }
+
+  &__photo {
+  }
+
+  &__info {
+    padding: 20px;
+    padding-bottom: 10px;
+  }
+
+  &__header {
+    margin-bottom: 10px;
+  }
+
+  &__rating {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid $darkShade10;
+    padding-top: 10px;
+  }
+}

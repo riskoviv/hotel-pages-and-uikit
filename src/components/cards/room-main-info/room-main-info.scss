@@ -1,0 +1,46 @@
+@import '../../../styles/constants.scss';
+
+.room-main-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  &__room-number {
+    display: inline-block;
+    font-family: $headingFontFamily;
+    font-weight: $headingFontWeight;
+    font-size: 14px;
+    line-height: 17px;
+    color: $darkShade100;
+  }
+
+  &__number {
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 700;
+
+    &_small {
+      font-size: 19px;
+      line-height: 24px;
+    }
+  }
+
+  &__room-class {
+    margin-left: 5px;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: $purple;
+  }
+
+  &__room-price {
+    color: $darkShade50;
+    font-size: 12px;
+    line-height: 18px;
+
+    &-amount {
+      font-size: $mainFontSize;
+    }
+  }
+}

@@ -14,7 +14,12 @@ include /form-elements/button/button
 
 mixin review(options)
   .review
-    img.review__reviewer-photo(src=require("../../../components/form-elements/review/avatars/" + options.photoName).default alt="reviewer photo")
+    img.review__reviewer-photo(
+      src=require(
+        `../../../components/form-elements/review/avatars/${options.photoName}`
+      ).default
+      alt="reviewer photo"
+    )
     .review__title
       h4.review__reviewer-name= options.name
       span.review__date= options.date

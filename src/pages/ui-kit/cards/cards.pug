@@ -13,19 +13,33 @@ block content
   include /cards/booking-card/booking-card
   include /cards/login-card/login-card
   include /cards/calendar-card/calendar-card
+  include /cards/room-card/room-card
 
   article.cards__card
     +search-card
   article.cards__card
     +registration-card
   article.cards__card
-    +booking-card
+    +booking-card({
+      number: 888,
+      class: "люкс",
+      price: 9990,
+    })
   article.cards__card
     +login-card
-  article.cards__calendar-card
+  article.cards__card
     +calendar-card({
       selectDate: [
         [2020, 10, 19],
         [2020, 10, 23],
       ],
     })
+  article.cards__room-card
+    +room-card({
+      number: 888,
+      class: "люкс",
+      price: 9990,
+      rating: 5,
+      reviewsCount: 145,
+    })
+  article.cards__room-card

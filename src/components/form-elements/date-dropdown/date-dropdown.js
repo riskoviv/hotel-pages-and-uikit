@@ -33,7 +33,6 @@ const datePickerInit = (datepicker) => {
         printDates();
       }
       setCustomOptions();
-      console.log('formattedDate: ', formattedDate);
       if (formattedDate !== '') {
         showClearButton();
       } else {
