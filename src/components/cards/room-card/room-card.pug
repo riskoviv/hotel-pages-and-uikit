@@ -7,7 +7,7 @@ mixin room-card(options)
       .slider
         .slides
           img.image1(
-            src=require("../../../res/images/slides/0000ff.png").default
+            src=require("../../../res/images/slides/slide-image-1.jpg").default
             alt="photo1"
           )
           img.image2(
@@ -22,9 +22,11 @@ mixin room-card(options)
             src=require("../../../res/images/slides/ff0000.png").default
             alt="photo4"
           )
-        .prev
-        .next
-        .position
+        .prev.slider__prev
+          div.slider__prev-arrow.material-icons expand_more
+        .next.slider__next
+          div.slider__next-arrow.material-icons expand_more
+        .position.slider__position(disabled)
     .room-card__info
       .room-card__header
         +room-main-info({

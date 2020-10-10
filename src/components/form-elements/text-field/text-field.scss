@@ -19,8 +19,8 @@
       position: absolute;
       right: 0;
       vertical-align: middle;
-      width: $inputHeight;
-      height: $inputHeight;
+      width: $inputSize;
+      height: $inputSize;
       border: none;
       @extend %text-gradient;
     }

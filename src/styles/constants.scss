@@ -40,13 +40,13 @@ $mobileS: 320px;
 $activeBorder: 1px solid $darkShade50;
 $dropdownShadow: 0px 10px 20px $darkShade5;
 $inputPadding: 0 34px 0 14px;
-$inputHeight: 44px;
+$inputSize: 44px;
 $inputBorder: 1px solid $darkShade25;
 $iconSize: 48px;
 
 %input-basic {
   padding: 0 15px;
-  height: $inputHeight;
+  height: $inputSize;
   border-radius: 4px;
   border: $inputBorder;
   color: $mainFontColor;
@@ -90,8 +90,8 @@ $iconSize: 48px;
   background: none;
   color: $darkShade50;
   position: absolute;
-  width: $inputHeight;
-  height: $inputHeight;
+  width: $inputSize;
+  height: $inputSize;
   text-align: center;
   top: 0;
   right: 0;

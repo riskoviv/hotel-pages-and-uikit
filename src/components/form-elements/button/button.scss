@@ -7,7 +7,7 @@
   width: -moz-fit-content;
   width:      fit-content;
   max-width: 100%;
-  height: $inputHeight;
+  height: $inputSize;
   border: none;
   border-radius: 22px;
   cursor: pointer;
@@ -76,8 +76,8 @@
       font-family: 'Material Icons';
       top: 0;
       right: 0;
-      width: $inputHeight;
-      height: $inputHeight;
+      width: $inputSize;
+      height: $inputSize;
       font-size: 24px;
       font-weight: $mainFontWeight;
       line-height: 1;

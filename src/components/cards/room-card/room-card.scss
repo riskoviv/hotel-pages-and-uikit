@@ -12,9 +12,6 @@
     border-radius: 4px 4px 0 0;
   }
 
-  &__photo {
-  }
-
   &__info {
     padding: 20px;
     padding-bottom: 10px;
@@ -28,6 +25,77 @@
     display: flex;
     justify-content: space-between;
     border-top: 1px solid $darkShade10;
-    padding-top: 10px;
+    padding-top: 8px;
+  }
+}
+
+.slider {
+  border-radius: 4px 4px 0 0;
+  overflow: hidden;
+
+  &:hover > &__prev,
+  &:hover > &__next {
+    opacity: 1 !important;
+  }
+
+  & > &__prev,
+  & > &__next {
+    width: $inputSize;
+    opacity: 0 !important;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 99.99%, rgba(255, 255, 255, 0) 100%);
+    transition-property: opacity;
+    transition-duration: 0.3s;
+
+    > .slider__prev-arrow,
+    > .slider__next-arrow {
+      height: $inputSize;
+      width: $inputSize;
+      border: none;
+      font-size: 24px;
+      color: #fff;
+      user-select: none;
+      text-align: center;
+      line-height: $inputSize;
+    }
+  }
+
+  & > &__next {
+    background: linear-gradient(-90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 99.99%, rgba(255, 255, 255, 0) 100%);
+  }
+
+  &__prev-arrow {
+    transform: rotate(90deg);
+  }
+
+  &__next-arrow {
+    transform: rotate(-90deg);
+  }
+
+  & > &__position {
+    bottom: 17px;
+    right: 13px;
+    text-align: right;
+    height: 15px;
+    z-index: 550;
+
+    > .points {
+      width: 7px;
+      height: 7px;
+      margin: 0 2px;
+      background-color: transparent;
+      box-shadow: none;
+      border: 1px solid #FFFFFF;
+      border-radius: 50%;
+      filter: drop-shadow(0px 5px 5px rgba(31, 32, 65, 0.3));
+
+      &.active {
+        background-color: #fff;
+        box-shadow: 0px 5px 5px rgba(31, 32, 65, 0.3);
+      }
+    }
   }
 }
