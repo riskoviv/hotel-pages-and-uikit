@@ -38,11 +38,11 @@ mixin dropdown-guests(options)
       }
     ]
   })
-mixin dropdown-amenities(options)
+mixin dropdown-preferences(options)
   +dropdown({
     title: options.title,
     state: options.state,
-    type: "amenities",
+    type: "preferences",
     placeholder: options.placeholder || "Выберите удобства",
     hasButtons: false,
     isOpened: options.isOpened,

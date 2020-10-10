@@ -11,7 +11,7 @@ mixin booking-card(options)
       .booking-card__header
         +room-main-info({
           number: options.number,
-          class: options.class,
+          isLux: options.isLux,
           price: options.price,
           isSmall: false,
         })

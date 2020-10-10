@@ -1,15 +1,16 @@
 mixin room-main-info(options)
+  -
+    const thousands = Math.floor(options.price / 1000)
+    const hundreds = options.price - (thousands * 1000)
   .room-main-info
-    -
-      const thousands = Math.floor(options.price / 1000)
-      const hundreds = options.price - (thousands * 1000)
     .room-main-info__room-info
       .room-main-info__room-number
         | № 
         b.room-main-info__number(
           class=options.isSmall ? "room-main-info__number_small" : ""
         )= options.number
-      span.room-main-info__room-class= options.class
+      if options.isLux
+        span.room-main-info__room-class люкс
     .room-main-info__room-price
       b.room-main-info__room-price-amount= `${thousands} ${hundreds}₽`
       |  в сутки

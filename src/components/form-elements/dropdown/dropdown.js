@@ -144,8 +144,8 @@ const initIqDropdown = (dropdown) => {
         itemsCount,
         totalItems,
       }
-      // проверка на класс js-iqdropdown_amenities, т. к. у dropdown этого типа нет блока кнопок 
-      if ($(dropdown).hasClass('js-iqdropdown_amenities')) {
+      // проверка на класс js-iqdropdown_preferences, т. к. у dropdown этого типа нет блока кнопок 
+      if ($(dropdown).hasClass('js-iqdropdown_preferences')) {
         setSelectionText(dropdown, itemsCount, totalItems);
       } else {
         return dropdownsItemsCounts[dropdown.id].selectionText;

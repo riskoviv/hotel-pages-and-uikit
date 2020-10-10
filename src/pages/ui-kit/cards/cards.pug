@@ -22,7 +22,7 @@ block content
   article.cards__card
     +booking-card({
       number: 888,
-      class: "люкс",
+      isLux: true,
       price: 9990,
     })
   article.cards__card
@@ -37,9 +37,16 @@ block content
   article.cards__room-card
     +room-card({
       number: 888,
-      class: "люкс",
+      isLux: true,
       price: 9990,
       rating: 5,
       reviewsCount: 145,
     })
   article.cards__room-card
+    +room-card({
+      number: 840,
+      isLux: false,
+      price: 9990,
+      rating: 4,
+      reviewsCount: 65,
+    })
