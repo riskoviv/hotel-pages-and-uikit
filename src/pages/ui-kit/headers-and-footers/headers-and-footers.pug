@@ -1,0 +1,23 @@
+extends /../layouts/ui-kit/ui-kit
+
+block variables
+  -
+    const title = "Headers & Footers"
+    const pageClass = "headers-and-footers"
+    const isGrey = true
+    const isWithContainer = false
+
+block content
+  include /headers-and-footers/header/header
+
+  .headers-and-footers__element
+    +header({
+      isLoggedIn: false,
+    })
+  .headers-and-footers__element
+    +header({
+      isLoggedIn: true,
+      userName: "Юлий Цезарь",
+    })
+  .headers-and-footers__element
+  .headers-and-footers__element

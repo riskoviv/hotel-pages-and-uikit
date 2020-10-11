@@ -1,0 +1,32 @@
+include /common/logo/logo
+include /form-elements/button/button
+
+mixin header(options)
+  section.header
+    .header__container
+      .header__logo
+        +logo-full
+      .header__right-part
+        ul.header__menu
+          -
+            const menuList = [
+              { title: "О нас", isExpandable: false, isActive: true, },
+              { title: "Услуги", isExpandable: true, },
+              { title: "Вакансии", isExpandable: false, },
+              { title: "Новости", isExpandable: false, },
+              { title: "Соглашения", isExpandable: true, },
+            ]
+          each item in menuList
+            li.header__menu-item(
+              class=item.isActive ? "header__menu-item_active" : ""
+              class=item.isExpandable ? "header__menu-item_expandable" : ""
+            )
+              a.header__menu-link(href=item.link || "#")= item.title
+        if options.isLoggedIn
+          .header__user-name= options.userName
+        else 
+          .header__buttons
+            .header__login-button
+              +button_bordered({ caption: 'Войти', isSmall: true, })
+            .header__register-button
+              +button_filled({ caption: 'Зарегистрироваться', isSmall: true, })

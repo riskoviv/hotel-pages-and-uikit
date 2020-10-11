@@ -1,0 +1,84 @@
+@import '../../../styles/constants.scss';
+
+.header {
+  background-color: #fff;
+  height: 70px;
+  padding: 0 3%;
+  box-shadow: 0px 10px 20px $darkShade5;
+
+  &__container {
+    height: 100%;
+    max-width: 1160px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+  }
+
+  &__right-part {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: 20px;
+  }
+  
+  &__menu {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin-right: 20px;
+  }
+
+  &__menu-item {
+    margin-right: 20px;
+    line-height: 17px;
+    color: $darkShade50;
+
+    &_active {
+      font-weight: bold;
+      color: $darkShade75;
+    }
+    
+    &_expandable {
+      position: relative;
+      padding-right: 24px;
+      
+      &::after {
+        @extend %pseudo-element-basic;
+        content: 'expand_more';
+        font-family: 'Material icons';
+        font-size: 24px;
+        right: 0;
+        top: 0;
+      }
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__menu-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__login-button {
+    margin-right: 20px;
+  }
+
+  &__user-name {
+    height: 30px;
+    line-height: 30px;
+    padding-left: 20px;
+    border-left: 1px solid $darkShade10;
+    color: $darkShade50;
+    white-space: nowrap;
+  }
+}

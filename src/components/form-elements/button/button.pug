@@ -1,15 +1,18 @@
 //- options: {
+      caption: "string",
+      isSmall: boolean,
       isForceHover: boolean,
-      caption: "string"
     }
 mixin button_filled(options)
   button.button.button_filled(
     type="button"
+    class=options.isSmall ? "button_small" : ""
     class=options.isForceHover ? "button_filled_force-hover" : ""
   )= options.caption
 
 mixin button_bordered(options)
   .button.button_bordered(
+    class=options.isSmall ? "button_small" : ""
     class=options.isForceHover ? "button_bordered_force-hover" : ""
   )
     button.button.button_bordered__body(type="button")= options.caption

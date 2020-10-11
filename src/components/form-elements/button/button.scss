@@ -35,7 +35,7 @@
 
     &__body {
       width: 100%;
-      height: 40px;
+      height: 100%;
       padding: 0 18px;
       background-color: #fff;
       color: $purple;
@@ -84,5 +84,10 @@
       text-transform: none;
       padding: 10px;
     }
+  }
+
+  &_small{
+    height: 34px;
+    min-width: auto;
   }
 }

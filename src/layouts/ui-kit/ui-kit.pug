@@ -9,11 +9,15 @@ html(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title= title
   body.ui-kit-page(
-    class=modifierClass ? `ui-kit-page_${modifierClass}` : ''
+    class=isGrey ? `ui-kit-page_grey` : ''
   )
     header.ui-kit-header
       .ui-kit-header__logo
         +logo-mini
-    .container
+    if isWithContainer
+      .container
+        div(class=pageClass)
+          block content
+    else
       div(class=pageClass)
         block content

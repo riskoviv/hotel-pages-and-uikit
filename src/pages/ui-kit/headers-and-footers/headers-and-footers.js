@@ -4,4 +4,5 @@ import { requireAll } from '../../common/common';
 requireAll(require.context('../../../layouts/ui-kit', false, /^\.\/(?!.*(?:__tests__)).*\.(scss)$/));
 requireAll(require.context('../../../components/common', true, /^\.\/(?!.*(?:__tests__)).*\.(scss)$/));
 requireAll(require.context('../../../components/form-elements', true, /^\.\/(?!.*(?:__tests__)).*\.(js)|(scss)$/));
+requireAll(require.context('../../../components/headers-and-footers', true, /^\.\/(?!.*(?:__tests__)).*\.(js)|(scss)$/));
 requireAll(require.context('./', true, /^\.\/(?!.*(?:__tests__)).*\.(scss)$/));
