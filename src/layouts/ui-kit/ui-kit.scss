@@ -17,6 +17,10 @@
     position: absolute;
     top: 30px;
     left: 30px;
+
+    @media (max-width: $tablet) {
+      left: calc(50% - #{$iconSize} / 2);
+    }    
   }
 }
 

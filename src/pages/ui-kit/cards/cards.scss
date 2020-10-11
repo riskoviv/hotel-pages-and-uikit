@@ -10,12 +10,31 @@
   align-content: flex-start;
   margin-bottom: 10.4%;
 
+  @media (max-width: 1240px) {
+    max-height: calc(1060px * 2);
+    align-content: center;
+  }
+
+  @media (max-width: $tablet) {
+    max-height: calc(1060px * 3);
+    align-content: center;
+    align-items: center;
+  }
+
   &__card {
     margin-right: 40px;
     max-width: fit-content;
 
     &:nth-child(2n-1) {
       margin-bottom: 40px;
+    }
+
+    @media (max-width: 1240px) {
+      margin-bottom: 40px;
+    }
+    
+    @media (max-width: $tablet) {
+      margin-right: 0;
     }
   }
 

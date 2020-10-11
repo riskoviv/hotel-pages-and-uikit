@@ -11,7 +11,7 @@ mixin room-card(options)
           each num in [1, 2, 3, 4]
             img(
               class=`image${num}`
-              src=require(`../../../res/images/room-cards/${options.number}/image${num}.jpg`).default
+              src=require(`../../../res/images/room-cards/image-${options.number}-${num}.jpg`).default
               alt=`room #${options.number}, image #${num}`
             )
         .prev.slider__prev

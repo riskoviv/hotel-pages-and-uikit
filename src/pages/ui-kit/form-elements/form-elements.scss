@@ -8,6 +8,10 @@
   align-items: flex-start;
   flex-wrap: wrap;
 
+  @media (max-width: 714px) {
+    justify-content: center;
+  }
+
   &__column {
     margin-bottom: 100px;
     width: 320px;
