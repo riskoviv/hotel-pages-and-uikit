@@ -1,0 +1,42 @@
+include /common/logo/logo
+include /form-elements/text-field/text-field
+
+mixin footer
+  footer.footer
+    main.footer__main-content
+      .footer__description
+        .footer__logo
+          +logo-full
+        .footer__description-text
+          | Бронирование номеров в лучшем
+          | отеле 2019 года по версии
+          | ассоциации «Отельные взгляды»
+      .footer__menu
+        h3.footer__menu-title Навигация
+        ul.footer__menu-items-list
+          li.menu-item О нас
+          li.menu-item Новости
+          li.menu-item Служба поддержки
+          li.menu-item Услуги
+      .footer__menu
+        h3.footer__menu-title О нас
+        ul.footer__menu-items-list
+          li.menu-item О сервисе
+          li.menu-item Наша команда
+          li.menu-item Вакансии
+          li.menu-item Инвесторы
+      .footer__menu
+        h3.footer__menu-title Служба поддержки
+        ul.footer__menu-items-list
+          li.menu-item Соглашения
+          li.menu-item Сообщества
+          li.menu-item Связь с нами
+    footer.footer__copyright-bar
+      .footer__container
+        .footer__copyrigth
+        .footer__social
+
+  //- .footer__navigation-menu
+      .footer__about-menu
+      .footer__support-menu
+      .footer__subscription
