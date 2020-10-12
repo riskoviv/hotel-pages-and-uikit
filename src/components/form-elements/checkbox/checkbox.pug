@@ -4,11 +4,17 @@
     }
 
 mixin checkbox(options)
-  - const randID = Math.floor(Math.random() * (1 - 1000) + 1000)
+  -
+    const randID = Math.floor(Math.random() * (1 - 1000) + 1000)
+    const {
+      label,
+      isChecked,
+    } = options
+    
   label.checkbox
     input.checkbox__switch(
       id=`cb-${randID}`
       type="checkbox"
-      checked=options.isChecked
+      checked=isChecked
     )
-    span.checkbox__label= options.label
+    span.checkbox__label= label

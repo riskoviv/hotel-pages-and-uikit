@@ -4,18 +4,22 @@
       isForceHover: boolean,
     }
 mixin button_filled(options)
+  - const { isSmall, isForceHover, caption} = options
+
   button.button.button_filled(
     type="button"
-    class=options.isSmall ? "button_small" : ""
-    class=options.isForceHover ? "button_filled_force-hover" : ""
-  )= options.caption
+    class=isSmall ? "button_small" : ""
+    class=isForceHover ? "button_filled_force-hover" : ""
+  )= caption
 
 mixin button_bordered(options)
+  - const { isSmall, isForceHover, caption } = options
+
   .button.button_bordered(
-    class=options.isSmall ? "button_small" : ""
-    class=options.isForceHover ? "button_bordered_force-hover" : ""
+    class=isSmall ? "button_small" : ""
+    class=isForceHover ? "button_bordered_force-hover" : ""
   )
-    button.button.button_bordered__body(type="button")= options.caption
+    button.button.button_bordered__body(type="button")= caption
 
 
 //- options: {
@@ -23,9 +27,11 @@ mixin button_bordered(options)
       isClear: boolean
     }
 mixin button_link(options)
+  - const { isClear, caption } = options
+  
   a.button.button_link(
-    class=options.isClear ? "button_link_clear" : ""
-  )= options.caption
+    class=isClear ? "button_link_clear" : ""
+  )= caption
 
 //- options: {
       caption: "string"

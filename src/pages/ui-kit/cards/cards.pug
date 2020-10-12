@@ -29,12 +29,9 @@ block content
   article.cards__card
     +login-card
   article.cards__card
-    +calendar-card({
-      selectDate: [
-        [2020, 10, 19],
-        [2020, 10, 23],
-      ],
-    })
+    +calendar-card(
+      [[2020, 10, 19], [2020, 10, 23]]
+    )
   article.cards__room-card
     +room-card({
       number: 888,

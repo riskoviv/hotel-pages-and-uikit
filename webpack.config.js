@@ -170,7 +170,7 @@ module.exports = {
         },
       },
       {
-        test: /\.(ttf|woff(2)?|svg)$/,
+        test: /\.([to]tf|woff(2)?|svg)$/,
         loader: 'file-loader',
         options: {
           name: filename('[ext]'),

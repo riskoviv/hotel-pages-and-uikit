@@ -8,10 +8,12 @@ include /common/control-container/control-container
       ]
     } 
 mixin date-dropdown_filter(options)
-  - const randID = Math.floor(Math.random() * (1 - 1000) + 1000)
+  -
+    const randID = Math.floor(Math.random() * (1 - 1000) + 1000)
+    const { title, selectDate } = options
     
   +control-container({
-    title: options.title || "filter date dropdown",
+    title: title || "filter date dropdown",
   })
     .date-dropdown.date-dropdown_filter
       button.date-dropdown__arrow.date-dropdown_filter__arrow.material-icons expand_more
@@ -22,6 +24,6 @@ mixin date-dropdown_filter(options)
         data-multiple-dates-separator=" - "
         data-date-format="dd M"
         data-keyboard-nav="false"
-        data-select-date=options.selectDate
+        data-select-date=selectDate
         readonly
       )

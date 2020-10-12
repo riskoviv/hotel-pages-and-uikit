@@ -3,13 +3,20 @@
 .footer {
   min-height: 443px;
   background-color: #fff;
-  padding: 0 3%;
   box-shadow: 0px 10px 20px $darkShade5;
+
+  &__container {
+    padding: 0 3%;
+
+    &_bottom {
+      border-top: 1px solid #DEDEE3;
+    }
+  }
 
   &__main-content {
     display: grid;
-    grid-template-columns: repeat(12, 60px);
-    column-gap: 40px;
+    grid-template-columns: repeat(12, 5.17%);
+    column-gap: 3.45%;
     height: 100%;
     max-width: 1160px;
     margin: 0 auto;
@@ -25,18 +32,59 @@
   }
 
   &__menu {
-    grid-column: auto;
+    grid-column: auto / span 2;
+  }
 
-    &-items-list {
+  &-menu {
+    
+    &__title {
+      
+    }
+    
+    &__items-list {
       list-style: none;
+    }
+
+    &__item {
+      margin-top: 20px;
+    }
+
+    &__link {
+      text-decoration: none;
+      color: inherit;
+      line-height: 17px;
+    }
+  }
+
+  &__subscription {
+    grid-column: auto / span 3;
+
+    &-row {
+      margin-bottom: 20px;
     }
   }
 
   &__copyright-bar {
     height: 70px;
+    max-width: 1160px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+
+  &__social {
+    display: grid;
+    grid-template-columns: repeat(3, 24px);
+    column-gap: 20px;
+  }
+
+  &__icon {
+    grid-column: auto;
+    font-family: 'Font awesome';
+    font-size: 24px;
+    user-select: none;
+    @extend %text-gradient;
+  }
 }
+

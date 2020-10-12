@@ -3,40 +3,66 @@ include /form-elements/text-field/text-field
 
 mixin footer
   footer.footer
-    main.footer__main-content
-      .footer__description
-        .footer__logo
-          +logo-full
-        .footer__description-text
-          | Бронирование номеров в лучшем
-          | отеле 2019 года по версии
-          | ассоциации «Отельные взгляды»
-      .footer__menu
-        h3.footer__menu-title Навигация
-        ul.footer__menu-items-list
-          li.menu-item О нас
-          li.menu-item Новости
-          li.menu-item Служба поддержки
-          li.menu-item Услуги
-      .footer__menu
-        h3.footer__menu-title О нас
-        ul.footer__menu-items-list
-          li.menu-item О сервисе
-          li.menu-item Наша команда
-          li.menu-item Вакансии
-          li.menu-item Инвесторы
-      .footer__menu
-        h3.footer__menu-title Служба поддержки
-        ul.footer__menu-items-list
-          li.menu-item Соглашения
-          li.menu-item Сообщества
-          li.menu-item Связь с нами
-    footer.footer__copyright-bar
-      .footer__container
-        .footer__copyrigth
+    .footer__container
+      main.footer__main-content
+        .footer__description
+          .footer__logo
+            +logo-full
+          .footer__description-text
+            | Бронирование номеров в лучшем
+            | отеле 2019 года по версии
+            | ассоциации «Отельные взгляды»
+        -
+          const menuLists = [
+            {
+              title: "Навигация",
+              links: [
+                { title: "О нас", href: "" },
+                { title: "Новости", href: "" },
+                { title: "Служба поддержки", href: "" },
+                { title: "Услуги", href: "" },
+              ],
+            },
+            {
+              title: "О нас",
+              links: [
+                { title: "О сервисе", href: "" },
+                { title: "Наша команда", href: "" },
+                { title: "Вакансии", href: "" },
+                { title: "Инвесторы", href: "" },
+              ],
+            },
+            {
+              title: "Служба поддержки",
+              links: [
+                { title: "Соглашения", href: "" },
+                { title: "Сообщества", href: "" },
+                { title: "Связь с нами", href: "" },
+              ],
+            },
+          ]
+        each list in menuLists
+          .footer__menu
+            +footer-menu(list.title, list.links)
+        .footer__subscription
+          h3.footer__subscription-row Подписка
+          p.footer__subscription-row Получайте специальные предложения и новости сервиса
+          .footer__subscription-row
+            +text-field({ isSubscription: true })
+    .footer__container.footer__container_bottom
+      footer.footer__copyright-bar
+        .footer__copyrigth Copyright © 2018 Toxin отель. Все права зачищены.
         .footer__social
+            .footer__icon twitter
+            .footer__icon facebook
+            .footer__icon instagram
 
-  //- .footer__navigation-menu
-      .footer__about-menu
-      .footer__support-menu
-      .footer__subscription
+mixin footer-menu(title, items)
+  .footer-menu
+    h3.footer-menu__title= title
+    ul.footer-menu__items-list
+      each item in items
+        li.footer-menu__item
+          a.footer-menu__link(
+            href=item.href || "#"
+          )= item.title

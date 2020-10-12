@@ -7,11 +7,18 @@ include /form-elements/checkbox/checkbox
     isChecked: boolean
   }
 mixin checkbox_rich(options)
+  -
+    const {
+      label,
+      description,
+      isChecked,
+    } = options
+    
   .checkbox_rich
     +checkbox({
-      label: options.label,
-      isChecked: options.isChecked
+      label,
+      isChecked,
     })
     .checkbox_rich__description
-      each line in options.description
+      each line in description
         span.checkbox_rich__description-line= line

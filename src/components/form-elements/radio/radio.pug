@@ -4,12 +4,19 @@
       isChecked: boolean
     }
 mixin radio(options)
-  - const randID = Math.floor(Math.random() * (1 - 1000) + 1000)
+  -
+    const randID = Math.floor(Math.random() * (1 - 1000) + 1000)
+    const {
+      name,
+      label,
+      isChecked,
+    } = options
+    
   label.radio
     input.radio__switch(
       id=`r-${randID}`,
       type="radio",
-      name=options.name,
-      checked=options.isChecked
+      name=name,
+      checked=isChecked
     )
-    span.radio__label= options.label
+    span.radio__label= label

@@ -6,13 +6,15 @@ include /form-elements/button/button
 include /cards/room-main-info/room-main-info
 
 mixin booking-card(options)
+  -
+    const { number, isLux, price } = options
   .booking-card
     +card-container
       .booking-card__header
         +room-main-info({
-          number: options.number,
-          isLux: options.isLux,
-          price: options.price,
+          number,
+          isLux,
+          price,
           isSmall: false,
         })
       form.booking-card__booking-form

@@ -1,8 +1,8 @@
 import noUiSlider from 'nouislider';
 import 'nouislider/distribute/nouislider.css';
 
-const slider = document.getElementById('slider');
 const rangeSlider = document.querySelector('.range-slider');
+const slider = document.querySelector('.range-slider__slider');
 
 if (slider && rangeSlider) {
   const range = JSON.parse(rangeSlider.dataset.range);

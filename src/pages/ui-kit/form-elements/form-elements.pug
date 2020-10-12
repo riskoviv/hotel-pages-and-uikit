@@ -142,16 +142,15 @@ block content
         isRow: true,
       })
         .form-elements__rate-button
-          +rate-button({ rating: 4 })
+          +rate-button(4)
         .form-elements__rate-button
-          +rate-button({ rating: 5 })
+          +rate-button(5)
 
   //- RIGHT COLUMN
   section.form-elements__column
     .form-elements__range-slider
       +rangeSlider({
         title: "range slider",
-        id: "range1",
         range: [0, 16000],
         start: [5000, 10000],
       })
@@ -272,7 +271,7 @@ block content
             "и проводит до номера.",
           ],
           isChecked: false,
-        }
+        },
       ]
     .form-elements__controls-group
       +control-container({
@@ -285,28 +284,37 @@ block content
 
   //- MIDDLE BLOCK
   section.form-elements__column
-    -
-      const bulletListItems = [
-        { label: "нельзя с питомцами" },
-        { label: "без вечеринок и мероприятий" },
-        { label: "время прибытия — после 13:00, а выезд до 12:00" },
-      ]
     .form-elements__controls-group
       +control-container({
         title: "bullet list",
         isGroup: true,
       })
-        +bulletList({
-          items: bulletListItems,
-        })
+        +bulletList([
+          { label: "нельзя с питомцами" },
+          { label: "без вечеринок и мероприятий" },
+          { label: "время прибытия — после 13:00, а выезд до 12:00" },
+        ])
   
   //- 
   //- DESCRIPTIONS ROW
   //- 
   section.form-elements__column
     .form-elements__advantages-block
-      +advantage_comfort
-      +advantage_convenience
+      -
+        const advantages = [
+          {
+            icon: "insert_emoticon",
+            title: "Комфорт",
+            description: "Шумопоглощающие стены",
+          },
+          {
+            icon: "location_city",
+            title: "Удобство",
+            description: "Окно в каждой из спален",
+          },
+        ]
+      each advantage in advantages
+        +advantage(advantage)
 
   section.form-elements__column_wide
     +review({
@@ -315,7 +323,7 @@ block content
       date: "5 дней назад",
       like: {
         count: 11,
-        isClicked: true
+        isClicked: true,
       },
       text: "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.",
     })

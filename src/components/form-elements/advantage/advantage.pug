@@ -1,17 +1,3 @@
-mixin advantage_comfort
-  +advantage({
-    icon: "insert_emoticon",
-    title: "Комфорт",
-    description: "Шумопоглощающие стены"
-  })
-
-mixin advantage_convenience
-  +advantage({
-    icon: "location_city",
-    title: "Удобство",
-    description: "Окно в каждой из спален"
-  })
-
 //-
   +advantage(
     options: {
@@ -21,8 +7,15 @@ mixin advantage_convenience
     }
   )
 mixin advantage(options)
+  -
+    const {
+      icon,
+      title,
+      description,
+    } = options
+    
   .advantage
-    span.advantage__icon= options.icon
+    span.advantage__icon= icon
     .advantage__text
-      h4.advantage__title= options.title
-      span.advantage__description= options.description
+      h4.advantage__title= title
+      span.advantage__description= description

@@ -2,11 +2,12 @@
       rating: number
     }
 
-mixin rate-button(options)
+mixin rate-button(rating)
   - const randID = Math.floor(Math.random() * (1 - 1000) + 1000)
+  
   .rate-button(id=`rating-${randID}`)
     - let n = 0;
     while n < 5
       span.rate-button__star.material-icons(
         id=`rating-${randID}_${++n}`
-      )= (n <= options.rating) ? "star" : "star_border"
+      )= (n <= rating) ? "star" : "star_border"

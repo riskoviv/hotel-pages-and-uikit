@@ -5,17 +5,25 @@
       isGroup: boolean,
     }
 mixin control-container(options)
+  -
+    const {
+      title,
+      state,
+      isRow,
+      isGroup,
+    } = options
+    
   .control-container
-    if options.title
+    if title
       .control-container__caption(
-        class=options.isGroup ? "control-container__caption_group" : ""
+        class=isGroup ? "control-container__caption_group" : ""
       )
-        h3.control-container__title= options.title
-        if options.state
-          span.control-container__state= options.state
-    if options.isGroup
+        h3.control-container__title= title
+        if state
+          span.control-container__state= state
+    if isGroup
       .control-container__controls(
-        class=options.isRow ? "control-container__controls_row" : ""
+        class=isRow ? "control-container__controls_row" : ""
       )
         if block
           block

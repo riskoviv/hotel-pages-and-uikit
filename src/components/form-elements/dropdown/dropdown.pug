@@ -1,20 +1,34 @@
 include /common/control-container/control-container
 
 mixin dropdown-guests(options)
+  -
+    const {
+      title,
+      state,
+      type,
+      placeholder,
+      hasButtons,
+      isOpened,
+      isAlwaysOpened,
+      maxCounts,
+      defaultCounts,
+      items,
+    } = options
+
   +dropdown({
-    title: options.title,
-    state: options.state,
+    title,
+    state,
     type: "guests",
-    placeholder: options.placeholder || "Сколько гостей",
+    placeholder: placeholder || "Сколько гостей",
     hasButtons: true,
-    isOpened: options.isOpened,
-    isAlwaysOpened: options.isAlwaysOpened,
-    defaultCounts: options.defaultCounts,
-    items: options.items || [
+    isOpened,
+    isAlwaysOpened,
+    defaultCounts,
+    items: items || [
       {
         name: "взрослые",
-        defaultcount: options.defaultCounts ? options.defaultCounts[0] : "0",
-        maxcount: options.maxCounts ? options.maxCounts[0] : "Infinity", 
+        defaultcount: defaultCounts ? defaultCounts[0] : "0",
+        maxcount: maxCounts ? maxCounts[0] : "Infinity", 
         declensions: [
           "гость",
           "гостя",
@@ -23,13 +37,13 @@ mixin dropdown-guests(options)
       },
       {
         name: "дети",
-        defaultcount: options.defaultCounts ? options.defaultCounts[1] : "0",
-        maxcount: options.maxCounts ? options.maxCounts[1] : "Infinity"
+        defaultcount: defaultCounts ? defaultCounts[1] : "0",
+        maxcount: maxCounts ? maxCounts[1] : "Infinity"
       },
       {
         name: "младенцы",
-        defaultcount: options.defaultCounts ? options.defaultCounts[2] : "0",
-        maxcount: options.maxCounts ? options.maxCounts[2] : "Infinity",
+        defaultcount: defaultCounts ? defaultCounts[2] : "0",
+        maxcount: maxCounts ? maxCounts[2] : "Infinity",
         declensions: [
           "младенец",
           "младенца",
@@ -39,20 +53,34 @@ mixin dropdown-guests(options)
     ]
   })
 mixin dropdown-preferences(options)
+  -
+    const {
+      title,
+      state,
+      type,
+      placeholder,
+      hasButtons,
+      isOpened,
+      isAlwaysOpened,
+      maxCounts,
+      defaultCounts,
+      items,
+    } = options
+
   +dropdown({
-    title: options.title,
-    state: options.state,
+    title,
+    state,
     type: "preferences",
-    placeholder: options.placeholder || "Выберите удобства",
+    placeholder: placeholder || "Выберите удобства",
     hasButtons: false,
-    isOpened: options.isOpened,
-    isAlwaysOpened: options.isAlwaysOpened,
-    defaultCounts: options.defaultCounts,
-    items: options.items || [
+    isOpened,
+    isAlwaysOpened,
+    defaultCounts,
+    items: items || [
       {
         name: "Спальни",
-        defaultcount: options.defaultCounts ? options.defaultCounts[0] : "0",
-        maxcount: options.maxCounts ? options.maxCounts[0] : "10", 
+        defaultcount: defaultCounts ? defaultCounts[0] : "0",
+        maxcount: maxCounts ? maxCounts[0] : "10", 
         declensions: [
           "спальня",
           "спальни",
@@ -61,8 +89,8 @@ mixin dropdown-preferences(options)
       },
       {
         name: "Кровати",
-        defaultcount: options.defaultCounts ? options.defaultCounts[1] : "0",
-        maxcount: options.maxCounts ? options.maxCounts[1] : "5",
+        defaultcount: defaultCounts ? defaultCounts[1] : "0",
+        maxcount: maxCounts ? maxCounts[1] : "5",
         declensions: [
           "кровать",
           "кровати",
@@ -71,8 +99,8 @@ mixin dropdown-preferences(options)
       },
       {
         name: "Ванные комнаты",
-        defaultcount: options.defaultCounts ? options.defaultCounts[2] : "0",
-        maxcount: options.maxCounts ? options.maxCounts[2] : "4",
+        defaultcount: defaultCounts ? defaultCounts[2] : "0",
+        maxcount: maxCounts ? maxCounts[2] : "4",
         declensions: [
           "ванная комната",
           "ванные комнаты",
@@ -84,15 +112,23 @@ mixin dropdown-preferences(options)
 
 mixin add-items(itemsArray)
   each item, index in itemsArray
+    -
+      const {
+        name,
+        defaultcount,
+        maxcount,
+        declensions,
+      } = item
+      
     .iqdropdown-menu-option.js-iqdropdown-menu-option(
       data-id="item"+(index+1)
-      data-name=item.name
-      data-defaultcount=item.defaultcount || "0"
-      data-maxcount=item.maxcount
-      data-declensions=item.declensions || ""
+      data-name=name
+      data-defaultcount=defaultcount || "0"
+      data-maxcount=maxcount
+      data-declensions=declensions || ""
     )
       div
-        p.iqdropdown-item= item.name
+        p.iqdropdown-item= name
 
 //- options: {
       title,
@@ -107,25 +143,38 @@ mixin add-items(itemsArray)
       items[{name, defaultcount, maxcount, declensions[]}]
     }
 mixin dropdown(options)
-  - const randID = Math.floor(Math.random() * (1 - 1000) + 1000)
+  -
+    const randID = Math.floor(Math.random() * (1 - 1000) + 1000)
+    const {
+      title,
+      state,
+      type,
+      placeholder,
+      hasButtons,
+      isOpened,
+      isAlwaysOpened,
+      defaultCounts,
+      items,
+    } = options
+
   +control-container({
-    title: options.title,
-    state: options.state,
+    title,
+    state,
   })
     .iqdropdown.js-iqdropdown(
       id=`dd-${randID}`
-      class=options.type ? `iqdropdown_${options.type} js-iqdropdown_${options.type}` : ""
-      data-placeholder=options.placeholder
-      class=options.isOpened ? "menu-open" : ""
-      data-always-opened=options.isAlwaysOpened ? "true" : ""
+      class=type ? `iqdropdown_${type} js-iqdropdown_${type}` : ""
+      data-placeholder=placeholder
+      class=isOpened ? "menu-open" : ""
+      data-always-opened=isAlwaysOpened ? "true" : ""
     )
       p.iqdropdown-selection.js-iqdropdown-selection
       button.iqdropdown__arrow.material-icons expand_more
       .iqdropdown-menu.js-iqdropdown-menu
-        +add-items(options.items)
-        if options.hasButtons
+        +add-items(items)
+        if hasButtons
           .iqdropdown__controls.js-iqdropdown__controls
             button.iqdropdown__button.button.button_link.button_link_clear.js-button_link_clear(
-              class=options.defaultCounts ? "" : "button_link_clear_hidden"
+              class=defaultCounts ? "" : "button_link_clear_hidden"
             ) Очистить
             button.iqdropdown__button.button.button_link.js-button_link Применить

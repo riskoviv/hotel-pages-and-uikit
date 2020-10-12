@@ -3,11 +3,17 @@
       isChecked: boolean
     }
 mixin toggle(options)
-  - const randID = Math.floor(Math.random() * (1 - 1000) + 1000)
+  -
+    const randID = Math.floor(Math.random() * (1 - 1000) + 1000)
+    const {
+      label,
+      isChecked,
+    } = options
+
   label.toggle
     input.toggle__switch(
       id=`t-${randID}`
       type="checkbox"
-      checked=options.isChecked
+      checked=isChecked
     )
-    span.toggle__label #{options.label || "Получать спецпредложения"}
+    span.toggle__label #{label || "Получать спецпредложения"}

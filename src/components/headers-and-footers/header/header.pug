@@ -2,6 +2,12 @@ include /common/logo/logo
 include /form-elements/button/button
 
 mixin header(options)
+  -
+    const {
+      isLoggedIn,
+      userName,
+    } = options
+
   header.header
     .header__container
       .header__logo
@@ -10,11 +16,11 @@ mixin header(options)
         ul.header__menu
           -
             const menuList = [
-              { title: "О нас", isExpandable: false, isActive: true, },
-              { title: "Услуги", isExpandable: true, },
-              { title: "Вакансии", isExpandable: false, },
-              { title: "Новости", isExpandable: false, },
-              { title: "Соглашения", isExpandable: true, },
+              { title: "О нас", isExpandable: false, isActive: true },
+              { title: "Услуги", isExpandable: true },
+              { title: "Вакансии", isExpandable: false },
+              { title: "Новости", isExpandable: false },
+              { title: "Соглашения", isExpandable: true },
             ]
           each item in menuList
             li.header__menu-item(
@@ -22,8 +28,8 @@ mixin header(options)
               class=item.isExpandable ? "header__menu-item_expandable" : ""
             )
               a.header__menu-link(href=item.link || "#")= item.title
-        if options.isLoggedIn
-          .header__user-name= options.userName
+        if isLoggedIn
+          .header__user-name= userName
         else 
           .header__buttons
             .header__login-button

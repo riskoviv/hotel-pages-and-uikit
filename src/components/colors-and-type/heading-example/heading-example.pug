@@ -4,8 +4,14 @@
     }
 
 mixin heading-example(options)
+  -
+    const {
+      type,
+      textExample,
+    } = options
+    
   li.heading-example(
-    class=`heading-example_type_${options.type}`
+    class=`heading-example_type_${type}`
   )
-    span.heading-example__text-type= options.type
-    p.heading-example__text-example= options.textExample
+    span.heading-example__text-type= type
+    p.heading-example__text-example= textExample

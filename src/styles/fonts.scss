@@ -19,8 +19,6 @@
   }
 }
 
-@import '../res/fonts/materialicons/material-icons.css';
-
 /* quicksand-regular - latin */
 @include font-face('Quicksand', '../res/fonts/quicksand/quicksand-v20-latin-regular');
 /* quicksand-700 - latin */
@@ -33,5 +31,16 @@
 @include font-face('Montserrat', '../res/fonts/montserrat/montserrat-v14-latin_cyrillic-regular');
 /* montserrat-700 - latin_cyrillic */
 @include font-face('Montserrat', '../res/fonts/montserrat/montserrat-v14-latin_cyrillic-700', 700);
-/* materialicons */
-@include font-face('Material Icons', '../res/fonts/materialicons/MaterialIcons-Regular', 400, 'normal')
+/* material icons */
+@import '../res/fonts/materialicons/material-icons.css';
+
+/* font awesome */
+@font-face {
+  font: {
+    family: 'Font awesome';
+    weight: 400;
+    style: $mainFontStyle;
+  }
+
+  src: url('../res/fonts/font-awesome/Font Awesome 5 Brands-Regular-400.otf') format('truetype');
+}

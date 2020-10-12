@@ -3,11 +3,17 @@
       likesCount: number
     }
 mixin like-button(options)
-  - const randID = Math.floor(Math.random() * (1 - 1000) + 1000)
+  -
+    const randID = Math.floor(Math.random() * (1 - 1000) + 1000)
+    const {
+      isClicked,
+      likesCount,
+    } = options
+    
   .like-button(
-    class=options.isClicked ? "like-button_clicked" : ""
+    class=isClicked ? "like-button_clicked" : ""
     id=`like-${randID}`
   )
     .like-button__body
       span.like-button__heart.material-icons favorite_border
-      span.like-button__count= options.likesCount
+      span.like-button__count= likesCount

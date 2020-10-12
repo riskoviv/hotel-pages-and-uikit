@@ -3,27 +3,37 @@ include /common/control-container/control-container
 //- options: {
       type: "string",
       placeholder: "string",
-      isForceHoverStyle: boolean,
       isMasked: boolean,
-      value: "string"
+      isSubscription: boolean,
+      isForceHoverStyle: boolean,
+      value: "string",
     }
 mixin text-field(options)
   -
+    const {
+      type,
+      placeholder,
+      isMasked,
+      isSubscription,
+      isForceHoverStyle,
+      value
+    } = options
     let inputModifierClassName = "text-field"
-    inputModifierClassName += options.isMasked
+    
+    inputModifierClassName += isMasked
       ? " text-field__input_masked js-text-field__input_masked" : ""
-    inputModifierClassName += options.isSubscription ? " text-field__input_subscription" : ""
-    inputModifierClassName += options.isForceHoverStyle ? " text-field__input_force-focus-hover" : ""
+    inputModifierClassName += isSubscription ? " text-field__input_subscription" : ""
+    inputModifierClassName += isForceHoverStyle ? " text-field__input_force-focus-hover" : ""
 
   .text-field(
-    class=options.isSubscription ? "text-field_subscription" : ""
+    class=isSubscription ? "text-field_subscription" : ""
   )
     input.text-field__input.js-text-field__input(
       class=inputModifierClassName
-      type=options.type || "text"
-      placeholder=options.isMasked ? "ДД.ММ.ГГГГ" : options.placeholder
-      value=options.value
-      maxlength=options.isMasked ? "10" : ""
+      type=isSubscription ? "email" : type || "text"
+      placeholder=isSubscription ? "Email" : isMasked ? "ДД.ММ.ГГГГ" : placeholder
+      value=value
+      maxlength=isMasked ? "10" : ""
     )
-    if options.isSubscription
+    if isSubscription
       button.text-field_subscription__arrow.material-icons(type="button") arrow_forward

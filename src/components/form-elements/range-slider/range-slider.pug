@@ -1,12 +1,16 @@
 mixin rangeSlider(options)
-  - const randID = Math.floor(Math.random() * (1 - 1000) + 1000)
+  -
+    const {
+      title,
+      range,
+      start,
+    } = options
+
   .range-slider(
-    class=options.class
-    id=`range-${randID}`
-    data-range=options.range
-    data-start=options.start
+    data-range=range
+    data-start=start
   )
     .range-slider__caption
-      h3.range-slider__title= options.title
+      h3.range-slider__title= title
       span.range-slider__values
-    #slider.range-slider__slider
+    .range-slider__slider

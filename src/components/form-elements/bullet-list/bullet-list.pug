@@ -7,7 +7,7 @@
     ]
   }
 
-mixin bulletList(options)
+mixin bulletList(items)
   ul.bullet-list
-    each item in options.items
+    each item in items
       li.bullet-list__item= item.label

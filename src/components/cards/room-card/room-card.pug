@@ -2,17 +2,26 @@ include /cards/room-main-info/room-main-info
 include /form-elements/rate-button/rate-button
 
 mixin room-card(options)
+  -
+    const {
+      number,
+      isLux,
+      price,
+      rating,
+      reviewsCount,
+    } = options
   .room-card(
     href="#"
   )
     .room-card__slider
       .slider
         a.slides(href="#")
-          each num in [1, 2, 3, 4]
+          - let num = 1;
+          while num < 5
             img(
               class=`image${num}`
-              src=require(`../../../res/images/room-cards/image-${options.number}-${num}.jpg`).default
-              alt=`room #${options.number}, image #${num}`
+              src=require(`../../../res/images/room-cards/image-${number}-${num}.jpg`).default
+              alt=`room #${number}, image #${num++}`
             )
         .prev.slider__prev
           div.slider__prev-arrow.material-icons expand_more
@@ -22,13 +31,13 @@ mixin room-card(options)
     a.room-card__info(href="#")
       .room-card__header
         +room-main-info({
-          number: options.number,
-          isLux: options.isLux,
-          price: options.price,
+          number,
+          isLux,
+          price,
           isSmall: true,
         })
       .room-card__rating
-        +rate-button({rating: options.rating,})
+        +rate-button(rating)
         span.room-card__ratings
-          b.room-card__ratings-count= options.reviewsCount
+          b.room-card__ratings-count= reviewsCount
           |  Отзывов
