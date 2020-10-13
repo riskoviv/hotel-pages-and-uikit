@@ -12,15 +12,28 @@ mixin header(options)
     .header__container
       .header__logo
         +logo-full
+      .header__menu-opener Меню
       .header__right-part
         ul.header__menu
           -
             const menuList = [
               { title: "О нас", isExpandable: false, isActive: true },
-              { title: "Услуги", isExpandable: true },
+              { title: "Услуги", isExpandable: true,
+                submenu: [
+                  { title: "Первая услуга" },
+                  { title: "Услуга номер два" },
+                  { title: "Услуга под номером три" },
+                ],
+              },
               { title: "Вакансии", isExpandable: false },
               { title: "Новости", isExpandable: false },
-              { title: "Соглашения", isExpandable: true },
+              { title: "Соглашения", isExpandable: true,
+                submenu: [
+                  { title: "Лицензия на предоставление услуг" },
+                  { title: "Пользовательское соглашение" },
+                  { title: "Политика конфиденциальности" },
+                ],
+              },
             ]
           each item in menuList
             li.header__menu-item(
@@ -28,6 +41,12 @@ mixin header(options)
               class=item.isExpandable ? "header__menu-item_expandable" : ""
             )
               a.header__menu-link(href=item.link || "#")= item.title
+              if item.submenu
+                ul.header__submenu
+                  each subitem in item.submenu
+                    li.header__subitem
+                      a.header__sublink(href=subitem.link || "#")= subitem.title
+
         if isLoggedIn
           .header__user-name= userName
         else 
