@@ -10,16 +10,18 @@ block variables
 block content
   include /headers-and-footers/header/header
   include /headers-and-footers/footer/footer
+  include /headers-and-footers/footer-creative/footer-creative
 
-  .headers-and-footers__element
+  .headers-and-footers__row
     +header({
       isLoggedIn: false,
     })
-  .headers-and-footers__element
+  .headers-and-footers__row
     +header({
       isLoggedIn: true,
       userName: "Юлий Цезарь",
     })
-  .headers-and-footers__element
+  .headers-and-footers__row
     +footer
-  .headers-and-footers__element
+  .headers-and-footers__row.headers-and-footers__row_creative
+    +footer-creative

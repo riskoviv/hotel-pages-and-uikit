@@ -72,19 +72,5 @@
     justify-content: space-between;
     align-items: center;
   }
-
-  &__social {
-    display: grid;
-    grid-template-columns: repeat(3, 24px);
-    column-gap: 20px;
-  }
-
-  &__icon {
-    grid-column: auto;
-    font-family: 'Font awesome';
-    font-size: 24px;
-    user-select: none;
-    @extend %text-gradient;
-  }
 }
 

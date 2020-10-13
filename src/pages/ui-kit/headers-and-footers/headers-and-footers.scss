@@ -2,7 +2,12 @@
 
 .headers-and-footers {
 
-  &__element {
+  &__row {
     margin-bottom: 40px;
+
+    &_creative {
+      max-width: $tablet;
+      margin: 0 auto;
+    }
   }
 }

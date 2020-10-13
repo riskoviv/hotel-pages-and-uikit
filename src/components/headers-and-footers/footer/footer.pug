@@ -1,5 +1,6 @@
 include /common/logo/logo
 include /form-elements/text-field/text-field
+include /headers-and-footers/social-icons/social-icons
 
 mixin footer
   footer.footer
@@ -53,9 +54,7 @@ mixin footer
       footer.footer__copyright-bar
         .footer__copyrigth Copyright © 2018 Toxin отель. Все права зачищены.
         .footer__social
-            .footer__icon twitter
-            .footer__icon facebook
-            .footer__icon instagram
+          +social-icons
 
 mixin footer-menu(title, items)
   .footer-menu

@@ -1,0 +1,17 @@
+@import '../../../styles/constants.scss';
+
+.footer-creative {
+  background-color: #fff;
+  box-shadow: 0px 10px 20px $darkShade5;
+  display: grid;
+  justify-content: center;
+  grid-template-rows: repeat(3, auto);
+  row-gap: 20px;
+  max-width: $tablet;
+  padding: 120px 0;
+
+  &__row {
+    grid-row: auto;
+    margin: 0 auto;
+  }
+}
