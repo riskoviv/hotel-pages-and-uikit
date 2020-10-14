@@ -14,4 +14,8 @@
     grid-row: auto;
     margin: 0 auto;
   }
+
+  @media (min-width: 769px) {
+    display: none;
+  }
 }
