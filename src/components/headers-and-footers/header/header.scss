@@ -5,37 +5,43 @@
   @media (max-width: $laptop) {
     --relative-margin: 10px;
   }
+  
+  display: flex;
+  align-items: center;
   background-color: #fff;
-  height: 70px;
-  padding: 0 3%;
+  min-height: 70px;
+  padding: 15px 3%;
   box-shadow: 0px 10px 20px $darkShade5;
 
   &__container {
+    display: grid;
+    grid-template:
+      'logo mt menu buttons'
+      'menu-bottom menu-bottom menu-bottom menu-bottom'
+      / auto auto 1fr auto
+      ;
+    align-items: center;
+    justify-items: end;
     position: relative;
     height: 100%;
-    max-width: 1160px;
+    width: 1160px;
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
-    align-items: center;
+
+    @media (max-width: 900px) {
+      justify-items: center;
+      row-gap: 10px;
+    }
   }
 
-  &__right-part {
-    display: flex;
-    align-content: center;
-    align-items: center;
-    justify-content: flex-end;
-    margin-left: var(--relative-margin);
-  }
-  
   &__menu {
+    grid-area: menu;
     display: flex;
     flex-wrap: nowrap;
     list-style: none;
     margin-right: var(--relative-margin);
 
     &-opener {
+      grid-area: mt;
       display: none;
       position: relative;
       padding-right: 24px;
@@ -50,38 +56,21 @@
         right: 0;
         top: 0;
       }
-
-      &:hover + .header__right-part > .header__menu {
-        visibility: visible;
-      }
     }
 
     @media (max-width: 900px) {
       .header:not(.header_logged-in) & {
-        visibility: hidden;
-        flex-direction: column;
         background-color: #fff;
-        position: absolute;
-        top: 55px;
-        left: 28%;
-        margin-right: 0;
-        padding: 5px 15px;
-        box-shadow: 0 5px 5px 2px $darkShade5;
-        border: 1px solid $darkShade10;
-        z-index: 1;
-
-        &:hover {
-          visibility: visible;
-        }
+        grid-area: menu-bottom;
       }
 
       &-item {
         margin-right: 0;
         width: fit-content;
       }
-
-      .header:not(.header_logged-in) &-opener {
-        display: block;
+      
+      &-opener:hover + & {
+        visibility: visible;
       }
     }
 
@@ -105,6 +94,12 @@
       }
 
       .header_logged-in &-opener {
+        display: block;
+      }
+    }
+
+    @media (max-width: $mobileL) {
+      .header:not(.header_logged-in) &-opener {
         display: block;
       }
     }
@@ -191,8 +186,14 @@
     }
   }
 
-  &__subitem:not(:last-child) {
-    margin-bottom: 5px;
+  &__subitem {
+    &:hover {
+      background-color: $darkShade5;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
   }
 
   &__sublink {
@@ -202,6 +203,7 @@
   }
 
   &__buttons {
+    grid-area: buttons;
     display: flex;
 
     &-shower {
@@ -223,6 +225,7 @@
 
       &-shower {
         display: block;
+        grid-area: buttons;
 
         &:hover + .header__buttons {
           display: flex;
@@ -236,6 +239,7 @@
   }
 
   &__user-name {
+    grid-area: buttons;
     height: 30px;
     line-height: 30px;
     padding-left: var(--relative-margin);

@@ -1,7 +1,7 @@
 @import '../../../styles/constants.scss';
 
 .social-icons {
-  display: grid;
+  display: inline-grid;
   grid-template-columns: repeat(3, 24px);
   column-gap: 20px;
 
