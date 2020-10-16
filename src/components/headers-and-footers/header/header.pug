@@ -8,13 +8,11 @@ mixin header(options)
       userName,
     } = options
 
-  header.header(
-    class=isLoggedIn ? "header_logged-in" : ""
-  )
+  header.header
     .header__container
       .header__logo
         +logo-full
-      .header__menu-opener Меню
+      .header__menu-opener menu
       ul.header__menu
         -
           const menuList = [
@@ -49,7 +47,8 @@ mixin header(options)
                     a.header__sublink(href=subitem.link || "#")= subitem.title
 
       if isLoggedIn
-        .header__user-name= userName
+        .header__user-name-container
+          span.header__user-name= userName
       else
         span.header__buttons-shower.material-icons account_box
         .header__buttons

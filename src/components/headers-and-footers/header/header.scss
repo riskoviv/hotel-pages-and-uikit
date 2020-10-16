@@ -16,25 +16,41 @@
   &__container {
     display: grid;
     grid-template:
-      'logo mt menu buttons'
-      'menu-bottom menu-bottom menu-bottom menu-bottom'
-      / auto auto 1fr auto
+      'logo menu login'
+      'menu-bottom menu-bottom menu-bottom'
+      / auto 1fr auto
       ;
     align-items: center;
-    justify-items: end;
     position: relative;
     height: 100%;
     width: 1160px;
     margin: 0 auto;
 
     @media (max-width: 900px) {
-      justify-items: center;
+      grid-template:
+        'logo login'
+        'menu-bottom menu-bottom'
+        ;
       row-gap: 10px;
+      column-gap: 10px;
+    }
+
+    @media (max-width: $mobileL) {
+      grid-template:
+        'mt logo login';
+      row-gap: 0;
+    }
+  }
+
+  &__logo {
+    @media (max-width: $mobileL) {
+      justify-self: center;
     }
   }
 
   &__menu {
     grid-area: menu;
+    justify-self: end;
     display: flex;
     flex-wrap: nowrap;
     list-style: none;
@@ -44,77 +60,45 @@
       grid-area: mt;
       display: none;
       position: relative;
-      padding-right: 24px;
+      font-family: 'Material icons';
+      font-size: 24px;
       cursor: default;
       line-height: 40px;
-
-      &::after {
-        @extend %pseudo-element-basic;
-        content: "expand_more";
-        font-family: 'Material icons';
-        font-size: 24px;
-        right: 0;
-        top: 0;
-      }
+      max-width: fit-content;
+      user-select: none;
     }
 
     @media (max-width: 900px) {
-      .header:not(.header_logged-in) & {
-        background-color: #fff;
-        grid-area: menu-bottom;
-      }
-
-      &-item {
-        margin-right: 0;
-        width: fit-content;
-      }
-      
-      &-opener:hover + & {
-        visibility: visible;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .header_logged-in & {
-        visibility: hidden;
-        flex-direction: column;
-        background-color: #fff;
-        position: absolute;
-        top: 55px;
-        left: 41%;
-        margin-right: 0;
-        padding: 5px 15px;
-        box-shadow: 0 5px 5px 2px $darkShade5;
-        border: 1px solid $darkShade10;
-        z-index: 1;
-
-        &:hover {
-          visibility: visible;
-        }
-      }
-
-      .header_logged-in &-opener {
-        display: block;
-      }
+      grid-area: menu-bottom;
+      justify-self: center;
     }
 
     @media (max-width: $mobileL) {
-      .header:not(.header_logged-in) &-opener {
+      display: none;
+      flex-direction: column;
+      align-items: stretch;
+      margin-right: 0;
+      position: absolute;
+      background-color: white;
+      box-shadow: 0 4px 5px 2px $darkShade10;
+      left: 0;
+      top: 40px;
+      padding: 10px 0;
+      z-index: 1;
+      
+      &-opener {
         display: block;
       }
-    }
 
-    @media (max-width: $mobileS) {
-      .header_logged-in &-opener {
-        visibility: hidden;
-        width: 0;
+      &-opener:hover + & {  
+        display: flex;
+      }
 
-        &::after {
-          content: "menu";
-          visibility: visible;
-        }
+      &:hover {
+        display: flex;
       }
     }
+
   }
 
   &__menu-item {
@@ -137,19 +121,39 @@
         font-size: 24px;
         right: 0;
         top: 0;
+
+        @media (max-width: $mobileL) {
+          transform: rotate(-90deg);
+        }
       }
 
       &:hover > .header__submenu {
         display: block;
       }
 
-      .header_logged-in &:last-child > .header__submenu {
+      &:last-child > .header__submenu {
         right: 0;
+      }
+
+      @media (max-width: $mobileL) {
+        &:last-child > .header__submenu {
+          right: unset;
+        }
       }
     }
 
     &:last-child {
       margin-right: 0;
+    }
+
+    @media (max-width: $mobileL) {
+      padding: 0 24px 0 10px;
+      width: 100%;
+      margin-right: 0;
+
+      &:hover {
+        background-color: $darkShade5;
+      }
     }
   }
 
@@ -163,7 +167,7 @@
   &__submenu {
     display: none;
     background-color: #fff;
-    padding: 10px;
+    padding: 10px 0;
     list-style: none;
     position: absolute;
     z-index: 1;
@@ -171,28 +175,27 @@
     box-shadow: 0px 4px 5px 2px $darkShade5;
     border: 1px solid $darkShade10;
 
-    @media (max-width: 900px) {
-      .header:not(.header_logged-in) & {
-        top: 20px;
-        left: calc(100% - 20px);
-      }
-    }
-
-    @media (max-width: 700px) {
-      .header_logged-in .header__menu-item_expandable:not(:last-child) & {
-        top: 20px;
-        left: calc(100% - 20px);
-      }
+    @media (max-width: $mobileL) {
+      left: 100%;
+      top: 0;
+      width: fit-content;
+      max-width: 55vw;
     }
   }
 
   &__subitem {
+    padding: 0 10px;
+
     &:hover {
       background-color: $darkShade5;
     }
 
     &:not(:last-child) {
       margin-bottom: 5px;
+      
+      @media (max-width: $mobileL) {
+        margin-bottom: 10px;
+      }
     }
   }
 
@@ -200,19 +203,31 @@
     color: inherit;
     text-decoration: none;
     white-space: nowrap;
+
+    @media (max-width: $mobileL) {
+      display: block;
+      white-space: normal;
+      line-height: 1.2;
+    }
   }
 
   &__buttons {
-    grid-area: buttons;
+    grid-area: login;
+    justify-self: end;
     display: flex;
 
     &-shower {
+      @extend %text-gradient;
       display: none;
+      grid-area: login;
+      justify-self: end;
+      user-select: none;
     }
 
-    @media (max-width: 550px) {
+    @media (max-width: 500px) {
       display: none;
       position: absolute;
+      right: 0;
       border-radius: 2px;
       box-shadow: 0px 4px 5px 2px $darkShade5;
       border: 1px solid $darkShade10;
@@ -225,12 +240,15 @@
 
       &-shower {
         display: block;
-        grid-area: buttons;
 
         &:hover + .header__buttons {
           display: flex;
         }
       }
+    }
+
+    @media (max-width: $mobileS) {
+      right: -5px;
     }
   }
 
@@ -239,12 +257,34 @@
   }
 
   &__user-name {
-    grid-area: buttons;
-    height: 30px;
-    line-height: 30px;
-    padding-left: var(--relative-margin);
-    border-left: 1px solid $darkShade10;
+    line-height: 1.2;
     color: $darkShade50;
     white-space: nowrap;
+    display: block;
+    margin: auto 0;
+    text-align: right;
+    width: min-content;
+
+    &-container {
+      grid-area: login;
+      justify-self: end;
+      display: flex;
+      align-items: center;
+      height: 30px;
+      padding-left: var(--relative-margin);
+      border-left: 1px solid $darkShade10;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    @media (max-width: 500px) {
+      font-size: smaller;
+    }
+
+    @media (max-width: $mobileL) {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: normal;
+    }
   }
 }
