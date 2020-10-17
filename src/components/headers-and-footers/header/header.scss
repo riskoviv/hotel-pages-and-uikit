@@ -85,6 +85,8 @@
       top: 40px;
       padding: 10px 0;
       z-index: 1;
+      width: fit-content;
+      max-width: 42vw;
       
       &-opener {
         display: block;
@@ -118,7 +120,8 @@
         @extend %pseudo-element-basic;
         content: 'expand_more';
         font-family: 'Material icons';
-        font-size: 24px;
+        font-size: 1.5em;
+        line-height: 1;
         right: 0;
         top: 0;
 
@@ -150,6 +153,7 @@
       padding: 0 24px 0 10px;
       width: 100%;
       margin-right: 0;
+      margin-bottom: 5%;
 
       &:hover {
         background-color: $darkShade5;
@@ -158,10 +162,17 @@
   }
 
   &__menu-link {
+    display: block;
     text-decoration: none;
     color: inherit;
     line-height: 17px;
     white-space: nowrap;
+
+    @media (max-width: $mobileL) {
+      line-height: 1.5;
+      white-space: normal;
+      overflow-wrap: break-word;
+    }
   }
 
   &__submenu {
@@ -179,7 +190,7 @@
       left: 100%;
       top: 0;
       width: fit-content;
-      max-width: 55vw;
+      max-width: 58vw;
     }
   }
 
@@ -191,11 +202,7 @@
     }
 
     &:not(:last-child) {
-      margin-bottom: 5px;
-      
-      @media (max-width: $mobileL) {
-        margin-bottom: 10px;
-      }
+      margin-bottom: 5%;
     }
   }
 
@@ -207,7 +214,8 @@
     @media (max-width: $mobileL) {
       display: block;
       white-space: normal;
-      line-height: 1.2;
+      line-height: 1.5;
+      
     }
   }
 
