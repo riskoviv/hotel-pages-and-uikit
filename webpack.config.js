@@ -13,17 +13,18 @@ const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
 
 const PATHS = {
-  assets: 'assets',
   dist: path.resolve(__dirname, 'dist'),
   components: path.resolve(__dirname, 'src/components'),
   res: path.resolve(__dirname, 'src/res'),
   src: path.resolve(__dirname, 'src'),
+  assets: 'assets',
+  pages: 'assets/pages',
 };
 
 const PAGES_DIR = `${PATHS.src}/pages`;
 const PAGES_ARR = [];
 
-for (let pages_subdir of ['ui-kit',]) {
+for (let pages_subdir of ['ui-kit', 'website-pages']) {
   const PAGES = fs.readdirSync(`${PAGES_DIR}/${pages_subdir}`)
     .map(dir => fs.readdirSync(`${PAGES_DIR}/${pages_subdir}/${dir}`))
     .reduce((acc, item) => [...acc, ...item], [])
@@ -90,7 +91,7 @@ const plugins = () => {
     
     ...PAGES_ARR.map(page => new HTMLWebpackPlugin({
       template: `${PAGES_DIR}/${page.pagesGroup}/${page.pageName.replace(/\.pug/, '')}/${page.pageName}`, // .pug
-      filename: `./${page.pageName.replace(/\.pug/, '.html')}`, // .html
+      filename: `${PATHS.pages}/${page.pageName.replace(/\.pug/, '.html')}`, // .html
       favicon: `${PATHS.res}/images/favicon/favicon.svg`,
       chunks: [`${page.pageName.replace(/\.pug/, '')}`, 'common'],
     })),
@@ -119,6 +120,7 @@ module.exports = {
     'form-elements': './pages/ui-kit/form-elements/form-elements.js',
     'cards': './pages/ui-kit/cards/cards.js',
     'headers-and-footers': './pages/ui-kit/headers-and-footers/headers-and-footers.js',
+    'landing': './pages/website-pages/landing/landing.js'
   },
   output: {
     filename: filename('js'),
@@ -133,10 +135,11 @@ module.exports = {
     port: 4200,
     hot: false,
     openPage: [
-      // 'colors-and-type.html',
-      // 'form-elements.html',
-      // 'cards.html',
-      'headers-and-footers.html',
+      // `${PATHS.pages}/colors-and-type.html`,
+      // `${PATHS.pages}/form-elements.html`,
+      // `${PATHS.pages}/cards.html`,
+      // `${PATHS.pages}/headers-and-footers.html`,
+      `${PATHS.pages}/landing.html`,
     ],
     stats: 'minimal',
   },
@@ -149,7 +152,7 @@ module.exports = {
         use: {
           loader: 'pug-loader',
           options: {
-            root: PATHS.components
+            root: PATHS.components,
           },
         },
       },
@@ -165,8 +168,9 @@ module.exports = {
         test: /\.((pn|jp(e)?)g|gif)$/,
         loader: 'file-loader',
         options: {
-          outputPath: `${PATHS.assets}/img`,
           name: filename('[ext]'),
+          outputPath: `${PATHS.assets}/img`,
+          publicPath: '../img',
         },
       },
       {

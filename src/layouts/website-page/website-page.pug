@@ -1,0 +1,25 @@
+include /headers-and-footers/header/header
+include /headers-and-footers/footer/footer
+include /headers-and-footers/footer-creative/footer-creative
+
+block variables
+
+doctype html
+html(lang="ru")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title= title
+  body.website-page(
+    class=pageClass
+  )
+    header.website-page__header
+      +header
+    main(
+      class=`${pageClass}__content`
+    )
+      block content
+    footer.website-page__footer
+      +footer
+    footer.website-page__footer-creative
+      +footer-creative

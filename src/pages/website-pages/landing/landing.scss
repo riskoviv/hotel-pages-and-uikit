@@ -1,0 +1,46 @@
+@import '../../../styles/constants.scss';
+
+@keyframes changeBG {
+  from {
+    background-image: url('./images/landing-page_bg-1.jpg');
+  }
+  to {
+    background-image: url('./images/landing-page_bg-2.jpg');
+  }
+  to {
+    background-image: url('./images/landing-page_bg-3.jpg');
+  }  
+}
+
+.landing {
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    min-height: 830px;
+    background-image: url('./images/landing-page_bg-1.jpg');
+    background-color: #eee;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &__container {
+    position: relative;
+    max-width: 1160px;
+    width: 100%;
+  }
+  
+  &__search-card {
+    position: absolute;
+    top: 10vw;
+    left: 0;
+  }
+
+  &__caption {
+    position: absolute;
+    bottom: 1.5em;
+    right: 0;
+    max-width: 20em;
+    text-align: right;
+  }
+}

@@ -1,0 +1,15 @@
+extends /../layouts/website-page/website-page
+
+block variables
+  -
+    const title = "Landing page"
+    const pageClass = "landing"
+
+block content
+  include /cards/search-card/search-card
+
+  .landing__container
+    .landing__search-card
+      +search-card
+    span.landing__caption
+      | Лучшие номера для вашей работы, отдыха и просто вдохновения

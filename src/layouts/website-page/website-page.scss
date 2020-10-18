@@ -1,0 +1,11 @@
+@import '../../styles/constants.scss';
+
+.website-page {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+
+  &__footer-creative {
+    justify-self: center;
+  }
+}
