@@ -1,9 +1,10 @@
-mixin rangeSlider(options)
+mixin range-slider(options)
   -
     const {
       title,
       range,
       start,
+      description,
     } = options
 
   .range-slider(
@@ -14,3 +15,4 @@ mixin rangeSlider(options)
       h3.range-slider__title= title
       span.range-slider__values
     .range-slider__slider
+    span.ragne-slider__description= description

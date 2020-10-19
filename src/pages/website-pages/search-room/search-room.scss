@@ -1,0 +1,34 @@
+@import '../../../styles/constants.scss';
+
+.search-room {
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    padding: 0 40px;
+  }
+
+  &__container {
+    display: flex;
+    max-width: 1160px;
+  }
+
+  &__filter {
+
+  }
+
+  &__main {
+
+  }
+
+  &__rooms-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, auto);
+    gap: 12px;
+  }
+
+  &__pagination {
+
+  }
+
+}

@@ -23,6 +23,15 @@
     box-shadow: none;
   }
 
+  &__description {
+    font-size: 12px;
+    line-height: 14px;
+
+    &::first-letter {
+      text-transform: capitalize;
+    }
+  }
+
   @media (max-width: $mobileL) {
     margin-bottom: 50px;
   }

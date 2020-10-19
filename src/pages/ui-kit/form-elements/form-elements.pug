@@ -149,7 +149,7 @@ block content
   //- RIGHT COLUMN
   section.form-elements__column
     .form-elements__range-slider
-      +rangeSlider({
+      +range-slider({
         title: "range slider",
         range: [0, 16000],
         start: [5000, 10000],
@@ -242,12 +242,12 @@ block content
         { label: "шампунь", isChecked: false },
       ]
     .form-elements__control
-      +expandableCheckboxList({
+      +expandable-checkbox-list({
         isOpened: false,
         checkboxes: expandableCheckboxListItems,
       })
     .form-elements__control
-      +expandableCheckboxList({
+      +expandable-checkbox-list({
         isOpened: true,
         checkboxes: expandableCheckboxListItems,
       })

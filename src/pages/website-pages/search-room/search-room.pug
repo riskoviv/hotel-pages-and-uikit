@@ -1,0 +1,199 @@
+extends /../layouts/website-page/website-page
+
+block variables
+  -
+    const title = "Search room / Filter"
+    const pageClass = "search-room"
+
+block content
+  include /common/control-container/control-container
+  include /form-elements/date-dropdown/date-dropdown
+  include /form-elements/date-dropdown/_filter/date-dropdown_filter
+  include /form-elements/dropdown/dropdown
+  include /form-elements/range-slider/range-slider
+  include /form-elements/checkbox/checkbox
+  include /form-elements/checkbox/_rich/checkbox_rich
+  include /form-elements/expandable-checkbox-list/expandable-checkbox-list
+  include /cards/room-card/room-card
+
+  -
+    const roomsList = [
+      {
+        number: 888,
+        isLux: true,
+        price: 9990,
+        rating: 5,
+        reviewsCount: 145,
+      },
+      {
+        number: 840,
+        isLux: false,
+        price: 9900,
+        rating: 4,
+        reviewsCount: 65,
+      },
+      {
+        number: 980,
+        isLux: true,
+        price: 8500,
+        rating: 3,
+        reviewsCount: 35,
+      },
+      {
+        number: 856,
+        isLux: false,
+        price: 7300,
+        rating: 5,
+        reviewsCount: 19,
+      },
+      {
+        number: 740,
+        isLux: false,
+        price: 6000,
+        rating: 4,
+        reviewsCount: 44,
+      },
+      {
+        number: 982,
+        isLux: false,
+        price: 5800,
+        rating: 3,
+        reviewsCount: 56,
+      },
+      {
+        number: 678,
+        isLux: false,
+        price: 5500,
+        rating: 5,
+        reviewsCount: 45,
+      },
+      {
+        number: 450,
+        isLux: false,
+        price: 5300,
+        rating: 4,
+        reviewsCount: 39,
+      },
+      {
+        number: 350,
+        isLux: false,
+        price: 5000,
+        rating: 3,
+        reviewsCount: 77,
+      },
+      {
+        number: 666,
+        isLux: false,
+        price: 5000,
+        rating: 5,
+        reviewsCount: 25,
+      },
+      {
+        number: 444,
+        isLux: false,
+        price: 5000,
+        rating: 3,
+        reviewsCount: 15,
+      },
+      {
+        number: 352,
+        isLux: false,
+        price: 5000,
+        rating: 3,
+        reviewsCount: 55,
+      },
+    ];
+
+  .search-room__container
+    aside.search-room__filter
+      .search-room__filter-row
+        +control-container({
+          title: "Даты пребывания в отеле",
+        })
+          +date-dropdown_filter({})
+      .search-room__filter-row
+        +control-container({})
+          +dropdown-guests({})
+      .search-room__filter-row
+        +range-slider({
+          title: "диапазон цены",
+          range: [0, 16000],
+          start: [5000, 10000],
+          description: "Стоимость за сутки пребывания в номере",
+        })
+
+      .search-room__filter-row
+        +control-container({
+          isGroup: true,
+          title: "checkbox buttons",
+        })
+          -
+            const checkboxes = [
+              {
+                label: "Можно курить",
+                isChecked: false,
+              },
+              {
+                label: "Можно с питомцами",
+                isChecked: true,
+              },
+              {
+                label: "Можно пригласить гостей (до 10 человек)",
+                isChecked: true,
+              },
+            ]
+          each checkbox in checkboxes
+            +checkbox(checkbox)
+      .search-room__filter-row
+        +control-container({
+          isGroup: true,
+          title: "доступность",
+        })
+          -
+            const richCheckboxes = [
+              {
+                label: "Широкий коридор",
+                description: [
+                  "Ширина коридоров в номере",
+                  "не менее 91 см.",
+                ],
+                isChecked: false,
+              },
+              {
+                label: "Помощник для инвалидов",
+                description: [
+                  "На 1 этаже вас встретит специалист",
+                  "и проводит до номера.",
+                ],
+                isChecked: false,
+              },
+            ]
+          each checkbox in richCheckboxes
+            .search-room__checkbox-rich
+              +checkbox_rich(checkbox)
+      .search-room__filter-row
+        +control-container({
+          title: "удобства номера",
+        })
+          +dropdown-preferences
+      .search-room__filter-row
+        -
+          const expandableCheckboxListItems = [
+            { label: "Завтрак", isChecked: false },
+            { label: "Письменный стол", isChecked: true },
+            { label: "Стул для кормления", isChecked: true },
+            { label: "Кроватка", isChecked: true },
+            { label: "телевизор", isChecked: false },
+            { label: "шампунь", isChecked: false },
+          ]
+        +expandable-checkbox-list({
+          title: "дополнительные удобства",
+          isOpened: false,
+          checkboxes: expandableCheckboxListItems,
+        })
+    main.search-room__main
+      h1.search-room__list-title Номера, которые мы для вас подобрали
+      .search-room__rooms-list
+        each room in roomsList
+          +room-card(room)
+      .search-room__pagination
