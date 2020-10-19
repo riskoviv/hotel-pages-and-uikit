@@ -5,6 +5,10 @@
   padding: 0;
   color: $mainFontColor;
 
+  &__input {
+    display: none;
+  }
+
   &_preferences {
     max-width: 266px;
   }

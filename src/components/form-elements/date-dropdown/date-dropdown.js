@@ -90,7 +90,7 @@ const datePickerInit = (datepicker) => {
 
   const printDates = () => {
     if (!isFilter) {
-      $(datepicker).val('date');
+      $(datepicker).val(savedDates);
       $date1.val(savedDates[0] || '');
       $date2.val(savedDates[1] || '');
     } else {

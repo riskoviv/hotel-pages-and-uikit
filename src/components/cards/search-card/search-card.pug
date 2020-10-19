@@ -7,16 +7,17 @@ mixin search-card
   .search-card
     +card-container
       h1.search-card__title Найдём номера под ваши пожелания
-      .search-card__date-dropdown
-        +date-dropdown({
-          title1: "Прибытие",
-          title2: "Выезд",
-        })
-      .search-card__dropdown
-        +dropdown-guests({
-          title: "Гости",
-        })
-      .search-card__submit-button
-        +button_wide({
-          caption: "подобрать номер",
-        })
+      form.search-card__form
+        .search-card__date-dropdown
+          +date-dropdown({
+            title1: "Прибытие",
+            title2: "Выезд",
+          })
+        .search-card__dropdown
+          +dropdown-guests({
+            title: "Гости",
+          })
+        .search-card__submit-button
+          +button_wide({
+            caption: "подобрать номер",
+          })

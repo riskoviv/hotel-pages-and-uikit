@@ -212,6 +212,9 @@ const applyFn = (event) => {
   const totalItems = dropdownsItemsCounts[dropdown.id].totalItems;
   const $iqdMenu = dropdownHTML[2];
   const $menuOptions = $($iqdMenu).find('.js-iqdropdown-menu-option');
+  const $dropdownInput = $(dropdown).parent().find('.js-iqdropdown__input');
+
+  $($dropdownInput).val(Object.values(itemsCount));
 
   $menuOptions.each(function (index, element) {
     $(element).attr('data-defaultcount', `${itemsCount[`item${index + 1}`]}`);

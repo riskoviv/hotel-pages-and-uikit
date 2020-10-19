@@ -6,27 +6,29 @@ mixin header(options = {})
     const {
       isLoggedIn,
       userName,
+      currentPage,
     } = options
 
   header.header
     .header__container
       .header__logo
-        +logo-full
+        a.header__main-page-link(href="landing.html")
+          +logo-full
       .header__menu-opener menu
       ul.header__menu
         -
           const menuList = [
-            { title: "О нас", isExpandable: false, isActive: true },
-            { title: "Услуги", isExpandable: true,
+            { title: "О нас", isExpandable: false, name: "about" },
+            { title: "Услуги", isExpandable: true, name: "services",
               submenu: [
                 { title: "Первая услуга" },
                 { title: "Услуга номер два" },
                 { title: "Услуга под номером три" },
               ],
             },
-            { title: "Вакансии", isExpandable: false },
-            { title: "Новости", isExpandable: false },
-            { title: "Соглашения", isExpandable: true,
+            { title: "Вакансии", isExpandable: false, name: "vacancies" },
+            { title: "Новости", isExpandable: false, name: "news" },
+            { title: "Соглашения", isExpandable: true, name: "agreements",
               submenu: [
                 { title: "Лицензия на предоставление услуг" },
                 { title: "Пользовательское соглашение" },
@@ -36,7 +38,7 @@ mixin header(options = {})
           ]
         each item in menuList
           li.header__menu-item(
-            class=item.isActive ? "header__menu-item_active" : ""
+            class=(item.name == currentPage) ? "header__menu-item_active" : ""
             class=item.isExpandable ? "header__menu-item_expandable" : ""
           )
             a.header__menu-link(href=item.link || "#")= item.title

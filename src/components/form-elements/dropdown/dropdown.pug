@@ -161,6 +161,9 @@ mixin dropdown(options)
     title,
     state,
   })
+    input.iqdropdown__input.js-iqdropdown__input(
+      name=type
+    )
     .iqdropdown.js-iqdropdown(
       id=`dd-${randID}`
       class=type ? `iqdropdown_${type} js-iqdropdown_${type}` : ""
@@ -169,12 +172,17 @@ mixin dropdown(options)
       data-always-opened=isAlwaysOpened ? "true" : ""
     )
       p.iqdropdown-selection.js-iqdropdown-selection
-      button.iqdropdown__arrow.material-icons expand_more
+      button.iqdropdown__arrow.material-icons(
+        type="button"
+      ) expand_more
       .iqdropdown-menu.js-iqdropdown-menu
         +add-items(items)
         if hasButtons
           .iqdropdown__controls.js-iqdropdown__controls
             button.iqdropdown__button.button.button_link.button_link_clear.js-button_link_clear(
               class=defaultCounts ? "" : "button_link_clear_hidden"
+              type="button"
             ) Очистить
-            button.iqdropdown__button.button.button_link.js-button_link Применить
+            button.iqdropdown__button.button.button_link.js-button_link(
+              type="button"
+            ) Применить

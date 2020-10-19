@@ -15,11 +15,13 @@ block content
   .headers-and-footers__row
     +header({
       isLoggedIn: false,
+      currentPage: "about",
     })
   .headers-and-footers__row
     +header({
       isLoggedIn: true,
       userName: "Юлий Цезарь",
+      currentPage: "about",
     })
   .headers-and-footers__row
     +footer

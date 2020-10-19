@@ -14,6 +14,7 @@ mixin date-dropdown(options)
   .date-dropdown
     input.date-dropdown__input_fake.datepicker-here.js-datepicker-here(
       type="text"
+      name="dates"
       data-classes=`calendar-${randID}`
       data-keyboard-nav="false"
       data-select-date=options.selectDate

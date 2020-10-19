@@ -14,7 +14,9 @@ html(lang="ru")
     class=pageClass
   )
     header.website-page__header
-      +header
+      +header({
+        currentPage: pageClass,
+      })
     main(
       class=`${pageClass}__content`
     )

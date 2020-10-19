@@ -1,15 +1,30 @@
 @import '../../../styles/constants.scss';
 
 @keyframes changeBG {
-  from {
-    background-image: url('./images/landing-page_bg-1.jpg');
+  0% {
+    background-image:
+      url('./images/landing-page_bg-1.jpg');
   }
-  to {
-    background-image: url('./images/landing-page_bg-2.jpg');
+  30% {
+    background-image:
+      url('./images/landing-page_bg-1.jpg');
   }
-  to {
-    background-image: url('./images/landing-page_bg-3.jpg');
-  }  
+  33% {
+    background-image:
+      url('./images/landing-page_bg-2.jpg');
+  }
+  63% {
+    background-image:
+      url('./images/landing-page_bg-2.jpg');
+  }
+  66% {
+    background-image:
+      url('./images/landing-page_bg-3.jpg');
+  }
+  96% {
+    background-image:
+      url('./images/landing-page_bg-3.jpg');
+  }
 }
 
 .landing {
@@ -18,10 +33,41 @@
     display: flex;
     justify-content: center;
     min-height: 830px;
-    background-image: url('./images/landing-page_bg-1.jpg');
-    background-color: #eee;
+    padding: 0 40px;
+    background-image:
+      url('./images/landing-page_bg-1.jpg'),
+      url('./images/landing-page_bg-2.jpg'),
+      url('./images/landing-page_bg-3.jpg');
+    background-color: $darkShade10;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center center;
+    box-shadow: inset 0px 10px 20px -10px $darkShade5;
+    animation-name: changeBG;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+
+    @media (max-width: $tablet) {
+      min-height: 700px;
+    }
+
+    @media (max-width: $mobileL) {
+      padding: 0 20px;
+      min-height: 512px;
+    }
+
+    @media (max-width: 400px) {
+      padding: 0;
+    }
+
+    @media (max-width: $mobileM) {
+      padding: 0 10px;
+    }
+
+    @media (max-width: $mobileS) {
+      padding: 0;
+    }
   }
 
   &__container {
@@ -32,7 +78,7 @@
   
   &__search-card {
     position: absolute;
-    top: 10vw;
+    top: 5vw;
     left: 0;
   }
 
