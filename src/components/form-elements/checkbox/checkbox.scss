@@ -3,6 +3,7 @@
 .checkbox {
   display: flex;
   cursor: pointer;
+  max-width: 222px;
 
   &__switch {
     @extend %switch;

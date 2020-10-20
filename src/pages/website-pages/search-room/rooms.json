@@ -1,0 +1,86 @@
+[
+  {
+    "number": 888,
+    "isLux": true,
+    "price": 9990,
+    "rating": 5,
+    "reviewsCount": 145
+  },
+  {
+    "number": 840,
+    "isLux": false,
+    "price": 9900,
+    "rating": 4,
+    "reviewsCount": 65
+  },
+  {
+    "number": 980,
+    "isLux": true,
+    "price": 8500,
+    "rating": 3,
+    "reviewsCount": 35
+  },
+  {
+    "number": 856,
+    "isLux": false,
+    "price": 7300,
+    "rating": 5,
+    "reviewsCount": 19
+  },
+  {
+    "number": 740,
+    "isLux": false,
+    "price": 6000,
+    "rating": 4,
+    "reviewsCount": 44
+  },
+  {
+    "number": 982,
+    "isLux": false,
+    "price": 5800,
+    "rating": 3,
+    "reviewsCount": 56
+  },
+  {
+    "number": 678,
+    "isLux": false,
+    "price": 5500,
+    "rating": 5,
+    "reviewsCount": 45
+  },
+  {
+    "number": 450,
+    "isLux": false,
+    "price": 5300,
+    "rating": 4,
+    "reviewsCount": 39
+  },
+  {
+    "number": 350,
+    "isLux": false,
+    "price": 5000,
+    "rating": 3,
+    "reviewsCount": 77
+  },
+  {
+    "number": 666,
+    "isLux": false,
+    "price": 5000,
+    "rating": 5,
+    "reviewsCount": 25
+  },
+  {
+    "number": 444,
+    "isLux": false,
+    "price": 5000,
+    "rating": 3,
+    "reviewsCount": 15
+  },
+  {
+    "number": 352,
+    "isLux": false,
+    "price": 5000,
+    "rating": 3,
+    "reviewsCount": 55
+  }
+]
