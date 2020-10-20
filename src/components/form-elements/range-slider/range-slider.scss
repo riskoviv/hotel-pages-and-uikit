@@ -24,12 +24,14 @@
   }
 
   &__description {
+    display: block;
     font-size: 12px;
     line-height: 14px;
     color: $darkShade50;
+    margin-top: 14px;
 
     &::first-letter {
-      text-transform: capitalize;
+      text-transform: uppercase;
     }
   }
 

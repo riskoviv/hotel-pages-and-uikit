@@ -16,6 +16,7 @@ block content
   include /form-elements/checkbox/_rich/checkbox_rich
   include /form-elements/expandable-checkbox-list/expandable-checkbox-list
   include /cards/room-card/room-card
+  include /form-elements/pagination/pagination
 
   .search-room__container
     aside.search-room__filter
@@ -32,7 +33,7 @@ block content
           title: "диапазон цены",
           range: [0, 16000],
           start: [5000, 10000],
-          description: "Стоимость за сутки пребывания в номере",
+          description: "cтоимость за сутки пребывания в номере",
         })
 
       .search-room__filter-row
@@ -56,7 +57,8 @@ block content
               },
             ]
           each checkbox in checkboxes
-            +checkbox(checkbox)
+            .search-room__checkbox
+              +checkbox(checkbox)
       .search-room__filter-row
         +control-container({
           isGroup: true,
@@ -104,9 +106,11 @@ block content
           isOpened: false,
           checkboxes: expandableCheckboxListItems,
         })
-    main.search-room__main
+    section.search-room__main
       h1.search-room__list-title Номера, которые мы для вас подобрали
-      .search-room__rooms-list
+      ul.search-room__rooms-list
         each room in roomsList
-          +room-card(room)
+          li.search-room__room-card
+            +room-card(room)
       .search-room__pagination
+        +pagination

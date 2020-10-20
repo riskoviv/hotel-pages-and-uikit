@@ -5,6 +5,12 @@
   grid-template-rows: auto 1fr auto;
   height: 100vh;
 
+  &__line {
+    border: none;
+    background-color: $darkShade25;
+    height: 1px;
+  }
+
   &__footer-creative {
     justify-self: center;
   }

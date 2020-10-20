@@ -2,7 +2,7 @@
 
 .footer-creative {
   background-color: #fff;
-  box-shadow: 0px 10px 20px $darkShade5;
+  box-shadow: $lightShadow;
   display: grid;
   justify-content: center;
   grid-template-rows: repeat(3, auto);
