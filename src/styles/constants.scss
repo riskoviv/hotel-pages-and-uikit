@@ -37,11 +37,12 @@ $mobileS: 320px;
 
 // Common elements styles
 $activeBorder: 1px solid $darkShade50;
-$lightShadow: 0px 10px 20px $darkShade5;
 $inputPadding: 0 34px 0 14px;
 $inputSize: 44px;
 $inputBorder: 1px solid $darkShade25;
 $iconSize: 48px;
+$lightShadow: 0px 10px 20px $darkShade5;
+$lightBorder: 1px solid $darkShade10;
 
 %input-basic {
   padding: 0 15px;

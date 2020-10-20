@@ -13,7 +13,8 @@
   },
   "_moduleAliases": {
     "@avatars": "src/components/form-elements/review/avatars",
-    "@styles": "src/styles"
+    "@styles": "src/styles",
+    "@room-cards": "src/components/cards/room-card/room-cards"
   },
   "_moduleAliasIgnoreWarning": true,
   "repository": {

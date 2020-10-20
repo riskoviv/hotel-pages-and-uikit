@@ -28,7 +28,7 @@
   &__rating {
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid $darkShade10;
+    border-top: $lightBorder;
     padding-top: 8px;
 
     &s,

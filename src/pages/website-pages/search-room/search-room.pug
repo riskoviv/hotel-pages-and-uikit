@@ -7,6 +7,7 @@ block variables
     const roomsList = require("./rooms.json")
 
 block content
+  include /form-elements/button/button
   include /common/control-container/control-container
   include /form-elements/date-dropdown/date-dropdown
   include /form-elements/date-dropdown/_filter/date-dropdown_filter
@@ -18,25 +19,29 @@ block content
   include /cards/room-card/room-card
   include /form-elements/pagination/pagination
 
+  .search-room__filter-opener
+    +button_bordered({
+      isSmall: true,
+      caption: "фильтры",
+    })
   .search-room__container
     aside.search-room__filter
-      .search-room__filter-row
+      .search-room__filter-component
         +date-dropdown_filter({
           title: "Даты пребывания в отеле",
         })
-      .search-room__filter-row
+      .search-room__filter-component
         +dropdown-guests({
           title: "гости",
         })
-      .search-room__filter-row
+      .search-room__filter-component
         +range-slider({
           title: "диапазон цены",
           range: [0, 16000],
           start: [5000, 10000],
           description: "cтоимость за сутки пребывания в номере",
         })
-
-      .search-room__filter-row
+      .search-room__filter-component
         +control-container({
           isGroup: true,
           title: "checkbox buttons",
@@ -59,7 +64,7 @@ block content
           each checkbox in checkboxes
             .search-room__checkbox
               +checkbox(checkbox)
-      .search-room__filter-row
+      .search-room__filter-component
         +control-container({
           isGroup: true,
           title: "доступность",
@@ -86,12 +91,12 @@ block content
           each checkbox in richCheckboxes
             .search-room__checkbox-rich
               +checkbox_rich(checkbox)
-      .search-room__filter-row
+      .search-room__filter-component
         +control-container({
           title: "удобства номера",
         })
           +dropdown-preferences
-      .search-room__filter-row
+      .search-room__filter-component
         -
           const expandableCheckboxListItems = [
             { label: "Завтрак", isChecked: false },

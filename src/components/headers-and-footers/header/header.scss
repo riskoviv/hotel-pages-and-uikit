@@ -54,7 +54,7 @@
     flex-wrap: nowrap;
     list-style: none;
     margin-right: var(--relative-margin);
-    z-index: 99;
+    z-index: 999;
 
     &-opener {
       grid-area: mt;
@@ -184,7 +184,7 @@
     position: absolute;
     border-radius: 2px;
     box-shadow: 0px 4px 5px 2px $darkShade5;
-    border: 1px solid $darkShade10;
+    border: $lightBorder;
     cursor: default;
 
     @media (max-width: $mobileL) {
@@ -240,7 +240,7 @@
       right: 0;
       border-radius: 2px;
       box-shadow: 0px 4px 5px 2px $darkShade5;
-      border: 1px solid $darkShade10;
+      border: $lightBorder;
       background-color: #fff;
       padding: 10px;
 
@@ -282,7 +282,7 @@
       align-items: center;
       height: 30px;
       padding-left: var(--relative-margin);
-      border-left: 1px solid $darkShade10;
+      border-left: $lightBorder;
       max-width: 100%;
       overflow: hidden;
     }

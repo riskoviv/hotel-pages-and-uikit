@@ -9,10 +9,16 @@
     justify-content: space-between;
   }
 
+  &__title {
+    flex-basis: 60%;
+  }
+
   &__values {
+    flex-basis: 40%;
     font-size: 12px;
     line-height: 15px;
     color: $darkShade50;
+    text-align: right;
   }
 
   &__slider {

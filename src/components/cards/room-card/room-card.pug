@@ -10,9 +10,7 @@ mixin room-card(options)
       rating,
       reviewsCount,
     } = options
-  .room-card(
-    href="#"
-  )
+  .room-card
     .room-card__slider
       .slider
         a.slides(href="#")
@@ -20,7 +18,7 @@ mixin room-card(options)
           while num < 5
             img(
               class=`image${num}`
-              src=require(`../../../components/cards/room-card/room-cards/image-${number}-${num}.jpg`).default
+              src=require(`@room-cards/image-${number}-${num}.jpg`).default
               alt=`room #${number}, image #${num++}`
             )
         .prev.slider__prev
