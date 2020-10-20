@@ -12,9 +12,10 @@
     "deploy": "npm run build && gh-pages -d dist"
   },
   "_moduleAliases": {
-    "@form-elements": "src/components/form-elements",
+    "@avatars": "src/components/form-elements/review/avatars",
     "@styles": "src/styles"
   },
+  "_moduleAliasIgnoreWarning": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Virss1/Toxin.git"
