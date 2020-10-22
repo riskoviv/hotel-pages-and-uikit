@@ -19,11 +19,14 @@ block content
   include /cards/room-card/room-card
   include /form-elements/pagination/pagination
 
-  .search-room__filter-opener
-    +button_bordered({
-      isSmall: true,
-      caption: "фильтры",
-    })
+  input.search-room__filter-switch(
+    type="checkbox"
+    id="filter-opener"
+  )
+  label.search-room__filter-opener.material-icons(
+    for="filter-opener"
+    title="Показать/скрыть настройки фильтра"
+  ) filter_list
   .search-room__container
     aside.search-room__filter
       .search-room__filter-component
@@ -112,6 +115,7 @@ block content
           checkboxes: expandableCheckboxListItems,
         })
     section.search-room__main
+      .search-room__main-overlay
       h1.search-room__list-title Номера, которые мы для вас подобрали
       ul.search-room__rooms-list
         each room in roomsList
