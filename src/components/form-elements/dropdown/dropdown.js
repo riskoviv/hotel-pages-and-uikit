@@ -45,6 +45,8 @@ const toggleDropDown = (event) => {
   const isDropdownPressed = currentDropdown && !dropdownMenu && !dropdownControls;
   const isClickedOutsideOfDropdownOrOnApply =
     (!currentDropdown && !clearButton) || applyButton;
+  const isDropdownHasControls =
+    $(lastOpenedDropdown).find('.js-iqdropdown__controls').length > 0;
 
   if (isDropdownPressed) {
     closeNotAlwaysOpenedDropdowns();
@@ -55,7 +57,7 @@ const toggleDropDown = (event) => {
   } else if (isClickedOutsideOfDropdownOrOnApply) {
     closeNotAlwaysOpenedDropdowns();
     setAllIQDropdownsZIndexTo1();
-    if (!applyButton && lastOpenedDropdown) {
+    if (!applyButton && lastOpenedDropdown && isDropdownHasControls) {
       $(lastOpenedDropdown).html(iqDropdownsInitialHTMLs[lastOpenedDropdown.id]);
       initIqDropdown(lastOpenedDropdown);
       setSelectionText(
