@@ -79,6 +79,7 @@
   border: $inputBorder;
   box-shadow: $lightShadow;
   width: 320px;
+  z-index: 900;
 
   &--pointer {
     display: none;
