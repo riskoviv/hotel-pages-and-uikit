@@ -28,92 +28,93 @@ block content
     title="Показать/скрыть настройки фильтра"
   ) filter_list
   .search-room__container
-    aside.search-room__filter
-      .search-room__filter-component
-        +date-dropdown_filter({
-          title: "Даты пребывания в отеле",
-        })
-      .search-room__filter-component
-        +dropdown-guests({
-          title: "гости",
-        })
-      .search-room__filter-component
-        +range-slider({
-          title: "диапазон цены",
-          range: [0, 16000],
-          start: [5000, 10000],
-          description: "cтоимость за сутки пребывания в номере",
-        })
-      .search-room__filter-component
-        +control-container({
-          isGroup: true,
-          title: "checkbox buttons",
-        })
+    .search-room__filter-container
+      aside.search-room__filter
+        .search-room__filter-component
+          +date-dropdown_filter({
+            title: "Даты пребывания в отеле",
+          })
+        .search-room__filter-component
+          +dropdown-guests({
+            title: "гости",
+          })
+        .search-room__filter-component
+          +range-slider({
+            title: "диапазон цены",
+            range: [0, 16000],
+            start: [5000, 10000],
+            description: "cтоимость за сутки пребывания в номере",
+          })
+        .search-room__filter-component
+          +control-container({
+            isGroup: true,
+            title: "checkbox buttons",
+          })
+            -
+              const checkboxes = [
+                {
+                  label: "Можно курить",
+                  isChecked: false,
+                },
+                {
+                  label: "Можно с питомцами",
+                  isChecked: true,
+                },
+                {
+                  label: "Можно пригласить гостей (до 10 человек)",
+                  isChecked: true,
+                },
+              ]
+            each checkbox in checkboxes
+              .search-room__checkbox
+                +checkbox(checkbox)
+        .search-room__filter-component
+          +control-container({
+            isGroup: true,
+            title: "доступность",
+          })
+            -
+              const richCheckboxes = [
+                {
+                  label: "Широкий коридор",
+                  description: [
+                    "Ширина коридоров в номере",
+                    "не менее 91 см.",
+                  ],
+                  isChecked: false,
+                },
+                {
+                  label: "Помощник для инвалидов",
+                  description: [
+                    "На 1 этаже вас встретит специалист",
+                    "и проводит до номера.",
+                  ],
+                  isChecked: false,
+                },
+              ]
+            each checkbox in richCheckboxes
+              .search-room__checkbox-rich
+                +checkbox_rich(checkbox)
+        .search-room__filter-component
+          +control-container({
+            title: "удобства номера",
+          })
+            +dropdown-preferences
+        .search-room__filter-component
           -
-            const checkboxes = [
-              {
-                label: "Можно курить",
-                isChecked: false,
-              },
-              {
-                label: "Можно с питомцами",
-                isChecked: true,
-              },
-              {
-                label: "Можно пригласить гостей (до 10 человек)",
-                isChecked: true,
-              },
+            const expandableCheckboxListItems = [
+              { label: "Завтрак", isChecked: false },
+              { label: "Письменный стол", isChecked: true },
+              { label: "Стул для кормления", isChecked: true },
+              { label: "Кроватка", isChecked: true },
+              { label: "телевизор", isChecked: false },
+              { label: "шампунь", isChecked: false },
             ]
-          each checkbox in checkboxes
-            .search-room__checkbox
-              +checkbox(checkbox)
-      .search-room__filter-component
-        +control-container({
-          isGroup: true,
-          title: "доступность",
-        })
-          -
-            const richCheckboxes = [
-              {
-                label: "Широкий коридор",
-                description: [
-                  "Ширина коридоров в номере",
-                  "не менее 91 см.",
-                ],
-                isChecked: false,
-              },
-              {
-                label: "Помощник для инвалидов",
-                description: [
-                  "На 1 этаже вас встретит специалист",
-                  "и проводит до номера.",
-                ],
-                isChecked: false,
-              },
-            ]
-          each checkbox in richCheckboxes
-            .search-room__checkbox-rich
-              +checkbox_rich(checkbox)
-      .search-room__filter-component
-        +control-container({
-          title: "удобства номера",
-        })
-          +dropdown-preferences
-      .search-room__filter-component
-        -
-          const expandableCheckboxListItems = [
-            { label: "Завтрак", isChecked: false },
-            { label: "Письменный стол", isChecked: true },
-            { label: "Стул для кормления", isChecked: true },
-            { label: "Кроватка", isChecked: true },
-            { label: "телевизор", isChecked: false },
-            { label: "шампунь", isChecked: false },
-          ]
-        +expandable-checkbox-list({
-          title: "дополнительные удобства",
-          isOpened: false,
-          checkboxes: expandableCheckboxListItems,
-        })
+          +expandable-checkbox-list({
+            title: "дополнительные удобства",
+            isOpened: false,
+            checkboxes: expandableCheckboxListItems,
+          })
     section.search-room__main
       .search-room__main-overlay
       h1.search-room__list-title Номера, которые мы для вас подобрали
