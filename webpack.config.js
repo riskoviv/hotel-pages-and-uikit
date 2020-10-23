@@ -93,7 +93,7 @@ const plugins = () => {
       template: `${PAGES_DIR}/${page.pagesGroup}/${page.pageName.replace(/\.pug/, '')}/${page.pageName}`, // .pug
       filename: `${PATHS.pages}/${page.pageName.replace(/\.pug/, '.html')}`, // .html
       favicon: `${PATHS.res}/images/favicon/favicon.svg`,
-      chunks: [`${page.pageName.replace(/\.pug/, '')}`, 'common'],
+      chunks: [`${page.pageName.replace(/\.pug/, '')}`, `${page.pagesGroup}-common`],
     })),
 
     new ImageminPlugin({
@@ -115,13 +115,15 @@ module.exports = {
   context: PATHS.src,
   mode: 'development',
   entry: {
-    common: './pages/common/common',
+    'ui-kit-common': './pages/ui-kit/common/common',
     'colors-and-type': './pages/ui-kit/colors-and-type/colors-and-type',
     'form-elements': './pages/ui-kit/form-elements/form-elements',
     'cards': './pages/ui-kit/cards/cards',
     'headers-and-footers': './pages/ui-kit/headers-and-footers/headers-and-footers',
+    'website-pages-common': './pages/website-pages/common/common',
     'landing': './pages/website-pages/landing/landing',
     'search-room': './pages/website-pages/search-room/search-room',
+    'room-details': './pages/website-pages/room-details/room-details',
   },
   output: {
     filename: filename('js'),
@@ -141,7 +143,8 @@ module.exports = {
       // `${PATHS.pages}/cards.html`,
       // `${PATHS.pages}/headers-and-footers.html`,
       // `${PATHS.pages}/landing.html`,
-      `${PATHS.pages}/search-room.html`,
+      // `${PATHS.pages}/search-room.html`,
+      `${PATHS.pages}/room-details.html`,
     ],
     stats: 'minimal',
   },
