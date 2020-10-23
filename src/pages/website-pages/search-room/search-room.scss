@@ -5,6 +5,7 @@
   &__content {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     padding: 0 40px 70px;
     margin-top: 30px;
     position: relative;
@@ -23,6 +24,7 @@
       / 266px 1fr
       ;
     column-gap: 60px;
+    align-items: start;
     width: 100%;
 
     @media (max-width: $hd) {
@@ -30,34 +32,45 @@
         'main'
         / 1fr
         ;
+        column-gap: 30px;
     }
   }
 
   &__filter {
-    grid-area: filter;
 
-    @media (max-width: $hd) {
-      display: none;
-    }
+    &-container {
+      grid-area: filter;
+      position: sticky;
+      top: 5px;
+      height: calc(100vh - 10px);
+      width: fit-content;
+      overflow: auto;
 
-    @media (max-width: $tablet) {
-      position: absolute;
-      z-index: 899;
-      background-color: #fff;
-      padding: 10px;
-      border: $inputBorder;
-      border-radius: 4px;
-      box-shadow: $lightShadow;
-    }
+      @media (max-width: $hd) {
+        display: none;
+      }
 
-    @media (max-width: $mobileL) {
-      left: 40px;
-    }
+      @media (max-width: $tablet) {
+        grid-area: main;
+        width: fit-content;
+        z-index: 899;
+        background-color: #fff;
+        padding: 10px;
+        border: $inputBorder;
+        border-radius: 4px;
+        box-shadow: $lightShadow;
+      }
 
-    @media (max-width: $mobileS) {
-      padding: 5px;
-      left: 20px;
-      top: 40px;
+      @media (max-width: $mobileL) {
+        left: 40px;
+      }
+
+      @media (max-width: $mobileS) {
+        padding: 5px;
+        top: 10px;
+        height: calc(100vh - 10px);
+        transform: translateX(5px);
+      }
     }
 
     &-component {
@@ -87,17 +100,22 @@
       @extend %text-gradient;
       line-height: 30px;
       user-select: none;
-      position: absolute;
-      left: 8px;
-      top: 0;
+      position: sticky;
+      top: 10px;
+      transform: translateX(-20px);
+      border-radius: 4px;
       z-index: 2;
+      cursor: pointer;
 
       @media (max-width: $hd) {
         display: block;
       }
 
+      @media (max-width: $mobileL) {
+        transform: translateX(0);
+      }
+
       &:hover {
-        border-radius: 4px;
         box-shadow: 0 0 0 2px $purple;
       }
     }
@@ -108,7 +126,6 @@
       &:checked {
 
         + .search-room__filter-opener {
-          border-radius: 4px;
           box-shadow: 0 0 5px 2px $purple;
         }
 
@@ -120,7 +137,7 @@
               / 266px 1fr
               ;
 
-            .search-room__filter {
+            .search-room__filter-container {
               display: block;
             }
           }
@@ -165,9 +182,9 @@
       display: none;
       position: absolute;
       top: 0;
+      right: 0;
+      bottom: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
       background-color: transparent;
       z-index: 898;
     }
