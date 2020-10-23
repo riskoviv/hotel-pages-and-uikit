@@ -1,0 +1,40 @@
+@import '@styles/constants.scss';
+
+.room-details {
+
+  // &__content {
+
+  // }
+
+  &__images {
+    display: grid;
+    width: 100vw;
+    grid-template:
+      'i1 i2' 30vh
+      'i1 i3' 30vh
+      / 2fr 1fr;
+  }
+
+  &__image {
+
+    &-1 {
+      grid-area: i1;
+    }
+
+    &-2 {
+      grid-area: i2;
+    }
+
+    &-3 {
+      grid-area: i3;
+    }
+  }
+
+  &__container {
+    display: grid;
+    max-width: 1160px;
+    align-items: start;
+    width: 100%;
+
+  }
+}
