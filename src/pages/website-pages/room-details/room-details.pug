@@ -9,9 +9,10 @@ block content
   .room-details__images
     - let i = 1;
     while i < 4
-      img(
-        class=`room-details__image-${i}`
+      img.room-details__image(
+        class=`room-details__image_${i}`
         src=require(`./images/room-image${i}.jpg`).default
         alt=`room image ${i++}`
       )
   .room-details__container
+    .room-details__main-content
