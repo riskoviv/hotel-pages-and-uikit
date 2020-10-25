@@ -8,7 +8,6 @@
 
   &__images {
     display: grid;
-    width: 100vw;
     grid-template:
       'i1 i2' 30vh
       'i1 i3' 30vh
@@ -16,16 +15,20 @@
   }
 
   &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 
-    &-1 {
+    &_1 {
       grid-area: i1;
     }
 
-    &-2 {
+    &_2 {
       grid-area: i2;
     }
 
-    &-3 {
+    &_3 {
       grid-area: i3;
     }
   }
@@ -34,7 +37,6 @@
     display: grid;
     max-width: 1160px;
     align-items: start;
-    width: 100%;
-
+    
   }
 }
