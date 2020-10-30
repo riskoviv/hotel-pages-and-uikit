@@ -2,11 +2,14 @@
 
 .advantage {
   display: flex;
-  border-bottom: $lightBorder;
-  margin-bottom: 20px;
   padding-bottom: 20px;
   padding-right: 25px;
   width: 290px;
+  
+  &:not(:last-child) {
+    border-bottom: $lightBorder;
+    margin-bottom: 20px;
+  }
 
   &__icon {
     @extend %text-gradient;
