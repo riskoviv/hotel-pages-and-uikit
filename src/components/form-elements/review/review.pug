@@ -1,4 +1,4 @@
-include /form-elements/button/button
+include /form-elements/like-button/like-button
 
 //-
   options: {
@@ -30,8 +30,9 @@ mixin review(options)
     .review__title
       h4.review__reviewer-name= name
       span.review__date= date
-    +like-button({
-      isClicked: like.isClicked,
-      likesCount: like.count,
-    })
+    .review__like-button
+      +like-button({
+        isClicked: like.isClicked,
+        likesCount: like.count,
+      })
     p.review__text= text
