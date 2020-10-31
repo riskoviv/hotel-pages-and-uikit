@@ -22,17 +22,16 @@ const PATHS = {
 };
 
 const PAGES_DIR = `${PATHS.src}/pages`;
-const PAGES_ARR = [];
+const PAGES = {};
 
-for (let pages_subdir of ['ui-kit', 'website-pages']) {
-  const PAGES = fs.readdirSync(`${PAGES_DIR}/${pages_subdir}`)
-    .map(dir => fs.readdirSync(`${PAGES_DIR}/${pages_subdir}/${dir}`))
-    .reduce((acc, item) => [...acc, ...item], [])
-    .filter(filename => filename.endsWith('.pug'));
-  for (let page of PAGES) {
-    PAGES_ARR.push({pagesGroup: pages_subdir, pageName: page});
-  }
-}
+(function findPugFiles() {
+  ['ui-kit', 'website-pages'].forEach((pagesSubdir) => {
+    PAGES[pagesSubdir] = fs.readdirSync(`${PAGES_DIR}/${pagesSubdir}`)
+      .map((dir) => fs.readdirSync(`${PAGES_DIR}/${pagesSubdir}/${dir}`))
+      .reduce((acc, item) => [...acc, ...item], [])
+      .filter((filename) => filename.endsWith('.pug'));
+  });
+}());
 
 const optimization = () => {
   const config = {
@@ -72,28 +71,38 @@ const cssLoaders = extra => {
   return loaders;
 }
 
+const initHTMLWebpackPlugin = (pagesObj) => {
+  const inits = [];
+  for (let pagesSubdir in pagesObj) {
+    pagesObj[pagesSubdir].forEach((pageName) => {
+      inits.push(new HTMLWebpackPlugin({
+        template: `${PAGES_DIR}/${pagesSubdir}/${pageName.replace(/\.pug/, '')}/${pageName}`, // .pug
+        filename: `${PATHS.pages}/${pageName.replace(/\.pug/, '.html')}`, // .html
+        favicon: `${PATHS.res}/images/favicon/favicon.svg`,
+      }));
+    });
+  }
+  return inits;
+}
 
 const plugins = () => {
   const base = [
     new CleanWebpackPlugin({
       cleanStaleWebpackAssets: false,
     }),
+
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
       "window.jQuery": 'jquery',
     }),
+
     new MiniCssExtractPlugin({
       filename: `assets/css/${filename('css')}`,
     }),
-    
-    ...PAGES_ARR.map(page => new HTMLWebpackPlugin({
-      template: `${PAGES_DIR}/${page.pagesGroup}/${page.pageName.replace(/\.pug/, '')}/${page.pageName}`, // .pug
-      filename: `${PATHS.pages}/${page.pageName.replace(/\.pug/, '.html')}`, // .html
-      favicon: `${PATHS.res}/images/favicon/favicon.svg`,
-      chunks: [`${page.pageName.replace(/\.pug/, '')}`, `${page.pagesGroup}-common`],
-    })),
 
+    ...initHTMLWebpackPlugin(PAGES),
+    
     new ImageminPlugin({
       disable: isDev,
       minFileSize: 100000,
@@ -106,8 +115,6 @@ const plugins = () => {
 
   return base;
 }
-
-
 
 module.exports = {
   context: PATHS.src,
@@ -126,7 +133,7 @@ module.exports = {
   devServer: {
     contentBase: './dist',
     port: 4200,
-    hot: false,
+    hot: isDev,
     openPage: [
       // `${PATHS.pages}/colors-and-type.html`,
       // `${PATHS.pages}/form-elements.html`,
