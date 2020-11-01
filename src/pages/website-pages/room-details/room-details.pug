@@ -7,6 +7,7 @@ block variables
 
 block content
   include /form-elements/advantage/advantage
+  include /room-details/pie-chart/pie-chart
   include /form-elements/review/review
   include /form-elements/bullet-list/bullet-list
   include /cards/booking-card/booking-card
@@ -46,6 +47,10 @@ block content
             +advantage(advantage)
         .room-details__impressions
           h2.room-details__info-title Впечатления от номера
+          .room-details__pie-chart
+            +pie-chart({
+              values: [1, 1, 2, 0],
+            })
         .room-details__reviews
           h2.room-details__info-title Отзывы посетителей номера
           span.room-details__reviews-count 2 отзыва

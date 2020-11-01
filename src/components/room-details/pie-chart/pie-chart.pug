@@ -1,0 +1,10 @@
+mixin pie-chart(options)
+  -
+    const {
+      values
+    } = options
+  span.pie-chart(
+    data-peity='{ "radius": 60, "innerRadius": 56 }'
+  ) #{values[0]},0.02,#{values[1]},0.02,#{values[2]},0.02,#{values[3]}
+
+//- #{values[0]},#{values[1]},#{values[2]},#{values[3]}
