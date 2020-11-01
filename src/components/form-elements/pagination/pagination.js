@@ -1,4 +1,4 @@
-const pagination = require('paginationjs');
+require('paginationjs');
 
 $(() => {
   function simpleTemplating(data) {

@@ -1,7 +1,6 @@
 import 'item-quantity-dropdown/lib/item-quantity-dropdown.min';
 import 'item-quantity-dropdown/lib/item-quantity-dropdown.min.css';
 
-
 const dropdownsItemsCounts = {};
 const $iqDropdowns = $('.js-iqdropdown');
 const iqDropdownsInitialHTMLs = {};

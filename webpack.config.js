@@ -19,6 +19,7 @@ const PATHS = {
   src: path.resolve(__dirname, 'src'),
   assets: 'assets',
   pages: 'assets/pages',
+  vendor: path.resolve(__dirname, 'src/vendor'),
 };
 
 const PAGES_DIR = `${PATHS.src}/pages`;
@@ -128,6 +129,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.json'],
+    alias: {
+      '@vendor': PATHS.vendor,
+    },
   },
   optimization: optimization(),
   devServer: {

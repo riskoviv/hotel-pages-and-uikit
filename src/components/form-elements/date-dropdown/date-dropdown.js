@@ -1,4 +1,4 @@
-const airDatePicker = require('air-datepicker');
+require('air-datepicker');
 
 const datePickerInit = (datepicker) => {
   let onSelectCounter = 0;

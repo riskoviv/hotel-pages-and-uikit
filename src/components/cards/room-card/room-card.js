@@ -1,4 +1,4 @@
-const carouselSlider = require('../../../vendor/jquery-tronsha-slider/dist/js/slider.min');
+require('@vendor/jquery-tronsha-slider/dist/js/slider.min');
 
 $(() => {
   $('.slider').slider({
