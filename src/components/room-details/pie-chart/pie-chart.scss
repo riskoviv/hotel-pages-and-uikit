@@ -1,0 +1,41 @@
+@import '@styles/constants.scss';
+
+// gradients
+$orangeGradient: linear-gradient(180deg, #FFE39C 0%, #FFBA9C 100%);
+$blackGradient: linear-gradient(180deg, #919191 0%, #3D4975 100%);
+
+.pie-chart {
+
+  &__container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+  }
+
+  &__total {
+    position: absolute;
+    top: calc(50% - 25px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $purple;
+    font-weight: $headingFontWeight;
+    
+    &-number {
+      font: {
+        family: $headingFontFamily;
+        size: 24px;
+      }
+      line-height: 30px;
+    }
+
+    &-caption {
+      font-size: 12px;
+      line-height: 15px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+}
