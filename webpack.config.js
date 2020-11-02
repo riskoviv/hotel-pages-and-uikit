@@ -109,7 +109,7 @@ const plugins = () => {
       minFileSize: 100000,
       pngquant: {quality: '50-50'},
       plugins: [
-        imageminMozjpeg({quality: 50}),
+        imageminMozjpeg({ quality: 50 }),
       ],
     }),
   ]
