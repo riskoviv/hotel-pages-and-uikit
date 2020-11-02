@@ -1,10 +1,33 @@
 mixin pie-chart(options)
   -
-    const {
-      values
-    } = options
-  span.pie-chart(
-    data-peity='{ "radius": 60, "innerRadius": 56 }'
-  ) #{values[0]},0.02,#{values[1]},0.02,#{values[2]},0.02,#{values[3]}
-
-//- #{values[0]},#{values[1]},#{values[2]},#{values[3]}
+    let { values } = options;
+    const whiteSpace = 1;
+    const totalCount = values.reduce((sum, current) => {
+      return sum + current;
+    }, 0);
+    values = values.map((value) => {
+      return value > 0 ? `${value},${whiteSpace}` : value;
+    });
+  
+  .pie-chart
+    .pie-chart__container
+      span.pie-chart__pie(
+        data-peity='{ "radius": 60, "innerRadius": 56 }'
+      )= values
+      .pie-chart__total
+        span.pie-chart__total-number= totalCount
+        span.pie-chart__total-caption голосов
+    .pie-chart__legend
+      -
+        const legendItems = [
+          { gradient: "orange", caption: "Великолепно" },
+          { gradient: "green", caption: "Хорошо" },
+          { gradient: "purple", caption: "Удовлетворительно" },
+          { gradient: "black", caption: "Разочарован" },
+        ]
+      each item in legendItems
+        .pie-chart__legend-element
+          .pie-chart__legend-element-color(
+            class=`pie-chart__element-color_${item.gradient}`
+          )
+          span.pie-chart__legend-element-caption= item.caption
