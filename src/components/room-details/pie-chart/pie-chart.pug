@@ -28,6 +28,6 @@ mixin pie-chart(options)
       each item in legendItems
         .pie-chart__legend-element
           .pie-chart__legend-element-color(
-            class=`pie-chart__element-color_${item.gradient}`
+            class=`pie-chart__legend-element-color_${item.gradient}`
           )
           span.pie-chart__legend-element-caption= item.caption

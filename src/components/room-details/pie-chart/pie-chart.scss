@@ -5,11 +5,13 @@ $orangeGradient: linear-gradient(180deg, #FFE39C 0%, #FFBA9C 100%);
 $blackGradient: linear-gradient(180deg, #919191 0%, #3D4975 100%);
 
 .pie-chart {
+  display: flex;
 
   &__container {
     position: relative;
     width: 120px;
     height: 120px;
+    margin-right: 30px;
   }
 
   &__total {
@@ -36,6 +38,40 @@ $blackGradient: linear-gradient(180deg, #919191 0%, #3D4975 100%);
       line-height: 15px;
       text-align: center;
       text-transform: uppercase;
+    }
+  }
+
+  &__legend {
+    align-self: flex-end;
+
+    &-element {
+      white-space: nowrap;
+
+      &-color {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 5px;
+        background-color: none;
+
+        &_orange {
+          background: $orangeGradient;
+        }
+
+        &_green {
+          background: $secondaryGradient;
+        }
+
+        &_purple {
+          background: $primaryGradient;
+        }
+
+        &_black {
+          background: $blackGradient;
+        }
+
+      }
     }
   }
 }
