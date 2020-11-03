@@ -1,10 +1,10 @@
 mixin pie-chart(options)
   -
     let { values } = options;
-    const whiteSpace = 1;
     const totalCount = values.reduce((sum, current) => {
       return sum + current;
     }, 0);
+    const whiteSpace = totalCount / 200;
     values = values.map((value) => {
       return value > 0 ? `${value},${whiteSpace}` : value;
     });
@@ -13,6 +13,7 @@ mixin pie-chart(options)
     .pie-chart__container
       span.pie-chart__pie(
         data-peity='{ "radius": 60, "innerRadius": 56 }'
+        data-whitespace=whiteSpace
       )= values
       .pie-chart__total
         span.pie-chart__total-number= totalCount
