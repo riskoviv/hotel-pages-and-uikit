@@ -36,10 +36,10 @@
   "devDependencies": {
     "autoprefixer": "^9.8.6",
     "clean-webpack-plugin": "^3.0.0",
-    "copy-webpack-plugin": "^6.2.1",
+    "copy-webpack-plugin": "^6.3.0",
     "cross-env": "^7.0.2",
     "css-loader": "^3.6.0",
-    "file-loader": "^6.1.1",
+    "file-loader": "^6.2.0",
     "gh-pages": "^3.1.0",
     "html-webpack-plugin": "^4.5.0",
     "imagemin-mozjpeg": "^9.0.0",
