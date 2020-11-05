@@ -21,18 +21,18 @@ $(() => {
     })
   }())
   
-  const styles = `
-    <style>
-      ${Object.keys(colorCodes).map((color) => {
-        return `
-          #${color} { fill: url(#${color}-gradient) ${color}; }
-          .${color}-stop1 { stop-color: ${colorCodes[color][0]}; }
-          .${color}-stop2 { stop-color: ${colorCodes[color][1]}; }
-        `;
-      }).join('')}
-      [data-value="${whiteSpace}"] { fill: white; }
-    </style>
-  `;
+  // const styles = `
+  //   <style>
+  //     ${Object.keys(colorCodes).map((color) => {
+  //       return `
+  //         #${color} { fill: url(#${color}-gradient) ${color}; }
+  //         .${color}-stop1 { stop-color: ${colorCodes[color][0]}; }
+  //         .${color}-stop2 { stop-color: ${colorCodes[color][1]}; }
+  //       `;
+  //     }).join('')}
+  //     [data-value="${whiteSpace}"] { fill: white; }
+  //   </style>
+  // `;
 
   const gradients = `
     ${Object.keys(colorCodes).map((color) => {
@@ -45,7 +45,7 @@ $(() => {
     }).join('')}
   `;
   
-  $peitySvg.prepend(styles);
+  // $peitySvg.prepend(styles);
   $peitySvg.append(gradients);
 
 });

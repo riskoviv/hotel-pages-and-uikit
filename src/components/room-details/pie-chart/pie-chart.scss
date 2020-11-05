@@ -4,6 +4,29 @@
 $orangeGradient: linear-gradient(180deg, #FFE39C 0%, #FFBA9C 100%);
 $blackGradient: linear-gradient(180deg, #919191 0%, #3D4975 100%);
 
+$color-codes: (
+  'purple': #BC9CFF #8BA4F9,
+  'green': #6FCF97 #66D2EA,
+  'orange': #FFE39C #FFBA9C,
+  'black': #919191 #3D4975
+);
+
+@each $color, $codes in $color-codes {
+  ##{$color} {
+    fill: url(##{$color}-gradient) unquote($color);
+  }
+  .#{$color}-stop1 {
+    stop-color: nth($codes, 1);
+  }
+  .#{$color}-stop2 {
+    stop-color: nth($codes, 2);
+  }
+}
+
+path:not([id]) {
+  fill: white;
+}
+
 .pie-chart {
   display: flex;
 
