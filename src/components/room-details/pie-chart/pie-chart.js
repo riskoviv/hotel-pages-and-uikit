@@ -1,12 +1,7 @@
 import '@vendor/peity/jquery.peity.min';
 
 $(() => {
-  const colorCodes = {
-    purple: ['#BC9CFF', '#8BA4F9'],
-    green: ['#6FCF97', '#66D2EA'],
-    orange: ['#FFE39C', '#FFBA9C'],
-    black: ['#919191', '#3D4975'],
-  };
+  const colors = ['purple', 'green', 'orange', 'black'];
 
   const $pieInitElement = $('.pie-chart__pie');
   const whiteSpace = $pieInitElement.data('whitespace');
@@ -17,25 +12,14 @@ $(() => {
   (function addIDs() {
     const $paths = $peitySvg.find(`path:not([data-value="${whiteSpace}"])`);
     $paths.each(function (index) {
-      $(this).attr('id', Object.keys(colorCodes)[index]);
-    })
-  }())
-  
-  // const styles = `
-  //   <style>
-  //     ${Object.keys(colorCodes).map((color) => {
-  //       return `
-  //         #${color} { fill: url(#${color}-gradient) ${color}; }
-  //         .${color}-stop1 { stop-color: ${colorCodes[color][0]}; }
-  //         .${color}-stop2 { stop-color: ${colorCodes[color][1]}; }
-  //       `;
-  //     }).join('')}
-  //     [data-value="${whiteSpace}"] { fill: white; }
-  //   </style>
-  // `;
+      $(this).attr('id', colors[index]);
+    });
+    const $pathsWhitespaces = $peitySvg.find(`path[data-value="${whiteSpace}"]`);
+    $pathsWhitespaces.addClass('peity__whitespace');
+  }());
 
   const gradients = `
-    ${Object.keys(colorCodes).map((color) => {
+    ${colors.map((color) => {
       return `
         <linearGradient id="${color}-gradient" x1="0" x2="0" y1="0" y2="1">
           <stop class=${color}-stop1 offset="0%"></stop>
@@ -45,7 +29,12 @@ $(() => {
     }).join('')}
   `;
   
-  // $peitySvg.prepend(styles);
   $peitySvg.append(gradients);
 
+  const ns = 'http://www.w3.org/2000/svg';
+  const $peitySvgNew = $(document.createElementNS(ns, 'svg'));
+  $peitySvgNew.addClass('peity').attr('height', 120).attr('width', 120);
+  $peitySvgNew.html($peitySvg.html());
+  $peitySvg.remove();
+  $peitySvgNew.insertAfter($pieInitElement);
 });
