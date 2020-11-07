@@ -1,20 +1,24 @@
-mixin pie-chart(options)
+mixin pie-chart(options = {})
   -
-    let { values } = options;
+    let { values = [0, 0, 0, 0] } = options;
     const totalCount = values.reduce((sum, current) => {
       return sum + current;
-    }, 0);
-    const whiteSpace = totalCount / 200;
-    values = values.map((value) => {
-      return value > 0 ? `${value},${whiteSpace}` : value;
     });
+    const whiteSpace = totalCount / 200;
+    let valuesWithSpaces = values.filter((value) => value > 0);
+    if (valuesWithSpaces.length > 1) {
+      valuesWithSpaces = valuesWithSpaces.map((value) => {
+        return `${value},${whiteSpace}`;
+      });
+    }
   
   .pie-chart
     .pie-chart__container
       span.pie-chart__pie(
         data-peity='{ "radius": 60, "innerRadius": 56 }'
         data-whitespace=whiteSpace
-      )= values
+        data-values=values
+      )= valuesWithSpaces
       .pie-chart__total
         span.pie-chart__total-number= totalCount
         span.pie-chart__total-caption голосов
