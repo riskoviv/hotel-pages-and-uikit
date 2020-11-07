@@ -5,9 +5,9 @@ $orangeGradient: linear-gradient(180deg, #FFE39C 0%, #FFBA9C 100%);
 $blackGradient: linear-gradient(180deg, #919191 0%, #3D4975 100%);
 
 $color-codes: (
-  'purple': #BC9CFF #8BA4F9,
-  'green': #6FCF97 #66D2EA,
   'orange': #FFE39C #FFBA9C,
+  'green': #6FCF97 #66D2EA,
+  'purple': #BC9CFF #8BA4F9,
   'black': #919191 #3D4975
 );
 
@@ -23,8 +23,12 @@ $color-codes: (
   }
 }
 
-.peity__whitespace {
-  fill: white;
+.peity {
+  transform: scaleX(-1);
+  
+  &__whitespace {
+    fill: white;
+  }
 }
 
 .pie-chart {
@@ -95,6 +99,10 @@ $color-codes: (
         }
 
       }
+    }
+
+    &-caption {
+      text-transform: capitalize;
     }
   }
 }
