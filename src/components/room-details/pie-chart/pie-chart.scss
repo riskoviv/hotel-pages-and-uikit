@@ -33,6 +33,7 @@ $color-codes: (
 
 .pie-chart {
   display: flex;
+  flex-wrap: wrap;
 
   &__container {
     position: relative;
@@ -70,6 +71,7 @@ $color-codes: (
 
   &__legend {
     align-self: flex-end;
+    margin-top: 20px;
 
     &-element {
       white-space: nowrap;
