@@ -22,75 +22,74 @@ block content
       )
   .room-details__container
     .room-details__main-content
-      .room-details__info
-        .room-details__advantages
-          h2.room-details__info-title Сведения о номере
-          -
-            const advantages = [
-              {
-                icon: "insert_emoticon",
-                title: "Комфорт",
-                description: "Шумопоглощающие стены",
+      .room-details__advantages
+        h2.room-details__info-title Сведения о номере
+        -
+          const advantages = [
+            {
+              icon: "insert_emoticon",
+              title: "Комфорт",
+              description: "Шумопоглощающие стены",
+            },
+            {
+              icon: "location_city",
+              title: "Удобство",
+              description: "Окно в каждой из спален",
+            },
+            {
+              icon: "whatshot",
+              title: "уют",
+              description: "Номер оснащён камином",
+            },
+          ]
+        each advantage in advantages
+          +advantage(advantage)
+      .room-details__impressions
+        h2.room-details__info-title Впечатления от номера
+        .room-details__pie-chart
+          +pie-chart({
+            values: [130, 65, 65, 0],
+          })
+      .room-details__reviews
+        h2.room-details__info-title Отзывы посетителей номера
+        span.room-details__reviews-count 2 отзыва
+        -
+          const reviews = [
+            {
+              photoName: "murad",
+              name: "Мурад Сарафанов",
+              date: "5 дней назад",
+              like: {
+                count: 11,
+                isClicked: true,
               },
-              {
-                icon: "location_city",
-                title: "Удобство",
-                description: "Окно в каждой из спален",
+              text: "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.",
+            },
+            {
+              photoName: "patricia",
+              name: "Патрисия Стёклышкова",
+              date: "Неделю назад",
+              like: {
+                count: 2,
+                isClicked: false,
               },
-              {
-                icon: "whatshot",
-                title: "уют",
-                description: "Номер оснащён камином",
-              },
-            ]
-          each advantage in advantages
-            +advantage(advantage)
-        .room-details__impressions
-          h2.room-details__info-title Впечатления от номера
-          .room-details__pie-chart
-            +pie-chart({
-              values: [65, 65, 130, 0],
-            })
-        .room-details__reviews
-          h2.room-details__info-title Отзывы посетителей номера
-          span.room-details__reviews-count 2 отзыва
-          -
-            const reviews = [
-              {
-                photoName: "murad",
-                name: "Мурад Сарафанов",
-                date: "5 дней назад",
-                like: {
-                  count: 11,
-                  isClicked: true,
-                },
-                text: "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.",
-              },
-              {
-                photoName: "patricia",
-                name: "Патрисия Стёклышкова",
-                date: "Неделю назад",
-                like: {
-                  count: 2,
-                  isClicked: false,
-                },
-                text: "Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент",
-              },
-            ]
-          each review in reviews
-            .room-details__review
-              +review(review)
-        .room-details__rules
-          h2.room-details__info-title.room-details__info-title_rules Правила
-          +bulletList([
-            { label: "нельзя с питомцами" },
-            { label: "без вечеринок и мероприятий" },
-            { label: "время прибытия — после 13:00, а выезд до 12:00" },
-          ])
-        .room-details__cancel
-          h2.room-details__info-title Отмена
-          p.room-details__cancel-text
-            | Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
+              text: "Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент",
+            },
+          ]
+        each review in reviews
+          .room-details__review
+            +review(review)
+      .room-details__rules
+        h2.room-details__info-title.room-details__info-title_rules Правила
+        +bulletList([
+          { label: "нельзя с питомцами" },
+          { label: "без вечеринок и мероприятий" },
+          { label: "время прибытия — после 13:00, а выезд до 12:00" },
+        ])
+      .room-details__cancel
+        h2.room-details__info-title Отмена
+        p.room-details__cancel-text
+          | Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
       .room-details__booking-card
         +booking-card({
           number: 888,
