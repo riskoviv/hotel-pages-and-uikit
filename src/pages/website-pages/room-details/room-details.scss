@@ -8,6 +8,14 @@
       'i1 i2' 30vh
       'i1 i3' 30vh
       / 2fr 1fr;
+
+    @media (max-width: $mobileL) {
+      grid-template:
+        'i1' 20vh
+        'i2' 20vh
+        'i3' 20vh
+        / auto;
+    }
   }
 
   &__image {
@@ -64,6 +72,7 @@
         'cancel'
         'booking-card';
       grid-template-columns: auto;
+      justify-content: center;
     }
   }
 
@@ -75,8 +84,16 @@
   &__info-title {
     margin-bottom: 20px;
 
+    @media (max-width: 600px) {
+      text-align: center;
+    }
+
     &_rules {
       margin-left: 20px;
+
+      @media (max-width: 600px) {
+        margin-left: 0;
+      }
     }
   }
 
@@ -86,6 +103,14 @@
 
   &__impressions {
     grid-area: impressions;
+  }
+
+  &__pie-chart {
+
+    @media (max-width: $mobileS) {
+      width: min-content;
+      margin: 0 auto;
+    }
   }
 
   &__reviews {
