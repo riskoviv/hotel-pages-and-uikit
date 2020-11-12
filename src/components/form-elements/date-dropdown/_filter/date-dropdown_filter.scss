@@ -1,0 +1,23 @@
+@import '@styles/constants.scss';
+@import '../date-dropdown.scss';
+
+.date-dropdown_filter {
+  max-width: 266px;
+  color: $mainFontColor;
+
+  &__container.date-dropdown__container {
+    position: relative;
+  }
+
+  &__input.date-dropdown__input {
+    width: 100%;
+    max-width: none;
+    text-transform: lowercase;
+
+    &::placeholder {
+      text-transform: uppercase;
+      user-select: none;
+      color: $mainFontColor;
+    }
+  }
+}
