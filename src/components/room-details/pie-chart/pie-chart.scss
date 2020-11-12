@@ -35,6 +35,10 @@ $color-codes: (
   display: flex;
   flex-wrap: wrap;
 
+  @media (max-width: $mobileS) {
+    justify-content: center;
+  }
+
   &__container {
     position: relative;
     width: 120px;
