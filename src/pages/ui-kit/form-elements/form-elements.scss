@@ -18,6 +18,10 @@
 
     &:nth-child(3n-2) {
       margin-right: 4.66%;
+
+      @media (max-width: $mobileL) {
+        margin-right: 0;
+      }
     }
 
     &_expandable-checkbox-lists {
