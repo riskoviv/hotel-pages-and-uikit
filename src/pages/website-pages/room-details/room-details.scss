@@ -67,6 +67,11 @@
     }
   }
 
+  &__title-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
   &__info-title {
     margin-bottom: 20px;
 
@@ -85,14 +90,14 @@
 
   &__reviews {
     grid-area: reviews;
-    position: relative;
     width: fit-content;
 
     &-count {
-      position: absolute;
-      top: 5px;
-      right: 1px;
       line-height: 1;
+      white-space: nowrap;
+      position: relative;
+      top: 6px;
+      margin-left: 10px;
     }
   }
 
