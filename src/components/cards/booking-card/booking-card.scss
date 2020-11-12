@@ -7,34 +7,33 @@
   }
 
   &__date-dropdown,
-  &__dropdown,
-  &__calculations {
+  &__dropdown {
     margin-bottom: 20px;
   }
 
   &__calculations {
-    display: flex;
+    display: grid;
+    row-gap: 10px;
+    grid-template-columns: 3fr 1fr;
     justify-content: space-between;
-    flex-wrap: wrap;
-
-    &-caption,
-    &-price {
-      margin-bottom: 10px;
-    }
+    margin-bottom: 30px;
 
     &-caption {
-      width: 214px;
-      word-wrap: break-word;
+      max-width: 215px;
+      width: 100%;
       line-height: 18px;
+      align-self: center;
 
       &_informative {
         position: relative;
+        padding-right: 25px;
+        max-width: 240px;
 
         &::after {
           @extend %pseudo-element-basic;
           content: 'i';
           top: 0;
-          right: -25px;
+          right: 0;
           border: $inputBorder;
           border-radius: 50%;
           width: 20px;
@@ -46,6 +45,11 @@
           font-weight: bold;
         }
       }
+    }
+
+    &-price {
+      white-space: nowrap;
+      justify-self: end;
     }
   }
   
@@ -60,5 +64,4 @@
       height: 1em;
     }
   }
-  
 }
