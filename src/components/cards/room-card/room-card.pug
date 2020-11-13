@@ -6,6 +6,7 @@ mixin room-card(options)
     const {
       number,
       isLux,
+      link,
       price,
       rating,
       reviewsCount,
@@ -13,7 +14,7 @@ mixin room-card(options)
   .room-card
     .room-card__slider
       .slider
-        a.slides(href="#")
+        a.slides(href=link||"#")
           - let num = 1;
           while num < 5
             img(
@@ -26,7 +27,7 @@ mixin room-card(options)
         .next.slider__next
           div.slider__next-arrow.material-icons expand_more
         .position.slider__position(disabled)
-    a.room-card__info(href="#")
+    a.room-card__info(href=link||"#")
       .room-card__header
         +room-main-info({
           number,
