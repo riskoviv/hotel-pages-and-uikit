@@ -8,4 +8,4 @@ function requireAll(requireContext) {
 // pattern to take each .js & .scss files
 requireAll(require.context('./layouts', true, /^\.\/.*\.scss$/));
 requireAll(require.context('./components', true, /^\.\/.*\.(js|scss)$/));
-requireAll(require.context('./pages', true, /^\.\/.*\.scss$/));
+requireAll(require.context('./pages', true, /^\.\/.*\.(js|scss)$/));
