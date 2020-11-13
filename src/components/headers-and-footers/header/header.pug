@@ -54,7 +54,9 @@ mixin header(options = {})
       else
         span.header__buttons-shower.material-icons account_box
         .header__buttons
-          .header__login-button
-            +button_bordered({ caption: 'Войти', isSmall: true })
+          .header__sign-in-button
+            a.header__sign-in-link(href="registration-and-sign-in.html?page=sign-in")
+              +button_bordered({ caption: 'Войти', isSmall: true })
           .header__register-button
-            +button_filled({ caption: 'Зарегистрироваться', isSmall: true })
+            a.header__registration-link(href="registration-and-sign-in.html?page=registration")
+              +button_filled({ caption: 'Зарегистрироваться', isSmall: true })

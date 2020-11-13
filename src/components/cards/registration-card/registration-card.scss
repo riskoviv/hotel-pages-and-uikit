@@ -10,11 +10,11 @@
   }
 
   &__text-field,
-  &__login-data {
+  &__sign-in-data {
     margin-bottom: 10px;
   }
 
-  &__radio-button {
+  &__radio-button:not(:last-child) {
     margin-right: 20px;
   }
 
@@ -22,13 +22,13 @@
     margin-bottom: 30px;
   }
 
-  &__login-block {
+  &__sign-in-block {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  &__login-text {
+  &__sign-in-text {
     line-height: 18px;
     color: #000;
     margin-right: 20px;
