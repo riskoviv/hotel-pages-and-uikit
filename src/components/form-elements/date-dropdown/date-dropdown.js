@@ -112,8 +112,33 @@ const datePickerInit = (datepicker) => {
   $calendarClearButton.on('click', hideClearButton);
 }
 
+function getSelectedDates() {
+  if (window.location.search !== '') {
+    const entries = {};
+    window.location.search
+      .substring(1)
+      .split('&')
+      .forEach(entry => entries[entry.split('=')[0]] = entry.split('=')[1]);
+    const datesArray = decodeURIComponent(entries.dates)
+      .split(',')
+      .map(date => date.split('.').reverse());
+    return `[[${datesArray[0]}],[${datesArray[1]}]]`;
+  }
+  return '';
+}
+
+function setSelectedDates(datepicker) {
+  const selectedDates = getSelectedDates();
+  if (selectedDates !== '') {
+    $(datepicker).attr('data-select-date', selectedDates);
+  }
+}
+
 $(() => {
   const $datepickerInputs = $('.js-datepicker-here');
+  if ($datepickerInputs.length === 1) {
+    setSelectedDates($datepickerInputs[0]);
+  }
   $datepickerInputs.each(function() {
     datePickerInit(this);
     const datePicker = $(this).datepicker().data('datepicker');

@@ -9,6 +9,9 @@ let lastOpenedDropdown;
 // Инициализация dropdown'ов после загрузки страницы
 $(function () {
   $iqDropdowns.each(function () {
+    if (isGuestsDropdown(this)) {
+      setDefaultGuestsCounts(this);
+    }
     iqDropdownsInitialHTMLs[this.id] = $(this).html();
     initIqDropdown(this);
     setSelectionText(
@@ -18,6 +21,30 @@ $(function () {
     );
   });
 });
+
+// Получение кол-ва гостей из URI
+function getGuestsCounts() {
+  if (window.location.search !== '') {
+    const entries = {};
+    window.location.search
+      .substring(1)
+      .split('&')
+      .forEach(entry => entries[entry.split('=')[0]] = entry.split('=')[1]);
+    return decodeURIComponent(entries.guests).split(',');
+  }
+  return [];
+}
+
+// Вставка количеств гостей в качестве defaultcount в каждый iqdropdown-menu-option
+function setDefaultGuestsCounts(dropdown) {
+  const guestsCounts = getGuestsCounts();
+  if (guestsCounts !== []) {
+    const $dropdownOptions = $(dropdown).find('.js-iqdropdown-menu-option');
+    $dropdownOptions.each(function (index, element) {
+      $(element).attr('data-defaultcount', guestsCounts[index]);
+    });
+  }
+}
 
 // Функция закрытия/открытия дропдауна
 const toggleDropDown = (event) => {
