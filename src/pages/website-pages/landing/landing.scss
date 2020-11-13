@@ -1,6 +1,6 @@
 @import '@styles/constants.scss';
 
-@keyframes changeBG {
+@keyframes changeLandingBG {
   0% {
     background-image:
       url('./images/landing-page_bg-1.jpg');
@@ -43,7 +43,7 @@
     background-size: cover;
     background-position: center;
     box-shadow: inset 0px 10px 20px -10px $darkShade5;
-    animation-name: changeBG;
+    animation-name: changeLandingBG;
     animation-duration: 30s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in;
