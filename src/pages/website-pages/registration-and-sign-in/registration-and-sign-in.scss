@@ -1,0 +1,56 @@
+@import '@styles/constants.scss';
+
+@keyframes changeRegSignInBG {
+  0% {
+    background-image:
+      url('./images/registration-and-sign-in__bg-1.jpg');
+  }
+  45% {
+    background-image:
+      url('./images/registration-and-sign-in__bg-1.jpg');
+  }
+  50% {
+    background-image:
+      url('./images/registration-and-sign-in__bg-2.jpg');
+  }
+  95% {
+    background-image:
+      url('./images/registration-and-sign-in__bg-2.jpg');
+  }
+}
+
+.registration-and-sign-in {
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    min-height: 700px;
+    padding: 0 20px;
+    background-image:
+      url('./images/registration-and-sign-in__bg-1.jpg'),
+      url('./images/registration-and-sign-in__bg-2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: $darkShade10;
+    box-shadow: inset 0px 10px 20px -10px $darkShade5;
+    animation-name: changeRegSignInBG;
+    animation-duration: 40s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 380px;
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  &__registration-card_hidden,
+  &__sign-in-card_hidden {
+    display: none;
+  }
+}

@@ -1,0 +1,16 @@
+extends /../layouts/website-page/website-page
+
+block variables
+  -
+    const title = "Registration & Sign-in"
+    const pageClass = "registration-and-sign-in"
+
+block content
+  include /cards/registration-card/registration-card
+  include /cards/sign-in-card/sign-in-card
+
+  .registration-and-sign-in__container
+    .registration-and-sign-in__registration-card.js-registration-and-sign-in__registration-card.registration-and-sign-in__registration-card_hidden
+      +registration-card
+    .registration-and-sign-in__sign-in-card.js-registration-and-sign-in__sign-in-card.registration-and-sign-in__sign-in-card_hidden
+      +sign-in-card
