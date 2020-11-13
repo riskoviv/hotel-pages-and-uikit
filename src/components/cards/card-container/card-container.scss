@@ -5,7 +5,12 @@
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   background-color: #fff;
-  max-width: 380px;
+  width: 380px;
+
+  @media (max-width: $mobileL) {
+    max-width: 380px;
+    width: 100%;
+  }
 
   @media (max-width: $mobileM) {
     padding: 20px;

@@ -69,10 +69,6 @@
     width: 100%;
     position: relative;
 
-    @media (max-width: $mobileM) {
-      min-width: unset;
-    }
-
     &::after {
       position: absolute;
       content: 'arrow_forward';
