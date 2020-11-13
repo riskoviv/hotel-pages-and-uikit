@@ -1,9 +1,11 @@
 @import '@styles/constants.scss';
 
 .cards {
+  --height: 1060px;
+
   margin: 0 auto;
   max-width: 1160px;
-  max-height: 1060px;
+  max-height: var(--height);
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -11,12 +13,12 @@
   margin-bottom: 10.4%;
 
   @media (max-width: 1240px) {
-    max-height: calc(1060px * 2);
+    max-height: calc(var(--height) * 1.8);
     align-content: center;
   }
 
   @media (max-width: $tablet) {
-    max-height: calc(1060px * 3);
+    max-height: calc(var(--height) * 3);
     align-content: center;
     align-items: center;
   }
