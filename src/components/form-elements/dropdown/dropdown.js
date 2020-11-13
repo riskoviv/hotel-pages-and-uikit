@@ -69,6 +69,11 @@ const toggleDropDown = (event) => {
   }
 };
 
+// Проверка, что это dropdown для выбора количества гостей
+function isGuestsDropdown(dropdown) {
+  return $(dropdown).hasClass('js-iqdropdown_guests');
+}
+
 const setSelectionText = (dropdown, itemsCount, totalItems) => {
   const $selectionText = $(dropdown).find('.js-iqdropdown-selection');
   if (totalItems === 0) {
@@ -100,7 +105,7 @@ const setSelectionText = (dropdown, itemsCount, totalItems) => {
     return declensionText;
   }
 
-  if ($(dropdown).hasClass('js-iqdropdown_guests')) {
+  if (isGuestsDropdown(dropdown)) {
     // Если это выбор кол-ва гостей
     if (itemsCount.item3 > 0) {
       // Если выбраны младенцы
