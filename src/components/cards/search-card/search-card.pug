@@ -7,7 +7,9 @@ mixin search-card
   .search-card
     +card-container
       h1.search-card__title Найдём номера под ваши пожелания
-      form.search-card__form
+      form.search-card__form(
+        action="search-room.html"
+      )
         .search-card__date-dropdown
           +date-dropdown({
             title1: "Прибытие",
