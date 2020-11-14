@@ -75,12 +75,16 @@ const toggleDropDown = (event) => {
   const isDropdownHasControls =
     $(lastOpenedDropdown).find('.js-iqdropdown__controls').length > 0;
 
-  if (isDropdownPressed) {
+  function openClickedDropdownAndCloseOthers() {
     closeNotAlwaysOpenedDropdowns();
     $(currentDropdown).addClass('menu-open');
     displayAllIQDropdownsBelow();
     $(currentDropdown).addClass('iqdropdown_above');
     $(currentDropdown).removeClass('iqdropdown_below');
+  }
+
+  if (isDropdownPressed) {
+    openClickedDropdownAndCloseOthers();
     lastOpenedDropdown = currentDropdown;
   } else if (isClickedOutsideOfDropdownOrOnApply) {
     closeNotAlwaysOpenedDropdowns();
