@@ -1,4 +1,4 @@
-require('air-datepicker');
+import 'air-datepicker';
 
 const datePickerInit = (datepicker) => {
   let onSelectCounter = 0;
@@ -139,7 +139,7 @@ $(() => {
   if ($datepickerInputs.length === 1) {
     setSelectedDates($datepickerInputs[0]);
   }
-  $datepickerInputs.each(function() {
+  $datepickerInputs.each(function () {
     datePickerInit(this);
     const datePicker = $(this).datepicker().data('datepicker');
     const dates = $(this).data('selectDate');
