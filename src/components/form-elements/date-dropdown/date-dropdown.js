@@ -22,7 +22,7 @@ const datePickerInit = (datepicker) => {
       saveDates(formattedDate);
       const isDateSelectedManually =
         ($(datepicker).data('selectDate') !== '' && onSelectCounter > 2)
-        || $(datepicker).data('selectDate') === '';
+        || $(datepicker).data('selectDate') === undefined;
       if (isDateSelectedManually) {
         $(datepicker).val('');
         if (!isFilter) {
@@ -33,14 +33,19 @@ const datePickerInit = (datepicker) => {
         printDates();
       }
       setCustomOptions();
-      if (formattedDate !== '') {
-        showClearButton();
-      } else {
+      if (formattedDate === '') {
         hideClearButton();
+      } else {
+        showClearButton();
       }
     },
     onShow() {
       setCustomOptions();
+      if ($(datepicker).val() === '') {
+        hideClearButton();
+      } else {
+        showClearButton();
+      }
     },
   })
 
@@ -73,17 +78,18 @@ const datePickerInit = (datepicker) => {
   let savedDatesFilter = '';
 
   const saveDates = (selectedDates) => {
-    if (!isFilter)
-      savedDates = selectedDates.split(',');
-    else
+    if (isFilter) {
       savedDatesFilter = $(datepicker).val();
-    if (!selectedDates) {
-      if (!isFilter) {
+    } else {
+      savedDates = selectedDates.split(',');
+    }
+    if (selectedDates === '') {
+      if (isFilter) {
+        $(datepicker).val('');
+      } else {
         $(datepicker).val('');
         $date1.val('');
         $date2.val('');
-      } else {
-        $(datepicker).val('');
       }
     }
   };
@@ -110,7 +116,7 @@ const datePickerInit = (datepicker) => {
       myDatepicker.hide();
     });
   $calendarClearButton.on('click', hideClearButton);
-}
+};
 
 function getSelectedDates() {
   if (window.location.search !== '') {
