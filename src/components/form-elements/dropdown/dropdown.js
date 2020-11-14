@@ -64,8 +64,9 @@ const toggleDropDown = (event) => {
     })
   };
 
-  const setAllIQDropdownsZIndexTo1 = () => {
-    $iqDropdowns.css('z-index', 1);
+  const displayAllIQDropdownsBelow = () => {
+    $iqDropdowns.removeClass('iqdropdown_above');
+    $iqDropdowns.addClass('iqdropdown_below');
   };
 
   const isDropdownPressed = currentDropdown && !dropdownMenu && !dropdownControls;
@@ -77,12 +78,13 @@ const toggleDropDown = (event) => {
   if (isDropdownPressed) {
     closeNotAlwaysOpenedDropdowns();
     $(currentDropdown).addClass('menu-open');
-    setAllIQDropdownsZIndexTo1();
-    currentDropdown.style.zIndex = '99';
+    displayAllIQDropdownsBelow();
+    $(currentDropdown).addClass('iqdropdown_above');
+    $(currentDropdown).removeClass('iqdropdown_below');
     lastOpenedDropdown = currentDropdown;
   } else if (isClickedOutsideOfDropdownOrOnApply) {
     closeNotAlwaysOpenedDropdowns();
-    setAllIQDropdownsZIndexTo1();
+    displayAllIQDropdownsBelow();
     if (!applyButton && lastOpenedDropdown && isDropdownHasControls) {
       $(lastOpenedDropdown).html(iqDropdownsInitialHTMLs[lastOpenedDropdown.id]);
       initIqDropdown(lastOpenedDropdown);

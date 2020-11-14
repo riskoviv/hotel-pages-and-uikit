@@ -13,6 +13,14 @@
     max-width: 266px;
   }
 
+  &_above {
+    z-index: 99;
+  }
+
+  &_below {
+    z-index: 1;
+  }
+
   &:focus,
   &:hover {
     border: 1px solid $darkShade50;
