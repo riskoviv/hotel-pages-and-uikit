@@ -124,11 +124,11 @@ function getSelectedDates() {
     window.location.search
       .substring(1)
       .split('&')
-      .forEach(entry => entries[entry.split('=')[0]] = entry.split('=')[1]);
+      .forEach((entry) => entries[entry.split('=')[0]] = entry.split('=')[1]);
     if (entries.dates !== '') {
       const datesArray = decodeURIComponent(entries.dates)
         .split(',')
-        .map(date => date.split('.').reverse());
+        .map((date) => date.split('.').reverse());
       if (datesArray[1] !== undefined) {
         return `[[${datesArray[0]}],[${datesArray[1]}]]`;
       }
