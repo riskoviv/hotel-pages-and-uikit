@@ -30,15 +30,17 @@ function getGuestsCounts() {
       .substring(1)
       .split('&')
       .forEach(entry => entries[entry.split('=')[0]] = entry.split('=')[1]);
-    return decodeURIComponent(entries.guests).split(',');
+    if (entries.guests !== '') {
+      return decodeURIComponent(entries.guests).split(',');
+    }
   }
-  return [];
+  return null;
 }
 
 // Вставка количеств гостей в качестве defaultcount в каждый iqdropdown-menu-option
 function setDefaultGuestsCounts(dropdown) {
   const guestsCounts = getGuestsCounts();
-  if (guestsCounts !== []) {
+  if (guestsCounts !== null) {
     const $dropdownOptions = $(dropdown).find('.js-iqdropdown-menu-option');
     $dropdownOptions.each(function (index, element) {
       $(element).attr('data-defaultcount', guestsCounts[index]);
