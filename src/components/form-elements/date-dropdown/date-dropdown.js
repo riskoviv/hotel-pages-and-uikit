@@ -128,7 +128,12 @@ function getSelectedDates() {
     if (entries.dates !== '') {
       const datesArray = decodeURIComponent(entries.dates)
         .split(',')
-        .map((date) => date.split('.').reverse());
+        .map((date) => {
+          return (date
+            .split('.')
+            .map((datePart) => parseInt(datePart, 10))
+            .reverse());
+        });
       if (datesArray[1] !== undefined) {
         return `[[${datesArray[0]}],[${datesArray[1]}]]`;
       }
