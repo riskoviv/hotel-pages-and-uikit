@@ -37,40 +37,39 @@
   }
 
   &__filter {
+    grid-area: filter;
+    position: sticky;
+    top: 5px;
+    height: calc(100vh - 10px);
+    width: fit-content;
+    overflow: auto;
+    padding: 0 7px;
+    transform: translateX(-7px);
 
-    &-container {
-      grid-area: filter;
-      position: sticky;
-      top: 5px;
-      height: calc(100vh - 10px);
+    @media (max-width: $hd) {
+      display: none;
+    }
+
+    @media (max-width: $tablet) {
+      grid-area: main;
       width: fit-content;
-      overflow: auto;
+      z-index: 899;
+      background-color: #fff;
+      padding: 10px;
+      border: $inputBorder;
+      border-radius: 4px;
+      box-shadow: $lightShadow;
+    }
 
-      @media (max-width: $hd) {
-        display: none;
-      }
+    @media (max-width: $mobileL) {
+      left: 40px;
+    }
 
-      @media (max-width: $tablet) {
-        grid-area: main;
-        width: fit-content;
-        z-index: 899;
-        background-color: #fff;
-        padding: 10px;
-        border: $inputBorder;
-        border-radius: 4px;
-        box-shadow: $lightShadow;
-      }
-
-      @media (max-width: $mobileL) {
-        left: 40px;
-      }
-
-      @media (max-width: $mobileS) {
-        padding: 5px;
-        top: 10px;
-        height: calc(100vh - 10px);
-        transform: translateX(5px);
-      }
+    @media (max-width: $mobileS) {
+      padding: 5px;
+      top: 10px;
+      height: calc(100vh - 10px);
+      transform: translateX(5px);
     }
 
     &-component {
@@ -137,7 +136,7 @@
               / 266px 1fr
               ;
 
-            .search-room__filter-container {
+            .search-room__filter {
               display: block;
             }
           }
