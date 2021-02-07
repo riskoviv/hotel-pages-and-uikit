@@ -59,6 +59,7 @@
       border: $inputBorder;
       border-radius: 4px;
       box-shadow: $lightShadow;
+      transform: none;
     }
 
     @media (max-width: $mobileL) {
