@@ -1,6 +1,6 @@
 import 'air-datepicker';
 
-const datePickerInit = (datepicker) => {
+function datePickerInit(datepicker) {
   let onSelectCounter = 0;
 
   // datepicker initialization
@@ -47,28 +47,28 @@ const datePickerInit = (datepicker) => {
         showClearButton();
       }
     },
-  })
+  });
 
   const calendarClass = $(datepicker).data('classes');
   const $calendarClearButton = $(`.${calendarClass} .datepicker--button[data-action="clear"]`);
 
-  const disableNavTitle = () => {
+  function disableNavTitle() {
     $(`.${calendarClass} .datepicker--nav-title`).prop('disabled', true);
-  };
+  }
 
-  const setCustomOptions = () => {
+  function setCustomOptions() {
     disableNavTitle();
     $(`.${calendarClass} .datepicker--nav-title`).addClass('heading-2');
     $calendarClearButton.addClass('button button_link button_link_clear');
-  };
+  }
 
-  const showClearButton = () => {
+  function showClearButton() {
     $calendarClearButton.removeClass('button_link_clear_hidden');
-  };
+  }
 
-  const hideClearButton = () => {
+  function hideClearButton() {
     $calendarClearButton.addClass('button_link_clear_hidden');
-  };
+  }
 
   const isFilter = $(datepicker).hasClass('js-date-dropdown_filter__input');
 
@@ -77,7 +77,7 @@ const datePickerInit = (datepicker) => {
   let savedDates = [];
   let savedDatesFilter = '';
 
-  const saveDates = (selectedDates) => {
+  function saveDates(selectedDates) {
     if (isFilter) {
       savedDatesFilter = $(datepicker).val();
     } else {
@@ -92,9 +92,9 @@ const datePickerInit = (datepicker) => {
         $date2.val('');
       }
     }
-  };
+  }
 
-  const printDates = () => {
+  function printDates() {
     if (!isFilter) {
       $(datepicker).val(savedDates);
       $date1.val(savedDates[0] || '');
@@ -102,12 +102,12 @@ const datePickerInit = (datepicker) => {
     } else {
       $(datepicker).val(savedDatesFilter);
     }
-  };
-  
+  }
+
   setCustomOptions();
 
   const myDatepicker = $(datepicker).datepicker().data('datepicker');
-  
+
   $(`.${calendarClass} .datepicker--buttons`)
     .append('<button class="button button_link">Применить</button>');
   $(`.${calendarClass} .datepicker--buttons > button`)
@@ -116,7 +116,7 @@ const datePickerInit = (datepicker) => {
       myDatepicker.hide();
     });
   $calendarClearButton.on('click', hideClearButton);
-};
+}
 
 function getSelectedDates() {
   if (window.location.search !== '') {

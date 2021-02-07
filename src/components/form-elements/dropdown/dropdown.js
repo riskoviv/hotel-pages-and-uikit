@@ -7,7 +7,7 @@ const iqDropdownsInitialHTMLs = {};
 let lastOpenedDropdown;
 
 // Инициализация dropdown'ов после загрузки страницы
-$(function () {
+$(() => {
   $iqDropdowns.each(function () {
     if (isGuestsDropdown(this)) {
       setDefaultGuestsCounts(this);
@@ -49,7 +49,7 @@ function setDefaultGuestsCounts(dropdown) {
 }
 
 // Функция закрытия/открытия дропдауна
-const toggleDropDown = (event) => {
+function toggleDropDown(event) {
   const target = event.target;
   const $openedDropdowns = $('.js-iqdropdown.menu-open');
   const currentDropdown = target.closest('.js-iqdropdown');
@@ -63,7 +63,7 @@ const toggleDropDown = (event) => {
       if (!$(this).data('always-opened')) {
         $(this).removeClass('menu-open');
       }
-    })
+    });
   };
 
   const displayAllIQDropdownsBelow = () => {
@@ -102,14 +102,14 @@ const toggleDropDown = (event) => {
       lastOpenedDropdown = null;
     }
   }
-};
+}
 
 // Проверка, что это dropdown для выбора количества гостей
 function isGuestsDropdown(dropdown) {
   return $(dropdown).hasClass('js-iqdropdown_guests');
 }
 
-const setSelectionText = (dropdown, itemsCount, totalItems) => {
+function setSelectionText(dropdown, itemsCount, totalItems) {
   const $selectionText = $(dropdown).find('.js-iqdropdown-selection');
   if (totalItems === 0) {
     $selectionText.text($(dropdown).data('placeholder'));
@@ -157,7 +157,8 @@ const setSelectionText = (dropdown, itemsCount, totalItems) => {
     // если выбор удобств
     for (let i = 1; i <= Object.keys(itemsCount).length; i++) {
       if (itemsCount[`item${i}`] > 0) {
-        if (selectionText !== '') selectionText += ', ';
+        if (selectionText !== '')
+          selectionText += ', ';
         selectionText +=
           `${itemsCount[`item${i}`]} ${chooseDeclension(`item${i}`, itemsCount[`item${i}`])}`;
       }
@@ -167,9 +168,9 @@ const setSelectionText = (dropdown, itemsCount, totalItems) => {
   }
 
   dropdownsItemsCounts[dropdown.id].selectionText = selectionText;
-};
+}
 
-const initIqDropdown = (dropdown) => {
+function initIqDropdown(dropdown) {
   const showOrHideClearButton = (totalItems) => {
     // Отображение/скрытие кнопки очистить
     const $clearButton = $(`#${dropdown.id} .js-button_link_clear`);
@@ -184,7 +185,7 @@ const initIqDropdown = (dropdown) => {
       dropdownsItemsCounts[dropdown.id] = {
         itemsCount,
         totalItems,
-      }
+      };
       // проверка на класс js-iqdropdown_preferences, т. к. у dropdown этого типа нет блока кнопок 
       if ($(dropdown).hasClass('js-iqdropdown_preferences')) {
         setSelectionText(dropdown, itemsCount, totalItems);
@@ -222,7 +223,7 @@ const initIqDropdown = (dropdown) => {
       $decrementButton.addClass('button-decrement_disabled');
     }
   });
-  
+
   $(`#${dropdown.id} .icon-decrement`).text('-');
   $(`#${dropdown.id} .icon-increment`).text('+');
 
@@ -234,7 +235,7 @@ const initIqDropdown = (dropdown) => {
     $(`#${dropdown.id} .js-button_link_clear`).on('click', clearFn);
     $(`#${dropdown.id} .js-button_link`).on('click', applyFn);
   }
-};
+}
 
 const composeHTMLFromArray = (arrayOfNodes = []) => {
   const container = $('<div></div>');
@@ -245,7 +246,7 @@ const composeHTMLFromArray = (arrayOfNodes = []) => {
 };
 
 // Функция сохранения выбранных значений
-const applyFn = (event) => {
+function applyFn(event) {
   const target = event.target;
   const dropdown = target.closest('.js-iqdropdown');
   const dropdownHTML = $.parseHTML(iqDropdownsInitialHTMLs[dropdown.id]);
@@ -259,7 +260,7 @@ const applyFn = (event) => {
 
   $menuOptions.each(function (index, element) {
     $(element).attr('data-defaultcount', `${itemsCount[`item${index + 1}`]}`);
-  })
+  });
 
   iqDropdownsInitialHTMLs[dropdown.id] = composeHTMLFromArray(dropdownHTML);
 
@@ -270,10 +271,10 @@ const applyFn = (event) => {
     itemsCount,
     totalItems,
   );
-};
+}
 
 // Функция очистки iqDropdown
-const clearFn = (event) => {
+function clearFn(event) {
   const target = event.target;
   const dropdown = target.closest('.js-iqdropdown');
   const dropdownHTML = $.parseHTML(iqDropdownsInitialHTMLs[dropdown.id]);
@@ -285,7 +286,7 @@ const clearFn = (event) => {
   $(dropdown).html(iqDropdownsInitialHTMLs[dropdown.id]);
   initIqDropdown(dropdown);
   setSelectionText(dropdown, 0, 0);
-};
+}
 
 // Проверка на нажатие внутри/вне дропдауна и закрытие его
 $(document).on('click', toggleDropDown);
