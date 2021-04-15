@@ -63,6 +63,7 @@
     "jquery": "^3.6.0",
     "normalize.css": "^8.0.1",
     "nouislider": "^14.7.0",
-    "paginationjs": "^2.1.5"
+    "paginationjs": "^2.1.5",
+    "peity": "^3.3.0"
   }
 }

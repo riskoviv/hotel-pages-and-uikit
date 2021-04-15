@@ -1,4 +1,4 @@
-import '@vendor/peity/jquery.peity.min';
+import peity from 'peity';
 
 $(() => {
   let colors = ['orange', 'green', 'purple', 'black'];
