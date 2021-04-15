@@ -1,4 +1,4 @@
-require('@vendor/jquery-tronsha-slider/dist/js/slider.min');
+import '@vendor/jquery-tronsha-slider/dist/js/slider.min';
 
 $(() => {
   $('.slider').slider({
