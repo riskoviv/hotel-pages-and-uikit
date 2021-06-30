@@ -1,7 +1,6 @@
 # Toxin
- FSD second task
 
-## GitHub Pages
+## GitHub Pages:
 
 ### UI kit
 + [Colors & Type](https://virss1.github.io/hotel-pages-and-uikit/assets/pages/colors-and-type.html)
