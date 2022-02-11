@@ -9,7 +9,7 @@ mixin button_filled(options)
   button.button.button_filled(
     type="button"
     class=isSmall ? "button_small" : ""
-    class=isForceHover ? "button_filled_force-hover" : ""
+    class=isForceHover ? "button_force-hover" : ""
   )= caption
 
 mixin button_bordered(options)
@@ -17,7 +17,7 @@ mixin button_bordered(options)
 
   .button.button_bordered(
     class=isSmall ? "button_small" : ""
-    class=isForceHover ? "button_bordered_force-hover" : ""
+    class=isForceHover ? "button_force-hover" : ""
   )
     button.button.button_bordered__body(type="button")= caption
 
@@ -30,7 +30,7 @@ mixin button_link(options)
   - const { isClear, caption } = options
   
   a.button.button_link(
-    class=isClear ? "button_link_clear" : ""
+    class=isClear ? "button_clear" : ""
   )= caption
 
 //- options: {

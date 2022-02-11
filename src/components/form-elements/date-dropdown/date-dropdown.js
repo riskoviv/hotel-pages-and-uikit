@@ -59,15 +59,15 @@ function datePickerInit(datepicker) {
   function setCustomOptions() {
     disableNavTitle();
     $(`.${calendarClass} .datepicker--nav-title`).addClass('heading-2');
-    $calendarClearButton.addClass('button button_link button_link_clear');
+    $calendarClearButton.addClass('button button_link button_clear');
   }
 
   function showClearButton() {
-    $calendarClearButton.removeClass('button_link_clear_hidden');
+    $calendarClearButton.removeClass('button_hidden');
   }
 
   function hideClearButton() {
-    $calendarClearButton.addClass('button_link_clear_hidden');
+    $calendarClearButton.addClass('button_hidden');
   }
 
   const isFilter = $(datepicker).hasClass('js-date-dropdown_filter__input');

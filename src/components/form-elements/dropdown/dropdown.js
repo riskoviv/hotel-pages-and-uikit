@@ -173,10 +173,10 @@ function setSelectionText(dropdown, itemsCount, totalItems) {
 function initIqDropdown(dropdown) {
   const showOrHideClearButton = (totalItems) => {
     // Отображение/скрытие кнопки очистить
-    const $clearButton = $(`#${dropdown.id} .js-button_link_clear`);
+    const $clearButton = $(`#${dropdown.id} .js-button_clear`);
     totalItems > 0
-      ? $clearButton.removeClass('button_link_clear_hidden')
-      : $clearButton.addClass('button_link_clear_hidden');
+      ? $clearButton.removeClass('button_hidden')
+      : $clearButton.addClass('button_hidden');
   };
 
   $(dropdown).iqDropdown({
@@ -232,7 +232,7 @@ function initIqDropdown(dropdown) {
 
   // Если есть блок с кнопками "очистить" и "применить", создать обработчики нажатий
   if ($(`#${dropdown.id} .js-iqdropdown__controls`).length > 0) {
-    $(`#${dropdown.id} .js-button_link_clear`).on('click', clearFn);
+    $(`#${dropdown.id} .js-button_clear`).on('click', clearFn);
     $(`#${dropdown.id} .js-button_link`).on('click', applyFn);
   }
 }
