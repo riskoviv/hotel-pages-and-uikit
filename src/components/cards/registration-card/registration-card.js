@@ -10,7 +10,7 @@ $(() => {
     $signInCard.removeClass(signInHiddenClass);
   }
 
-  $signInButton.on('click', function () {
+  $signInButton.on('click', () => {
     showSignInCard();
   });
 });

@@ -1,10 +1,5 @@
 const $maskedInput = $('.js-text-field__input_masked');
 
-$maskedInput.on('keydown', function (event) {
-  const key = event.key;
-  if (key >= 0 && key <= 9)
-    return true;
-  else {
     switch (key) {
       case 'Backspace':
       case 'Delete':
@@ -12,16 +7,21 @@ $maskedInput.on('keydown', function (event) {
       case 'ArrowLeft':
         return true;
     }
+$maskedInput.on('keydown', (event) => {
+  const { key } = event;
+  if (key >= 0 && key <= 9) return true;
+
   }
   return false;
 });
 
-$maskedInput.on('keyup', function (event) {
-  if (this.value.length === 2 || this.value.length === 5) {
+$maskedInput.on('keyup', (event) => {
+  const { target } = event;
+  if (target.value.length === 2 || target.value.length === 5) {
     if (event.key === 'Backspace' || event.key === 'Delete') {
-      this.value = this.value.slice(0, -1);
+      target.value = target.value.slice(0, -1);
     } else {
-      this.value += '.';
+      target.value += '.';
     }
   }
 });

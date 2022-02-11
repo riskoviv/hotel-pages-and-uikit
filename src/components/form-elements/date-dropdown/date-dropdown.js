@@ -20,8 +20,7 @@ function datePickerInit(datepicker) {
     onSelect(formattedDate) {
       onSelectCounter += 1;
       saveDates(formattedDate);
-      const isDateSelectedManually =
-        ($(datepicker).data('selectDate') !== '' && onSelectCounter > 2)
+      const isDateSelectedManually = ($(datepicker).data('selectDate') !== '' && onSelectCounter > 2)
         || $(datepicker).data('selectDate') === undefined;
       if (isDateSelectedManually) {
         $(datepicker).val('');
@@ -111,7 +110,7 @@ function datePickerInit(datepicker) {
   $(`.${calendarClass} .datepicker--buttons`)
     .append('<button class="button button_link">Применить</button>');
   $(`.${calendarClass} .datepicker--buttons > button`)
-    .on('click', function () {
+    .on('click', () => {
       printDates();
       myDatepicker.hide();
     });
@@ -128,12 +127,10 @@ function getSelectedDates() {
     if (entries.dates !== '') {
       const datesArray = decodeURIComponent(entries.dates)
         .split(',')
-        .map((date) => {
-          return (date
-            .split('.')
-            .map((datePart) => parseInt(datePart, 10))
-            .reverse());
-        });
+        .map((date) => (date
+          .split('.')
+          .map((datePart) => parseInt(datePart, 10))
+          .reverse()));
       if (datesArray[1] !== undefined) {
         return `[[${datesArray[0]}],[${datesArray[1]}]]`;
       }
@@ -159,9 +156,7 @@ $(() => {
     const datePicker = $(this).datepicker().data('datepicker');
     const dates = $(this).data('selectDate');
     if (dates) {
-      const dateArray = dates.map((date) => {
-        return new Date(date);
-      });
+      const dateArray = dates.map((date) => new Date(date));
       datePicker.selectDate(dateArray);
     }
   });

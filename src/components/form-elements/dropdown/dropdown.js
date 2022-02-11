@@ -29,7 +29,7 @@ function getGuestsCounts() {
     window.location.search
       .substring(1)
       .split('&')
-      .forEach(entry => entries[entry.split('=')[0]] = entry.split('=')[1]);
+      .forEach((entry) => entries[entry.split('=')[0]] = entry.split('=')[1]);
     if (entries.guests !== '') {
       return decodeURIComponent(entries.guests).split(',');
     }
@@ -42,7 +42,7 @@ function setDefaultGuestsCounts(dropdown) {
   const guestsCounts = getGuestsCounts();
   if (guestsCounts !== null) {
     const $dropdownOptions = $(dropdown).find('.js-iqdropdown-menu-option');
-    $dropdownOptions.each(function (index, element) {
+    $dropdownOptions.each((index, element) => {
       $(element).attr('data-defaultcount', guestsCounts[index]);
     });
   }
@@ -50,7 +50,7 @@ function setDefaultGuestsCounts(dropdown) {
 
 // Функция закрытия/открытия дропдауна
 function toggleDropDown(event) {
-  const target = event.target;
+  const { target } = event;
   const $openedDropdowns = $('.js-iqdropdown.menu-open');
   const currentDropdown = target.closest('.js-iqdropdown');
   const dropdownMenu = target.closest('.js-iqdropdown-menu');
@@ -72,10 +72,8 @@ function toggleDropDown(event) {
   };
 
   const isDropdownPressed = currentDropdown && !dropdownMenu && !dropdownControls;
-  const isClickedOutsideOfDropdownOrOnApply =
-    (!currentDropdown && !clearButton) || applyButton;
-  const isDropdownHasControls =
-    $(lastOpenedDropdown).find('.js-iqdropdown__controls').length > 0;
+  const isClickedOutsideOfDropdownOrOnApply = (!currentDropdown && !clearButton) || applyButton;
+  const isDropdownHasControls = $(lastOpenedDropdown).find('.js-iqdropdown__controls').length > 0;
 
   function openClickedDropdownAndCloseOthers() {
     closeNotAlwaysOpenedDropdowns();
@@ -129,12 +127,12 @@ function setSelectionText(dropdown, itemsCount, totalItems) {
     let declensionText = $option.data('name'); // Если нет списка склонений, используется название элемента
     if ($option.data('declensions')) { // Если есть список склонений, выбрать нужное
       const declensionsList = $option.data('declensions');
-      declensionText = declensionsList[2]; //5+
+      declensionText = declensionsList[2]; // 5+
       const isTotalItemsEndsWith2to4 = [2, 3, 4].indexOf(totalItemsLastDigit) != -1;
       if (isTotalItemsEndsWith2to4 && (itemsCount < 12 || itemsCount > 21)) {
-        declensionText = declensionsList[1]; //2-4
+        declensionText = declensionsList[1]; // 2-4
       } else if (itemsCount === 1 || (totalItemsLastDigit === 1 && itemsCount > 20)) {
-        declensionText = declensionsList[0]; //1
+        declensionText = declensionsList[0]; // 1
       }
     }
     return declensionText;
@@ -157,10 +155,9 @@ function setSelectionText(dropdown, itemsCount, totalItems) {
     // если выбор удобств
     for (let i = 1; i <= Object.keys(itemsCount).length; i++) {
       if (itemsCount[`item${i}`] > 0) {
-        if (selectionText !== '')
-          selectionText += ', ';
-        selectionText +=
-          `${itemsCount[`item${i}`]} ${chooseDeclension(`item${i}`, itemsCount[`item${i}`])}`;
+        if (selectionText !== '') { selectionText += ', '; }
+        selectionText
+          += `${itemsCount[`item${i}`]} ${chooseDeclension(`item${i}`, itemsCount[`item${i}`])}`;
       }
     }
 
@@ -247,18 +244,18 @@ const composeHTMLFromArray = (arrayOfNodes = []) => {
 
 // Функция сохранения выбранных значений
 function applyFn(event) {
-  const target = event.target;
+  const { target } = event;
   const dropdown = target.closest('.js-iqdropdown');
   const dropdownHTML = $.parseHTML(iqDropdownsInitialHTMLs[dropdown.id]);
-  const itemsCount = dropdownsItemsCounts[dropdown.id].itemsCount;
-  const totalItems = dropdownsItemsCounts[dropdown.id].totalItems;
+  const { itemsCount } = dropdownsItemsCounts[dropdown.id];
+  const { totalItems } = dropdownsItemsCounts[dropdown.id];
   const $iqdMenu = dropdownHTML[2];
   const $menuOptions = $($iqdMenu).find('.js-iqdropdown-menu-option');
   const $dropdownInput = $(dropdown).parent().find('.js-iqdropdown__input');
 
   $($dropdownInput).val(Object.values(itemsCount));
 
-  $menuOptions.each(function (index, element) {
+  $menuOptions.each((index, element) => {
     $(element).attr('data-defaultcount', `${itemsCount[`item${index + 1}`]}`);
   });
 
@@ -275,7 +272,7 @@ function applyFn(event) {
 
 // Функция очистки iqDropdown
 function clearFn(event) {
-  const target = event.target;
+  const { target } = event;
   const dropdown = target.closest('.js-iqdropdown');
   const dropdownHTML = $.parseHTML(iqDropdownsInitialHTMLs[dropdown.id]);
   const $iqdMenu = dropdownHTML[2];

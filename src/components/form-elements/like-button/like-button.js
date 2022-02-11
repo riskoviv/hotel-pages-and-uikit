@@ -6,7 +6,7 @@ const checkLike = (likeButton) => {
     likeButtonHeart.textContent = 'favorite';
     likeButtonCount.textContent = (++likesCount).toString();
   }
-}
+};
 
 const setLike = (likeButton) => {
   likeButton.classList.toggle('like-button_clicked');
@@ -20,7 +20,7 @@ const setLike = (likeButton) => {
     likeButtonHeart.textContent = 'favorite';
     likeButtonCount.textContent = (++likesCount).toString();
   }
-}
+};
 
 const likeButtons = document.querySelectorAll('.like-button');
 
@@ -30,5 +30,5 @@ for (likeButton of likeButtons) {
   checkLike(likeButton);
   likeButton.addEventListener('click', function () {
     setLike(this);
-  })
-}
+  });
+});

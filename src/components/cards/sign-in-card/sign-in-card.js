@@ -10,7 +10,7 @@ $(() => {
     $registrationCard.removeClass(registrationHiddenClass);
   }
 
-  $registrationButton.on('click', function () {
+  $registrationButton.on('click', () => {
     showRegistrationCard();
   });
 });

@@ -38,22 +38,22 @@ const optimization = () => {
   const config = {
     splitChunks: {
       chunks: 'all',
-    }
-  }
+    },
+  };
 
   if (isProd) {
     config.minimizer = [
       new OptimizeCssAssetsPlugin(),
       new TerserPlugin(),
-    ]
+    ];
   }
 
   return config;
 };
 
-const filename = ext => isDev ? `[name].${ext}` : `[name].[hash:7].${ext}`;
+const filename = (ext) => (isDev ? `[name].${ext}` : `[name].[hash:7].${ext}`);
 
-const cssLoaders = extra => {
+const cssLoaders = (extra) => {
   const loaders = [
     {
       loader: MiniCssExtractPlugin.loader,
@@ -63,14 +63,14 @@ const cssLoaders = extra => {
       },
     },
     'css-loader',
-  ]
+  ];
 
   if (extra) {
     loaders.push(extra);
   }
 
   return loaders;
-}
+};
 
 const initHTMLWebpackPlugin = (pagesObj) => {
   const inits = [];
@@ -83,10 +83,10 @@ const initHTMLWebpackPlugin = (pagesObj) => {
         favicon: `${PATHS.res}/images/favicon/favicon.svg`,
       }));
     });
-  }
+  });
 
   return inits;
-}
+};
 
 const plugins = () => {
   const base = [
@@ -97,7 +97,7 @@ const plugins = () => {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
-      "window.jQuery": 'jquery',
+      'window.jQuery': 'jquery',
     }),
 
     new MiniCssExtractPlugin({
@@ -109,15 +109,15 @@ const plugins = () => {
     new ImageminPlugin({
       disable: isDev,
       minFileSize: 100000,
-      pngquant: {quality: '50-50'},
+      pngquant: { quality: '50-50' },
       plugins: [
         imageminMozjpeg({ quality: 50 }),
       ],
     }),
-  ]
+  ];
 
   return base;
-}
+};
 
 module.exports = {
   context: PATHS.src,
