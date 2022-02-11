@@ -8,15 +8,8 @@
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "watch": "cross-env NODE_ENV=development webpack --mode development --watch",
     "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --open",
-    "postinstall": "link-module-alias",
     "deploy": "npm run build && gh-pages -d dist"
   },
-  "_moduleAliases": {
-    "@avatars": "src/components/form-elements/review/avatars",
-    "@styles": "src/styles",
-    "@room-cards": "src/components/cards/room-card/room-cards"
-  },
-  "_moduleAliasIgnoreWarning": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Virss1/Toxin.git"
@@ -44,7 +37,6 @@
     "html-webpack-plugin": "^4.5.2",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-webpack-plugin": "^2.4.2",
-    "link-module-alias": "^1.2.0",
     "mini-css-extract-plugin": "^0.9.0",
     "optimize-css-assets-webpack-plugin": "^5.0.8",
     "pug": "^3.0.2",

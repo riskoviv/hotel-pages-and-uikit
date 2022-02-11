@@ -103,7 +103,7 @@ const plugins = () => {
     }),
 
     ...initHTMLWebpackPlugin(PAGES),
-    
+
     new ImageminPlugin({
       disable: isDev,
       minFileSize: 100000,
@@ -131,6 +131,9 @@ module.exports = {
     extensions: ['.js', '.json'],
     alias: {
       '@vendor': PATHS.vendor,
+      '@avatars': `${PATHS.src}/components/form-elements/review/avatars`,
+      '@styles': `${PATHS.src}/styles`,
+      '@room-cards': `${PATHS.src}/components/cards/room-card/room-cards`,
     },
   },
   optimization: optimization(),
