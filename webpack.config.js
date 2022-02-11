@@ -30,7 +30,7 @@ const PAGES = {};
   ['ui-kit', 'website-pages'].forEach((pagesSubdir) => {
     PAGES[pagesSubdir] = fs.readdirSync(`${PAGES_DIR}/${pagesSubdir}`)
       .map((dir) => fs.readdirSync(`${PAGES_DIR}/${pagesSubdir}/${dir}`))
-      .reduce((acc, item) => [...acc, ...item], [])
+      .flat()
       .filter((filename) => filename.endsWith('.pug'));
   });
 }());
