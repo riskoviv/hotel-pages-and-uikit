@@ -71,7 +71,7 @@
   &--pointer {
     display: none;
   }
-  
+
   &--nav {
     border: none;
     padding: 19px 16px;
@@ -168,7 +168,7 @@
 
       &.-in-range- {
         color: white;
-        
+
         &::after {
           width: 100%;
           left: 0;
@@ -230,7 +230,7 @@
       &.-selected-,
       &.-in-range- {
         background: none;
-        
+
         &::after {
           background: $primaryGradientTransparentized25;
         }
@@ -260,6 +260,6 @@
       padding-top: 10px;
       justify-content: space-between;
     }
-    
+
   }
 }

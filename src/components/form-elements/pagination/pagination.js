@@ -3,7 +3,7 @@ require('paginationjs');
 $(() => {
   function simpleTemplating(data) {
     var html = '<ul class="pagination__items-list">';
-    $.each(data, function(index, item){
+    $.each(data, function(index, item) {
       html += '<li class="pagination__item">'+ item +'</li>';
     })
     html += '</ul>';
@@ -15,7 +15,7 @@ $(() => {
   }
 
   let $paginationNumberLastNum;
-  
+
   function removeExcessPageNumbers() {
     const $pageNumbers = $('.paginationjs-page:not(.paginationjs-first):not(.paginationjs-last)');
     const $activePage = $('.paginationjs-page.active');
@@ -41,10 +41,10 @@ $(() => {
   }
 
   const $paginator = $('.pagination');
-  
+
   if ($paginator.length > 0) {
     $paginator.pagination({
-      dataSource: function(done){
+      dataSource: function(done) {
         let result = [];
         for (let i = 1; i <= 180; i++) {
           result.push(i);
@@ -85,7 +85,6 @@ $(() => {
       showNavigator: true,
     })
   }
-  
 
   $paginationNumberLastNum = $('.paginationjs-last').data('num');
 });

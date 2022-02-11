@@ -28,7 +28,7 @@ mixin dropdown-guests(options = {})
       {
         name: "взрослые",
         defaultcount: defaultCounts ? defaultCounts[0] : "0",
-        maxcount: maxCounts ? maxCounts[0] : "Infinity", 
+        maxcount: maxCounts ? maxCounts[0] : "Infinity",
         declensions: [
           "гость",
           "гостя",
@@ -80,7 +80,7 @@ mixin dropdown-preferences(options = {})
       {
         name: "Спальни",
         defaultcount: defaultCounts ? defaultCounts[0] : "0",
-        maxcount: maxCounts ? maxCounts[0] : "10", 
+        maxcount: maxCounts ? maxCounts[0] : "10",
         declensions: [
           "спальня",
           "спальни",
@@ -119,7 +119,7 @@ mixin add-items(itemsArray)
         maxcount,
         declensions,
       } = item
-      
+
     .iqdropdown-menu-option.js-iqdropdown-menu-option(
       data-id="item"+(index+1)
       data-name=name
@@ -137,7 +137,7 @@ mixin add-items(itemsArray)
       placeholder,
       hasButtons,
       isOpened,
-      isAlwaysOpened, 
+      isAlwaysOpened,
       maxCounts[],
       defaultCounts[],
       items[{name, defaultcount, maxcount, declensions[]}]

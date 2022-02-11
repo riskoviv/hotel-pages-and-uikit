@@ -1,7 +1,7 @@
 @import '@styles/constants.scss';
 
 .ui-kit-page {
-  
+
   &_grey {
     background-color: #F4F4F6;
   }
@@ -20,7 +20,7 @@
 
     @media (max-width: $tablet) {
       left: calc(50% - #{$iconSize} / 2);
-    }    
+    }
   }
 }
 

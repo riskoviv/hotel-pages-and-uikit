@@ -17,7 +17,7 @@
     font-family: $mainFontFamily;
     width: -moz-fit-content;
     width: fit-content;
-    
+
     & &-pages,
     & &-nav {
       float: none;
@@ -66,11 +66,11 @@
         line-height: 15px;
         background: transparent;
         color: $darkShade50;
-        
+
         &:hover {
           border-radius: 50%;
         }
-        
+
         &.material-icons {
           font-size: 24px;
           line-height: 20px;
@@ -87,5 +87,5 @@
       line-height: $mainLineHeight;
     }
   }
-  
+
 }

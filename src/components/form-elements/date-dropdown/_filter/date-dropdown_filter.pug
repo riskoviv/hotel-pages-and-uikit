@@ -6,12 +6,12 @@ include /common/control-container/control-container
         [yyyy, mm, dd],
         [yyyy, mm, dd],
       ]
-    } 
+    }
 mixin date-dropdown_filter(options = {})
   -
     const randID = Math.floor(Math.random() * (1 - 1000) + 1000)
     const { title, selectDate } = options
-    
+
   +control-container({
     title: title || "filter date dropdown",
   })

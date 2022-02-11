@@ -52,7 +52,7 @@
       'rules           cancel .';
     grid-template-columns: auto auto 1fr;
     gap: 30px 70px;
-    
+
     @media (max-width: $laptop) {
       grid-template-areas:
         'advantages impressions'

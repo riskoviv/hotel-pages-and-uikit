@@ -60,7 +60,7 @@ $lightBorder: 1px solid $darkShade10;
 
 %text-field-input-basic {
   @extend %input-basic;
-  
+
   &::placeholder {
     color: $darkShade25;
   }

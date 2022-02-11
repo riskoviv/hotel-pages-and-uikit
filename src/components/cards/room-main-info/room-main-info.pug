@@ -8,10 +8,10 @@ mixin room-main-info(options)
     } = options
     const thousands = Math.floor(price / 1000)
     const hundreds = price - (thousands * 1000)
-    
+
   .room-main-info
     .room-main-info__room-info
-      .room-main-info__room-number № 
+      .room-main-info__room-number №&nbsp;
         b.room-main-info__number(
           class=isSmall ? "room-main-info__number_small" : ""
         )= number

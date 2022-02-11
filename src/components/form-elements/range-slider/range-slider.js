@@ -24,9 +24,9 @@ if (slider && rangeSlider) {
       },
     },
   });
-  
+
   const rangeValues = document.querySelector('.range-slider__values');
-  
+
   slider.noUiSlider.on('update', function (values) {
     rangeValues.innerText = `${values[0]} - ${values[1]}`;
   });

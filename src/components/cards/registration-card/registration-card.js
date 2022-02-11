@@ -9,7 +9,7 @@ $(() => {
     $registrationCard.addClass(registrationHiddenClass);
     $signInCard.removeClass(signInHiddenClass);
   }
-  
+
   $signInButton.on('click', function () {
     showSignInCard();
   });

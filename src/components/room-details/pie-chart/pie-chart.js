@@ -4,7 +4,7 @@ $(() => {
   let colors = ['orange', 'green', 'purple', 'black'];
 
   const $pieInitElement = $('.pie-chart__pie');
-  
+
   if ($pieInitElement.length !== 0) {
     const whiteSpace = $pieInitElement.data('whitespace');
 
@@ -13,7 +13,7 @@ $(() => {
     };
 
     $pieInitElement.peity('donut');
-    
+
     const $peitySvg = $('.peity');
     const values = $($pieInitElement).data('values');
     const zeroIndexes = [];
@@ -50,7 +50,7 @@ $(() => {
           `;
         }).join('')}
       `;
-      
+
       const ns = 'http://www.w3.org/2000/svg';
       const $defs = $(document.createElementNS(ns, 'defs'));
       $defs.html(gradients);

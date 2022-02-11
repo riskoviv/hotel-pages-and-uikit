@@ -25,7 +25,7 @@ $color-codes: (
 
 .peity {
   transform: scaleX(-1);
-  
+
   &__whitespace {
     fill: white;
   }
@@ -56,7 +56,7 @@ $color-codes: (
     align-items: center;
     color: $purple;
     font-weight: $headingFontWeight;
-    
+
     &-number {
       font: {
         family: $headingFontFamily;

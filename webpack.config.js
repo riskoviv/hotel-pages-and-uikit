@@ -74,7 +74,8 @@ const cssLoaders = extra => {
 
 const initHTMLWebpackPlugin = (pagesObj) => {
   const inits = [];
-  for (let pagesSubdir in pagesObj) {
+
+  for (const pagesSubdir in pagesObj) {
     pagesObj[pagesSubdir].forEach((pageName) => {
       inits.push(new HTMLWebpackPlugin({
         template: `${PAGES_DIR}/${pagesSubdir}/${pageName.replace(/\.pug/, '')}/${pageName}`, // .pug
@@ -83,6 +84,7 @@ const initHTMLWebpackPlugin = (pagesObj) => {
       }));
     });
   }
+
   return inits;
 }
 
