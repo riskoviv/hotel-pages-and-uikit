@@ -75,10 +75,10 @@ const cssLoaders = (extra) => {
 const initHTMLWebpackPlugin = (pagesObj) => {
   const inits = [];
 
-  for (const pagesSubdir in pagesObj) {
-    pagesObj[pagesSubdir].forEach((pageName) => {
+  Object.entries(pagesObj).forEach(([subDirName, pageNames]) => {
+    pageNames.forEach((pageName) => {
       inits.push(new HTMLWebpackPlugin({
-        template: `${PAGES_DIR}/${pagesSubdir}/${pageName.replace(/\.pug/, '')}/${pageName}`, // .pug
+        template: `${PAGES_DIR}/${subDirName}/${pageName.replace(/\.pug/, '')}/${pageName}`, // .pug
         filename: `${PATHS.pages}/${pageName.replace(/\.pug/, '.html')}`, // .html
         favicon: `${PATHS.res}/images/favicon/favicon.svg`,
       }));

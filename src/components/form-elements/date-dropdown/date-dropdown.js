@@ -2,6 +2,14 @@ import 'air-datepicker';
 
 function datePickerInit(datepicker) {
   let onSelectCounter = 0;
+  let setCustomOptions;
+  let hideClearButton;
+  let showClearButton;
+  let printDates;
+  let saveDates;
+  let isFilter;
+  let $date1;
+  let $date2;
 
   // datepicker initialization
   $(datepicker).datepicker({
@@ -55,28 +63,28 @@ function datePickerInit(datepicker) {
     $(`.${calendarClass} .datepicker--nav-title`).prop('disabled', true);
   }
 
-  function setCustomOptions() {
+  setCustomOptions = () => {
     disableNavTitle();
     $(`.${calendarClass} .datepicker--nav-title`).addClass('heading-2');
     $calendarClearButton.addClass('button button_link button_clear');
-  }
+  };
 
-  function showClearButton() {
+  showClearButton = () => {
     $calendarClearButton.removeClass('button_hidden');
-  }
+  };
 
-  function hideClearButton() {
+  hideClearButton = () => {
     $calendarClearButton.addClass('button_hidden');
-  }
+  };
 
-  const isFilter = $(datepicker).hasClass('js-date-dropdown_filter__input');
+  isFilter = $(datepicker).hasClass('js-date-dropdown_filter__input');
 
-  const $date1 = $(datepicker.parentNode).find('.js-date-1');
-  const $date2 = $(datepicker.parentNode).find('.js-date-2');
+  $date1 = $(datepicker.parentNode).find('.js-date-1');
+  $date2 = $(datepicker.parentNode).find('.js-date-2');
   let savedDates = [];
   let savedDatesFilter = '';
 
-  function saveDates(selectedDates) {
+  saveDates = (selectedDates) => {
     if (isFilter) {
       savedDatesFilter = $(datepicker).val();
     } else {
@@ -91,9 +99,9 @@ function datePickerInit(datepicker) {
         $date2.val('');
       }
     }
-  }
+  };
 
-  function printDates() {
+  printDates = () => {
     if (!isFilter) {
       $(datepicker).val(savedDates);
       $date1.val(savedDates[0] || '');
@@ -101,7 +109,7 @@ function datePickerInit(datepicker) {
     } else {
       $(datepicker).val(savedDatesFilter);
     }
-  }
+  };
 
   setCustomOptions();
 
@@ -123,7 +131,10 @@ function getSelectedDates() {
     window.location.search
       .substring(1)
       .split('&')
-      .forEach((entry) => entries[entry.split('=')[0]] = entry.split('=')[1]);
+      .forEach((entry) => {
+        const [key, value] = entry.split('=');
+        entries[key] = value;
+      });
     if (entries.dates !== '') {
       const datesArray = decodeURIComponent(entries.dates)
         .split(',')
@@ -151,7 +162,7 @@ $(() => {
   if ($datepickerInputs.length === 1) {
     setSelectedDates($datepickerInputs[0]);
   }
-  $datepickerInputs.each(function () {
+  $datepickerInputs.each(function performDatePickersInits() {
     datePickerInit(this);
     const datePicker = $(this).datepicker().data('datepicker');
     const dates = $(this).data('selectDate');

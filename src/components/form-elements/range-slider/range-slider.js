@@ -4,7 +4,7 @@ import 'nouislider/distribute/nouislider.css';
 const rangeSlider = document.querySelector('.range-slider');
 const slider = document.querySelector('.range-slider__slider');
 
-if (slider && rangeSlider) {
+if (slider !== null && rangeSlider !== null) {
   const range = JSON.parse(rangeSlider.dataset.range);
   noUiSlider.create(slider, {
     range: {

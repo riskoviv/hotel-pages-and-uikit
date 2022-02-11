@@ -21,19 +21,27 @@ $(() => {
     const $activePage = $('.paginationjs-page.active');
     const $ellipsis = $('.paginationjs-ellipsis');
 
-    for (const pageNumber of $pageNumbers) {
+    $pageNumbers.each((i, pageNumber) => {
       const activePageNum = $activePage.data('num');
       const pageNumberNum = $(pageNumber).data('num');
-      const isPageNumNotIn2ClosestPagesFromActive = (pageNumberNum > activePageNum + 2 || pageNumberNum < activePageNum - 2)
-        && pageNumberNum !== 1 && pageNumberNum !== $paginationNumberLastNum;
-      if (isPageNumNotIn2ClosestPagesFromActive) { $(pageNumber).css('display', 'none'); }
-    }
+      const isPageNum2MorePagesAway = pageNumberNum > activePageNum + 2
+        || pageNumberNum < activePageNum - 2;
+      const isItNotFirstAndNotLastNum = pageNumberNum !== 1
+        && pageNumberNum !== $paginationNumberLastNum;
+
+      if (isPageNum2MorePagesAway && isItNotFirstAndNotLastNum) {
+        $(pageNumber).css('display', 'none');
+      }
+    });
+
     switch ($activePage.data('num')) {
       case 5:
         $ellipsis.clone().insertAfter('.paginationjs-page[data-num="1"]');
         break;
       case $paginationNumberLastNum - 4:
         $ellipsis.clone().insertBefore($('.paginationjs-page:last'));
+        break;
+      default:
         break;
     }
   }
@@ -44,12 +52,12 @@ $(() => {
     $paginator.pagination({
       dataSource(done) {
         const result = [];
-        for (let i = 1; i <= 180; i++) {
+        for (let i = 1; i <= 180; i += 1) {
           result.push(i);
         }
         done(result);
       },
-      callback(data, pagination) {
+      callback(data) {
         // template method of yourself
         const html = simpleTemplating(data);
         $('.page-content').html(html);
@@ -65,7 +73,7 @@ $(() => {
         addMaterialIconsClassToArrows();
         removeExcessPageNumbers();
         const navData = $('.paginationjs-nav').text().split(',');
-        if (navData[0] == $paginationNumberLastNum) {
+        if (navData[0] === $paginationNumberLastNum) {
           $('.paginationjs-nav').text(
             `${navData[0] * 12 - 11} - ${navData[1]}
             из ${(navData[1]) >= 100 ? '100+' : navData[1]}

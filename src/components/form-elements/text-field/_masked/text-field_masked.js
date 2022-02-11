@@ -1,18 +1,18 @@
 const $maskedInput = $('.js-text-field__input_masked');
 
-    switch (key) {
-      case 'Backspace':
-      case 'Delete':
-      case 'ArrowRight':
-      case 'ArrowLeft':
-        return true;
-    }
 $maskedInput.on('keydown', (event) => {
   const { key } = event;
   if (key >= 0 && key <= 9) return true;
 
+  switch (key) {
+    case 'Backspace':
+    case 'Delete':
+    case 'ArrowRight':
+    case 'ArrowLeft':
+      return true;
+    default:
+      return false;
   }
-  return false;
 });
 
 $maskedInput.on('keyup', (event) => {
