@@ -11,9 +11,11 @@
   padding: 120px 0;
 
   &__row {
-    grid-row: auto;
     margin: 0 auto;
-    padding: 0 10px;
+
+    &_copyright {
+      padding: 0 10px;
+    }
   }
 
   @media (min-width: 769px) {

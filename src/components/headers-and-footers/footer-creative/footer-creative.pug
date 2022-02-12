@@ -4,8 +4,9 @@ include /headers-and-footers/social-icons/social-icons
 mixin footer-creative
   footer.footer-creative
     .footer-creative__row
-      +logo-full
-    .footer-creative__row
+      a.footer-creative__main-page-link(href="landing.html")
+        +logo-full
+    .footer-creative__row_copyright
       | Copyright © 2018 Toxin отель. Все права зачищены.
     .footer-creative__row
       +social-icons
