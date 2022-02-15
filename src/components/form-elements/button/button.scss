@@ -67,6 +67,8 @@
     max-width: 320px;
     width: 100%;
     position: relative;
+    overflow: hidden;
+    padding: 0 30px;
 
     &::after {
       position: absolute;
