@@ -3,6 +3,7 @@ include /common/control-container/control-container
 //- options: {
       type: "string",
       placeholder: "string",
+      cardType: "string" ("sign-in" | "registration")
       isMasked: boolean,
       isSubscription: boolean,
       isForceHoverStyle: boolean,
@@ -13,6 +14,7 @@ mixin text-field(options)
     const {
       type,
       placeholder,
+      cardType,
       isMasked,
       isSubscription,
       isForceHoverStyle,
@@ -25,6 +27,31 @@ mixin text-field(options)
     inputModifierClassName += isSubscription ? " text-field__input_subscription" : ""
     inputModifierClassName += isForceHoverStyle ? " text-field__input_force-focus-hover" : ""
 
+    let autocomplete = '';
+    switch (type) {
+      case 'password':
+        switch (cardType) {
+          case 'sign-in':
+            autocomplete = 'current-password';
+            break;
+          case 'registration':
+            autocomplete = 'new-password';
+            break;
+        }
+        break;
+      case 'email':
+        autocomplete = 'email';
+        break;
+    }
+    switch (placeholder) {
+      case 'Имя':
+        autocomplete = 'given-name';
+        break;
+      case 'Фамилия':
+        autocomplete = 'family-name';
+        break;
+    }
+
   .text-field(
     class=isSubscription ? "text-field_subscription" : ""
   )
@@ -32,6 +59,7 @@ mixin text-field(options)
       class=inputModifierClassName
       type=isSubscription ? "email" : type || "text"
       placeholder=isSubscription ? "Email" : isMasked ? "ДД.ММ.ГГГГ" : placeholder
+      autocomplete=autocomplete
       value=value
       maxlength=isMasked ? "10" : ""
     )
