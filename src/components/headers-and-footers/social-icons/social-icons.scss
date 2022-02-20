@@ -5,6 +5,10 @@
   grid-template-columns: repeat(3, 24px);
   column-gap: 20px;
 
+  &__link {
+    text-decoration: none;
+  }
+
   &__icon {
     grid-column: auto;
     font-family: 'Font awesome';
