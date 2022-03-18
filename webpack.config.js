@@ -174,7 +174,7 @@ module.exports = {
         use: cssLoaders(),
       },
       {
-        test: /\.s[ac]ss$/,
+        test: /\.scss$/,
         use: cssLoaders('sass-loader'),
       },
       {
