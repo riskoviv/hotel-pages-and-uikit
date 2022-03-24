@@ -20,7 +20,7 @@ if (slider !== null && rangeSlider !== null) {
         return `${val}₽`;
       },
       from(value) {
-        return Number(value.replace('₽', ''));
+        return Number(value.replace(/[\s₽]/g, ''));
       },
     },
   });
