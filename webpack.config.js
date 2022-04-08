@@ -142,14 +142,14 @@ module.exports = {
   optimization: optimization(),
   devServer: {
     contentBase: './dist',
-    port: 4200,
+    port: 4201,
     hot: isDev,
     openPage: [
       // `${PATHS.pages}/colors-and-type.html`,
-      // `${PATHS.pages}/form-elements.html`,
+      `${PATHS.pages}/form-elements.html`,
       // `${PATHS.pages}/cards.html`,
       // `${PATHS.pages}/headers-and-footers.html`,
-      `${PATHS.pages}/landing.html`,
+      // `${PATHS.pages}/landing.html`,
       // `${PATHS.pages}/search-room.html`,
       // `${PATHS.pages}/room-details.html`,
       // `${PATHS.pages}/registration-and-sign-in.html`,
