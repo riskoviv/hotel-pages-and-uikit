@@ -16,8 +16,15 @@ if (slider !== null && rangeSlider !== null) {
     step: 1000,
     format: {
       to(value) {
-        const val = value ? (`${value / 1000} 000`) : 0;
-        return `${val}₽`;
+        const fixedValue = value.toFixed(0);
+        const fixedNumberValue = Number(fixedValue);
+        if (fixedNumberValue === '0') return '0₽';
+        if (fixedNumberValue < 1e3) return `${fixedValue}₽`;
+        const millions = fixedNumberValue >= 1e6 ? fixedValue.slice(0, -6) : '';
+        const thousands = fixedValue.slice(-6, -3);
+        const units = fixedValue.slice(-3);
+        const spacedValue = [millions, thousands, units].join(' ').trim();
+        return `${spacedValue}₽`;
       },
       from(value) {
         return Number(value.replace(/[\s₽]/g, ''));
