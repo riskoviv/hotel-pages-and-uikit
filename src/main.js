@@ -1,5 +1,5 @@
-/* eslint-disable no-undef */
 import 'normalize.css';
+// eslint-disable-next-line import/no-unresolved
 import '@styles/global.scss';
 
 function requireAll(requireContext) {

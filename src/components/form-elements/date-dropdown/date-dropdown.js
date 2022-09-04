@@ -28,7 +28,8 @@ function datePickerInit(datepicker) {
     onSelect(formattedDate) {
       onSelectCounter += 1;
       saveDates(formattedDate);
-      const isDateSelectedManually = ($(datepicker).data('selectDate') !== '' && onSelectCounter > 2)
+      const isDateSelectedManually = ($(datepicker).data('selectDate') !== ''
+        && onSelectCounter > 2)
         || $(datepicker).data('selectDate') === undefined;
       if (isDateSelectedManually) {
         $(datepicker).val('');
