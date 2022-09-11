@@ -1,6 +1,6 @@
 const $maskedInput = $('.js-text-field__input_masked');
 
-$maskedInput.on('keydown', (event) => {
+const maskedInputKeydownHandler = (event) => {
   const { key } = event;
   const keyIsNumber = !Number.isNaN(parseInt(key, 10));
   if (keyIsNumber) return true;
@@ -14,7 +14,9 @@ $maskedInput.on('keydown', (event) => {
     default:
       return false;
   }
-});
+};
+
+$maskedInput.on('keydown', maskedInputKeydownHandler);
 
 const getDatePartsArray = (sourceValue) => {
   const numbersOnlyValue = sourceValue.replaceAll(/\D/g, '');
@@ -96,8 +98,10 @@ const fixDate = (sourceValue) => {
   return `${day}.${month}.${year}`;
 };
 
-$maskedInput.on('input', (event) => {
+const maskedInputInputHandler = (event) => {
   const { target } = event;
   const { value } = target;
   target.value = fixDate(value);
-});
+};
+
+$maskedInput.on('input', maskedInputInputHandler);
