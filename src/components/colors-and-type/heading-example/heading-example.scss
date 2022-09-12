@@ -12,23 +12,25 @@
     max-width: 301px;
   }
 
-  &_type_h1 {
-    font-size: 24px;
-    line-height: 30px;
-  }
-  &_type_h2 {
-    font-size: 19px;
-    line-height: 24px;
-  }
-  &_type_h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
-    line-height: 15px;
-    text-transform: uppercase;
-  }
-  &_type_body {
-    font: $mainFontStyle $mainFontWeight $mainFontSize/$mainLineHeight $mainFontFamily;
-    color: $mainFontColor;
+  &_type {
+    &_h1 {
+      font-size: 24px;
+      line-height: 30px;
+    }
+    &_h2 {
+      font-size: 19px;
+      line-height: 24px;
+    }
+    &_h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      line-height: 15px;
+      text-transform: uppercase;
+    }
+    &_body {
+      font: $mainFontStyle $mainFontWeight $mainFontSize/$mainLineHeight $mainFontFamily;
+      color: $mainFontColor;
+    }
   }
 
   &__text-type {
