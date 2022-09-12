@@ -1,6 +1,7 @@
 include /cards/card-container/card-container
 include /form-elements/text-field/text-field
-include /form-elements/button/button
+include /form-elements/button/_type/_wide/button_type_wide
+include /form-elements/button/_type/_bordered/button_type_bordered
 
 mixin sign-in-card
   .sign-in-card
@@ -19,12 +20,12 @@ mixin sign-in-card
             cardType: "sign-in",
           })
         .sign-in-card__submit-button
-          +button_wide({
+          +button_type_wide({
             caption: "войти",
           })
       .sign-in-card__registration-block
         span.sign-in-card__registration-text Нет аккаунта на Toxin?
         .sign-in-card__registration-button.js-sign-in-card__registration-button
-          +button_bordered({
+          +button_type_bordered({
             caption: "создать",
           })

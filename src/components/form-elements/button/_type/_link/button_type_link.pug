@@ -1,0 +1,10 @@
+//- options: {
+      caption: "string",
+      isClear: boolean
+    }
+mixin button_type_link(options)
+  - const { isClear, caption } = options
+
+  a.button.button_type_link(
+    class=isClear ? "button_clear" : ""
+  )= caption

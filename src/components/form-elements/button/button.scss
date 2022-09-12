@@ -15,74 +15,13 @@
   white-space: nowrap;
   user-select: none;
 
-  &_filled {
-    background: $primaryGradient;
-    color: #fff;
-    padding: 0 20px;
 
-    &:hover,
-    &.button_force-hover {
-      opacity: 0.5;
-    }
-  }
-
-  &_bordered {
-    background: $primaryGradient;
-    padding: 2px;
-
-    &__body {
-      width: 100%;
-      height: 100%;
-      padding: 0 18px;
-      background-color: #fff;
-      color: $purple;
-    }
-
-    &:hover,
-    &.button_force-hover {
-      background: linear-gradient(180deg, rgba($purple, 0.5) 0%, rgba(#8BA4F9, 0.5) 100%);
-    }
-  }
-
-  &_link {
-    max-width: -moz-fit-content;
-    max-width: fit-content;
-    width: auto;
-    color: $purple;
-    border-radius: 0;
-    background-color: transparent;
-    height: auto;
-  }
-
-  &_clear {
+  &.button_clear {
     color: $darkShade50;
   }
 
   &_hidden {
     visibility: hidden;
-  }
-
-  &_wide {
-    max-width: 320px;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    padding: 0 30px;
-
-    &::after {
-      position: absolute;
-      content: 'arrow_forward';
-      font-family: 'Material Icons';
-      top: 0;
-      right: 0;
-      width: $inputSize;
-      height: $inputSize;
-      font-size: 24px;
-      font-weight: $mainFontWeight;
-      line-height: 1;
-      text-transform: none;
-      padding: 10px;
-    }
   }
 
   &_small {

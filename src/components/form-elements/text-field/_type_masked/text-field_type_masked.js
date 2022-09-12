@@ -1,4 +1,4 @@
-const $maskedInput = $('.js-text-field__input_masked');
+const $maskedInput = $('.js-text-field__input_type_masked');
 
 const maskedInputKeydownHandler = (event) => {
   const { key } = event;

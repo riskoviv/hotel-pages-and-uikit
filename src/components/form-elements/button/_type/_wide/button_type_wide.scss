@@ -1,0 +1,24 @@
+@import '@styles/constants.scss';
+
+.button.button_type_wide {
+  max-width: 320px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: 0 30px;
+
+  &::after {
+    position: absolute;
+    content: 'arrow_forward';
+    font-family: 'Material Icons';
+    top: 0;
+    right: 0;
+    width: $inputSize;
+    height: $inputSize;
+    font-size: 24px;
+    font-weight: $mainFontWeight;
+    line-height: 1;
+    text-transform: none;
+    padding: 10px;
+  }
+}

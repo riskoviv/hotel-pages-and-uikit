@@ -18,7 +18,10 @@ block content
   include /form-elements/like-button/like-button
   include /form-elements/rate-button/rate-button
   include /form-elements/range-slider/range-slider
-  include /form-elements/button/button
+  include /form-elements/button/_type/_filled/button_type_filled
+  include /form-elements/button/_type/_bordered/button_type_bordered
+  include /form-elements/button/_type/_link/button_type_link
+  include /form-elements/button/_type/_wide/button_type_wide
   include /form-elements/pagination/pagination
   include /form-elements/dropdown/dropdown
   include /form-elements/expandable-checkbox-list/expandable-checkbox-list
@@ -161,30 +164,30 @@ block content
       })
         .form-elements__buttons-grid
           .form-elements__button
-            +button_filled({
+            +button_type_filled({
               caption: "click me",
             })
           .form-elements__button
-            +button_filled({
+            +button_type_filled({
               caption: "click me",
               isForceHover: true,
             })
           .form-elements__button
-            +button_bordered({
+            +button_type_bordered({
               caption: "click me",
             })
           .form-elements__button
-            +button_bordered({
+            +button_type_bordered({
               caption: "click me",
               isForceHover: true,
             })
         .form-elements__button-link-group
           .form-elements__button-link
-            +button_link({ caption: "click me", })
+            +button_type_link({ caption: "click me", })
           .form-elements__button-link
-            +button_link({ caption: "click me", isClear: true, })
+            +button_type_link({ caption: "click me", isClear: true, })
         .form-elements__button-wide
-          +button_wide({ caption: "Перейти к оплате", })
+          +button_type_wide({ caption: "Перейти к оплате", })
     .form-elements__pagination
       h3.pagination__title pagination
       +pagination

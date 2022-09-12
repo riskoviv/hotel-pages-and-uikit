@@ -7,7 +7,6 @@ block variables
     const roomsList = require("./rooms")
 
 block content
-  include /form-elements/button/button
   include /common/control-container/control-container
   include /form-elements/date-dropdown/date-dropdown
   include /form-elements/date-dropdown/_filter/date-dropdown_filter
@@ -42,7 +41,7 @@ block content
           title: "диапазон цены",
           range: [0, 16000],
           start: [5000, 10000],
-          description: "cтоимость за сутки пребывания в номере",
+          description: "стоимость за сутки пребывания в номере",
         })
       .search-room__filter-component
         +control-container({
