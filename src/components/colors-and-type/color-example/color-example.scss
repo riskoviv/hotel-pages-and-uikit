@@ -12,23 +12,25 @@
     border-radius: 6px;
     margin-right: 40px;
 
-    &_color_ds-75 {
-      background-color: $darkShade75;
-    }
-    &_color_ds-50 {
-      background-color: $darkShade50;
-    }
-    &_color_ds-25 {
-      background-color: $darkShade25;
-    }
-    &_color_ds-5 {
-      background-color: $darkShade5;
-    }
-    &_color_purple {
-      background-color: $purple;
-    }
-    &_color_green {
-      background-color: $green;
+    &_color {
+      &_ds-75 {
+        background-color: $darkShade75;
+      }
+      &_ds-50 {
+        background-color: $darkShade50;
+      }
+      &_ds-25 {
+        background-color: $darkShade25;
+      }
+      &_ds-5 {
+        background-color: $darkShade5;
+      }
+      &_purple {
+        background-color: $purple;
+      }
+      &_green {
+        background-color: $green;
+      }
     }
   }
 

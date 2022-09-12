@@ -3,7 +3,8 @@ include /common/control-container/control-container
 include /form-elements/text-field/text-field
 include /form-elements/radio/radio
 include /form-elements/toggle/toggle
-include /form-elements/button/button
+include /form-elements/button/_type/_wide/button_type_wide
+include /form-elements/button/_type/_bordered/button_type_bordered
 
 mixin registration-card
   .registration-card
@@ -59,12 +60,12 @@ mixin registration-card
         .registration-card__toggle
           +toggle({})
         .registration-card__submit-button
-          +button_wide({
+          +button_type_wide({
             caption: "перейти к оплате",
           })
       .registration-card__sign-in-block
         span.registration-card__sign-in-text Уже есть аккаунт на Toxin
         .registration-card__sign-in-button.js-registration-card__sign-in-button
-          +button_bordered({
+          +button_type_bordered({
             caption: "войти",
           })

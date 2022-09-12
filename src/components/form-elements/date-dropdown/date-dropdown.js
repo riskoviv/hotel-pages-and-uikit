@@ -67,7 +67,7 @@ function datePickerInit(datepicker) {
   setCustomOptions = () => {
     disableNavTitle();
     $(`.${calendarClass} .datepicker--nav-title`).addClass('heading-2');
-    $calendarClearButton.addClass('button button_link button_clear');
+    $calendarClearButton.addClass('button button_type_link button_clear');
   };
 
   showClearButton = () => {
@@ -117,7 +117,7 @@ function datePickerInit(datepicker) {
   const myDatepicker = $(datepicker).datepicker().data('datepicker');
 
   $(`.${calendarClass} .datepicker--buttons`)
-    .append('<button class="button button_link">Применить</button>');
+    .append('<button class="button button_type_link">Применить</button>');
   $(`.${calendarClass} .datepicker--buttons > button`)
     .on('click', () => {
       printDates();

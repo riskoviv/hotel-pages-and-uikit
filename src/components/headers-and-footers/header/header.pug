@@ -1,5 +1,6 @@
 include /common/logo/logo
-include /form-elements/button/button
+include /form-elements/button/_type/_bordered/button_type_bordered
+include /form-elements/button/_type/_filled/button_type_filled
 
 mixin header(options = {})
   -
@@ -56,7 +57,7 @@ mixin header(options = {})
         .header__buttons
           .header__sign-in-button
             a.header__sign-in-link(href="registration-and-sign-in.html?page=sign-in")
-              +button_bordered({ caption: 'Войти', isSmall: true })
+              +button_type_bordered({ caption: 'Войти', isSmall: true })
           .header__register-button
             a.header__registration-link(href="registration-and-sign-in.html?page=registration")
-              +button_filled({ caption: 'Зарегистрироваться', isSmall: true })
+              +button_type_filled({ caption: 'Зарегистрироваться', isSmall: true })

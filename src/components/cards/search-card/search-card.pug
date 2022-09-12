@@ -1,7 +1,7 @@
 include /cards/card-container/card-container
 include /form-elements/date-dropdown/date-dropdown
 include /form-elements/dropdown/dropdown
-include /form-elements/button/button
+include /form-elements/button/_type/_wide/button_type_wide
 
 mixin search-card
   .search-card
@@ -20,6 +20,6 @@ mixin search-card
             title: "Гости",
           })
         .search-card__submit-button
-          +button_wide({
+          +button_type_wide({
             caption: "подобрать номер",
           })

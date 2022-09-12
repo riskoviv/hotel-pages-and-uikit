@@ -216,7 +216,7 @@ function initIqDropdown(dropdown) {
   // Если есть блок с кнопками "очистить" и "применить", создать обработчики нажатий
   if ($(`#${dropdown.id} .js-iqdropdown__controls`).length > 0) {
     $(`#${dropdown.id} .js-button_clear`).on('click', clearFn);
-    $(`#${dropdown.id} .js-button_link`).on('click', applyFn);
+    $(`#${dropdown.id} .js-button_type_link`).on('click', applyFn);
   }
 }
 
@@ -243,8 +243,8 @@ function toggleDropDown(event) {
   const currentDropdown = target.closest('.js-iqdropdown');
   const dropdownMenu = target.closest('.js-iqdropdown-menu');
   const dropdownControls = target.closest('.js-iqdropdown__controls');
-  const applyButton = target.closest('.js-button_link');
-  const clearButton = target.closest('.js-button_link_clear');
+  const applyButton = target.closest('.js-button_type_link');
+  const clearButton = target.closest('.js-button_clear');
 
   const closeNotAlwaysOpenedDropdowns = () => {
     $openedDropdowns.each(function closeDropdowns() {

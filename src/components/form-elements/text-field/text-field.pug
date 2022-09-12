@@ -23,8 +23,8 @@ mixin text-field(options)
     let inputModifierClassName = "text-field"
 
     inputModifierClassName += isMasked
-      ? " text-field__input_masked js-text-field__input_masked" : ""
-    inputModifierClassName += isSubscription ? " text-field__input_subscription" : ""
+      ? " text-field__input_type_masked js-text-field__input_type_masked" : ""
+    inputModifierClassName += isSubscription ? " text-field__input_type_subscription" : ""
     inputModifierClassName += isForceHoverStyle ? " text-field__input_force-focus-hover" : ""
 
     let autocomplete = '';
@@ -53,9 +53,9 @@ mixin text-field(options)
     }
 
   .text-field(
-    class=isSubscription ? "text-field_subscription" : ""
+    class=isSubscription ? "text-field_type_subscription" : ""
   )
-    input.text-field__input.js-text-field__input(
+    input.text-field__input(
       class=inputModifierClassName
       type=isSubscription ? "email" : type || "text"
       placeholder=isSubscription ? "Email" : isMasked ? "ДД.ММ.ГГГГ" : placeholder
@@ -64,4 +64,4 @@ mixin text-field(options)
       maxlength=isMasked ? "10" : ""
     )
     if isSubscription
-      button.text-field_subscription__arrow.material-icons(type="button") arrow_forward
+      button.text-field_type_subscription__arrow.material-icons(type="button") arrow_forward

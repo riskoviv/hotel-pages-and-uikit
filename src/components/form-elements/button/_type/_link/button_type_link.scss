@@ -1,0 +1,11 @@
+@import '@styles/constants.scss';
+
+.button.button_type_link {
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  width: auto;
+  color: $purple;
+  border-radius: 0;
+  background-color: transparent;
+  height: auto;
+}

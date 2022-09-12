@@ -1,0 +1,13 @@
+//- options: {
+      caption: "string",
+      isSmall: boolean,
+      isForceHover: boolean,
+    }
+mixin button_type_filled(options)
+  - const { isSmall, isForceHover, caption} = options
+
+  button.button.button_type_filled(
+    type="button"
+    class=isSmall ? "button_small" : ""
+    class=isForceHover ? "button_force-hover" : ""
+  )= caption

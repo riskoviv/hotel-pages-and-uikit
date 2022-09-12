@@ -1,0 +1,12 @@
+@import '@styles/constants.scss';
+
+.button.button_type_filled {
+  background: $primaryGradient;
+  color: #fff;
+  padding: 0 20px;
+
+  &:hover,
+  &.button_force-hover {
+    opacity: 0.5;
+  }
+}

@@ -2,7 +2,7 @@ include /cards/card-container/card-container
 include /common/control-container/control-container
 include /form-elements/date-dropdown/date-dropdown
 include /form-elements/dropdown/dropdown
-include /form-elements/button/button
+include /form-elements/button/_type/_wide/button_type_wide
 include /cards/room-main-info/room-main-info
 
 mixin booking-card(options)
@@ -39,6 +39,6 @@ mixin booking-card(options)
           span.booking-card__total-line
           span.booking-card__total-price 38&nbsp;081₽
         .booking-card__submit-button
-          +button_wide({
+          +button_type_wide({
             caption: "забронировать",
           })
