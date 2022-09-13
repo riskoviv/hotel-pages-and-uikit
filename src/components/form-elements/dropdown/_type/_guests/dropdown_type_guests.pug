@@ -1,0 +1,54 @@
+include ../../dropdown
+
+mixin dropdown_type_guests(options = {})
+  -
+    const {
+      title,
+      state,
+      type,
+      placeholder,
+      hasButtons,
+      isOpened,
+      isAlwaysOpened,
+      maxCounts,
+      defaultCounts,
+      items,
+    } = options
+
+  +dropdown({
+    title,
+    state,
+    type: "guests",
+    placeholder: placeholder || "Сколько гостей",
+    hasButtons: true,
+    isOpened,
+    isAlwaysOpened,
+    defaultCounts,
+    items: items || [
+      {
+        name: "взрослые",
+        defaultCount: defaultCounts ? defaultCounts[0] : "0",
+        maxCount: maxCounts ? maxCounts[0] : "Infinity",
+        declensions: [
+          "гость",
+          "гостя",
+          "гостей"
+        ]
+      },
+      {
+        name: "дети",
+        defaultCount: defaultCounts ? defaultCounts[1] : "0",
+        maxCount: maxCounts ? maxCounts[1] : "Infinity"
+      },
+      {
+        name: "младенцы",
+        defaultCount: defaultCounts ? defaultCounts[2] : "0",
+        maxCount: maxCounts ? maxCounts[2] : "Infinity",
+        declensions: [
+          "младенец",
+          "младенца",
+          "младенцев"
+        ]
+      }
+    ]
+  })

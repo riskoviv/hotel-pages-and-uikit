@@ -9,7 +9,8 @@ block variables
 block content
   include /common/control-container/control-container
   include /form-elements/text-field/text-field
-  include /form-elements/dropdown/dropdown
+  include /form-elements/dropdown/_type/_guests/dropdown_type_guests
+  include /form-elements/dropdown/_type/_preferences/dropdown_type_preferences
   include /form-elements/date-dropdown/date-dropdown
   include /form-elements/date-dropdown/_filter/date-dropdown_filter
   include /form-elements/checkbox/checkbox
@@ -54,7 +55,7 @@ block content
           isForceHoverStyle: true,
         })
     .form-elements__control
-      +dropdown-guests({
+      +dropdown_type_guests({
         title: "dropdown",
         state: "default",
       })
@@ -198,14 +199,14 @@ block content
   //- LEFT BLOCK
   section.form-elements__column
     .form-elements__dropdown_narrow
-      +dropdown-preferences({
+      +dropdown_type_preferences({
         title: "dropdown",
         state: "default",
         hasButtons: false,
         defaultCounts: [2, 2, 0],
       })
     .form-elements__dropdown_narrow.form-elements__dropdown_narrow_opened
-      +dropdown-preferences({
+      +dropdown_type_preferences({
         title: "dropdown",
         state: "expanded",
         isOpened: true,
@@ -215,7 +216,7 @@ block content
   //- MIDDLE BLOCK
   section.form-elements__column
     .form-elements__dropdown_opened
-      +dropdown-guests({
+      +dropdown_type_guests({
         title: "dropdown",
         isOpened: true,
         isAlwaysOpened: true,
@@ -223,7 +224,7 @@ block content
   //- RIGHT BLOCK
   section.form-elements__column
     .form-elements__dropdown_opened
-      +dropdown-guests({
+      +dropdown_type_guests({
         title: "dropdown",
         isOpened: true,
         isAlwaysOpened: true,

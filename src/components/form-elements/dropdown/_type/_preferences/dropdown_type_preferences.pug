@@ -1,0 +1,59 @@
+include ../../dropdown
+
+mixin dropdown_type_preferences(options = {})
+  -
+    const {
+      title,
+      state,
+      type,
+      placeholder,
+      hasButtons,
+      isOpened,
+      isAlwaysOpened,
+      maxCounts,
+      defaultCounts,
+      items,
+    } = options
+
+  +dropdown({
+    title,
+    state,
+    type: "preferences",
+    placeholder: placeholder || "Выберите удобства",
+    hasButtons: false,
+    isOpened,
+    isAlwaysOpened,
+    defaultCounts,
+    items: items || [
+      {
+        name: "Спальни",
+        defaultCount: defaultCounts ? defaultCounts[0] : "0",
+        maxCount: maxCounts ? maxCounts[0] : "10",
+        declensions: [
+          "спальня",
+          "спальни",
+          "спален"
+        ]
+      },
+      {
+        name: "Кровати",
+        defaultCount: defaultCounts ? defaultCounts[1] : "0",
+        maxCount: maxCounts ? maxCounts[1] : "5",
+        declensions: [
+          "кровать",
+          "кровати",
+          "кроватей"
+        ]
+      },
+      {
+        name: "Ванные комнаты",
+        defaultCount: defaultCounts ? defaultCounts[2] : "0",
+        maxCount: maxCounts ? maxCounts[2] : "4",
+        declensions: [
+          "ванная комната",
+          "ванные комнаты",
+          "ванных комнат"
+        ]
+      }
+    ]
+  })

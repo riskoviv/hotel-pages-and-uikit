@@ -1,6 +1,6 @@
 include /cards/card-container/card-container
 include /form-elements/date-dropdown/date-dropdown
-include /form-elements/dropdown/dropdown
+include /form-elements/dropdown/_type/_guests/dropdown_type_guests
 include /form-elements/button/_type/_wide/button_type_wide
 
 mixin search-card
@@ -16,7 +16,7 @@ mixin search-card
             title2: "Выезд",
           })
         .search-card__dropdown
-          +dropdown-guests({
+          +dropdown_type_guests({
             title: "Гости",
           })
         .search-card__submit-button

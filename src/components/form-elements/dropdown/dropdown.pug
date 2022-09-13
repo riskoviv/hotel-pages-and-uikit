@@ -1,130 +1,21 @@
 include /common/control-container/control-container
 
-mixin dropdown-guests(options = {})
-  -
-    const {
-      title,
-      state,
-      type,
-      placeholder,
-      hasButtons,
-      isOpened,
-      isAlwaysOpened,
-      maxCounts,
-      defaultCounts,
-      items,
-    } = options
-
-  +dropdown({
-    title,
-    state,
-    type: "guests",
-    placeholder: placeholder || "Сколько гостей",
-    hasButtons: true,
-    isOpened,
-    isAlwaysOpened,
-    defaultCounts,
-    items: items || [
-      {
-        name: "взрослые",
-        defaultcount: defaultCounts ? defaultCounts[0] : "0",
-        maxcount: maxCounts ? maxCounts[0] : "Infinity",
-        declensions: [
-          "гость",
-          "гостя",
-          "гостей"
-        ]
-      },
-      {
-        name: "дети",
-        defaultcount: defaultCounts ? defaultCounts[1] : "0",
-        maxcount: maxCounts ? maxCounts[1] : "Infinity"
-      },
-      {
-        name: "младенцы",
-        defaultcount: defaultCounts ? defaultCounts[2] : "0",
-        maxcount: maxCounts ? maxCounts[2] : "Infinity",
-        declensions: [
-          "младенец",
-          "младенца",
-          "младенцев"
-        ]
-      }
-    ]
-  })
-mixin dropdown-preferences(options = {})
-  -
-    const {
-      title,
-      state,
-      type,
-      placeholder,
-      hasButtons,
-      isOpened,
-      isAlwaysOpened,
-      maxCounts,
-      defaultCounts,
-      items,
-    } = options
-
-  +dropdown({
-    title,
-    state,
-    type: "preferences",
-    placeholder: placeholder || "Выберите удобства",
-    hasButtons: false,
-    isOpened,
-    isAlwaysOpened,
-    defaultCounts,
-    items: items || [
-      {
-        name: "Спальни",
-        defaultcount: defaultCounts ? defaultCounts[0] : "0",
-        maxcount: maxCounts ? maxCounts[0] : "10",
-        declensions: [
-          "спальня",
-          "спальни",
-          "спален"
-        ]
-      },
-      {
-        name: "Кровати",
-        defaultcount: defaultCounts ? defaultCounts[1] : "0",
-        maxcount: maxCounts ? maxCounts[1] : "5",
-        declensions: [
-          "кровать",
-          "кровати",
-          "кроватей"
-        ]
-      },
-      {
-        name: "Ванные комнаты",
-        defaultcount: defaultCounts ? defaultCounts[2] : "0",
-        maxcount: maxCounts ? maxCounts[2] : "4",
-        declensions: [
-          "ванная комната",
-          "ванные комнаты",
-          "ванных комнат"
-        ]
-      }
-    ]
-  })
-
+//- helper mixin, used only in this file
 mixin add-items(itemsArray)
   each item, index in itemsArray
     -
       const {
         name,
-        defaultcount,
-        maxcount,
+        defaultCount,
+        maxCount,
         declensions,
       } = item
 
     .iqdropdown-menu-option.js-iqdropdown-menu-option(
       data-id="item"+(index+1)
       data-name=name
-      data-defaultcount=defaultcount || "0"
-      data-maxcount=maxcount
+      data-defaultcount=defaultCount || "0"
+      data-maxcount=maxCount
       data-declensions=declensions || ""
     )
       div
@@ -140,7 +31,7 @@ mixin add-items(itemsArray)
       isAlwaysOpened,
       maxCounts[],
       defaultCounts[],
-      items[{name, defaultcount, maxcount, declensions[]}]
+      items[{name, defaultCount, maxCount, declensions[]}]
     }
 mixin dropdown(options = {})
   -
@@ -166,7 +57,7 @@ mixin dropdown(options = {})
     )
     .iqdropdown.js-iqdropdown(
       id=`dd-${randID}`
-      class=type ? `iqdropdown_${type} js-iqdropdown_${type}` : ""
+      class=type ? `iqdropdown_type_${type} js-iqdropdown_type_${type}` : ""
       data-placeholder=placeholder
       class=isOpened ? "menu-open" : ""
       data-always-opened=isAlwaysOpened ? "true" : ""
