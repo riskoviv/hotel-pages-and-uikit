@@ -57,6 +57,7 @@ mixin footer
         .footer__social
           +social-icons
 
+//- helper mixin, used only in this file
 mixin footer-menu(title, items)
   .footer-menu
     h3.footer-menu__title= title
@@ -64,5 +65,5 @@ mixin footer-menu(title, items)
       each item in items
         li.footer-menu__item
           a.footer-menu__link(
-            href=item.href || "#"
+            href=item.href || "/mock-address/change-me"
           )= item.title

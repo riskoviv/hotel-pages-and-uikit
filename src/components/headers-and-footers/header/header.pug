@@ -42,12 +42,12 @@ mixin header(options = {})
             class=(item.name == currentPage) ? "header__menu-item_active" : ""
             class=item.isExpandable ? "header__menu-item_expandable" : ""
           )
-            a.header__menu-link(href=item.link || "#")= item.title
+            a.header__menu-link(href=item.link || "/mock-address/change-me")= item.title
             if item.submenu
               ul.header__submenu
                 each subitem in item.submenu
                   li.header__subitem
-                    a.header__sublink(href=subitem.link || "#")= subitem.title
+                    a.header__sublink(href=subitem.link || "/mock-address/change-me")= subitem.title
 
       if isLoggedIn
         .header__user-name-container
