@@ -23,14 +23,6 @@ $color-codes: (
   }
 }
 
-.peity {
-  transform: scaleX(-1);
-
-  &__whitespace {
-    fill: white;
-  }
-}
-
 .pie-chart {
   display: flex;
   flex-wrap: wrap;

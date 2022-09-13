@@ -1,6 +1,7 @@
 mixin pie-chart(options = {})
   -
     let { values = [0, 0, 0, 0] } = options;
+    values.reverse();
     const totalCount = values.reduce((sum, current) => {
       return sum + current;
     });
@@ -14,9 +15,8 @@ mixin pie-chart(options = {})
 
   .pie-chart
     .pie-chart__container
-      span.pie-chart__pie(
+      span.pie-chart__pie.js-pie-chart__pie(
         data-peity='{ "radius": 60, "innerRadius": 56 }'
-        data-whitespace=whiteSpace
         data-values=values
       )= valuesWithSpaces
       .pie-chart__total
