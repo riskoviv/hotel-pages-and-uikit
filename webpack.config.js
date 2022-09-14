@@ -29,8 +29,7 @@ const PAGES = {};
 (function findPugFiles() {
   ['ui-kit', 'website-pages'].forEach((pagesSubdir) => {
     PAGES[pagesSubdir] = fs.readdirSync(`${PAGES_DIR}/${pagesSubdir}`)
-      .map((dir) => fs.readdirSync(`${PAGES_DIR}/${pagesSubdir}/${dir}`))
-      .flat()
+      .flatMap((dir) => fs.readdirSync(`${PAGES_DIR}/${pagesSubdir}/${dir}`))
       .filter((filename) => filename.endsWith('.pug'));
   });
 }());
