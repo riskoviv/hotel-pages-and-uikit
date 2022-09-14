@@ -12,9 +12,6 @@ $color-codes: (
 );
 
 @each $color, $codes in $color-codes {
-  ##{$color} {
-    fill: url(##{$color}-gradient) unquote($color);
-  }
   .#{$color}-stop1 {
     stop-color: nth($codes, 1);
   }
