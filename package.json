@@ -4,17 +4,16 @@
   "description": "FSD 2nd task",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack --mode development",
-    "build": "cross-env NODE_ENV=production webpack --mode production",
-    "watch": "cross-env NODE_ENV=development webpack --mode development --watch",
-    "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --open",
+    "dev": "webpack",
+    "build": "webpack --mode=production",
+    "watch": "webpack --watch",
+    "start": "webpack serve",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Virss1/Toxin.git"
   },
-  "browserslist": "last 2 Chrome versions and last 2 ff versions",
   "keywords": [
     "layout",
     "jquery",
@@ -26,11 +25,10 @@
     "url": "https://github.com/Virss1/Toxin/issues"
   },
   "homepage": "https://github.com/Virss1/Toxin#readme",
+  "type": "module",
   "devDependencies": {
     "autoprefixer": "^10.4.10",
-    "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
-    "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "eslint": "^8.23.1",
     "eslint-config-airbnb-base": "^15.0.0",
@@ -40,7 +38,6 @@
     "imagemin-mozjpeg": "^10.0.0",
     "imagemin-webpack-plugin": "^2.4.2",
     "mini-css-extract-plugin": "^2.6.1",
-    "optimize-css-assets-webpack-plugin": "^6.0.1",
     "pug": "^3.0.2",
     "sass": "^1.54.9",
     "sass-loader": "^13.0.2",
