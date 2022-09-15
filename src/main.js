@@ -7,6 +7,16 @@ function requireAll(requireContext) {
 }
 
 // pattern to take each .js & .scss files
-requireAll(require.context('./layouts', true, /^\.\/.*\.scss$/));
-requireAll(require.context('./components', true, /^\.\/.*\.(js|scss)$/));
-requireAll(require.context('./pages', true, /^\.\/.*\.(js|scss)$/));
+const stylesAndScripts = [
+  import.meta.webpackContext('./layouts', {
+    recursive: true, regExp: /^\.\/.*\.scss$/,
+  }),
+  import.meta.webpackContext('./components', {
+    recursive: true, regExp: /^\.\/.*\.(js|scss)$/,
+  }),
+  import.meta.webpackContext('./pages', {
+    recursive: true, regExp: /^\.\/.*\.(js|scss)$/,
+  }),
+];
+
+stylesAndScripts.forEach(requireAll);
