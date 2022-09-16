@@ -1,3 +1,4 @@
+@use 'sass:list';
 @import '@styles/constants.scss';
 
 .heading-example {
@@ -28,7 +29,7 @@
       text-transform: uppercase;
     }
     &_body {
-      font: $mainFontStyle $mainFontWeight $mainFontSize/$mainLineHeight $mainFontFamily;
+      font: $mainFontStyle $mainFontWeight list.slash($mainFontSize, $mainLineHeight) $mainFontFamily;
       color: $mainFontColor;
     }
   }

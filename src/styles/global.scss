@@ -1,3 +1,4 @@
+@use 'sass:list';
 @import './constants.scss';
 @import './fonts.scss';
 
@@ -9,7 +10,7 @@ html * {
 }
 
 html {
-  font: $mainFontStyle $mainFontWeight #{$mainFontSize}/#{$mainLineHeight} $mainFontFamily;
+  font: $mainFontStyle $mainFontWeight list.slash($mainFontSize, $mainLineHeight) $mainFontFamily;
   color: $mainFontColor;
 }
 
