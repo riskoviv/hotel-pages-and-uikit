@@ -67,7 +67,7 @@ function datePickerInit(datepicker) {
   setCustomOptions = () => {
     disableNavTitle();
     $(`.${calendarClass} .datepicker--nav-title`).addClass('heading-2');
-    $calendarClearButton.addClass('button button_type_link button_clear');
+    $calendarClearButton.addClass('button button_type_link button_type_clear');
   };
 
   showClearButton = () => {

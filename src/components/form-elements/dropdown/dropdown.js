@@ -103,7 +103,7 @@ function setSelectionText(dropdown, itemsCount, totalItems) {
 function initIqDropdown(dropdown) {
   const showOrHideClearButton = (totalItems) => {
     // Отображение/скрытие кнопки очистить
-    const $clearButton = $(`#${dropdown.id} .js-button_clear`);
+    const $clearButton = $(`#${dropdown.id} .js-button_type_clear`);
     if (totalItems > 0) {
       $clearButton.removeClass('button_hidden');
     } else {
@@ -216,7 +216,7 @@ function initIqDropdown(dropdown) {
 
   // Если есть блок с кнопками "очистить" и "применить", создать обработчики нажатий
   if ($(`#${dropdown.id} .js-iqdropdown__controls`).length > 0) {
-    $(`#${dropdown.id} .js-button_clear`).on('click', clearFn);
+    $(`#${dropdown.id} .js-button_type_clear`).on('click', clearFn);
     $(`#${dropdown.id} .js-button_type_link`).on('click', applyFn);
   }
 }
@@ -245,7 +245,7 @@ function toggleDropDown(event) {
   const dropdownMenu = target.closest('.js-iqdropdown-menu');
   const dropdownControls = target.closest('.js-iqdropdown__controls');
   const applyButton = target.closest('.js-button_type_link');
-  const clearButton = target.closest('.js-button_clear');
+  const clearButton = target.closest('.js-button_type_clear');
 
   const closeNotAlwaysOpenedDropdowns = () => {
     $openedDropdowns.each(function closeDropdowns() {
