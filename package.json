@@ -32,7 +32,6 @@
     "css-loader": "^6.7.1",
     "eslint": "^8.23.1",
     "eslint-config-airbnb-base": "^15.0.0",
-    "file-loader": "^6.2.0",
     "gh-pages": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
     "imagemin-mozjpeg": "^10.0.0",
