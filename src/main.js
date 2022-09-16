@@ -8,14 +8,14 @@ function requireAll(requireContext) {
 
 // pattern to take each .js & .scss files
 const stylesAndScripts = [
+  import.meta.webpackContext('./components', {
+    recursive: true, regExp: /^\.\/.*\.(js|scss|jpg)$/,
+  }),
   import.meta.webpackContext('./layouts', {
     recursive: true, regExp: /^\.\/.*\.scss$/,
   }),
-  import.meta.webpackContext('./components', {
-    recursive: true, regExp: /^\.\/.*\.(js|scss)$/,
-  }),
   import.meta.webpackContext('./pages', {
-    recursive: true, regExp: /^\.\/.*\.(js|scss)$/,
+    recursive: true, regExp: /^\.\/.*\.(js|scss|jpg)$/,
   }),
 ];
 
