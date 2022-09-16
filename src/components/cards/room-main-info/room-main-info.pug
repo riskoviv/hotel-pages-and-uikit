@@ -6,8 +6,8 @@ mixin room-main-info(options)
       price,
       isSmall,
     } = options;
-    const thousands = Math.floor(price / 1000);
-    const hundreds = price - (thousands * 1000);
+    const priceStr = String(price);
+    const formattedPrice = `${priceStr.slice(0, -3)}&nbsp;${priceStr.slice(-3)}₽`;
 
   .room-main-info
     .room-main-info__room-info
@@ -18,5 +18,5 @@ mixin room-main-info(options)
       if isLux
         span.room-main-info__room-class люкс
     .room-main-info__room-price
-      b.room-main-info__room-price-amount #{thousands}&nbsp;#{hundreds}₽
+      b.room-main-info__room-price-amount !{formattedPrice}
       |  в сутки
