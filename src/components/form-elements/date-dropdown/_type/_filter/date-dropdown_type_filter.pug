@@ -7,7 +7,7 @@ include /common/control-container/control-container
         [yyyy, mm, dd],
       ]
     }
-mixin date-dropdown_filter(options = {})
+mixin date-dropdown_type_filter(options = {})
   -
     const randID = Math.floor(Math.random() * (1 - 1000) + 1000);
     const { title, selectDate } = options;
@@ -15,9 +15,9 @@ mixin date-dropdown_filter(options = {})
   +control-container({
     title: title || "filter date dropdown",
   })
-    .date-dropdown.date-dropdown_filter
-      button.date-dropdown__arrow.date-dropdown_filter__arrow.material-icons expand_more
-      input.date-dropdown__input.date-dropdown_filter__input.js-date-dropdown_filter__input.datepicker-here.js-datepicker-here(
+    .date-dropdown.date-dropdown_type_filter
+      button.date-dropdown__arrow.date-dropdown_type_filter__arrow.material-icons expand_more
+      input.date-dropdown__input.date-dropdown_type_filter__input.js-date-dropdown_type_filter__input(
         type="text"
         placeholder="ДД.ММ.ГГГГ"
         data-classes=`calendar-${randID}`

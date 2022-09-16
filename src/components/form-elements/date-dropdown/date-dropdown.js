@@ -86,7 +86,7 @@ function datePickerInit(datepicker) {
     $calendarClearButton.addClass('button_hidden');
   };
 
-  isFilter = $(datepicker).hasClass('js-date-dropdown_filter__input');
+  isFilter = $(datepicker).hasClass('js-date-dropdown_type_filter__input');
 
   $date1 = $(datepicker.parentNode).find('.js-date-1');
   $date2 = $(datepicker.parentNode).find('.js-date-2');
@@ -167,7 +167,7 @@ function setSelectedDates(datepicker) {
 }
 
 $(() => {
-  const $datepickerInputs = $('.js-datepicker-here');
+  const $datepickerInputs = $('.js-date-dropdown__init-input, .js-date-dropdown_type_filter__input, .js-datepicker-init-element');
   if ($datepickerInputs.length === 1) {
     setSelectedDates($datepickerInputs[0]);
   }

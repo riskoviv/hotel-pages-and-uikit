@@ -37,21 +37,21 @@
       color: $mainFontColor;
     }
 
-    &_fake {
-      position: absolute;
-      top: 20px;
-      width: 100%;
-      height: calc(100% - 20px);
-      z-index: 3;
-      cursor: pointer;
-      border: none;
-      background-color: transparent;
-      color: transparent;
+  }
+  &__init-input {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    height: calc(100% - 20px);
+    z-index: 3;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    color: transparent;
 
-      &::selection {
-        background-color: none;
-        color: none;
-      }
+    &::selection {
+      background-color: none;
+      color: none;
     }
   }
 }

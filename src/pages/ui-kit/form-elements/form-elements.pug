@@ -12,7 +12,7 @@ block content
   include /form-elements/dropdown/_type/_guests/dropdown_type_guests
   include /form-elements/dropdown/_type/_preferences/dropdown_type_preferences
   include /form-elements/date-dropdown/date-dropdown
-  include /form-elements/date-dropdown/_filter/date-dropdown_filter
+  include /form-elements/date-dropdown/_type/_filter/date-dropdown_type_filter
   include /form-elements/checkbox/checkbox
   include /form-elements/radio/radio
   include /form-elements/toggle/toggle
@@ -70,7 +70,7 @@ block content
     .form-elements__control_date-dropdown
       +date-dropdown({})
     .form-elements__control_date-dropdown-filter
-      +date-dropdown_filter({
+      +date-dropdown_type_filter({
         selectDate: [
           [2020, 8, 19],
           [2020, 8, 23],
