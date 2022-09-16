@@ -4,12 +4,12 @@
     }
 mixin like-button(options)
   -
-    const randID = Math.floor(Math.random() * (1 - 1000) + 1000)
+    const randID = Math.floor(Math.random() * (1 - 1000) + 1000);
     const {
       isClicked,
       likesCount,
-    } = options
-    
+    } = options;
+
   .like-button(
     class=isClicked ? "like-button_clicked" : ""
     id=`like-${randID}`

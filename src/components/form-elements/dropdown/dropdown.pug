@@ -9,7 +9,7 @@ mixin add-items(itemsArray)
         defaultCount,
         maxCount,
         declensions,
-      } = item
+      } = item;
 
     .iqdropdown-menu-option.js-iqdropdown-menu-option(
       data-id="item"+(index+1)
@@ -35,7 +35,7 @@ mixin add-items(itemsArray)
     }
 mixin dropdown(options = {})
   -
-    const randID = Math.floor(Math.random() * (1 - 1000) + 1000)
+    const randID = Math.floor(Math.random() * (1 - 1000) + 1000);
     const {
       title,
       state,
@@ -46,7 +46,7 @@ mixin dropdown(options = {})
       isAlwaysOpened,
       defaultCounts,
       items,
-    } = options
+    } = options;
 
   +control-container({
     title,
