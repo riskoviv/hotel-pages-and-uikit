@@ -29,7 +29,7 @@ mixin date-dropdown(options)
             button.date-dropdown__arrow.material-icons expand_more
             input.date-dropdown__input(
               type="text"
-              class=`date-${val} js-date-${val}`
+              data-date=val
               placeholder="ДД.ММ.ГГГГ"
               readonly
             )

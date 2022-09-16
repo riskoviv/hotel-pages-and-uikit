@@ -88,8 +88,8 @@ function datePickerInit(datepicker) {
 
   isFilter = $(datepicker).hasClass('js-date-dropdown_type_filter__input');
 
-  $date1 = $(datepicker.parentNode).find('.js-date-1');
-  $date2 = $(datepicker.parentNode).find('.js-date-2');
+  $date1 = $(datepicker.parentNode).find('[data-date="1"]');
+  $date2 = $(datepicker.parentNode).find('[data-date="2"]');
   let savedDates = [];
   let savedDatesFilter = '';
 
