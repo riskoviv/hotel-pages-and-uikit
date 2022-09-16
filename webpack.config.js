@@ -87,7 +87,7 @@ const getConfig = (isDev) => {
     devServer: {
       static: './dist',
       port: 4201,
-      hot: isDev,
+      hot: false,
       open: [
         // `${PATHS.pages}/colors-and-type.html`,
         `${PATHS.pages}/form-elements.html`,
