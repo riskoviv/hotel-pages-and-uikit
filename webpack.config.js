@@ -45,7 +45,7 @@ const initHTMLWebpackPlugin = (pagesObj) => {
 const getConfig = (isDev) => {
   const isProd = !isDev;
 
-  const filename = (ext) => (isDev ? `[name].${ext}` : `[name].[hash:7].${ext}`);
+  const filename = (ext) => (isDev ? `[name].${ext}` : `[name].[fullhash:5].${ext}`);
 
   const cssLoaders = (extra) => {
     const loaders = [
@@ -68,16 +68,14 @@ const getConfig = (isDev) => {
     },
     output: {
       filename: filename('js'),
+      assetModuleFilename: '[name][ext]',
       path: PATHS.dist,
       clean: true,
     },
     resolve: {
-      extensions: ['.js', '.json'],
       alias: {
         '@vendor': PATHS.vendor,
-        '@avatars': `${PATHS.src}/components/form-elements/review/avatars`,
         '@styles': `${PATHS.src}/styles`,
-        '@room-cards': `${PATHS.src}/components/cards/room-card/room-cards`,
       },
     },
     optimization: {
@@ -116,14 +114,14 @@ const getConfig = (isDev) => {
 
       ...initHTMLWebpackPlugin(PAGES),
 
-      // new ImageminPlugin({
-      //   disable: isDev,
-      //   minFileSize: 100000,
-      //   pngquant: { quality: '50-50' },
-      //   plugins: [
-      //     imageminMozjpeg({ quality: 50 }),
-      //   ],
-      // }),
+      new ImageminPlugin({
+        disable: isDev,
+        minFileSize: 100000,
+        pngquant: { quality: '50-50' },
+        plugins: [
+          imageminMozjpeg({ quality: 50 }),
+        ],
+      }),
     ],
     module: {
       rules: [
@@ -146,20 +144,18 @@ const getConfig = (isDev) => {
         },
         {
           test: /\.((pn|jp(e)?)g|gif)$/,
-          loader: 'file-loader',
-          options: {
-            name: filename('[ext]'),
-            outputPath: `${PATHS.assets}/img`,
-            publicPath: '../img',
+          type: 'asset/resource',
+          generator: {
+            outputPath: 'assets/img/',
+            publicPath: 'assets/img/',
           },
         },
         {
           test: /\.([to]tf|woff(2)?|svg)$/,
-          loader: 'file-loader',
-          options: {
-            name: filename('[ext]'),
-            outputPath: `${PATHS.assets}/fonts`,
-            publicPath: '../fonts',
+          type: 'asset/resource',
+          generator: {
+            outputPath: 'assets/fonts/',
+            publicPath: 'assets/fonts/',
           },
         },
       ],
