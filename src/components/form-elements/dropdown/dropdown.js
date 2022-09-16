@@ -9,7 +9,7 @@ let lastOpenedDropdown;
 
 // Проверка, что это dropdown для выбора количества гостей
 function isGuestsDropdown(dropdown) {
-  return $(dropdown).hasClass('js-iqdropdown_guests');
+  return $(dropdown).hasClass('js-iqdropdown_type_guests');
 }
 
 // Получение кол-ва гостей из URI
@@ -119,8 +119,9 @@ function initIqDropdown(dropdown) {
         itemsCount,
         totalItems,
       };
-      // проверка на класс js-iqdropdown_preferences, т. к. у dropdown этого типа нет блока кнопок
-      if ($(dropdown).hasClass('js-iqdropdown_preferences')) {
+      // проверка на класс js-iqdropdown_type_preferences,
+      // т. к. у dropdown этого типа нет блока кнопок
+      if ($(dropdown).hasClass('js-iqdropdown_type_preferences')) {
         setSelectionText(dropdown, itemsCount, totalItems);
       } else {
         return dropdownsItemsCounts[dropdown.id].selectionText;
