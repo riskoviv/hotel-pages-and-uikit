@@ -11,6 +11,13 @@ function datePickerInit(datepicker) {
   let $date1;
   let $date2;
 
+  const moveToLeftEdgeIfMobileS = () => {
+    const mobileSMediaQuery = window.matchMedia('(max-width: 320px)');
+    if (mobileSMediaQuery.matches) {
+      $(datepicker).data('datepicker').$datepicker.css('left', '0');
+    }
+  };
+
   // datepicker initialization
   $(datepicker).datepicker({
     inline: false,
@@ -48,6 +55,7 @@ function datePickerInit(datepicker) {
       }
     },
     onShow() {
+      moveToLeftEdgeIfMobileS();
       setCustomOptions();
       if ($(datepicker).val() === '') {
         hideClearButton();
