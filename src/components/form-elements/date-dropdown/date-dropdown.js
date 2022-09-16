@@ -55,7 +55,6 @@ function datePickerInit(datepicker) {
       }
     },
     onShow() {
-      moveToLeftEdgeIfMobileS();
       setCustomOptions();
       if ($(datepicker).val() === '') {
         hideClearButton();
@@ -73,6 +72,7 @@ function datePickerInit(datepicker) {
   }
 
   setCustomOptions = () => {
+    moveToLeftEdgeIfMobileS();
     disableNavTitle();
     $(`.${calendarClass} .datepicker--nav-title`).addClass('heading-2');
     $calendarClearButton.addClass('button button_type_link button_type_clear');
@@ -173,7 +173,7 @@ $(() => {
   }
   $datepickerInputs.each(function performDatePickersInits() {
     datePickerInit(this);
-    const datePicker = $(this).datepicker().data('datepicker');
+    const datePicker = $(this).data('datepicker');
     const dates = $(this).data('selectDate');
     if (dates) {
       const dateArray = dates.map((date) => new Date(date));
