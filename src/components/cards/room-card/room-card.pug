@@ -20,7 +20,7 @@ mixin room-card(options)
           while num < 5
             img(
               class=`image${num}`
-              src=require(`@room-cards/image-${number}-${num}.jpg`).default
+              src=`../img/image-${number}-${num}.jpg`
               alt=`room #${number}, image #${num++}`
             )
         .prev.slider__prev

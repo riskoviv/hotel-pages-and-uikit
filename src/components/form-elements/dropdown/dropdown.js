@@ -1,4 +1,5 @@
-import 'item-quantity-dropdown/lib/item-quantity-dropdown.min';
+// eslint-disable-next-line import/extensions
+import 'item-quantity-dropdown/lib/item-quantity-dropdown.min.js';
 import 'item-quantity-dropdown/lib/item-quantity-dropdown.min.css';
 
 const dropdownsItemsCounts = {};

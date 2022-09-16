@@ -20,11 +20,11 @@ mixin review(options)
       date,
       like,
       text,
-    } = options
+    } = options;
 
   .review
     img.review__reviewer-photo(
-      src=require(`@avatars/${photoName}.jpg`).default
+      src=`../img/${photoName}.jpg`
       alt="reviewer photo"
     )
     .review__title
