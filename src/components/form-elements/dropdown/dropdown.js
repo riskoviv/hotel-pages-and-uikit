@@ -179,7 +179,7 @@ function initIqDropdown(dropdown) {
     const dropdownHTML = $.parseHTML(iqDropdownsInitialHTMLs[currentDropdown.id]);
     const { itemsCount } = dropdownsItemsCounts[currentDropdown.id];
     const { totalItems } = dropdownsItemsCounts[currentDropdown.id];
-    const $iqdMenu = dropdownHTML[2];
+    const [, , $iqdMenu] = dropdownHTML;
     const $menuOptions = $($iqdMenu).find('.js-iqdropdown-menu-option');
     const $dropdownInput = $(currentDropdown).parent().find('.js-iqdropdown__input');
 
@@ -205,7 +205,7 @@ function initIqDropdown(dropdown) {
     const { target } = event;
     const currentDropdown = target.closest('.js-iqdropdown');
     const dropdownHTML = $.parseHTML(iqDropdownsInitialHTMLs[currentDropdown.id]);
-    const $iqdMenu = dropdownHTML[2];
+    const [, , $iqdMenu] = dropdownHTML;
 
     $($iqdMenu).find('.js-iqdropdown-menu-option').attr('data-defaultcount', '0');
 
