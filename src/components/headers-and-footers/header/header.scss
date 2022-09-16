@@ -15,7 +15,6 @@
     display: grid;
     grid-template:
       'logo menu sign-in'
-      'menu-bottom menu-bottom menu-bottom'
       / auto 1fr auto
       ;
     align-items: center;
@@ -34,17 +33,15 @@
       column-gap: 10px;
     }
 
-    @media (max-width: $mobileL) {
+    @media (max-width: $tablet) {
       grid-template:
-        'mt logo sign-in';
+        'menu-opener logo sign-in';
       row-gap: 0;
     }
   }
 
   &__logo {
-    @media (max-width: $mobileL) {
-      justify-self: center;
-    }
+    justify-self: center;
   }
 
   &__menu {
@@ -61,7 +58,7 @@
       justify-self: center;
     }
 
-    @media (max-width: $mobileL) {
+    @media (max-width: $tablet) {
       display: none;
       flex-direction: column;
       align-items: stretch;
@@ -69,15 +66,22 @@
       position: absolute;
       background-color: white;
       box-shadow: 0 4px 5px 2px $darkShade10;
-      left: 0;
-      top: 40px;
-      padding: 0.3em 0;
-      width: fit-content;
-      max-width: 50vw;
+      left: calc(-3% - 1px);
+      top: 55px;
+      padding: 0;
+      width: 50vw;
+      grid-area: none;
+      font-size: x-large;
+      height: calc(100vh - 70px);
+      overflow-y: auto;
+    }
 
-      &:hover {
-        display: flex;
-      }
+    @media (max-width: 600px) {
+      width: 75%;
+    }
+
+    @media (max-width: $mobileL) {
+      width: 100vw;
     }
 
     &-item {
@@ -85,12 +89,16 @@
       margin-right: var(--relative-margin);
       cursor: pointer;
 
-      @media (max-width: $mobileL) {
+      @media (max-width: $tablet) {
         padding-left: 10px;
         margin-right: 0;
 
         &:hover {
           background-color: $darkShade5;
+        }
+
+        &:has(.header__menu-item-container_active) {
+          padding-bottom: 10px;
         }
       }
 
@@ -103,32 +111,38 @@
         color: $darkShade75;
       }
 
-      &_expandable {
+      &-container {
+        display: flex;
+        justify-content: space-between;
+
+        @media (max-width: $tablet) {
+          &_active + .header__submenu {
+            display: block;
+          }
+        }
+      }
+
+      &_type_expandable {
         position: relative;
-        padding-right: 24px;
 
-        &::after {
-          @extend %pseudo-element-basic;
-          content: 'expand_more';
-          font-family: 'Material icons';
-          font-size: 24px;
-          line-height: 1;
-          right: 0;
-          top: calc(50% - 0.5em);
+        @media (max-width: $tablet) {
+          padding-right: 10px;
 
-          @media (max-width: $mobileL) {
-            transform: rotate(-90deg);
+          .header__menu-link {
+            width: 85%;
           }
         }
 
-        &:hover > .header__submenu {
-          display: block;
+        @media (min-width: calc($tablet + 1px)) {
+          &:hover > .header__submenu {
+            display: block;
+          }
         }
 
         &:last-child > .header__submenu {
           right: 0;
 
-          @media (max-width: $mobileL) {
+          @media (max-width: $tablet) {
             right: unset;
           }
         }
@@ -136,23 +150,24 @@
     }
 
     &-link {
-      display: block;
+      display: inline-block;
       text-decoration: none;
       color: inherit;
       line-height: 17px;
       white-space: nowrap;
       padding: 4px 0;
 
-      @media (max-width: $mobileL) {
+      @media (max-width: $tablet) {
         line-height: 1.3;
         padding: 0.4em 0;
         white-space: normal;
         overflow-wrap: break-word;
+        width: 100%;
       }
     }
 
     &-opener {
-      grid-area: mt;
+      grid-area: menu-opener;
       display: none;
       position: relative;
       font-family: 'Material icons';
@@ -162,10 +177,10 @@
       max-width: fit-content;
       user-select: none;
 
-      @media (max-width: $mobileL) {
+      @media (max-width: $tablet) {
         display: block;
 
-        &:hover + .header__menu {
+        &_opened + .header__menu {
           display: flex;
         }
       }
@@ -183,11 +198,27 @@
     border: $lightBorder;
     cursor: default;
 
-    @media (max-width: $mobileL) {
-      left: 100%;
-      top: 0;
-      width: max-content;
-      max-width: calc(100vw - 100% - 34px);
+    @media (max-width: $tablet) {
+      position: static;
+      box-shadow: none;
+    }
+
+    &-opener {
+      display: inline-block;
+      font-family: 'Material icons';
+      font-size: 24px;
+      line-height: 1;
+
+      @media (max-width: $tablet) {
+        font-size: 1.5em;
+        line-height: 1.4;
+        top: 0;
+
+        &_active {
+          transform: scaleY(-1);
+        }
+      }
+
     }
   }
 
@@ -207,7 +238,7 @@
     white-space: nowrap;
     padding: 0.4em 0;
 
-    @media (max-width: $mobileL) {
+    @media (max-width: $tablet) {
       display: block;
       white-space: normal;
       line-height: 1.3;

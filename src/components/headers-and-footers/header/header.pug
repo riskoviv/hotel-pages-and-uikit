@@ -15,12 +15,13 @@ mixin header(options = {})
       .header__logo
         a.header__main-page-link(href="landing.html")
           +logo-full
-      .header__menu-opener menu
+      .header__menu-opener.js-header__menu-opener menu
       ul.header__menu
         -
           const menuList = [
             { title: "О нас", isExpandable: false, name: "about" },
-            { title: "Услуги", isExpandable: true, name: "services",
+            {
+              title: "Услуги", isExpandable: true, name: "services",
               submenu: [
                 { title: "Первая услуга" },
                 { title: "Услуга номер два" },
@@ -29,7 +30,8 @@ mixin header(options = {})
             },
             { title: "Вакансии", isExpandable: false, name: "vacancies" },
             { title: "Новости", isExpandable: false, name: "news" },
-            { title: "Соглашения", isExpandable: true, name: "agreements",
+            {
+              title: "Соглашения", isExpandable: true, name: "agreements",
               submenu: [
                 { title: "Лицензия на предоставление услуг" },
                 { title: "Пользовательское соглашение" },
@@ -39,10 +41,13 @@ mixin header(options = {})
           ]
         each item in menuList
           li.header__menu-item(
-            class=(item.name == currentPage) ? "header__menu-item_active" : ""
-            class=item.isExpandable ? "header__menu-item_expandable" : ""
+            class=(item.name === currentPage) ? "header__menu-item_active" : ""
+            class=item.isExpandable ? "header__menu-item_type_expandable" : ""
           )
-            a.header__menu-link(href=item.link || "/mock-address/change-me")= item.title
+            .header__menu-item-container
+              a.header__menu-link(href=item.link || "/mock-address/change-me")= item.title
+              if item.isExpandable
+                span.header__submenu-opener.js-header__submenu-opener expand_more
             if item.submenu
               ul.header__submenu
                 each subitem in item.submenu

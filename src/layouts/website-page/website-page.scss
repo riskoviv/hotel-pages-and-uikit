@@ -5,6 +5,12 @@
   grid-template-rows: auto 1fr auto;
   height: 100vh;
 
+  &_non-scrollable {
+    @media (max-width: $tablet) {
+      overflow: hidden;
+    }
+  }
+
   &__line {
     border: none;
     background-color: $darkShade25;
