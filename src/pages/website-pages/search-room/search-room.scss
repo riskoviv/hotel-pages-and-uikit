@@ -52,7 +52,6 @@
 
     @media (max-width: $tablet) {
       grid-area: main;
-      width: fit-content;
       z-index: 899;
       background-color: #fff;
       padding: 10px;
@@ -70,7 +69,6 @@
       padding: 5px;
       top: 10px;
       height: calc(100vh - 10px);
-      transform: translateX(5px);
     }
 
     &-component {
@@ -95,37 +93,45 @@
       }
     }
 
-    &-opener {
-      display: none;
-      @extend %text-gradient;
-      line-height: 30px;
-      user-select: none;
+    &-switch {
+      width: 0;
+      appearance: none;
       position: sticky;
+      user-select: none;
       top: 10px;
       transform: translateX(-20px);
-      border-radius: 4px;
       z-index: 2;
-      cursor: pointer;
-
-      @media (max-width: $hd) {
-        display: block;
-      }
 
       @media (max-width: $mobileL) {
-        transform: translateX(0);
+        transform: translateX(10px);
       }
 
-      &:hover {
-        box-shadow: 0 0 0 2px $purple;
+      @media (max-width: $mobileS) {
+        transform: translateX(3px);
       }
-    }
 
-    &-switch {
-      display: none;
+      &::after {
+        @extend %text-gradient;
+        content: "filter_list";
+        position: absolute;
+        display: none;
+        line-height: 30px;
+        border-radius: 4px;
+        cursor: pointer;
+        translate: -50% 0;
+
+        @media (max-width: $hd) {
+          display: block;
+        }
+
+        &:hover {
+          box-shadow: 0 0 0 2px $purple;
+        }
+      }
 
       &:checked {
 
-        + .search-room__filter-opener {
+        &::after {
           box-shadow: 0 0 5px 2px $purple;
         }
 
@@ -196,6 +202,10 @@
 
     @media (max-width: $mobileL) {
       margin-left: 30px;
+    }
+
+    @media (max-width: $mobileS) {
+      margin-left: 20px;
     }
   }
 

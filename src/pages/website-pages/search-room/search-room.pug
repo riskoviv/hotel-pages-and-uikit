@@ -19,14 +19,10 @@ block content
   include /cards/room-card/room-card
   include /form-elements/pagination/pagination
 
-  input.search-room__filter-switch(
+  input.search-room__filter-switch.material-icons(
     type="checkbox"
-    id="filter-opener"
-  )
-  label.search-room__filter-opener.material-icons(
-    for="filter-opener"
     title="Показать/скрыть настройки фильтра"
-  ) filter_list
+  )
   .search-room__container
     aside.search-room__filter
       .search-room__filter-component
