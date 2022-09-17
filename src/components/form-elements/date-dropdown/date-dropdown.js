@@ -1,16 +1,10 @@
 import 'air-datepicker';
 
 function datePickerInit(datepicker) {
-  let onSelectCounter = 0;
-  let setCustomOptions;
-  let hideClearButton;
-  let showClearButton;
-  let printDates;
-  let saveDates;
-  let isFilter;
   const datepickerElement = $(datepicker);
-  const $date1 = datepickerElement;
-  const $date2 = $date1.closest('.js-date-dropdown').find('.js-date-dropdown__input[data-date="2"]');
+  const $date1Input = datepickerElement;
+  const $date2Input = $date1Input.closest('.js-date-dropdown').find('.js-date-dropdown__input[data-date="2"]');
+  const isFilter = datepickerElement.hasClass('js-date-dropdown_type_filter__input');
 
   const moveToLeftEdgeIfMobileS = () => {
     const mobileSMediaQuery = window.matchMedia('(max-width: 320px)');
@@ -19,8 +13,53 @@ function datePickerInit(datepicker) {
     }
   };
 
+  let datepickerInstance;
+  let $calendarClearButton;
+  let $calendarNavTitle;
+
+  const showClearButton = () => {
+    $calendarClearButton.removeClass('button_hidden');
+  };
+
+  const hideClearButton = () => {
+    $calendarClearButton.addClass('button_hidden');
+  };
+
+  const customizeNavTitle = () => {
+    $calendarNavTitle = datepickerInstance.$nav.find('.datepicker--nav-title');
+    $calendarNavTitle.prop('disabled', true);
+    $calendarNavTitle.addClass('heading-2');
+  };
+
+  const setCustomOptions = () => {
+    moveToLeftEdgeIfMobileS();
+    customizeNavTitle();
+    $calendarClearButton.addClass('button button_type_link button_type_clear');
+  };
+
+  let savedDates = [];
+  let savedDatesFilter = '';
+
+  const saveDates = (selectedDates) => {
+    if (isFilter) {
+      savedDatesFilter = datepickerElement.val();
+    } else {
+      savedDates = selectedDates.split(',');
+    }
+  };
+
+  const printDates = () => {
+    if (isFilter) {
+      $date1Input.val(savedDatesFilter);
+    } else {
+      $date1Input.val(savedDates[0] || '');
+      $date2Input.val(savedDates[1] || '');
+    }
+  };
+
+  let onSelectCounter = 0;
   // datepicker initialization
-  $(datepicker).datepicker({
+  datepickerElement.datepicker({
     inline: false,
     range: true,
     clearButton: true,
@@ -36,17 +75,17 @@ function datePickerInit(datepicker) {
     onSelect(formattedDate) {
       onSelectCounter += 1;
       saveDates(formattedDate);
-      const isDateSelectedManually = (datepickerElement.data('selectDate') !== ''
-        && onSelectCounter > 2)
-        || datepickerElement.data('selectDate') === undefined;
+      const isDateSelectedManually = (
+        datepickerElement.data('selectDate') !== undefined
+        && onSelectCounter > 2
+      ) || datepickerElement.data('selectDate') === undefined;
       if (isDateSelectedManually) {
         datepickerElement.val('');
-        if (!isFilter) {
-          $date2.val('');
-        }
+        if (!isFilter) $date2Input.val('');
       } else {
         printDates();
       }
+
       setCustomOptions();
       if (formattedDate === '') {
         hideClearButton();
@@ -56,7 +95,7 @@ function datePickerInit(datepicker) {
     },
     onShow(inst) {
       const datesSelectedButNotSaved = inst.selectedDates.length > 0
-        && $date1.val() === '' && $date2.val() === '';
+        && $date1Input.val() === '' && $date2Input.val() === '';
       if (datesSelectedButNotSaved) {
         inst.clear();
       }
@@ -72,86 +111,36 @@ function datePickerInit(datepicker) {
     },
   });
 
-  const calendarClass = $(datepicker).data('classes');
-  const $calendarClearButton = $(`.${calendarClass} .datepicker--button[data-action="clear"]`);
-
-  function disableNavTitle() {
-    $(`.${calendarClass} .datepicker--nav-title`).prop('disabled', true);
-  }
-
-  setCustomOptions = () => {
-    moveToLeftEdgeIfMobileS();
-    disableNavTitle();
-    $(`.${calendarClass} .datepicker--nav-title`).addClass('heading-2');
-    $calendarClearButton.addClass('button button_type_link button_type_clear');
-  };
-
-  showClearButton = () => {
-    $calendarClearButton.removeClass('button_hidden');
-  };
-
-  hideClearButton = () => {
-    $calendarClearButton.addClass('button_hidden');
-  };
-
-  isFilter = $(datepicker).hasClass('js-date-dropdown_type_filter__input');
-
-  const datepickerInstance = datepickerElement.data('datepicker');
-  const date2ClickHandler = () => {
-    datepickerInstance.show();
-  };
-  if ($date2.length > 0) {
-    $date2.on('click', date2ClickHandler);
-    $date2[0].addEventListener('pointerdown', date2ClickHandler);
-  }
-
-  let savedDates = [];
-  let savedDatesFilter = '';
-
-  saveDates = (selectedDates) => {
-    if (isFilter) {
-      savedDatesFilter = $(datepicker).val();
-    } else {
-      savedDates = selectedDates.split(',');
-    }
-    if (selectedDates === '') {
-      if (isFilter) {
-        $(datepicker).val('');
-      } else {
-        $(datepicker).val('');
-        $date1.val('');
-        $date2.val('');
-      }
-    }
-  };
-
-  printDates = () => {
-    if (!isFilter) {
-      $date1.val(savedDates[0] || '');
-      $date2.val(savedDates[1] || '');
-    } else {
-      $date1.val(savedDatesFilter);
-    }
-  };
+  datepickerInstance = datepickerElement.data('datepicker');
+  const { $buttonsContainer } = datepickerInstance.nav;
+  $calendarClearButton = $buttonsContainer.children();
+  $calendarClearButton.on('click', hideClearButton);
 
   setCustomOptions();
 
-  const myDatepicker = $(datepicker).datepicker().data('datepicker');
+  const $applyButton = $('<button class="button button_type_link">Применить</button>');
+  $buttonsContainer.append($applyButton);
+  $applyButton.on('click', () => {
+    printDates();
+    datepickerInstance.hide();
+  });
 
-  $(`.${calendarClass} .datepicker--buttons`)
-    .append('<button class="button button_type_link">Применить</button>');
-  $(`.${calendarClass} .datepicker--buttons > button`)
-    .on('click', () => {
-      printDates();
-      myDatepicker.hide();
-    });
-  $calendarClearButton.on('click', hideClearButton);
+  const date2InputClickHandler = () => {
+    datepickerInstance.show();
+  };
+  if ($date2Input.length > 0) {
+    $date2Input.on('click', date2InputClickHandler);
+    $date2Input[0].addEventListener('pointerdown', date2InputClickHandler);
+  }
+
+  return datepickerInstance;
 }
 
-function getSelectedDates() {
-  if (window.location.search === '') return '';
+const getSelectedDates = () => {
+  const landingFormDataString = window.location.search;
+  if (landingFormDataString === '') return '';
 
-  const dates = window.location.search
+  const dates = landingFormDataString
     .substring(1)
     .split('&')
     .filter((entry) => entry.startsWith('date'))
@@ -166,14 +155,14 @@ function getSelectedDates() {
       .reverse()),
   );
   return `[[${date1}],[${date2}]]`;
-}
+};
 
-function setSelectedDates(datepicker) {
+const setSelectedDates = (datepicker) => {
   const selectedDates = getSelectedDates();
   if (selectedDates !== '') {
     $(datepicker).attr('data-select-date', selectedDates);
   }
-}
+};
 
 $(() => {
   const $datepickerInputs = $('.js-date-dropdown__input[data-date="1"], .js-date-dropdown_type_filter__input, .js-datepicker-init-element');
@@ -181,12 +170,11 @@ $(() => {
     setSelectedDates($datepickerInputs[0]);
   }
   $datepickerInputs.each(function performDatePickersInits() {
-    datePickerInit(this);
-    const datePicker = $(this).data('datepicker');
+    const datePickerInstance = datePickerInit(this);
     const dates = $(this).data('selectDate');
-    if (dates) {
+    if (dates !== undefined) {
       const dateArray = dates.map((date) => new Date(date));
-      datePicker.selectDate(dateArray);
+      datePickerInstance.selectDate(dateArray);
     }
   });
 });
