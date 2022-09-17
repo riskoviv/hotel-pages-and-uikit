@@ -55,13 +55,21 @@ function datePickerInit(datepicker) {
         showClearButton();
       }
     },
-    onShow() {
+    onShow(inst) {
+      const datesSelectedButNotSaved = inst.selectedDates.length > 0
+        && $date1.val() === '' && $date2.val() === '';
+      if (datesSelectedButNotSaved) {
+        inst.clear();
+      }
       setCustomOptions();
       if ($(datepicker).val() === '') {
         hideClearButton();
       } else {
         showClearButton();
       }
+    },
+    onHide(inst) {
+      if (inst.selectedDates.length === 1) inst.clear();
     },
   });
 
