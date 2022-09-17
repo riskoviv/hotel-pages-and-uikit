@@ -32,7 +32,6 @@ function datePickerInit(datepicker) {
   };
 
   const setCustomOptions = () => {
-    moveToLeftEdgeIfMobileS();
     customizeNavTitle();
     $calendarClearButton.addClass('button button_type_link button_type_clear');
   };
@@ -71,6 +70,7 @@ function datePickerInit(datepicker) {
     },
     onChangeMonth() {
       setCustomOptions();
+      moveToLeftEdgeIfMobileS();
     },
     onSelect(formattedDate) {
       onSelectCounter += 1;
@@ -100,6 +100,7 @@ function datePickerInit(datepicker) {
         inst.clear();
       }
       setCustomOptions();
+      moveToLeftEdgeIfMobileS();
       if (datepickerElement.val() === '') {
         hideClearButton();
       } else {
