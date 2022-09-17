@@ -14,20 +14,17 @@ function isGuestsDropdown(dropdown) {
 
 // Получение кол-ва гостей из URI
 function getGuestsCounts() {
-  if (window.location.search !== '') {
-    const entries = {};
-    window.location.search
+  const landingFormDataString = window.location.search;
+  if (landingFormDataString === '') return null;
+
+  const guestsCountsString = landingFormDataString
       .substring(1)
       .split('&')
-      .forEach((entry) => {
-        const [key, value] = entry.split('=');
-        entries[key] = value;
-      });
-    if (entries.guests !== '') {
-      return decodeURIComponent(entries.guests).split(',');
-    }
-  }
-  return null;
+    .find((entry) => entry.startsWith('guests'))
+    .replace(/guests=(.*)/, '$1');
+  if (guestsCountsString === '') return null;
+
+  return decodeURIComponent(guestsCountsString).split(',');
 }
 
 // Вставка количеств гостей в качестве defaultcount в каждый iqdropdown-menu-option
@@ -58,7 +55,7 @@ function setSelectionText(dropdown, itemsCount, totalItems) {
 
     const $option = $(`#${dropdown.id} .js-iqdropdown-menu-option[data-id="${optionId}"`);
     let declensionText = $option.data('name'); // Если нет списка склонений, используется название элемента
-    if ($option.data('declensions')) { // Если есть список склонений, выбрать нужное
+    if ($option.data('declensions') !== undefined) { // Если есть список склонений, выбрать нужное
       const declensionsList = $option.data('declensions');
       [, , declensionText] = declensionsList; // 5+
       const isTotalItemsEndsWith2to4 = [2, 3, 4].indexOf(totalItemsLastDigit) !== -1;
