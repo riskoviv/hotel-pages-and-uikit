@@ -15,7 +15,7 @@ function datePickerInit(datepicker) {
   const moveToLeftEdgeIfMobileS = () => {
     const mobileSMediaQuery = window.matchMedia('(max-width: 320px)');
     if (mobileSMediaQuery.matches) {
-      $(datepicker).data('datepicker').$datepicker.css('left', '0');
+      datepickerElement.data('datepicker').$datepicker.css('left', '0');
     }
   };
 
@@ -36,13 +36,12 @@ function datePickerInit(datepicker) {
     onSelect(formattedDate) {
       onSelectCounter += 1;
       saveDates(formattedDate);
-      const isDateSelectedManually = ($(datepicker).data('selectDate') !== ''
+      const isDateSelectedManually = (datepickerElement.data('selectDate') !== ''
         && onSelectCounter > 2)
-        || $(datepicker).data('selectDate') === undefined;
+        || datepickerElement.data('selectDate') === undefined;
       if (isDateSelectedManually) {
-        $(datepicker).val('');
+        datepickerElement.val('');
         if (!isFilter) {
-          $date1.val('');
           $date2.val('');
         }
       } else {
@@ -62,7 +61,7 @@ function datePickerInit(datepicker) {
         inst.clear();
       }
       setCustomOptions();
-      if ($(datepicker).val() === '') {
+      if (datepickerElement.val() === '') {
         hideClearButton();
       } else {
         showClearButton();
