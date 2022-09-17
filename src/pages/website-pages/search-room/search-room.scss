@@ -44,7 +44,7 @@
     width: fit-content;
     overflow: auto;
     padding: 0 7px;
-    transform: translateX(-7px);
+    translate: -7px;
 
     @media (max-width: $hd) {
       display: none;
@@ -58,7 +58,7 @@
       border: $inputBorder;
       border-radius: 4px;
       box-shadow: $lightShadow;
-      transform: none;
+      translate: none;
     }
 
     @media (max-width: $mobileL) {
@@ -99,15 +99,15 @@
       position: sticky;
       user-select: none;
       top: 10px;
-      transform: translateX(-20px);
+      translate: -20px;
       z-index: 2;
 
       @media (max-width: $mobileL) {
-        transform: translateX(10px);
+        translate: 10px;
       }
 
       @media (max-width: $mobileS) {
-        transform: translateX(3px);
+        translate: 3px;
       }
 
       &::after {

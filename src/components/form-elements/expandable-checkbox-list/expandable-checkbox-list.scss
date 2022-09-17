@@ -9,7 +9,7 @@
 
   &_opened {
     .expandable-checkbox-list__arrow {
-      transform: rotate(180deg);
+      rotate: 180deg;
     }
 
     > .expandable-checkbox-list__items-list {
