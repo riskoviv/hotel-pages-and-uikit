@@ -4,8 +4,8 @@
     }
 
 mixin checkbox(options)
+  include /common/random-id-generator/random-id-generator
   -
-    const randID = Math.floor(Math.random() * (1 - 1000) + 1000);
     const {
       label = '',
       isChecked = false,
