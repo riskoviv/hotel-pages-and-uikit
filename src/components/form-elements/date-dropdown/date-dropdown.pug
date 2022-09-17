@@ -11,15 +11,7 @@ include /common/control-container/control-container
 mixin date-dropdown(options)
   - const randID = Math.floor(Math.random() * (1 - 1000) + 1000);
 
-  .date-dropdown
-    input.date-dropdown__init-input.js-date-dropdown__init-input(
-      type="text"
-      name="dates"
-      data-classes=`calendar-${randID}`
-      data-keyboard-nav="false"
-      data-select-date=options.selectDate
-      readonly
-    )
+  .date-dropdown.js-date-dropdown
     each val in [1, 2]
       .date-dropdown__dropdown
         +control-container({
@@ -27,9 +19,13 @@ mixin date-dropdown(options)
         })
           .date-dropdown__container
             button.date-dropdown__arrow.material-icons expand_more
-            input.date-dropdown__input(
+            input.date-dropdown__input.js-date-dropdown__input(
               type="text"
               data-date=val
               placeholder="ДД.ММ.ГГГГ"
+              name=`date${val}`
+              data-classes=`calendar-${randID}`
+              data-keyboard-nav="false"
+              data-select-date=options.selectDate
               readonly
             )

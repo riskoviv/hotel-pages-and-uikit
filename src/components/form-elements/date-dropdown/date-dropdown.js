@@ -8,8 +8,9 @@ function datePickerInit(datepicker) {
   let printDates;
   let saveDates;
   let isFilter;
-  let $date1;
-  let $date2;
+  const datepickerElement = $(datepicker);
+  const $date1 = datepickerElement;
+  const $date2 = $date1.closest('.js-date-dropdown').find('.js-date-dropdown__input[data-date="2"]');
 
   const moveToLeftEdgeIfMobileS = () => {
     const mobileSMediaQuery = window.matchMedia('(max-width: 320px)');
@@ -88,8 +89,15 @@ function datePickerInit(datepicker) {
 
   isFilter = $(datepicker).hasClass('js-date-dropdown_type_filter__input');
 
-  $date1 = $(datepicker.parentNode).find('[data-date="1"]');
-  $date2 = $(datepicker.parentNode).find('[data-date="2"]');
+  const datepickerInstance = datepickerElement.data('datepicker');
+  const date2ClickHandler = () => {
+    datepickerInstance.show();
+  };
+  if ($date2.length > 0) {
+    $date2.on('click', date2ClickHandler);
+    $date2[0].addEventListener('pointerdown', date2ClickHandler);
+  }
+
   let savedDates = [];
   let savedDatesFilter = '';
 
@@ -112,11 +120,10 @@ function datePickerInit(datepicker) {
 
   printDates = () => {
     if (!isFilter) {
-      $(datepicker).val(savedDates);
       $date1.val(savedDates[0] || '');
       $date2.val(savedDates[1] || '');
     } else {
-      $(datepicker).val(savedDatesFilter);
+      $date1.val(savedDatesFilter);
     }
   };
 
@@ -135,28 +142,23 @@ function datePickerInit(datepicker) {
 }
 
 function getSelectedDates() {
-  if (window.location.search !== '') {
-    const entries = {};
-    window.location.search
-      .substring(1)
-      .split('&')
-      .forEach((entry) => {
-        const [key, value] = entry.split('=');
-        entries[key] = value;
-      });
-    if (entries.dates !== '') {
-      const datesArray = decodeURIComponent(entries.dates)
-        .split(',')
-        .map((date) => (date
-          .split('.')
-          .map((datePart) => parseInt(datePart, 10))
-          .reverse()));
-      if (datesArray[1] !== undefined) {
-        return `[[${datesArray[0]}],[${datesArray[1]}]]`;
-      }
-    }
-  }
-  return '';
+  if (window.location.search === '') return '';
+
+  const dates = window.location.search
+    .substring(1)
+    .split('&')
+    .filter((entry) => entry.startsWith('date'))
+    .map((date) => date.split('=')[1]);
+  const haveTwoValidDates = dates.length === 2
+    && dates.every((date) => /\d{2}\.\d{2}\.\d{4}/.test(date));
+  if (!haveTwoValidDates) return '';
+
+  const [date1, date2] = dates.map(
+    (date) => (date.split('.')
+      .map((datePart) => parseInt(datePart, 10))
+      .reverse()),
+  );
+  return `[[${date1}],[${date2}]]`;
 }
 
 function setSelectedDates(datepicker) {
@@ -167,7 +169,7 @@ function setSelectedDates(datepicker) {
 }
 
 $(() => {
-  const $datepickerInputs = $('.js-date-dropdown__init-input, .js-date-dropdown_type_filter__input, .js-datepicker-init-element');
+  const $datepickerInputs = $('.js-date-dropdown__input[data-date="1"], .js-date-dropdown_type_filter__input, .js-datepicker-init-element');
   if ($datepickerInputs.length === 1) {
     setSelectedDates($datepickerInputs[0]);
   }
