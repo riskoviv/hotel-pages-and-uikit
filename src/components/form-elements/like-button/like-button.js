@@ -4,7 +4,7 @@ const checkLike = (likeButton) => {
   let likesCount = parseInt(likeButtonCount.textContent, 10);
   if (likeButton.classList.contains('like-button_clicked')) {
     likeButtonHeart.textContent = 'favorite';
-    likeButtonCount.textContent = (likesCount += 1).toString();
+    likeButtonCount.textContent = String(likesCount += 1);
   }
 };
 
@@ -15,10 +15,10 @@ const setLike = (likeButton) => {
   let likesCount = parseInt(likeButtonCount.textContent, 10);
   if (likeButtonHeart.textContent === 'favorite') {
     likeButtonHeart.textContent = 'favorite_border';
-    likeButtonCount.textContent = (likesCount -= 1).toString();
+    likeButtonCount.textContent = String(likesCount -= 1);
   } else {
     likeButtonHeart.textContent = 'favorite';
-    likeButtonCount.textContent = (likesCount += 1).toString();
+    likeButtonCount.textContent = String(likesCount += 1);
   }
 };
 
