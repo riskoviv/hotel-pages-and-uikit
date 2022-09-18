@@ -48,24 +48,33 @@ function setSelectionText(dropdown, itemsCount, totalItems) {
   let selectionText = '';
 
   function chooseDeclension(optionId, optionItemsCount) {
-    const totalItemsLastDigit = parseInt(
-      optionItemsCount.toString().split('').pop(),
-      10,
-    );
+    const [tensCount, unitsCount] = [...String(optionItemsCount).slice(-2).padStart(2, '0')]
+      .map((digitAsString) => Number(digitAsString));
 
     const $option = $(`#${dropdown.id} .js-iqdropdown-menu-option[data-id="${optionId}"`);
-    let declensionText = $option.data('name'); // Если нет списка склонений, используется название элемента
-    if ($option.data('declensions') !== undefined) { // Если есть список склонений, выбрать нужное
       const declensionsList = $option.data('declensions');
-      [, , declensionText] = declensionsList; // 5+
-      const isTotalItemsEndsWith2to4 = [2, 3, 4].indexOf(totalItemsLastDigit) !== -1;
-      if (isTotalItemsEndsWith2to4 && (optionItemsCount < 12 || optionItemsCount > 21)) {
-        [, declensionText] = declensionsList; // 2-4
-      } else if (optionItemsCount === 1 || (totalItemsLastDigit === 1 && optionItemsCount > 20)) {
-        [declensionText] = declensionsList; // 1
+    // Если нет списка склонений, используется название элемента
+    if (declensionsList === undefined) {
+      return $option.data('name');
       }
+
+    // Если есть список склонений, выбрать нужное
+    const tensIs1 = tensCount === 1;
+    const unitsIs1 = unitsCount === 1;
+    const unitsIs2to4 = [2, 3, 4].includes(unitsCount);
+    if (tensIs1) {
+      return declensionsList[2];
     }
-    return declensionText;
+
+    if (unitsIs1) {
+      return declensionsList[0];
+    }
+
+    if (unitsIs2to4) {
+      return declensionsList[1];
+    }
+
+    return declensionsList[2];
   }
 
   if (isGuestsDropdown(dropdown)) {
