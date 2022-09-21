@@ -70,9 +70,10 @@ mixin dropdown(options = {})
         +add-items(items)
         if hasButtons
           .iqdropdown__controls.js-iqdropdown__controls
-            .iqdropdown__clear-button.js-iqdropdown__clear-button
+            .iqdropdown__clear-button.js-iqdropdown__clear-button(
+              class=defaultCounts ? "" : "iqdropdown__clear-button_hidden"
+            )
               button.button.button_type_link.button_type_clear(
-                class=defaultCounts ? "" : "button_hidden"
                 type="button"
               ) Очистить
             .iqdropdown__apply-button.js-iqdropdown__apply-button

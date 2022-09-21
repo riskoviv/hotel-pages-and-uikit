@@ -130,7 +130,9 @@ class Dropdown {
     Dropdown.saveItemData(this.id, { selectionText });
   }
 
-  getPreferencesSelectionText(itemsCount) {
+  getPreferencesSelectionText(itemsCount, totalItems) {
+    if (totalItems === 0) return this.$dropdown.data('placeholder');
+
     return Object.entries(itemsCount).reduce((selectionTextParts, [itemId, count]) => {
       if (count > 0) {
         selectionTextParts.push(`${count} ${this.chooseDeclension(itemId, count)}`);
@@ -151,7 +153,7 @@ class Dropdown {
     this.$dropdownInput.val(value);
   }
 
-  handleApplyButtonClick() {
+  handleApplyButtonClick = () => {
     const dropdownInnerElements = $.parseHTML(Dropdown.iqDropdownsInitialHTMLs[this.id]);
     const { itemsCount, totalItems } = Dropdown.dropdownsItemsData[this.id];
     const [, , iqdMenu] = dropdownInnerElements;
@@ -160,7 +162,7 @@ class Dropdown {
     this.setInputValue(Object.values(itemsCount));
 
     $menuOptions.each((index, menuOption) => {
-      $(menuOption).data('defaultcount', itemsCount[`item${index + 1}`]);
+      $(menuOption).attr('data-defaultcount', itemsCount[`item${index + 1}`]);
     });
 
     Dropdown.iqDropdownsInitialHTMLs[this.id] = Dropdown.composeHTMLFromArray(
@@ -173,9 +175,9 @@ class Dropdown {
       itemsCount,
       totalItems,
     );
-  }
+  };
 
-  handleClearButtonClick() {
+  handleClearButtonClick = () => {
     const dropdownInnerElements = $.parseHTML(Dropdown.iqDropdownsInitialHTMLs[this.id]);
     const [, , iqdMenu] = dropdownInnerElements;
 
@@ -188,7 +190,7 @@ class Dropdown {
     this.$dropdown.html(Dropdown.iqDropdownsInitialHTMLs[this.id]);
     this.initIqDropdown();
     this.setSelectionText(0, 0);
-  }
+  };
 
   bindEventListenersToDropdownControls() {
     if (this.$dropdown.has('.js-iqdropdown__controls').length > 0) {
@@ -200,9 +202,9 @@ class Dropdown {
   showOrHideClearButton(totalItems) {
     const $clearButton = this.$dropdown.find('.js-iqdropdown__clear-button');
     if (totalItems > 0) {
-      $clearButton.removeClass('button_hidden');
+      $clearButton.removeClass('iqdropdown__clear-button_hidden');
     } else {
-      $clearButton.addClass('button_hidden');
+      $clearButton.addClass('iqdropdown__clear-button_hidden');
     }
   }
 
@@ -246,7 +248,7 @@ class Dropdown {
         if (hasControls) {
           return Dropdown.dropdownsItemsData[this.id].selectionText;
         }
-        return this.getPreferencesSelectionText(itemsCount);
+        return this.getPreferencesSelectionText(itemsCount, totalItems);
       },
       onChange: (id, count, totalItems) => {
         this.showOrHideClearButton(totalItems);
