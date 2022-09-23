@@ -285,7 +285,7 @@ const displayAllIQDropdownsBelow = () => {
   $iqDropdowns.addClass('iqdropdown_below');
 };
 
-function toggleDropDownHandler(event) {
+function handleDropdownClick(event) {
   const { target } = event;
   const $openedDropdowns = $('.js-iqdropdown.menu-open');
   const currentDropdown = target.closest('.js-iqdropdown');
@@ -319,7 +319,6 @@ function toggleDropDownHandler(event) {
     lastOpenedDropdown = currentDropdown;
   } else if (isClickedOutsideOfDropdown) {
     closeClosableDropdowns();
-    displayAllIQDropdownsBelow();
     const clickedOutsideOfDropdownWithControls = lastOpenedDropdown !== undefined
       && isDropdownHasControls;
     if (clickedOutsideOfDropdownWithControls) {
@@ -327,10 +326,6 @@ function toggleDropDownHandler(event) {
       const lastOpenedDropdownInstance = Dropdown.dropdownInstances[lastOpenedDropdown.id];
       $lastOpenedDropdown.html(Dropdown.iqDropdownsAppliedHTMLs[lastOpenedDropdown.id]);
       lastOpenedDropdownInstance.initIqDropdown();
-      lastOpenedDropdownInstance.setSelectionText(
-        Dropdown.dropdownsItemsData[lastOpenedDropdown.id].itemsCount,
-        Dropdown.dropdownsItemsData[lastOpenedDropdown.id].totalItems,
-      );
       lastOpenedDropdown = null;
     }
   }
@@ -338,4 +333,4 @@ function toggleDropDownHandler(event) {
 
 // Проверка на нажатие внутри/вне дропдауна
 // и закрытие его / закрытие других, отображение поверх других
-$(document.body).on('click', toggleDropDownHandler);
+$(document.body).on('click', handleDropdownClick);
