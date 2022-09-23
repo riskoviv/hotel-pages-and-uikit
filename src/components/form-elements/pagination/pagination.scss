@@ -43,6 +43,14 @@
         }
       }
 
+      &.paginationjs-next > a,
+      &.paginationjs-prev > a {
+        font-family: "Material Icons";
+        font-size: 24px;
+        line-height: 20px;
+        vertical-align: middle;
+      }
+
       &.active {
         background: $primaryGradient;
         font-weight: bold;
@@ -69,12 +77,6 @@
 
         &:hover {
           border-radius: 50%;
-        }
-
-        &.material-icons {
-          font-size: 24px;
-          line-height: 20px;
-          vertical-align: middle;
         }
       }
     }

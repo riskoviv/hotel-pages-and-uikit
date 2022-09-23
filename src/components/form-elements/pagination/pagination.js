@@ -10,10 +10,6 @@ $(() => {
     return html;
   }
 
-  function addMaterialIconsClassToArrows() {
-    $('.paginationjs-prev > a, .paginationjs-next > a').addClass('material-icons');
-  }
-
   let $paginationNumberLastNum;
 
   function removeExcessPageNumbers() {
@@ -70,7 +66,6 @@ $(() => {
       pageNumber: 1,
       pageRange: 2,
       afterRender() {
-        addMaterialIconsClassToArrows();
         removeExcessPageNumbers();
         const navData = $('.paginationjs-nav').text().split(',');
         if (navData[0] === $paginationNumberLastNum) {

@@ -5,6 +5,9 @@
 
   &__star {
     @extend %text-gradient;
+    font-family: "Material Icons";
+    font-size: 24px;
+    display: inline-block;
     user-select: none;
   }
 }

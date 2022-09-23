@@ -216,6 +216,7 @@
 
         &_active {
           transform: scaleY(-1);
+
         }
       }
 
@@ -253,6 +254,8 @@
 
     &-opener {
       @extend %text-gradient;
+      font-family: "Material Icons";
+      font-size: 24px;
       display: none;
       grid-area: sign-in;
       justify-self: end;

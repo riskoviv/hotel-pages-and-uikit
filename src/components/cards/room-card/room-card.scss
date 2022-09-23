@@ -56,7 +56,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 99.99%, rgba(255, 255, 255, 0) 100%);
     transition-property: opacity;
     transition-duration: 0.3s;
 
@@ -70,7 +69,12 @@
       user-select: none;
       text-align: center;
       line-height: $inputSize;
+      font-family: "Material Icons";
     }
+  }
+
+  & > &__prev {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 99.99%, rgba(255, 255, 255, 0) 100%);
   }
 
   & > &__next {

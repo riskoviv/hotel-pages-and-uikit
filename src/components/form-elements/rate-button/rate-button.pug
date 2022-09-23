@@ -8,6 +8,6 @@ mixin rate-button(rating)
   .rate-button(id=`rating-${randID}`)
     - let n = 0;
     while n < 5
-      span.rate-button__star.material-icons(
+      span.rate-button__star(
         id=`rating-${randID}_${++n}`
       )= (n <= rating) ? "star" : "star_border"
