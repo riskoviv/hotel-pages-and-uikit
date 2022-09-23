@@ -7,13 +7,9 @@
     margin-top: 50px;
   }
 
-  &_opened {
+  &[open] {
     .expandable-checkbox-list__arrow {
-      rotate: 180deg;
-    }
-
-    > .expandable-checkbox-list__items-list {
-      display: block;
+      transform: scaleY(-1);
     }
   }
 
@@ -42,10 +38,6 @@
     transition-duration: .2s;
     font-family: "Material Icons";
     font-size: 24px;
-  }
-
-  &__items-list {
-    display: none;
   }
 
   &__item {

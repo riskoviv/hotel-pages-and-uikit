@@ -17,8 +17,8 @@ mixin expandable-checkbox-list(options)
       checkboxes,
     } = options;
 
-  .expandable-checkbox-list(class=isOpened ? "expandable-checkbox-list_opened" : "")
-    .expandable-checkbox-list__toggle.js-expandable-checkbox-list__toggle
+  details.expandable-checkbox-list(open=isOpened)
+    summary.expandable-checkbox-list__toggle
       h3.expandable-checkbox-list__title= title || "expandable checkbox list"
       span.expandable-checkbox-list__arrow expand_more
     .expandable-checkbox-list__items-list
