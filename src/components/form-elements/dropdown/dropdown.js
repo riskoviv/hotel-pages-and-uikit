@@ -5,7 +5,7 @@ import 'item-quantity-dropdown/lib/item-quantity-dropdown.min.css';
 class Dropdown {
   static dropdownsItemsData = {};
 
-  static iqDropdownsInitialHTMLs = {};
+  static iqDropdownsAppliedHTMLs = {};
 
   static dropdownInstances = {};
 
@@ -25,7 +25,7 @@ class Dropdown {
       Dropdown.setCountsFromLandingAsDefaultGuestsCounts($dropdownTarget);
     }
     this.id = id;
-    Dropdown.iqDropdownsInitialHTMLs[this.id] = $dropdownTarget.html();
+    Dropdown.iqDropdownsAppliedHTMLs[this.id] = $dropdownTarget.html();
     this.initIqDropdown();
     this.setSelectionText(
       Dropdown.dropdownsItemsData[this.id].itemsCount,
@@ -101,7 +101,9 @@ class Dropdown {
   setSelectionText(itemsCount, totalItems) {
     const $selection = this.$dropdown.find('.js-iqdropdown-selection');
     if (totalItems === 0) {
-      $selection.text(this.$dropdown.data('placeholder'));
+      const placeholder = this.$dropdown.data('placeholder');
+      $selection.text(placeholder);
+      Dropdown.saveItemData(this.id, { selectionText: placeholder });
       return;
     }
 
@@ -141,12 +143,11 @@ class Dropdown {
     }, []).join(', ');
   }
 
-  static composeHTMLFromArray(arrayOfNodes = []) {
-    const $container = $('<div></div>');
-    $(arrayOfNodes).each(function appendNodesToContainer() {
-      $container.append(this);
-    });
-    return $container.html();
+  static composeHTMLFromElementsArray(arrayOfElements = []) {
+    return arrayOfElements.reduce(
+      (HTMLString, element) => HTMLString.concat(element.outerHTML),
+      '',
+    );
   }
 
   setInputValue(value) {
@@ -154,7 +155,7 @@ class Dropdown {
   }
 
   handleApplyButtonClick = () => {
-    const dropdownInnerElements = $.parseHTML(Dropdown.iqDropdownsInitialHTMLs[this.id]);
+    const dropdownInnerElements = $.parseHTML(Dropdown.iqDropdownsAppliedHTMLs[this.id]);
     const { itemsCount, totalItems } = Dropdown.dropdownsItemsData[this.id];
     const [, , iqdMenu] = dropdownInnerElements;
     const $menuOptions = $(iqdMenu).find('.js-iqdropdown-menu-option');
@@ -165,29 +166,32 @@ class Dropdown {
       $(menuOption).attr('data-defaultcount', itemsCount[`item${index + 1}`]);
     });
 
-    Dropdown.iqDropdownsInitialHTMLs[this.id] = Dropdown.composeHTMLFromArray(
+    Dropdown.iqDropdownsAppliedHTMLs[this.id] = Dropdown.composeHTMLFromElementsArray(
       dropdownInnerElements,
     );
 
-    this.$dropdown.html(Dropdown.iqDropdownsInitialHTMLs[this.id]);
+    this.$dropdown.html(Dropdown.iqDropdownsAppliedHTMLs[this.id]);
     this.initIqDropdown();
     this.setSelectionText(
       itemsCount,
       totalItems,
     );
+    if (this.$dropdown.data('always-opened') === '') {
+      this.$dropdown.removeClass('menu-open');
+    }
   };
 
   handleClearButtonClick = () => {
-    const dropdownInnerElements = $.parseHTML(Dropdown.iqDropdownsInitialHTMLs[this.id]);
+    const dropdownInnerElements = $.parseHTML(Dropdown.iqDropdownsAppliedHTMLs[this.id]);
     const [, , iqdMenu] = dropdownInnerElements;
 
     this.setInputValue('');
     $(iqdMenu).find('.js-iqdropdown-menu-option').attr('data-defaultcount', '0');
 
-    Dropdown.iqDropdownsInitialHTMLs[this.id] = Dropdown.composeHTMLFromArray(
+    Dropdown.iqDropdownsAppliedHTMLs[this.id] = Dropdown.composeHTMLFromElementsArray(
       dropdownInnerElements,
     );
-    this.$dropdown.html(Dropdown.iqDropdownsInitialHTMLs[this.id]);
+    this.$dropdown.html(Dropdown.iqDropdownsAppliedHTMLs[this.id]);
     this.initIqDropdown();
     this.setSelectionText(0, 0);
   };
@@ -281,30 +285,25 @@ const displayAllIQDropdownsBelow = () => {
   $iqDropdowns.addClass('iqdropdown_below');
 };
 
-// Функция закрытия/открытия дропдауна
 function toggleDropDownHandler(event) {
   const { target } = event;
   const $openedDropdowns = $('.js-iqdropdown.menu-open');
   const currentDropdown = target.closest('.js-iqdropdown');
   const $currentDropdown = $(currentDropdown);
-  const dropdownMenu = target.closest('.js-iqdropdown-menu');
-  const dropdownControls = target.closest('.js-iqdropdown__controls');
-  const applyButton = target.closest('.js-iqdropdown__apply-button');
   const clearButton = target.closest('.js-iqdropdown__clear-button');
 
   const closeClosableDropdowns = () => {
     $openedDropdowns.each(function closeDropdowns() {
-      if ($(this).data('always-opened') === '') {
-        $(this).removeClass('menu-open');
+      if (this.dataset.alwaysOpened === '') {
+        this.classList.remove('menu-open');
       }
     });
   };
 
-  const isDropdownPressed = currentDropdown !== null
-    && dropdownMenu === null
-    && dropdownControls === null;
-  const isClickedOutsideOfDropdownOrOnApply = (currentDropdown === null && clearButton === null)
-    || applyButton !== null;
+  const isDropdownPressed = target.classList.contains('iqdropdown')
+    || target.classList.contains('iqdropdown-selection')
+    || target.classList.contains('iqdropdown__arrow');
+  const isClickedOutsideOfDropdown = (currentDropdown === null && clearButton === null);
   const isDropdownHasControls = $(lastOpenedDropdown).find('.js-iqdropdown__controls').length > 0;
 
   function openClickedDropdownAndCloseOthers() {
@@ -318,16 +317,15 @@ function toggleDropDownHandler(event) {
   if (isDropdownPressed) {
     openClickedDropdownAndCloseOthers();
     lastOpenedDropdown = currentDropdown;
-  } else if (isClickedOutsideOfDropdownOrOnApply) {
+  } else if (isClickedOutsideOfDropdown) {
     closeClosableDropdowns();
     displayAllIQDropdownsBelow();
-    const clickedOutsideOfDropdownWithControls = applyButton === null
-      && lastOpenedDropdown !== undefined
+    const clickedOutsideOfDropdownWithControls = lastOpenedDropdown !== undefined
       && isDropdownHasControls;
     if (clickedOutsideOfDropdownWithControls) {
       const $lastOpenedDropdown = $(lastOpenedDropdown);
       const lastOpenedDropdownInstance = Dropdown.dropdownInstances[lastOpenedDropdown.id];
-      $lastOpenedDropdown.html(Dropdown.iqDropdownsInitialHTMLs[lastOpenedDropdown.id]);
+      $lastOpenedDropdown.html(Dropdown.iqDropdownsAppliedHTMLs[lastOpenedDropdown.id]);
       lastOpenedDropdownInstance.initIqDropdown();
       lastOpenedDropdownInstance.setSelectionText(
         Dropdown.dropdownsItemsData[lastOpenedDropdown.id].itemsCount,
