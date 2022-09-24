@@ -282,7 +282,6 @@ let lastOpenedDropdown;
 
 const displayAllIQDropdownsBelow = () => {
   $iqDropdowns.removeClass('iqdropdown_above');
-  $iqDropdowns.addClass('iqdropdown_below');
 };
 
 function handleDropdownClick(event) {
@@ -311,7 +310,6 @@ function handleDropdownClick(event) {
     $currentDropdown.addClass('menu-open');
     displayAllIQDropdownsBelow();
     $currentDropdown.addClass('iqdropdown_above');
-    $currentDropdown.removeClass('iqdropdown_below');
   }
 
   if (isDropdownPressed) {

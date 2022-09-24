@@ -4,6 +4,7 @@
   @extend %input-basic;
   padding: 0;
   color: $mainFontColor;
+  z-index: 1;
 
   &__input {
     display: none;
@@ -15,10 +16,6 @@
 
   &_above {
     z-index: 99;
-  }
-
-  &_below {
-    z-index: 1;
   }
 
   &:focus,
