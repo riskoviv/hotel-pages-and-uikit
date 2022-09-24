@@ -7,8 +7,9 @@
   border-radius: 10px;
   padding: 1px;
   cursor: pointer;
+  counter-reset: likes-count var(--likes-count);
 
-  &__body {
+  &__content {
     border-radius: 10px;
     background-color: #fff;
     width: 38px;
@@ -16,32 +17,40 @@
     display: flex;
     align-items: center;
     padding: 0 4px;
+
+    &:before,
+    &:after {
+      font-size: 10px;
+      font-weight: normal;
+      color: $darkShade25;
+      user-select: none;
+    }
+
+    &:before {
+      line-height: 9px;
+      font-family: "Material Icons";
+      content: "favorite_border";
+    }
+
+    &:after {
+      line-height: 12px;
+      margin: 0 auto;
+      content: counter(likes-count);
+    }
   }
 
-  &__heart,
-  &__count {
-    font-size: 10px;
-    font-weight: normal;
-    color: $darkShade25;
-    user-select: none;
-  }
-
-  &__heart {
-    line-height: 9px;
-    font-family: "Material Icons";
-  }
-
-  &__count {
-    line-height: 12px;
-    margin: 0 auto;
-  }
 
   &_clicked {
     background: $primaryGradient;
+    counter-increment: likes-count;
 
-    .like-button__heart,
-    .like-button__count {
+    .like-button__content:before,
+    .like-button__content:after {
       color: $purple;
+    }
+
+    .like-button__content:before {
+      content: "favorite";
     }
   }
 }
