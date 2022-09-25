@@ -21,7 +21,7 @@ html(lang="ru")
       class=`${pageClass}__content`
     )
       block content
-    if pageClass != "landing"
+    if pageClass !== "landing"
       hr.website-page__line
     footer.website-page__footer
       +footer
