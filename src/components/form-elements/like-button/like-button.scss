@@ -15,7 +15,9 @@
     height: 18px;
     display: flex;
     align-items: center;
-    padding: 0 8px 0 5px;
+    justify-content: flex-start;
+    column-gap: 6px;
+    padding: 0 6px 0 5px;
 
     &:before,
     &:after {
@@ -29,12 +31,10 @@
       line-height: 9px;
       font-family: "Material Icons";
       content: "favorite_border";
-      margin-right: 6px;
     }
 
     &:after {
       line-height: 12px;
-      margin: 0 auto;
       content: counter(likes-count);
     }
   }
