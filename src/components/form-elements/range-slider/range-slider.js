@@ -18,7 +18,7 @@ if (slider !== null && rangeSlider !== null) {
       to(value) {
         const fixedValue = value.toFixed(0);
         const fixedNumberValue = Number(fixedValue);
-        if (fixedNumberValue === '0') return '0₽';
+        if (fixedNumberValue === 0) return '0₽';
         if (fixedNumberValue < 1e3) return `${fixedValue}₽`;
         const millions = fixedNumberValue >= 1e6 ? fixedValue.slice(0, -6) : '';
         const thousands = fixedValue.slice(-6, -3);

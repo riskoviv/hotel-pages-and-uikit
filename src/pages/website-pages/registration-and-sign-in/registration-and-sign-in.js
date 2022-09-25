@@ -1,21 +1,21 @@
 $(() => {
-  const pageVariant = window.location.search
+  const [, pageVariant] = window.location.search
     .substring(1)
-    .split('=')[1];
+    .split('=');
   const $registrationCard = $('.js-registration-and-sign-in__registration-card');
   const $signInCard = $('.js-registration-and-sign-in__sign-in-card');
   const registrationHiddenClass = 'registration-and-sign-in__registration-card_hidden';
   const signInHiddenClass = 'registration-and-sign-in__sign-in-card_hidden';
 
-  function showRegistrationCard() {
+  const showRegistrationCard = () => {
     $signInCard.addClass(signInHiddenClass);
     $registrationCard.removeClass(registrationHiddenClass);
-  }
+  };
 
-  function showSignInCard() {
+  const showSignInCard = () => {
     $registrationCard.addClass(registrationHiddenClass);
     $signInCard.removeClass(signInHiddenClass);
-  }
+  };
 
   switch (pageVariant) {
     case 'sign-in':
@@ -26,6 +26,5 @@ $(() => {
       break;
     default:
       showRegistrationCard();
-      break;
   }
 });

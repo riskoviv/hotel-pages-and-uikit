@@ -5,12 +5,14 @@ $(() => {
   const registrationHiddenClass = 'registration-and-sign-in__registration-card_hidden';
   const signInHiddenClass = 'registration-and-sign-in__sign-in-card_hidden';
 
-  function showSignInCard() {
+  const showSignInCard = () => {
     $registrationCard.addClass(registrationHiddenClass);
     $signInCard.removeClass(signInHiddenClass);
-  }
+  };
 
-  $signInButton.on('click', () => {
+  const handleSignInButtonClick = () => {
     showSignInCard();
-  });
+  };
+
+  $signInButton.on('click', handleSignInButtonClick);
 });

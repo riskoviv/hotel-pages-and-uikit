@@ -10,10 +10,9 @@ $(() => {
   const colors = ['black', 'purple', 'green', 'orange'];
   const values = $pieInitElement.data('values');
   const fillGradients = values.flatMap((value, index) => {
-    if (value > 0) {
-      return [`url(#${colors[index]}-gradient) ${colors[index]}`, '#fff'];
-    }
-    return null;
+    if (value === 0) return null;
+
+    return [`url(#${colors[index]}-gradient) ${colors[index]}`, '#fff'];
   }).filter((fill) => fill !== null);
 
   $pieInitElement.peity('donut', {

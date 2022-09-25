@@ -1,6 +1,6 @@
 /**
  * Function to dynamically set rating for rate-button element.
- * To use it, call somewhere in external script w/ id of rate-button element and raring value.
+ * To use it, call somewhere in external script w/ id of rate-button element and rating value.
  * @example
  * window.setRating('rating-746', 3);
  * setRating('rating-042', 5);
@@ -9,6 +9,9 @@
  */
 function setRating(rateButtonID, rating) {
   const rateButton = document.querySelector(`.rate-button#${rateButtonID}`);
+  if (rateButton === null) {
+    throw new Error(`rateButton with id ${rateButtonID} does not exist on the page`);
+  }
   const stars = rateButton.querySelectorAll('.rate-button__star');
   stars.forEach((starElem, index) => {
     // eslint-disable-next-line no-param-reassign

@@ -6,7 +6,7 @@ function requireAll(requireContext) {
   return requireContext.keys().map(requireContext);
 }
 
-// pattern to take each .js & .scss files
+// pattern to take each .js, .scss & jpg files
 const stylesAndScripts = [
   import.meta.webpackContext('./components', {
     recursive: true, regExp: /^\.\/.*\.(js|scss|jpg)$/,
