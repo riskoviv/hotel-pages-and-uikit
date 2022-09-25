@@ -19,14 +19,6 @@
   }
 }
 
-/* quicksand-regular - latin */
-@include font-face('Quicksand', '../res/fonts/quicksand/quicksand-v20-latin-regular');
-/* quicksand-700 - latin */
-@include font-face('Quicksand', '../res/fonts/quicksand/quicksand-v20-latin-700', 700);
-/* open-sans-regular - latin_cyrillic */
-@include font-face('Open Sans', '../res/fonts/opensans/open-sans-v17-latin_cyrillic-regular');
-/* open-sans-700 - latin_cyrillic */
-@include font-face('Open Sans', '../res/fonts/opensans/open-sans-v17-latin_cyrillic-700', 700);
 /* montserrat-regular - latin_cyrillic */
 @include font-face('Montserrat', '../res/fonts/montserrat/montserrat-v14-latin_cyrillic-regular');
 /* montserrat-700 - latin_cyrillic */
