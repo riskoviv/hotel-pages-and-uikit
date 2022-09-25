@@ -4,13 +4,13 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  column-gap: 40px;
 
   &__color-square {
     width: 70px;
     height: 70px;
     background-color: $darkShade100;
     border-radius: 6px;
-    margin-right: 40px;
 
     &_color {
       &_ds-75 {
@@ -39,7 +39,7 @@
       size: 19px;
       family: $headingFontFamily;
     }
-    line-height: 29px;
+    line-height: 27px;
     color: $headingColor;
   }
 

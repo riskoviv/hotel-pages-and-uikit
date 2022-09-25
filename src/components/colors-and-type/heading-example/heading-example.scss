@@ -16,21 +16,25 @@
   &_type {
     &_h1 {
       font-size: 24px;
-      line-height: 30px;
+      line-height: 29px;
     }
     &_h2 {
       font-size: 19px;
-      line-height: 24px;
+      line-height: 23px;
     }
     &_h3 {
       font-family: 'Montserrat', sans-serif;
       font-size: 12px;
-      line-height: 15px;
+      line-height: 16px;
       text-transform: uppercase;
     }
     &_body {
       font: $mainFontStyle $mainFontWeight list.slash($mainFontSize, $mainLineHeight) $mainFontFamily;
       color: $mainFontColor;
+
+      > .heading-example__text-example {
+        max-width: 301px;
+      }
     }
   }
 
@@ -46,6 +50,6 @@
 
   &__text-example {
     margin: 0;
-    max-width: 336px;
+    max-width: 370px;
   }
 }
