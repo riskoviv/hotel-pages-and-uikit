@@ -23,61 +23,68 @@
       float: none;
     }
 
-    & &-pages li {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 40px;
-      height: 40px;
-      border: none;
+    & &-pages {
 
-      &.paginationjs-next,
-      &.paginationjs-prev,
-      &.active {
-        border-radius: 50%;
-        background: $secondaryGradient;
-
-        > a {
-          color: white;
-          background: transparent;
-        }
-      }
-
-      &.paginationjs-next > a,
-      &.paginationjs-prev > a {
-        font-family: "Material Icons";
-        font-size: 24px;
-        line-height: 20px;
-        vertical-align: middle;
-      }
-
-      &.active {
-        background: $primaryGradient;
-        font-weight: bold;
-      }
-
-      &:last-child {
-        border: none;
-      }
-
-      &.disabled > a {
-        opacity: 1;
-      }
-
-      > a {
-        width: 40px;
-        height: 40px;
+      li {
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 12px;
-        line-height: 15px;
-        background: transparent;
-        color: $darkShade50;
+        width: 40px;
+        height: 40px;
+        border: none;
 
-        &:hover {
+        &.paginationjs-next,
+        &.paginationjs-prev,
+        &.active {
           border-radius: 50%;
+          background: $secondaryGradient;
+
+          > a {
+            color: white;
+            background: transparent;
+          }
         }
+
+        &.paginationjs-next > a,
+        &.paginationjs-prev > a {
+          font-family: "Material Icons";
+          font-size: 24px;
+          line-height: 20px;
+          vertical-align: middle;
+        }
+
+        &.active {
+          background: $primaryGradient;
+          font-weight: bold;
+        }
+
+        &:last-child {
+          border: none;
+        }
+
+        &.disabled > a {
+          opacity: 1;
+        }
+
+        > a {
+          width: 40px;
+          height: 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 12px;
+          line-height: 15px;
+          background: transparent;
+          color: $darkShade50;
+
+          &:hover {
+            border-radius: 50%;
+          }
+        }
+      }
+
+      .paginationjs-page_hidden {
+        display: none;
       }
     }
 

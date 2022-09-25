@@ -1,62 +1,29 @@
 import 'paginationjs';
 
-$(() => {
-  function simpleTemplating(data) {
-    let html = '<ul class="pagination__items-list">';
-    $.each(data, (index, item) => {
-      html += `<li class="pagination__item">${item}</li>`;
-    });
-    html += '</ul>';
-    return html;
+class Pagination {
+  lastPageNumber;
+
+  $paginator;
+
+  /**
+   * @param {JQuery<HTMLElement>} $paginationTarget target element to init pagination plugin
+   */
+  constructor($paginationTarget) {
+    this.$paginator = $paginationTarget;
+    this.init();
+    this.lastPageNumber = this.$paginator.find('.paginationjs-last').data('num');
   }
 
-  let $paginationNumberLastNum;
-
-  function removeExcessPageNumbers() {
-    const $pageNumbers = $('.paginationjs-page:not(.paginationjs-first):not(.paginationjs-last)');
-    const $activePage = $('.paginationjs-page.active');
-    const $ellipsis = $('.paginationjs-ellipsis');
-
-    $pageNumbers.each((i, pageNumber) => {
-      const activePageNum = $activePage.data('num');
-      const pageNumberNum = $(pageNumber).data('num');
-      const isPageNum2MorePagesAway = pageNumberNum > activePageNum + 2
-        || pageNumberNum < activePageNum - 2;
-      const isItNotFirstAndNotLastNum = pageNumberNum !== 1
-        && pageNumberNum !== $paginationNumberLastNum;
-
-      if (isPageNum2MorePagesAway && isItNotFirstAndNotLastNum) {
-        $(pageNumber).css('display', 'none');
-      }
-    });
-
-    switch ($activePage.data('num')) {
-      case 5:
-        $ellipsis.clone().insertAfter('.paginationjs-page[data-num="1"]');
-        break;
-      case $paginationNumberLastNum - 4:
-        $ellipsis.clone().insertBefore($('.paginationjs-page:last'));
-        break;
-      default:
-        break;
-    }
-  }
-
-  const $paginator = $('.pagination');
-
-  if ($paginator.length > 0) {
-    $paginator.pagination({
+  init() {
+    this.$paginator.pagination({
       dataSource(done) {
-        const result = [];
-        for (let i = 1; i <= 180; i += 1) {
-          result.push(i);
-        }
-        done(result);
+        const items = [...Array(181).keys()].slice(1);
+        done(items);
       },
       callback(data) {
         // template method of yourself
-        const html = simpleTemplating(data);
-        $('.page-content').html(html);
+        const html = Pagination.makeHTMLFromData(data);
+        $('.js-page-content').html(html);
       },
       pageSize: 12,
       autoHidePrevious: true,
@@ -65,19 +32,22 @@ $(() => {
       nextText: 'arrow_forward',
       pageNumber: 1,
       pageRange: 2,
-      afterRender() {
-        removeExcessPageNumbers();
-        const navData = $('.paginationjs-nav').text().split(',');
-        if (navData[0] === $paginationNumberLastNum) {
-          $('.paginationjs-nav').text(
-            `${navData[0] * 12 - 11} - ${navData[1]}
-            из ${(navData[1]) >= 100 ? '100+' : navData[1]}
+      afterRender: () => {
+        this.removeExcessPageNumbers();
+        const $navigationInfo = this.$paginator.find('.J-paginationjs-nav');
+        const [currentPage, totalItemsCount] = $navigationInfo.text().split(',');
+        const firstItemNumberOnPage = currentPage * 12 - 11;
+        if (currentPage === this.lastPageNumber) {
+          $navigationInfo.text(
+            `${firstItemNumberOnPage} - ${totalItemsCount}
+            из ${(totalItemsCount) >= 100 ? '100+' : totalItemsCount}
             вариантов аренды`,
           );
         } else {
-          $('.paginationjs-nav').text(
-            `${navData[0] * 12 - 11} - ${navData[0] * 12}
-            из ${(navData[1]) >= 100 ? '100+' : navData[1]}
+          const lastItemNumberOnPage = currentPage * 12;
+          $navigationInfo.text(
+            `${firstItemNumberOnPage} - ${lastItemNumberOnPage}
+            из ${(totalItemsCount) >= 100 ? '100+' : totalItemsCount}
             вариантов аренды`,
           );
         }
@@ -87,5 +57,52 @@ $(() => {
     });
   }
 
-  $paginationNumberLastNum = $('.paginationjs-last').data('num');
+  static makeHTMLFromData(data) {
+    const $pageContent = $('<ul class="pagination__items-list"></ul>');
+    const $pageContentElements = data.map(
+      (pageItemContent) => `<li class="pagination__item">${pageItemContent}</li>`,
+    );
+    $pageContent.append($pageContentElements);
+    return $pageContent[0].outerHTML;
+  }
+
+  removeExcessPageNumbers() {
+    const $pageNumbers = this.$paginator.find('.J-paginationjs-page:not(.paginationjs-first):not(.paginationjs-last)');
+    const $activePage = this.$paginator.find('.J-paginationjs-page.active');
+    const $ellipsis = this.$paginator.find('.paginationjs-ellipsis');
+
+    $pageNumbers.each((i, pageNumber) => {
+      const activePageNum = Number($activePage.data('num'));
+      const pageNumberNum = Number(pageNumber.dataset.num);
+      const isPageNumMoreThan2PagesAwayFromActive = Math.abs(pageNumberNum - activePageNum) > 2;
+      const isFirstOrLastNum = [1, this.lastPageNumber].includes(pageNumberNum);
+      const isExcessPageNumber = isPageNumMoreThan2PagesAwayFromActive && !isFirstOrLastNum;
+
+      if (isExcessPageNumber) {
+        pageNumber.classList.add('paginationjs-page_hidden');
+      }
+    });
+
+    switch ($activePage.data('num')) {
+      case 5: {
+        const $firstPageButton = this.$paginator.find('.J-paginationjs-page:first');
+        $ellipsis.clone().insertAfter($firstPageButton);
+        break;
+      }
+      case this.lastPageNumber - 4: {
+        const $lastPageButton = this.$paginator.find('.J-paginationjs-page:last');
+        $ellipsis.clone().insertBefore($lastPageButton);
+        break;
+      }
+      default:
+        break;
+    }
+  }
+}
+
+$(() => {
+  const $paginationTarget = $('.js-pagination');
+  if ($paginationTarget.length === 1) {
+    new Pagination($paginationTarget);
+  }
 });
