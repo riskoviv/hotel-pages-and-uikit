@@ -40,17 +40,18 @@ mixin header(options = {})
             },
           ]
         each item in menuList
+          - const { name, isExpandable, link, title, submenu } = item;
           li.header__menu-item(
-            class=(item.name === currentPage) ? "header__menu-item_active" : ""
-            class=item.isExpandable ? "header__menu-item_type_expandable" : ""
+            class=(name === currentPage) ? "header__menu-item_active" : ""
+            class=isExpandable ? "header__menu-item_type_expandable js-header__menu-item_type_expandable" : ""
           )
             .header__menu-item-container
-              a.header__menu-link(href=item.link || "/mock-address/change-me")= item.title
-              if item.isExpandable
+              a.header__menu-link(href=link || "/mock-address/change-me")= title
+              if isExpandable
                 span.header__submenu-opener.js-header__submenu-opener expand_more
-            if item.submenu
+            if submenu
               ul.header__submenu
-                each subitem in item.submenu
+                each subitem in submenu
                   li.header__subitem
                     a.header__sublink(href=subitem.link || "/mock-address/change-me")= subitem.title
 

@@ -96,10 +96,6 @@
         &:hover {
           background-color: $darkShade5;
         }
-
-        &:has(.header__menu-item-container_active) {
-          padding-bottom: 10px;
-        }
       }
 
       &:last-child {
@@ -114,12 +110,6 @@
       &-container {
         display: flex;
         justify-content: space-between;
-
-        @media (max-width: $tablet) {
-          &_active + .header__submenu {
-            display: block;
-          }
-        }
       }
 
       &_type_expandable {
@@ -127,6 +117,14 @@
 
         @media (max-width: $tablet) {
           padding-right: 10px;
+
+          &.header__menu-item_expanded {
+            padding-bottom: 10px;
+
+            > .header__submenu {
+              display: block;
+            }
+          }
 
           .header__menu-link {
             width: 85%;

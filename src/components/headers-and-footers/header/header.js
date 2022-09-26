@@ -12,6 +12,7 @@ const $submenuOpener = $('.js-header__submenu-opener');
 const handleSubMenuOpenerClick = (e) => {
   const $currentOpener = $(e.currentTarget);
   $currentOpener.toggleClass('header__submenu-opener_active');
-  $currentOpener.parent().toggleClass('header__menu-item-container_active');
+  $currentOpener.closest('.js-header__menu-item_type_expandable')
+    .toggleClass('header__menu-item_expanded');
 };
 $submenuOpener.on('click', handleSubMenuOpenerClick);
