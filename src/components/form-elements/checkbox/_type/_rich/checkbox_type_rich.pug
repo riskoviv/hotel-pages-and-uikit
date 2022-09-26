@@ -1,4 +1,4 @@
-include ../checkbox
+include ../../checkbox
 
 //-
   options: {
@@ -6,7 +6,7 @@ include ../checkbox
     description: "string",
     isChecked: boolean
   }
-mixin checkbox_rich(options)
+mixin checkbox_type_rich(options)
   -
     const {
       label,
@@ -14,11 +14,11 @@ mixin checkbox_rich(options)
       isChecked,
     } = options;
 
-  .checkbox_rich
+  .checkbox_type_rich
     +checkbox({
       label,
       isChecked,
     })
-    .checkbox_rich__description
+    .checkbox_type_rich__description
       each line in description
-        span.checkbox_rich__description-line= line
+        span.checkbox_type_rich__description-line= line

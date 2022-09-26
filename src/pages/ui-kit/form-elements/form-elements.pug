@@ -26,7 +26,7 @@ block content
   include /form-elements/pagination/pagination
   include /form-elements/dropdown/dropdown
   include /form-elements/expandable-checkbox-list/expandable-checkbox-list
-  include /form-elements/checkbox/_rich/checkbox_rich
+  include /form-elements/checkbox/_type/_rich/checkbox_type_rich
   include /form-elements/bullet-list/bullet-list
   include /form-elements/advantage/advantage
   include /form-elements/review/review
@@ -284,7 +284,7 @@ block content
       })
         each checkbox in richCheckboxes
           .form-elements__checkbox-rich
-            +checkbox_rich(checkbox)
+            +checkbox_type_rich(checkbox)
 
   //- MIDDLE BLOCK
   section.form-elements__column

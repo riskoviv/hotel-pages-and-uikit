@@ -14,7 +14,7 @@ block content
   include /form-elements/dropdown/_type/_preferences/dropdown_type_preferences
   include /form-elements/range-slider/range-slider
   include /form-elements/checkbox/checkbox
-  include /form-elements/checkbox/_rich/checkbox_rich
+  include /form-elements/checkbox/_type/_rich/checkbox_type_rich
   include /form-elements/expandable-checkbox-list/expandable-checkbox-list
   include /cards/room-card/room-card
   include /form-elements/pagination/pagination
@@ -89,7 +89,7 @@ block content
             ]
           each checkbox in richCheckboxes
             .search-room__checkbox-rich
-              +checkbox_rich(checkbox)
+              +checkbox_type_rich(checkbox)
       .search-room__filter-component
         +control-container({
           title: "удобства номера",
