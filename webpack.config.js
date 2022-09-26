@@ -22,7 +22,7 @@ const PATHS = {
 const PAGES_DIR = `${PATHS.src}/pages`;
 const PAGES = {};
 
-['ui-kit', 'website-pages'].forEach((pagesSubDir) => {
+['ui-kit', 'website-pages', 'index/..'].forEach((pagesSubDir) => {
   PAGES[pagesSubDir] = readdirSync(`${PAGES_DIR}/${pagesSubDir}`)
     .flatMap((dir) => readdirSync(`${PAGES_DIR}/${pagesSubDir}/${dir}`))
     .filter((filename) => filename.endsWith('.pug'));
@@ -88,16 +88,7 @@ const getConfig = (isDev) => {
       static: './dist',
       port: 4201,
       hot: false,
-      open: [
-        // `${PATHS.pages}/colors-and-type.html`,
-        `${PATHS.pages}/form-elements.html`,
-        // `${PATHS.pages}/cards.html`,
-        // `${PATHS.pages}/headers-and-footers.html`,
-        // `${PATHS.pages}/landing.html`,
-        // `${PATHS.pages}/search-room.html`,
-        // `${PATHS.pages}/room-details.html`,
-        // `${PATHS.pages}/registration-and-sign-in.html`,
-      ],
+      open: `${PATHS.pages}/index.html`,
     },
     stats: 'minimal',
     devtool: isDev ? 'source-map' : false,

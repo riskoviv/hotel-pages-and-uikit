@@ -1,0 +1,36 @@
+include /common/logo-full/logo-full
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width , initial-scale=1.0")
+    title Toxin index page
+  body.toxin-index
+    .toxin-index__container
+      .toxin-index__logo
+        +logo-full
+      .toxin-index__links-container
+        section.toxin-index__links-part
+          h2.toxin-index__links-header UI kit
+          ul.toxin-index__links-list
+            li.toxin-index__link-container
+              a.toxin-index__link(href="./colors-and-type.html") Colors & Type
+            li.toxin-index__link-container
+              a.toxin-index__link(href="./form-elements.html") Form Elements
+            li.toxin-index__link-container
+              a.toxin-index__link(href="./cards.html") Cards
+            li.toxin-index__link-container
+              a.toxin-index__link(href="./headers-and-footers.html") Headers & Footers
+        section.toxin-index__links-part
+          h2.toxin-index__links-header Website pages
+          ul.toxin-index__links-list
+            li.toxin-index__link-container
+              a.toxin-index__link(href="./landing.html") Landing
+            li.toxin-index__link-container
+              a.toxin-index__link(href="./search-room.html") Search room / Filter
+            li.toxin-index__link-container
+              a.toxin-index__link(href="./room-details.html") Room details
+            li.toxin-index__link-container
+              a.toxin-index__link(href="./registration-and-sign-in.html") Registration & Sign-in
