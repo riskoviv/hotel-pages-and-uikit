@@ -2,8 +2,7 @@
   $font-family,
   $file-path,
   $weight: $mainFontWeight,
-  $style: $mainFontStyle,
-  $asset-pipeline: false
+  $style: $mainFontStyle
 ) {
   @font-face {
     font: {
@@ -25,14 +24,5 @@
 @include font-face('Montserrat', '../res/fonts/montserrat/montserrat-v14-latin_cyrillic-700', 700);
 /* material icons */
 @import '../res/fonts/materialicons/material-icons.css';
-
 /* font awesome */
-@font-face {
-  font: {
-    family: 'Font awesome';
-    weight: 400;
-    style: $mainFontStyle;
-  }
-
-  src: url('../res/fonts/font-awesome/Font Awesome 5 Brands-Regular-400.otf') format('truetype');
-}
+@include font-face('Font awesome', '../res/fonts/font-awesome/Font Awesome 5 Brands Regular');
