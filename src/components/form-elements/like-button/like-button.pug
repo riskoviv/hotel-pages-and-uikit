@@ -2,12 +2,12 @@
       isClicked: boolean,
       likesCount: number
     }
-mixin like-button(options)
+mixin like-button(options = {})
   include /common/random-id-generator/random-id-generator
   -
     const {
-      isClicked,
-      likesCount,
+      isClicked = false,
+      likesCount = 0,
     } = options;
 
   .like-button.js-like-button(

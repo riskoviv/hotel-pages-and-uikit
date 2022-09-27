@@ -1,19 +1,18 @@
-mixin range-slider(options)
+mixin range-slider(options = {})
   -
     const {
-      title,
-      range,
-      start,
-      description,
+      title = 'range slider',
+      range = [0, 16000],
+      start = [5000, 10000],
+      description = '',
     } = options;
-
-  .range-slider(
+  .range-slider.js-range-slider(
     data-range=range
     data-start=start
   )
     .range-slider__caption
       h3.range-slider__title= title
-      span.range-slider__values
-    .range-slider__slider
+      span.range-slider__values.js-range-slider__values
+    .range-slider__slider.js-range-slider__slider
     if description
       span.range-slider__description= description
