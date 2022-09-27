@@ -10,7 +10,7 @@ mixin like-button(options)
       likesCount,
     } = options;
 
-  .like-button(
+  .like-button.js-like-button(
     class=isClicked ? "like-button_clicked" : ""
     id=`like-${randID}`
     style=`--likes-count: ${likesCount}`
